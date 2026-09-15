@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Career Journey — Koushik Upadhyay</title>
+  
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            paper: "#F7F3EA",
+            ink: "#202124",
+            "ink-muted": "#5A5852",
+            cobalt: "#5577A8",
+            borderline: "#DCD4C4",
+            "paper-card": "#FAF7F0"
+          },
+          fontFamily: {
+            mono: ["'JetBrains Mono'", "monospace"],
+            display: ["'Bricolage Grotesque'", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+  
+  <style>
+    body, main, html { background-color: #F7F3EA !important; color: #202124; font-family: 'Bricolage Grotesque', sans-serif; }
+    ::-webkit-scrollbar { display: none; }
+    
+    /* Timeline styles */
+    .timeline-line {
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background-color: #DCD4C4;
+      transform: translateX(-50%);
+      z-index: 0;
+    }
+    
+    @media (max-width: 768px) {
+      .timeline-line {
+        left: 24px;
+        transform: none;
+      }
+    }
+    
+    .timeline-item {
+      position: relative;
+      z-index: 10;
+      opacity: 0.3;
+      transform: translateY(20px);
+      transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    .timeline-item.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .timeline-marker {
+      width: 16px;
+      height: 16px;
+      background-color: #F7F3EA;
+      border: 3px solid #5577A8;
+      border-radius: 50%;
+      position: absolute;
+      left: 50%;
+      top: 24px;
+      transform: translateX(-50%);
+      z-index: 20;
+      transition: all 0.3s ease;
+    }
+    
+    .timeline-item.active .timeline-marker {
+      background-color: #5577A8;
+      box-shadow: 0 0 0 4px rgba(85, 119, 168, 0.2);
+    }
+    
+    @media (max-width: 768px) {
+      .timeline-marker {
+        left: 24px;
+        transform: translateX(-50%);
+      }
+      .timeline-content-left, .timeline-content-right {
+        margin-left: 64px !important;
+        width: calc(100% - 64px) !important;
+        text-align: left !important;
+      }
+    }
+    
+    /* Character */
+    #character-pin {
+      position: absolute;
+      left: 50%;
+      top: 0;
+      transform: translateX(-50%);
+      z-index: 30;
+      transition: top 0.3s ease-out;
+      pointer-events: none;
+    }
+    
+    @media (max-width: 768px) {
+      #character-pin { left: 24px; }
+    }
+    
+    /* Accordion styles */
+    .milestone-details {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease-out, opacity 0.3s ease;
+      opacity: 0;
+    }
+    
+    .milestone-card.expanded .milestone-details {
+      max-height: 1000px;
+      opacity: 1;
+      margin-top: 1rem;
+    }
+    
+    .milestone-card {
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-cobalt/20">
+
+<!-- UNIFIED NAVBAR -->
+<header class="fixed top-0 left-0 right-0 h-20 px-6 md:px-12 flex items-center justify-between z-50 bg-[#F7F3EA]/90 backdrop-blur-md border-b border-[#DCD4C4]/70" style="font-family: 'JetBrains Mono', monospace;">
+<a class="flex items-center gap-3 group" href="../koushik_upadhyay_ai_ml_engineer_builder/code.html#top">
+<div class="w-9 h-9 rounded-xl bg-[#202124] text-[#F7F3EA] flex items-center justify-center font-extrabold text-sm group-hover:bg-[#5577A8] transition-colors shadow-sm">
+      K/
+    </div>
+<span class="font-bold text-sm tracking-tight text-[#202124] group-hover:text-[#5577A8] transition-colors hidden sm:inline" style="font-family: 'Bricolage Grotesque', sans-serif;">KOUSHIK UPADHYAY</span>
+</a>
+<nav class="hidden md:flex items-center gap-8 text-xs font-semibold tracking-wider text-[#5A5852]">
+<a class="hover:text-[#202124] transition-colors hover:underline underline-offset-8" href="../koushik_upadhyay_ai_ml_engineer_builder/code.html#work">WORK</a>
+<a class="hover:text-[#202124] transition-colors hover:underline underline-offset-8" href="../koushik_upadhyay_ai_ml_engineer_builder/code.html#about">ABOUT</a>
+<a class="hover:text-[#202124] transition-colors hover:underline underline-offset-8" href="../career_journey_koushik_upadhyay/code.html">CAREER</a>
+<a class="hover:text-[#202124] transition-colors hover:underline underline-offset-8" href="../how_i_build_engineering_philosophy_methodology/code.html">HOW I BUILD</a>
+<a class="hover:text-[#202124] transition-colors hover:underline underline-offset-8" href="../koushik_upadhyay_ai_ml_engineer_builder/code.html#research">RESEARCH</a>
+<a class="hover:text-[#202124] transition-colors hover:underline underline-offset-8" href="../let_s_talk_koushik_upadhyay_contact/code.html">CONTACT</a>
+</nav>
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#DCD4C4] bg-[#eae8ee] text-xs font-medium shadow-sm">
+<span class="w-2 h-2 rounded-full bg-[#10B981] animate-pulse"></span>
+<span class="text-[#202124]">AI / ML ENGINEER</span>
+</div>
+<a class="md:hidden w-8 h-8 rounded-full bg-[#202124] text-[#F7F3EA] flex items-center justify-center text-xs" href="../let_s_talk_koushik_upadhyay_contact/code.html">?</a>
+</div>
+</header>
+
+<main class="w-full pt-28 pb-32">
+
+  <!-- HERO SECTION -->
+  <section class="max-w-5xl mx-auto px-6 pt-12 pb-24 text-center">
+    <!-- Toggle -->
+    <div class="inline-flex items-center gap-1 p-1 bg-paper-card border border-borderline rounded-full mb-12 shadow-sm font-mono text-xs font-semibold">
+      <button class="px-6 py-2 rounded-full bg-ink text-paper" id="btn-journey">JOURNEY</button>
+      <button class="px-6 py-2 rounded-full text-ink-muted hover:text-ink transition-colors" id="btn-resume">RESUME</button>
+    </div>
+
+    <div class="font-mono text-xs uppercase tracking-widest text-cobalt font-bold mb-4">CAREER JOURNEY</div>
+    <h1 class="text-6xl md:text-8xl font-black uppercase tracking-tighter leading-none mb-6">
+      From Learning<br><span class="text-ink-muted italic">To Shipping.</span>
+    </h1>
+    <p class="text-lg text-ink-muted max-w-2xl mx-auto leading-relaxed" style="font-family: 'Hanken Grotesk', sans-serif;">
+      A journey through education, internships, production systems, and the things I've built along the way.
+    </p>
+    
+    <div class="mt-12 flex flex-col items-center gap-2">
+      <div class="transform -rotate-6 font-mono text-cobalt font-medium italic text-sm">"Keep going."</div>
+      <div class="font-mono text-xs uppercase tracking-widest text-ink font-bold animate-bounce mt-4">Follow the Journey ↓</div>
+    </div>
+  </section>
+
+  <!-- TIMELINE / JOURNEY VIEW -->
+  <section id="journey-view" class="relative max-w-6xl mx-auto px-6 py-12">
+    <!-- Timeline Line -->
+    <div class="timeline-line"></div>
+    
+    <!-- Character Pin -->
+    <div id="character-pin">
+      <svg class="w-12 h-12 -ml-6 -mt-6 bg-paper rounded-full border-2 border-cobalt p-1" fill="none" viewBox="0 0 100 100" stroke="currentColor" stroke-width="3">
+        <!-- Minimal stickman walking -->
+        <circle cx="50" cy="30" r="12" fill="#5577A8" stroke="none" />
+        <line x1="50" y1="42" x2="50" y2="70" stroke="#202124" />
+        <line x1="50" y1="50" x2="35" y2="65" stroke="#202124" />
+        <line x1="50" y1="50" x2="65" y2="60" stroke="#202124" />
+        <line x1="50" y1="70" x2="40" y2="90" stroke="#202124" />
+        <line x1="50" y1="70" x2="65" y2="85" stroke="#202124" />
+      </svg>
+    </div>
+
+    <div class="space-y-32">
+      
+      <!-- CHAPTER 01: SCHOOL -->
+      <div class="timeline-item">
+        <div class="timeline-marker"></div>
+        <div class="w-full md:w-[45%] md:ml-auto md:text-left timeline-content-right milestone-card bg-paper-card border border-borderline rounded-2xl p-6 shadow-sm hover:border-cobalt transition-colors">
+          <div class="font-mono text-xs text-cobalt font-bold mb-1">2020 — 2022</div>
+          <h3 class="text-2xl font-bold tracking-tight mb-2">Modern School</h3>
+          <p class="text-sm text-ink-muted">CLASS X (90.6%) &amp; CLASS XII (91.4%)</p>
+          
+          <div class="milestone-details">
+            <div class="pt-4 mt-4 border-t border-borderline flex items-center justify-between">
+              <span class="text-xs font-mono text-ink-muted">Dungarpur, Rajasthan</span>
+              <span class="text-xs font-mono text-ink-muted bg-borderline/30 px-2 py-1 rounded">Chapter 01</span>
+            </div>
+          </div>
+          <div class="text-center mt-2 text-ink-muted text-xs font-mono expand-hint">Click to expand</div>
+        </div>
+      </div>
+
+      <!-- CHAPTER 02: COLLEGE -->
+      <div class="timeline-item">
+        <div class="timeline-marker"></div>
+        <div class="w-full md:w-[45%] md:mr-auto md:text-right timeline-content-left milestone-card bg-paper-card border border-borderline rounded-2xl p-6 shadow-sm hover:border-cobalt transition-colors">
+          <div class="font-mono text-xs text-cobalt font-bold mb-1">2022 — PRESENT</div>
+          <h3 class="text-2xl font-bold tracking-tight mb-2">RCOEM</h3>
+          <p class="text-sm text-ink-muted">B.Tech — Computer Science &amp; Engineering (AIML)</p>
+          
+          <div class="milestone-details">
+            <div class="pt-4 mt-4 border-t border-borderline md:text-right text-left">
+              <p class="font-mono text-sm mb-4">CGPA: 8.35 (Till 6th semester)<br>Nagpur, Maharashtra</p>
+              
+              <div class="font-mono text-xs font-bold text-ink mb-2 uppercase">The Initial Toolbox:</div>
+              <div class="flex flex-wrap gap-2 md:justify-end">
+                <span class="px-2 py-1 bg-white border border-borderline rounded text-xs font-mono shadow-sm">PYTHON</span>
+                <span class="px-2 py-1 bg-white border border-borderline rounded text-xs font-mono shadow-sm">SQL</span>
+                <span class="px-2 py-1 bg-white border border-borderline rounded text-xs font-mono shadow-sm">MACHINE LEARNING</span>
+                <span class="px-2 py-1 bg-white border border-borderline rounded text-xs font-mono shadow-sm">LLMs</span>
+                <span class="px-2 py-1 bg-white border border-borderline rounded text-xs font-mono shadow-sm">RAG</span>
+              </div>
+            </div>
+          </div>
+          <div class="text-center md:text-right mt-2 text-ink-muted text-xs font-mono expand-hint">Click to expand</div>
+        </div>
+      </div>
+
+      <!-- CHAPTER 03: VRUKSH / IRIS -->
+      <div class="timeline-item">
+        <div class="timeline-marker"></div>
+        <div class="w-full md:w-[45%] md:ml-auto md:text-left timeline-content-right milestone-card bg-paper-card border border-borderline rounded-2xl p-6 shadow-sm hover:border-cobalt transition-colors relative">
+          <div class="absolute -top-6 -right-4 transform rotate-12 font-mono text-cobalt font-medium italic text-sm">"Now this has users."</div>
+          
+          <div class="font-mono text-xs text-cobalt font-bold mb-1">JUNE 2025 — FEB 2026</div>
+          <h3 class="text-2xl font-bold tracking-tight mb-1">Vruksh Ecosystem Foundation</h3>
+          <p class="text-sm text-ink-muted font-bold">ML INTERN <span class="font-normal">(Remote)</span></p>
+          
+          <div class="milestone-details">
+            <div class="pt-4 mt-4 border-t border-borderline">
+              <div class="font-mono text-xs font-bold mb-2 uppercase text-cobalt">Main Project:</div>
+              <h4 class="text-lg font-bold mb-2">IRIS CONVERSATIONAL AI PLATFORM</h4>
+              <p class="text-sm mb-4 text-ink-muted font-medium" style="font-family: 'Hanken Grotesk', sans-serif;">Built a multi-agent RAG pipeline for healthcare expert discovery.</p>
+              
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                <div class="bg-white p-3 rounded-lg border border-borderline shadow-sm">
+                  <div class="text-xs font-mono font-bold mb-1 border-b border-borderline pb-1">Agents Designed:</div>
+                  <ul class="text-xs font-mono text-ink-muted space-y-1 mt-2">
+                    <li>→ Intent Classification</li>
+                    <li>→ RBAC-Safe SQL Generation</li>
+                    <li>→ Explainable Composition</li>
+                  </ul>
+                </div>
+                <div class="bg-white p-3 rounded-lg border border-borderline shadow-sm">
+                  <div class="text-xs font-mono font-bold mb-1 border-b border-borderline pb-1">Integrations:</div>
+                  <ul class="text-xs font-mono text-ink-muted space-y-1 mt-2">
+                    <li>→ Supabase Persistence</li>
+                    <li>→ Analytics Dashboards</li>
+                    <li><span class="text-emerald-600 font-bold">→ Live Healthcare Pilots</span></li>
+                  </ul>
+                </div>
+              </div>
+              
+              <div class="flex flex-wrap gap-2 mt-4">
+                <span class="px-2 py-1 bg-ink text-paper rounded text-xs font-mono font-bold shadow-md">LANGGRAPH</span>
+                <span class="px-2 py-1 bg-ink text-paper rounded text-xs font-mono font-bold shadow-md">OPENAI</span>
+                <span class="px-2 py-1 bg-ink text-paper rounded text-xs font-mono font-bold shadow-md">SUPABASE</span>
+              </div>
+            </div>
+          </div>
+          <div class="text-center mt-2 text-ink-muted text-xs font-mono expand-hint">Click to expand</div>
+        </div>
+      </div>
+
+      <!-- CHAPTER 04: ABHIKALPAN -->
+      <div class="timeline-item">
+        <div class="timeline-marker"></div>
+        <div class="w-full md:w-[45%] md:mr-auto md:text-right timeline-content-left milestone-card bg-paper-card border-2 border-cobalt rounded-2xl p-6 shadow-md relative hover:shadow-lg transition-all">
+          <div class="font-mono text-xs text-cobalt font-bold mb-1">MARCH 2026 — PRESENT</div>
+          <h3 class="text-2xl font-bold tracking-tight mb-1">Abhikalpan Construction</h3>
+          <p class="text-sm text-ink-muted font-bold">SOFTWARE DEVELOPER INTERN (AI/ML) <span class="font-normal">(Pune, Hybrid)</span></p>
+          
+          <div class="milestone-details">
+            <div class="pt-4 mt-4 border-t border-borderline md:text-right text-left">
+              
+              <!-- 04A: Nesting Engine -->
+              <div class="mb-8">
+                <div class="absolute -left-10 md:-left-32 top-32 transform -rotate-6 font-mono text-cobalt font-medium italic text-sm">"Can we waste less?"</div>
+                
+                <h4 class="text-lg font-bold mb-2">04A — NESTING ENGINE</h4>
+                <div class="flex flex-col gap-1 font-mono text-xs text-ink-muted mb-4 md:items-end font-semibold">
+                  <span>10,000+ DESIGN COMPONENTS / BATCH</span>
+                  <span class="text-cobalt">↓</span>
+                  <span>MILP / SCIPY HIGHS</span>
+                  <span class="text-cobalt">↓</span>
+                  <span>BEST-FIT-DECREASING FALLBACK</span>
+                </div>
+                
+                <div class="bg-cobalt/10 border border-cobalt/30 p-3 rounded-lg inline-block text-left mb-4 shadow-sm">
+                  <div class="font-bold text-sm text-cobalt">PRODUCTION RESULTS:</div>
+                  <div class="font-mono text-xs font-semibold">25–40% MANUAL WASTE → <span class="text-emerald-700 bg-emerald-100 px-1 rounded">UNDER 2% WASTE</span></div>
+                  <div class="font-mono text-xs font-black text-cobalt mt-1 text-base">98%+ UTILIZATION</div>
+                </div>
+                
+                <div class="flex flex-wrap gap-2 md:justify-end mt-2">
+                  <span class="px-2 py-1 bg-white border border-borderline rounded text-xs font-mono shadow-sm font-bold">PYTHON</span>
+                  <span class="px-2 py-1 bg-white border border-borderline rounded text-xs font-mono shadow-sm font-bold">FASTAPI</span>
+                  <span class="px-2 py-1 bg-white border border-borderline rounded text-xs font-mono shadow-sm font-bold">SCIPY</span>
+                </div>
+              </div>
+
+              <!-- 04B: Asset Management -->
+              <div class="pt-6 border-t border-borderline/60">
+                <h4 class="text-lg font-bold mb-2">04B — ASSET MANAGEMENT SaaS</h4>
+                <div class="flex flex-wrap gap-2 md:justify-end mb-4">
+                  <span class="px-2 py-0.5 bg-emerald-500 text-white font-black text-xs rounded uppercase shadow-sm">Live Production</span>
+                  <span class="px-2 py-0.5 bg-ink text-white font-bold text-xs rounded uppercase shadow-sm">3+ Sites</span>
+                  <span class="px-2 py-0.5 bg-ink text-white font-bold text-xs rounded uppercase shadow-sm">1000+ Assets</span>
+                </div>
+                
+                <div class="flex flex-col gap-1 font-mono text-xs text-ink-muted mb-4 md:items-end font-semibold">
+                  <span>TRANSACTIONAL FLOWS</span>
+                  <span class="text-cobalt">↓</span>
+                  <span>SELECT FOR UPDATE &amp; UNIQUE CONSTRAINTS</span>
+                  <span class="text-cobalt">↓</span>
+                  <span>HIGH-VOLUME EXCEL INGEST / EXPORTS</span>
+                </div>
+                
+                <div class="flex flex-wrap gap-2 md:justify-end mt-4">
+                  <span class="px-2 py-1 bg-white border border-borderline rounded text-xs font-mono shadow-sm font-bold">NEXT.JS</span>
+                  <span class="px-2 py-1 bg-white border border-borderline rounded text-xs font-mono shadow-sm font-bold">POSTGRESQL</span>
+                  <span class="px-2 py-1 bg-white border border-borderline rounded text-xs font-mono shadow-sm font-bold">REDIS</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <div class="text-center md:text-right mt-2 text-ink-muted text-xs font-mono expand-hint">Click to expand</div>
+        </div>
+      </div>
+
+      <!-- CHAPTER 05: PROJECTS -->
+      <div class="timeline-item">
+        <div class="timeline-marker"></div>
+        <div class="w-full md:w-[45%] md:ml-auto md:text-left timeline-content-right milestone-card bg-paper-card border border-borderline rounded-2xl p-6 shadow-sm hover:border-cobalt transition-colors">
+          <div class="font-mono text-xs text-cobalt font-bold mb-1">PROJECT CONSTELLATION</div>
+          <h3 class="text-2xl font-bold tracking-tight mb-1">The Projects That Built The Toolbox</h3>
+          
+          <div class="milestone-details">
+            <div class="pt-4 mt-4 border-t border-borderline grid gap-4">
+              
+              <!-- NutriScanner -->
+              <a href="../koushik_upadhyay_ai_ml_engineer_builder/code.html" class="block bg-white p-4 rounded-xl border border-borderline shadow-sm hover:border-cobalt transition-all group">
+                <div class="flex justify-between items-start">
+                  <h4 class="font-bold group-hover:text-cobalt transition-colors">NUTRISCANNER BACKEND ↗</h4>
+                </div>
+                <p class="text-xs text-ink-muted mb-2 font-medium">Health Chatbot App</p>
+                <div class="font-mono text-xs italic text-cobalt mb-3 bg-cobalt/10 p-2 rounded">"LLM explains. It doesn't control the score."</div>
+                <div class="flex flex-wrap gap-1">
+                  <span class="px-1.5 py-0.5 bg-paper rounded text-[10px] font-mono border border-borderline">MULTI-AGENT PIPELINES</span>
+                  <span class="px-1.5 py-0.5 bg-paper rounded text-[10px] font-mono border border-borderline">DETERMINISTIC HEALTH SCORING</span>
+                </div>
+              </a>
+
+              <!-- ExamMind -->
+              <a href="../exammind_socratic_rag_evaluation_intelligence/code.html" class="block bg-white p-4 rounded-xl border border-borderline shadow-sm hover:border-cobalt transition-all group">
+                <div class="flex justify-between items-start">
+                  <h4 class="font-bold group-hover:text-cobalt transition-colors">EXAMMIND AGENTIC RAG ↗</h4>
+                </div>
+                <p class="text-xs text-ink-muted mb-2 font-medium">Interactive QA Assistant</p>
+                <div class="font-mono text-xs font-bold text-ink mb-3 bg-paper p-2 rounded border border-borderline">200+ REAL EXAM QA PAIRS</div>
+                <div class="flex flex-wrap gap-1">
+                  <span class="px-1.5 py-0.5 bg-paper rounded text-[10px] font-mono border border-borderline">HYBRID RETRIEVAL</span>
+                  <span class="px-1.5 py-0.5 bg-paper rounded text-[10px] font-mono border border-borderline">SELF-REFLECTION / CRITIQUE</span>
+                </div>
+              </a>
+
+            </div>
+          </div>
+          <div class="text-center mt-2 text-ink-muted text-xs font-mono expand-hint">Click to expand</div>
+        </div>
+      </div>
+
+      <!-- FINAL POSITION -->
+      <div class="timeline-item">
+        <div class="timeline-marker !bg-ink !border-cobalt"></div>
+        <div class="w-full md:w-[45%] md:mr-auto md:text-right timeline-content-left milestone-card bg-ink text-paper rounded-2xl p-6 shadow-xl relative overflow-hidden">
+          <!-- background grid pattern -->
+          <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#F7F3EA 1px, transparent 1px); background-size: 16px 16px;"></div>
+          
+          <div class="relative z-10">
+            <div class="font-mono text-xs text-paper/70 font-bold mb-1">2026</div>
+            <h3 class="text-2xl font-bold tracking-tight mb-2 text-cobalt">AI/ML ENGINEER</h3>
+            <h2 class="text-3xl font-black uppercase tracking-tight mb-4 leading-tight">Currently building<br>real-world systems.</h2>
+            
+            <div class="milestone-details">
+              <div class="pt-4 mt-4 border-t border-paper/20 md:text-right text-left">
+                <p class="text-sm text-paper/80 leading-relaxed mb-6 font-medium" style="font-family: 'Hanken Grotesk', sans-serif;">
+                  Hands-on experience across health tech, logistics, and manufacturing, with a focus on LLMs, agentic pipelines, optimization, RAG, and production Python.
+                </p>
+                
+                <div class="font-mono text-[10px] text-cobalt font-bold mb-2 uppercase tracking-widest">The Evolving Toolbox</div>
+                <div class="flex flex-wrap gap-2 md:justify-end text-[11px] font-mono font-bold items-center">
+                  <span class="bg-paper/10 px-2 py-1 rounded">FOUNDATIONS</span><span class="text-paper/30">→</span>
+                  <span class="bg-paper/10 px-2 py-1 rounded">MACHINE LEARNING</span><span class="text-paper/30">→</span>
+                  <span class="bg-paper/10 px-2 py-1 rounded">LLMs &amp; RAG</span><span class="text-paper/30">→</span>
+                  <span class="bg-paper/10 px-2 py-1 rounded">AGENTIC SYSTEMS</span><span class="text-paper/30">→</span>
+                  <span class="text-ink bg-cobalt px-2 py-1 rounded">PRODUCTION SOFTWARE</span>
+                </div>
+              </div>
+            </div>
+            <div class="text-center md:text-right mt-4 text-paper/50 text-xs font-mono expand-hint">Click to expand</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- RESUME VIEW (Hidden by default) -->
+  <section id="resume-view" class="max-w-4xl mx-auto px-6 py-12 hidden">
+    <div class="bg-white border border-borderline rounded-xl p-8 md:p-12 shadow-sm relative overflow-hidden">
+      <!-- Watermark -->
+      <div class="absolute -right-20 -top-20 opacity-5 pointer-events-none">
+        <svg width="400" height="400" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="currentColor"/></svg>
+      </div>
+
+      <div class="border-b border-borderline pb-8 mb-8 flex flex-col md:flex-row justify-between items-start md:items-end relative z-10">
+        <div>
+          <h1 class="text-4xl font-black uppercase tracking-tight text-ink">Koushik Upadhyay</h1>
+          <p class="font-mono text-sm text-cobalt font-bold mt-2">AI/ML ENGINEER</p>
+        </div>
+        <div class="font-mono text-xs text-ink-muted text-left md:text-right mt-4 md:mt-0 font-medium space-y-1">
+          <div>Nagpur, MH | +91-6376936152 | <span>Koushik4067@gmail.com</span></div>
+          <div><a href="https://www.linkedin.com/in/koushik-upadhyay-95565932b/" class="underline hover:text-cobalt transition-colors">linkedin.com/in/koushik-upadhyay</a> | <a href="https://github.com/SetterUk" class="underline hover:text-cobalt transition-colors">github.com/SetterUk</a></div>
+        </div>
+      </div>
+      
+      <!-- Summary -->
+      <h2 class="font-bold text-xl uppercase tracking-wider mb-4 text-ink">Professional Summary</h2>
+      <p class="text-sm text-ink-muted mb-8 leading-relaxed" style="font-family: 'Hanken Grotesk', sans-serif;">
+        AI/ML and MLOps Engineer with hands-on experience designing, deploying, and monitoring real-world AI and optimization systems specifically within the Construction Technology (ConTech) and health tech sectors. Strong background in AI Observability, pipeline automation, and containerized ML workloads. Adept at implementing data validation workflows, explainable AI frameworks, and tracking model KPIs to ensure system reliability and maintainability in production environments.
+      </p>
+
+      <!-- Education -->
+      <h2 class="font-bold text-xl uppercase tracking-wider mb-6 text-ink">Education</h2>
+      
+      <div class="mb-6">
+        <div class="flex flex-col md:flex-row md:justify-between md:items-baseline mb-1">
+          <h3 class="font-bold text-lg text-ink">Shri Ramdeobaba College of Engineering and Management</h3>
+          <span class="font-mono text-xs text-ink-muted">Till 5th semester | Nagpur, MH</span>
+        </div>
+        <p class="text-sm text-ink-muted" style="font-family: 'Hanken Grotesk', sans-serif;">B.Tech CSE (AIML) -- CGPA: 8.35</p>
+      </div>
+
+      <div class="mb-10">
+        <div class="flex flex-col md:flex-row md:justify-between md:items-baseline mb-1">
+          <h3 class="font-bold text-lg text-ink">Modern School</h3>
+          <span class="font-mono text-xs text-ink-muted">Dungarpur, Raj</span>
+        </div>
+        <p class="text-sm text-ink-muted" style="font-family: 'Hanken Grotesk', sans-serif;">Class XII -- 91.4% (2022), Class X -- 90.6% (2020)</p>
+      </div>
+
+      <!-- Experience -->
+      <h2 class="font-bold text-xl uppercase tracking-wider mb-6 text-ink">Experience</h2>
+      
+      <div class="mb-8">
+        <div class="flex flex-col md:flex-row md:justify-between md:items-baseline mb-1">
+          <h3 class="font-bold text-lg text-ink">Software Developer Intern (AI/ML)</h3>
+          <span class="font-mono text-xs text-ink-muted">Mar 2026 -- Present | Pune, MH / Hybrid</span>
+        </div>
+        <p class="text-sm font-bold text-cobalt mb-3">Abhikalpan Construction Solutions Pvt. Ltd.</p>
+        
+        <div class="mb-2">
+          <strong class="text-ink font-semibold text-sm">ConTech Nesting Engine</strong> <span class="text-xs text-ink-muted font-mono">| Python, FastAPI, SciPy, Docker</span>
+        </div>
+        <ul class="list-disc list-inside text-sm text-ink-muted space-y-2 ml-1 mb-4" style="font-family: 'Hanken Grotesk', sans-serif;">
+          <li>Architected a scalable, containerized Python/FastAPI nesting engine end-to-end, serving as a core MLOps pipeline to expand 10,000+ design components per batch into raw cut parts through a validated allocation cascade.</li>
+          <li>Designed automated data quality monitoring and intelligent DataOps workflows to build a hybrid 1D cutting-stock optimizer mixing exact Gilmore-Gomory column generation with MILP (SciPy HiGHS).</li>
+          <li>Maintained production-grade workloads, tracking KPIs to cut material waste from 25--40% to under 2% (<strong>98%+ utilization</strong>) on massive concurrent production runs.</li>
+        </ul>
+
+        <div class="mb-2">
+          <strong class="text-ink font-semibold text-sm">Abhikalpan Asset Management SaaS</strong> <span class="text-xs text-ink-muted font-mono">| <a href="https://app.abhikalpan.co.in/" class="underline hover:text-cobalt">Live</a> · <a href="https://github.com/SetterUk/Abhikalpan_Asset_management" class="underline hover:text-cobalt">GitHub</a></span>
+        </div>
+        <ul class="list-disc list-inside text-sm text-ink-muted space-y-2 ml-1" style="font-family: 'Hanken Grotesk', sans-serif;">
+          <li>Core developer for a highly scalable ConTech platform, <strong>in production</strong> across 3+ live sites tracking 1000+ assets.</li>
+          <li>Standardized observability practices across the platform by integrating Sentry for real-time error tracking/tracing, Redis for state management, and strict data validation for high-volume Excel ingest.</li>
+        </ul>
+      </div>
+
+      <div class="mb-10">
+        <div class="flex flex-col md:flex-row md:justify-between md:items-baseline mb-1">
+          <h3 class="font-bold text-lg text-ink">Machine Learning Intern</h3>
+          <span class="font-mono text-xs text-ink-muted">Jun 2025 -- Feb 2026 | Remote</span>
+        </div>
+        <p class="text-sm font-bold text-cobalt mb-3">Vruksh Ecosystem Foundation</p>
+        <ul class="list-disc list-inside text-sm text-ink-muted space-y-2 ml-1" style="font-family: 'Hanken Grotesk', sans-serif;">
+          <li>Deployed <a href="https://iris-two-roan.vercel.app/" class="underline text-ink hover:text-cobalt">IRIS Conversational AI Platform</a>: a multi-agent RAG workflow for healthcare, establishing robust metadata management and session persistence via Supabase.</li>
+          <li>Established governance frameworks for AI systems, integrating comprehensive analytics dashboards to monitor model performance, intent classification accuracy, and RBAC-safe data generation.</li>
+          <li>Ran live production pilots, ensuring reproducibility of experiments and that all model outputs maintained high auditability and were explainable by design.</li>
+        </ul>
+      </div>
+
+      <!-- Projects -->
+      <h2 class="font-bold text-xl uppercase tracking-wider mb-6 text-ink">Projects</h2>
+      
+      <div class="mb-6">
+        <div class="flex flex-col md:flex-row md:justify-between md:items-baseline mb-1">
+          <h3 class="font-bold text-lg text-ink">NutriScanner Backend (AI Observability & Validation) <a href="https://github.com/SetterUk/NUTRI-SCANNNER-BACKEND" class="text-sm underline text-cobalt hover:text-ink">[GitHub]</a></h3>
+        </div>
+        <p class="text-sm font-mono text-ink-muted mb-3">FastAPI, LangGraph, Groq Llama-3.3</p>
+        <ul class="list-disc list-inside text-sm text-ink-muted space-y-2 ml-1" style="font-family: 'Hanken Grotesk', sans-serif;">
+          <li>Designed an intelligent DataOps pipeline classifying inputs and performing deterministic health scoring, with outputs strictly LLM-locked for reliability and validation.</li>
+          <li>Engineered personalized scoring via dietary tags and robust failsafes for incomplete data, creating a reproducible environment for automated test suites.</li>
+          <li>Implemented AI-driven data validation to ensure the LLM phase produced only structured JSON explanations, eliminating formatting drift and anomalies.</li>
+        </ul>
+      </div>
+
+      <div class="mb-10">
+        <div class="flex flex-col md:flex-row md:justify-between md:items-baseline mb-1">
+          <h3 class="font-bold text-lg text-ink">ExamMind Agentic RAG Assistant <a href="https://github.com/SetterUk/Exam_Mind" class="text-sm underline text-cobalt hover:text-ink">[GitHub]</a></h3>
+        </div>
+        <p class="text-sm font-mono text-ink-muted mb-3">LangChain, Pinecone, ReAct, Python</p>
+        <ul class="list-disc list-inside text-sm text-ink-muted space-y-2 ml-1" style="font-family: 'Hanken Grotesk', sans-serif;">
+          <li>Built and monitored an agentic RAG pipeline utilizing self-reflecting ReAct agents for deterministic, JSON-validated answers.</li>
+          <li>Developed automated self-critique test suites to validate edge cases and context sufficiency, significantly reducing hallucinations and tracking precision/recall KPIs.</li>
+          <li>Evaluated on 200+ real exam QA pairs, establishing a reliable framework for monitoring model accuracy gains over static prompting methods.</li>
+        </ul>
+      </div>
+
+      <!-- Technical Skills -->
+      <h2 class="font-bold text-xl uppercase tracking-wider mb-4 text-ink">Technical Skills</h2>
+      <ul class="text-sm text-ink-muted space-y-2 mb-10" style="font-family: 'Hanken Grotesk', sans-serif;">
+        <li><strong class="text-ink font-semibold">MLOps & DevOps:</strong> AI Observability, CI/CD, Containerization (Docker), DataOps, Model KPI Monitoring, Drift Detection, AI Governance, Explainability</li>
+        <li><strong class="text-ink font-semibold">AI & Frameworks:</strong> Machine Learning, Computer Vision, TensorFlow, PyTorch, Scikit-learn, Pandas, LangGraph, LangChain</li>
+        <li><strong class="text-ink font-semibold">Languages & Tools:</strong> Python, SQL, FastAPI, Sentry, Redis, Git</li>
+        <li><strong class="text-ink font-semibold">Cloud Infrastructure:</strong> AWS, scalable cloud-native architectures</li>
+      </ul>
+
+      <!-- Certifications -->
+      <h2 class="font-bold text-xl uppercase tracking-wider mb-4 text-ink">Certifications</h2>
+      <ul class="text-sm text-ink-muted space-y-2" style="font-family: 'Hanken Grotesk', sans-serif;">
+        <li><a href="https://www.credly.com/badges/9c7f25ce-54d9-4044-9cb72ab492acaede/public_url" class="underline hover:text-cobalt">AWS Cloud Foundations</a> | <a href="https://www.credly.com/badges/fb627a87-7770-4837-89bae2af199bc4b7/public_url" class="underline hover:text-cobalt">AWS Data Engineering</a></li>
+        <li><a href="https://drive.google.com/file/d/1wsOWBC26fBlTj4LEPlCYH5hKjUJiC5qc/view?usp=sharing" class="underline hover:text-cobalt">AICTE AIML Virtual Internship</a> | <a href="https://drive.google.com/file/d/1DdDtAQtHz7L36DxckhvOqIoRvFV61v1D/view?usp=sharing" class="underline hover:text-cobalt">NPTEL ML</a></li>
+      </ul>
+
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="max-w-4xl mx-auto px-6 py-24 text-center border-t border-borderline/50 mt-12">
+    <h2 class="text-5xl md:text-7xl font-black uppercase tracking-tight mb-6">STILL MOVING.</h2>
+    <p class="text-ink-muted text-base md:text-lg max-w-xl mx-auto mb-10 leading-relaxed" style="font-family: 'Hanken Grotesk', sans-serif;">
+      The journey is not a list of positions.<br>
+      It's a growing toolbox of problems, systems, and things I've learned to build.
+    </p>
+    
+    <div class="font-mono text-xs md:text-sm font-bold text-cobalt flex flex-wrap items-center justify-center gap-3 mb-12">
+      <span class="bg-paper-card px-3 py-1 rounded shadow-sm border border-borderline">LEARN</span><span>→</span>
+      <span class="bg-paper-card px-3 py-1 rounded shadow-sm border border-borderline">BUILD</span><span>→</span>
+      <span class="bg-paper-card px-3 py-1 rounded shadow-sm border border-borderline">SHIP</span><span>→</span>
+      <span class="bg-ink text-paper px-3 py-1 rounded shadow-md">LEARN AGAIN</span>
+    </div>
+    
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+      <a href="../koushik_upadhyay_ai_ml_engineer_builder/code.html#work" class="px-8 py-4 bg-ink text-paper font-bold uppercase tracking-wider rounded-lg hover:bg-cobalt transition-colors w-full sm:w-auto shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all">
+        SEE WHAT I BUILT →
+      </a>
+      <a href="../let_s_talk_koushik_upadhyay_contact/code.html" class="px-8 py-4 bg-paper-card border-2 border-ink text-ink font-bold uppercase tracking-wider rounded-lg hover:bg-ink/5 transition-colors w-full sm:w-auto">
+        LET'S TALK →
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<script>
+  // Toggle Views
+  const btnJourney = document.getElementById('btn-journey');
+  const btnResume = document.getElementById('btn-resume');
+  const viewJourney = document.getElementById('journey-view');
+  const viewResume = document.getElementById('resume-view');
+
+  btnJourney.addEventListener('click', () => {
+    btnJourney.className = 'px-6 py-2 rounded-full bg-ink text-paper shadow-sm';
+    btnResume.className = 'px-6 py-2 rounded-full text-ink-muted hover:text-ink transition-colors';
+    viewJourney.classList.remove('hidden');
+    viewResume.classList.add('hidden');
+    // Re-trigger scroll event to place character pin correctly
+    window.dispatchEvent(new Event('scroll'));
+  });
+
+  btnResume.addEventListener('click', () => {
+    btnResume.className = 'px-6 py-2 rounded-full bg-ink text-paper shadow-sm';
+    btnJourney.className = 'px-6 py-2 rounded-full text-ink-muted hover:text-ink transition-colors';
+    viewResume.classList.remove('hidden');
+    viewJourney.classList.add('hidden');
+  });
+
+  // Expandable Cards (Only allow one to be fully open at a time for better UX?)
+  // Actually, let them all toggle independently
+  document.querySelectorAll('.milestone-card').forEach(card => {
+    card.addEventListener('click', () => {
+      card.classList.toggle('expanded');
+      const hint = card.querySelector('.expand-hint');
+      if(hint) hint.innerText = card.classList.contains('expanded') ? 'Click to collapse' : 'Click to expand';
+      
+      // Update character pin on resize/expansion
+      setTimeout(() => {
+        window.dispatchEvent(new Event('scroll'));
+      }, 450); // after CSS transition finishes
+    });
+  });
+
+  // Scroll Animation for Timeline Items and Character Pin
+  const items = document.querySelectorAll('.timeline-item');
+  const pin = document.getElementById('character-pin');
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting) {
+        entry.target.classList.add('active');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  items.forEach(item => observer.observe(item));
+
+  // Listen to scroll to move the pin to the most recently scrolled past item
+  window.addEventListener('scroll', () => {
+    if (viewJourney.classList.contains('hidden')) return;
+    
+    let activeItem = null;
+    let minDiff = Infinity;
+    
+    // Find the item whose top is closest to the middle of the viewport
+    const viewportMiddle = window.scrollY + window.innerHeight / 2;
+    
+    items.forEach(item => {
+      const rect = item.getBoundingClientRect();
+      const absoluteTop = rect.top + window.scrollY;
+      
+      if (absoluteTop < window.scrollY + window.innerHeight * 0.8) {
+        activeItem = item;
+      }
+    });
+    
+    if (activeItem) {
+      const containerRect = document.getElementById('journey-view').getBoundingClientRect();
+      const itemOffset = activeItem.getBoundingClientRect().top - containerRect.top;
+      // Add a small offset so the character rests near the marker circle
+      pin.style.top = `${itemOffset}px`;
+    }
+  });
+
+</script>
+</body>
+</html>

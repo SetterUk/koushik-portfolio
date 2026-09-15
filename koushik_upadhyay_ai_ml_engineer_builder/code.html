@@ -1,0 +1,1347 @@
+<!DOCTYPE html><html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Koushik Upadhyay — AI / ML Engineer</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;600;700;800&amp;family=Caveat:wght@500;600;700&amp;family=Hanken+Grotesk:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          paper: '#F7F3EA',
+          'paper-dim': '#EDE7DA',
+          'paper-card': '#FAF7F0',
+          ink: '#202124',
+          'ink-muted': '#5A5852',
+          'ink-faint': '#8C8980',
+          terracotta: '#F0B28F',
+          'terracotta-dark': '#C86B43',
+          sage: '#A8B99C',
+          'sage-dark': '#486845',
+          cobalt: '#5577A8',
+          'cobalt-dark': '#2A446B',
+          ochre: '#E5C267',
+          lilac: '#C3B9D8',
+          'lilac-dark': '#554273',
+          borderline: '#DCD4C4'
+        },
+        fontFamily: {
+          display: ['"Bricolage Grotesque"', 'system-ui', 'sans-serif'],
+          body: ['"Hanken Grotesk"', 'Inter', 'system-ui', 'sans-serif'],
+          mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
+          hand: ['"Caveat"', 'cursive', 'sans-serif']
+        }
+      }
+    }
+  }
+</script>
+<style>
+  :root {
+    --paper: #F7F3EA;
+    --paper-dim: #EDE7DA;
+    --paper-card: #FAF7F0;
+    --ink: #202124;
+    --cobalt: #5577A8;
+    --terracotta: #F0B28F;
+    --sage: #A8B99C;
+    --ochre: #E5C267;
+    --lilac: #C3B9D8;
+    --line: #DCD4C4;
+  }
+  * { box-sizing: border-box; }
+  body {
+    background-color: var(--paper);
+    color: var(--ink);
+    font-family: 'Hanken Grotesk', sans-serif;
+    overflow-x: hidden;
+  }
+  
+  .paper-grain {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.035;
+    background-image: radial-gradient(#202124 1px, transparent 1px);
+    background-size: 24px 24px;
+    z-index: 99;
+  }
+
+  .cursor-follower {
+    position: fixed;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: var(--ink);
+    pointer-events: none;
+    z-index: 999;
+    transform: translate(-50%, -50%);
+    transition: width 0.2s cubic-bezier(0.16, 1, 0.3, 1), 
+                height 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+                background-color 0.25s,
+                opacity 0.25s;
+    mix-blend-mode: multiply;
+  }
+
+  @keyframes floatSlow {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-8px) rotate(0.5deg); }
+  }
+  @keyframes breathSoft {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-2.5px); }
+  }
+  @keyframes draftArm {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(-8deg); }
+  }
+  @keyframes laserSweep {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(330px); }
+  }
+  @keyframes conveyorSlide {
+    from { background-position: 0 0; }
+    to { background-position: 40px 0; }
+  }
+  @keyframes cloudDrift {
+    0%, 100% { transform: translateX(0px); }
+    50% { transform: translateX(35px); }
+  }
+  @keyframes headNod {
+    0%, 100% { transform: rotate(0deg); }
+    30% { transform: rotate(3deg); }
+    70% { transform: rotate(-2deg); }
+  }
+
+  .anim-float { animation: floatSlow 5s ease-in-out infinite; }
+  .anim-breath { animation: breathSoft 3.4s ease-in-out infinite; }
+  .anim-draft { animation: draftArm 2.2s ease-in-out infinite; transform-origin: 52px 75px; }
+  .anim-head { animation: headNod 5.5s ease-in-out infinite; transform-origin: 55px 50px; }
+  .anim-laser { animation: laserSweep 3.2s cubic-bezier(0.4, 0, 0.2, 1) infinite alternate; }
+  .anim-conveyor { animation: conveyorSlide 1.8s linear infinite; }
+  .anim-cloud { animation: cloudDrift 16s ease-in-out infinite; }
+
+  .orb-card {
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .orb-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 16px 36px -8px rgba(32, 33, 36, 0.12);
+  }
+
+  html { scroll-behavior: smooth; }
+  .scroll-reveal {
+    opacity: 0;
+    transform: translateY(30px) scale(0.98);
+    transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .scroll-reveal.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+</style>
+</head>
+<body class="relative min-h-screen bg-paper text-ink selection:bg-terracotta selection:text-ink">
+<div class="paper-grain"></div>
+<div class="cursor-follower" id="cursor" style="left: 1212.79px; top: 4467.06px;"></div>
+<!-- ========================================================================= -->
+<!-- 01 — NAVIGATION -->
+<!-- ========================================================================= -->
+<header class="fixed top-0 left-0 right-0 h-20 px-6 md:px-12 flex items-center justify-between z-50 bg-[#F7F3EA]/90 backdrop-blur-md border-b border-[#DCD4C4]/70" style="font-family: 'JetBrains Mono', monospace;">
+<a class="flex items-center gap-3 group" href="../koushik_upadhyay_ai_ml_engineer_builder/code.html#top">
+<div class="w-9 h-9 rounded-xl bg-[#202124] text-[#F7F3EA] flex items-center justify-center font-extrabold text-sm group-hover:bg-[#5577A8] transition-colors shadow-sm">
+      K/
+    </div>
+<span class="font-bold text-sm tracking-tight text-[#202124] group-hover:text-[#5577A8] transition-colors hidden sm:inline" style="font-family: 'Bricolage Grotesque', sans-serif;">KOUSHIK UPADHYAY</span>
+</a>
+<nav class="hidden md:flex items-center gap-8 text-xs font-semibold tracking-wider text-[#5A5852]">
+<a class="hover:text-[#202124] transition-colors hover:underline underline-offset-8" href="../koushik_upadhyay_ai_ml_engineer_builder/code.html#work">WORK</a>
+<a class="hover:text-[#202124] transition-colors hover:underline underline-offset-8" href="../koushik_upadhyay_ai_ml_engineer_builder/code.html#about">ABOUT</a>
+<a class="hover:text-[#202124] transition-colors hover:underline underline-offset-8" href="../career_journey_koushik_upadhyay/code.html">CAREER</a>
+<a class="hover:text-[#202124] transition-colors hover:underline underline-offset-8" href="../how_i_build_engineering_philosophy_methodology/code.html">HOW I BUILD</a>
+<a class="hover:text-[#202124] transition-colors hover:underline underline-offset-8" href="../koushik_upadhyay_ai_ml_engineer_builder/code.html#research">RESEARCH</a>
+<a class="hover:text-[#202124] transition-colors hover:underline underline-offset-8" href="../let_s_talk_koushik_upadhyay_contact/code.html">CONTACT</a>
+</nav>
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#DCD4C4] bg-[#eae8ee] text-xs font-medium shadow-sm">
+<span class="w-2 h-2 rounded-full bg-[#10B981] animate-pulse"></span>
+<span class="text-[#202124]">AI / ML ENGINEER</span>
+</div>
+<a class="md:hidden w-8 h-8 rounded-full bg-[#202124] text-[#F7F3EA] flex items-center justify-center text-xs" href="../let_s_talk_koushik_upadhyay_contact/code.html">?</a>
+</div>
+</header>
+<!-- ========================================================================= -->
+<!-- 02 — HERO -->
+<!-- ========================================================================= -->
+<main class="pt-24 md:pt-28" id="top">
+<section class="min-h-[90vh] px-6 md:px-12 max-w-[1720px] mx-auto grid grid-cols-1 xl:grid-cols-12 gap-10 items-center py-12 relative">
+<div class="xl:col-span-6 flex flex-col justify-center scroll-reveal visible">
+<!-- Eyebrow -->
+<div class="inline-flex items-center gap-2 font-mono text-xs font-bold tracking-wider text-ink-muted uppercase mb-6">
+<span class="inline-block w-2 h-2 rounded-full bg-cobalt"></span>
+      KOUSHIK UPADHYAY · AI/ML ENGINEER
+    </div>
+<!-- Main Heading -->
+<h1 class="font-display font-extrabold text-5xl sm:text-7xl lg:text-[86px] leading-[0.9] tracking-[-0.04em] text-ink mb-6">I BUILD<br><span class="text-cobalt">PAST THE</span><br>OBVIOUS.</h1>
+<!-- Intro Paragraph -->
+<p class="font-body text-lg md:text-xl text-ink-muted max-w-xl leading-relaxed mb-6">
+      I build AI/ML systems around problems that are messy, practical, and worth solving — from understanding what we eat to organizing medical information, improving how we learn, and solving problems that don't have a neat answer.
+    </p>
+<!-- Small Metadata -->
+<div class="inline-flex items-center gap-2 font-mono text-xs font-semibold text-ink-faint tracking-widest uppercase mb-4">
+      AI/ML · SYSTEMS · PRODUCTS · EXPERIMENTS
+    </div>
+<!-- Handwritten Annotation Tag -->
+<div class="mb-10 flex items-center gap-3">
+<span class="font-hand text-2xl text-terracotta-dark rotate-[-3deg] inline-block">
+        ✏️ Not just another demo.
+      </span>
+</div>
+<!-- Bottom Note / Scroll Indicator -->
+<a class="inline-flex items-center gap-2 text-xs font-mono font-bold tracking-widest text-ink hover:text-cobalt transition-colors group" href="#work">
+<span class="">SCROLL ↓ / SEE THE WORK</span>
+<span class="group-hover:translate-y-0.5 transition-transform">↓</span>
+</a>
+</div>
+<!-- Interactive Hero Illustration Workbench Canvas -->
+<div class="xl:col-span-6 h-[520px] sm:h-[600px] xl:h-[620px] relative rounded-3xl border border-borderline bg-paper-card overflow-hidden shadow-2xl shadow-stone-900/5 scroll-reveal visible" id="hero-scene">
+<div class="absolute inset-0 bg-gradient-to-b from-[#F2EFE8] via-[#FAF6F0] to-[#EAE3D4]"></div>
+<!-- Warm Radiance Sun -->
+<div class="absolute right-[14%] top-[12%] w-44 h-44 rounded-full bg-gradient-to-tr from-terracotta/50 via-ochre/35 to-transparent blur-xl pointer-events-none"></div>
+<div class="absolute right-[18%] top-[16%] w-26 h-26 rounded-full bg-terracotta/75 border border-white/60 shadow-inner"></div>
+<!-- Editorial Clouds -->
+<div class="absolute top-[16%] left-[8%] w-40 h-10 bg-white/80 rounded-full blur-[1px] shadow-sm anim-cloud">
+<div class="absolute -top-4 left-6 w-14 h-14 bg-white/80 rounded-full"></div>
+<div class="absolute -top-2 right-6 w-11 h-11 bg-white/80 rounded-full"></div>
+</div>
+<div class="absolute top-[30%] right-[10%] w-32 h-8 bg-white/70 rounded-full blur-[1px] shadow-sm anim-cloud" style="animation-duration: 22s; animation-direction: reverse;">
+<div class="absolute -top-3 left-5 w-10 h-10 bg-white/70 rounded-full"></div>
+</div>
+<!-- Rolling Hills -->
+<div class="absolute -bottom-10 -left-[15%] w-[130%] h-[320px] rounded-[50%_50%_0_0/100%_100%_0_0] bg-cobalt/25 rotate-[-3deg] border-t border-cobalt/30"></div>
+<div class="absolute -bottom-16 -right-[20%] w-[135%] h-[300px] rounded-[50%_50%_0_0/100%_100%_0_0] bg-sage/35 rotate-[5deg] border-t border-sage/40"></div>
+<div class="absolute -bottom-24 left-[-10%] w-[120%] h-[230px] rounded-[50%_50%_0_0/100%_100%_0_0] bg-[#D7C9B2] border-t-2 border-[#BEAE93]"></div>
+<!-- Floating Interactive Project Orbs in Hero Scene -->
+<a class="orb-card absolute left-6 top-[32%] z-20 px-3.5 py-2 rounded-xl bg-white/90 backdrop-blur-md border border-borderline shadow-md flex items-center gap-2.5 group" href="#p1">
+<span class="w-2.5 h-2.5 rounded-full bg-terracotta"></span>
+<div>
+<div class="font-mono text-[9px] text-ink-faint">01 · NUTRITION</div>
+<div class="font-mono text-xs font-bold text-ink group-hover:text-terracotta-dark transition-colors">HEALTHHEAT ↗</div>
+</div>
+</a>
+<a class="orb-card absolute right-6 top-[28%] z-20 px-3.5 py-2 rounded-xl bg-white/90 backdrop-blur-md border border-borderline shadow-md flex items-center gap-2.5 group" href="#p2">
+<span class="w-2.5 h-2.5 rounded-full bg-cobalt"></span>
+<div>
+<div class="font-mono text-[9px] text-ink-faint">02 · HEALTHCARE</div>
+<div class="font-mono text-xs font-bold text-ink group-hover:text-cobalt transition-colors">IRIS ↗</div>
+</div>
+</a>
+<a class="orb-card absolute right-10 bottom-[38%] z-20 px-3.5 py-2 rounded-xl bg-white/90 backdrop-blur-md border border-borderline shadow-md flex items-center gap-2.5 group" href="#p3">
+<span class="w-2.5 h-2.5 rounded-full bg-ochre"></span>
+<div>
+<div class="font-mono text-[9px] text-ink-faint">03 · RAG / AGENTS</div>
+<div class="font-mono text-xs font-bold text-ink group-hover:text-terracotta-dark transition-colors">EXAMMIND ↗</div>
+</div>
+</a>
+<a class="orb-card absolute left-8 bottom-[24%] z-20 px-3.5 py-2 rounded-xl bg-white/90 backdrop-blur-md border border-borderline shadow-md flex items-center gap-2.5 group" href="#p4">
+<span class="w-2.5 h-2.5 rounded-full bg-sage"></span>
+<div>
+<div class="font-mono text-[9px] text-ink-faint">04 · OPTIMIZATION</div>
+<div class="font-mono text-xs font-bold text-ink group-hover:text-sage-dark transition-colors">NESTING ENGINE ↗</div>
+</div>
+</a>
+<!-- Builder's Wooden Workbench & Setup -->
+<div class="absolute left-1/2 -translate-x-1/2 bottom-[14%] w-[340px] sm:w-[380px] h-[18px] bg-[#614D3E] rounded-lg shadow-md border-b-2 border-[#413125] z-10">
+<div class="absolute left-8 top-[18px] w-2.5 h-28 bg-[#4C3B2E] rounded-sm shadow-inner"></div>
+<div class="absolute right-8 top-[18px] w-2.5 h-28 bg-[#4C3B2E] rounded-sm shadow-inner"></div>
+<!-- Lamp -->
+<div class="absolute left-5 -top-24 w-16 h-24 pointer-events-none">
+<svg class="w-full h-full" fill="none" viewBox="0 0 60 90">
+<path d="M15 88 L25 50 L18 20" stroke="#E5C267" stroke-linecap="round" stroke-width="3"></path>
+<path d="M12 18 L32 8" stroke="#E5C267" stroke-linecap="round" stroke-width="5"></path>
+<polygon fill="#DF8E62" points="28,8 48,2 38,24"></polygon>
+<polygon fill="#FFFBEB" opacity="0.4" points="38,20 80,68 46,74"></polygon>
+</svg>
+</div>
+<!-- Open Drafting Paper -->
+<div class="absolute left-24 -top-8 w-28 h-16 bg-white rounded shadow-sm border border-borderline rotate-[-4deg] p-1.5 flex flex-col justify-between">
+<div class="flex items-center justify-between text-[7px] font-mono text-cobalt font-bold">
+<span class="">SYSTEM_SPEC</span>
+<span class="">v2.0</span>
+</div>
+<div class="space-y-1">
+<div class="h-0.5 bg-cobalt/40 w-full rounded"></div>
+<div class="h-0.5 bg-terracotta/40 w-4/5 rounded"></div>
+<div class="h-0.5 bg-sage/40 w-2/3 rounded"></div>
+</div>
+<div class="text-[6px] font-mono text-ink-faint text-right">PRAGMATIC_ML</div>
+</div>
+<!-- Steaming Mug -->
+<div class="absolute right-20 -top-6 w-5 h-6 bg-white border border-ink/40 rounded-sm">
+<div class="absolute -right-2 top-1 w-2 h-3 border border-ink/40 rounded-r-full"></div>
+<div class="absolute -top-3 left-1 w-1.5 h-3 text-ink-faint font-mono text-[8px] animate-pulse">~</div>
+</div>
+</div>
+<!-- ARTICULATED EDITORIAL STICKMAN BUILDER -->
+<div class="absolute left-1/2 -translate-x-[42%] bottom-[16%] w-[130px] h-[210px] z-10 pointer-events-none" id="hero-stickman">
+<svg class="w-full h-full overflow-visible" fill="none" viewBox="0 0 130 210">
+<ellipse cx="65" cy="202" fill="#2C241D" opacity="0.25" rx="30" ry="6"></ellipse>
+<!-- Legs & Boots -->
+<g stroke="#202124" stroke-linecap="round" stroke-width="4.5">
+<path d="M56 122 L50 156 L42 196"></path>
+<path d="M42 196 L32 199" stroke-width="5.5"></path>
+</g>
+<g stroke="#202124" stroke-linecap="round" stroke-width="4.5">
+<path d="M72 122 L78 156 L86 196"></path>
+<path d="M86 196 L96 199" stroke-width="5.5"></path>
+</g>
+<!-- Torso & Belt -->
+<path d="M52 120 C57 132 68 132 76 120" stroke="#37475A" stroke-linecap="round" stroke-width="7"></path>
+<!-- Upper Body with Breathing Motion -->
+<g class="anim-breath">
+<path d="M53 72 C48 90 49 108 53 124 L74 124 C78 108 79 90 75 72 Z" fill="#5577A8" stroke="#202124" stroke-linejoin="round" stroke-width="4"></path>
+<path d="M60 72 L64 88 L68 72" stroke="#FAF7F0" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path>
+<circle cx="64" cy="96" fill="#FAF7F0" r="1.5"></circle>
+<circle cx="64" cy="108" fill="#FAF7F0" r="1.5"></circle>
+<!-- Left Arm holding Open Notebook -->
+<g>
+<path d="M53 78 L38 98 L50 110" stroke="#202124" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"></path>
+<rect fill="#FAF7F0" height="22" rx="2" stroke="#202124" stroke-width="2" transform="rotate(14 46 100)" width="16" x="46" y="100"></rect>
+<line stroke="#5577A8" stroke-width="1.5" x1="49" x2="59" y1="106" y2="108"></line>
+<line stroke="#F0B28F" stroke-width="1.5" x1="48" x2="57" y1="112" y2="114"></line>
+</g>
+<!-- Right Arm: Active Drafting with Stylus -->
+<g class="anim-draft">
+<path d="M74 78 L88 98 L76 116" stroke="#202124" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"></path>
+<line stroke="#E5C267" stroke-linecap="round" stroke-width="3" x1="76" x2="70" y1="116" y2="132"></line>
+<circle cx="76" cy="116" fill="#E5C267" r="3"></circle>
+</g>
+<!-- Head, Eyeglasses & Hair -->
+<g class="anim-head">
+<path d="M61 66 L67 66 L67 72 L61 72 Z" fill="#F0D4BF" stroke="#202124" stroke-width="2"></path>
+<circle cx="64" cy="52" fill="#F0D4BF" r="17" stroke="#202124" stroke-width="4"></circle>
+<path d="M47 50 C47 36 54 31 65 31 C76 31 82 38 81 48 C77 47 72 45 67 44 C59 43 53 47 47 50 Z" fill="#202124"></path>
+<path d="M48 48 C50 42 54 38 58 36" stroke="#202124" stroke-linecap="round" stroke-width="3"></path>
+<circle cx="67" cy="53" fill="#FFFFFF" fill-opacity="0.2" r="5.5" stroke="#202124" stroke-width="2"></circle>
+<line stroke="#202124" stroke-width="2" x1="61.5" x2="58" y1="53" y2="53"></line>
+<circle cx="68" cy="53" fill="#202124" r="1.6"></circle>
+<path d="M65 61 Q68 64 71 61" fill="none" stroke="#202124" stroke-linecap="round" stroke-width="2"></path>
+</g>
+</g>
+</svg>
+</div>
+<div class="absolute bottom-3 left-6 font-mono text-[9px] text-ink-faint flex items-center gap-4">
+<span class="">AI / ML SYSTEMS BUILDER</span>
+<span class="">•</span>
+<span class="">CALM &amp; RELIABLE</span>
+</div>
+<div class="absolute bottom-3 right-6 font-mono text-[9px] text-ink-faint">
+      CANVAS_00 // EDITORIAL BENCH
+    </div>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- 03 — SELECTED WORK INTRO -->
+<!-- ========================================================================= -->
+<section class="px-6 md:px-12 max-w-[1720px] mx-auto pt-24 pb-12 border-t border-borderline" id="work">
+<div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12 scroll-reveal visible">
+<div>
+<div class="font-mono text-xs font-bold text-cobalt tracking-widest uppercase mb-3">SELECTED WORK</div>
+<h2 class="font-display font-extrabold text-4xl sm:text-6xl lg:text-7xl leading-[0.92] tracking-tight text-ink">
+        REAL PROBLEMS.<br>
+        REAL BUILDS.
+      </h2>
+</div>
+<div class="max-w-md space-y-3">
+<p class="font-body text-base md:text-lg text-ink-muted leading-relaxed">
+        A collection of things I've built around problems I found interesting, useful, or worth figuring out.
+      </p>
+<div class="font-mono text-xs font-bold text-terracotta-dark tracking-wider uppercase border-l-2 border-terracotta pl-3">
+        THE PROBLEM COMES FIRST. THE TECHNOLOGY FOLLOWS.
+      </div>
+</div>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- 04 — HEALTHHEAT (01 · NUTRITION / ON-DEVICE AI) -->
+<!-- ========================================================================= -->
+<section class="px-6 md:px-12 max-w-[1720px] mx-auto pb-12">
+<article class="p-8 lg:p-12 rounded-3xl bg-paper-card border border-borderline shadow-xl shadow-stone-900/5 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center scroll-reveal visible" id="p1">
+<div class="lg:col-span-5 space-y-6">
+<div class="flex items-center gap-3">
+<span class="font-mono text-xs font-bold px-2.5 py-1 rounded bg-terracotta/25 text-stone-900 border border-terracotta/40">01 · NUTRITION / ON-DEVICE AI</span>
+</div>
+<div>
+<h3 class="font-display font-extrabold text-4xl sm:text-5xl tracking-tight text-ink mb-2">HealthHeat</h3>
+<div class="font-mono text-xs font-bold text-terracotta-dark tracking-wide uppercase mb-3">FOOD SHOULDN'T NEED A NUTRITION DEGREE.</div>
+<p class="font-body text-base md:text-lg text-ink-muted leading-relaxed">
+          Food labels tell you what's inside. They don't always tell you what it means for you. HealthHeat is a local-first nutrition intelligence app built to make everyday food decisions easier — combining structured food data, deterministic health logic and on-device AI.
+        </p>
+</div>
+<div class="flex flex-wrap gap-2 pt-1">
+<span class="px-3 py-1.5 rounded-lg bg-paper-dim border border-borderline font-mono text-xs text-ink font-medium">ANDROID</span>
+<span class="px-3 py-1.5 rounded-lg bg-paper-dim border border-borderline font-mono text-xs text-ink font-medium">ROOM</span>
+<span class="px-3 py-1.5 rounded-lg bg-paper-dim border border-borderline font-mono text-xs text-ink font-medium">MEDIAPIPE</span>
+<span class="px-3 py-1.5 rounded-lg bg-paper-dim border border-borderline font-mono text-xs text-ink font-medium">ON-DEVICE AI</span>
+</div>
+<div class="flex items-center justify-between py-3 border-y border-borderline/60 font-mono text-xs">
+<div class="text-ink-muted font-bold">PROCESS: <span class="text-ink">SCAN → UNDERSTAND → DECIDE</span></div>
+<div class="font-hand text-lg text-terracotta-dark font-bold">Look beyond the label</div>
+</div>
+<div class="pt-2">
+<a class="inline-flex items-center gap-2 text-xs font-mono font-bold tracking-wider text-ink hover:text-terracotta-dark transition-colors border-b-2 border-current pb-1" href="../healthheat_case_study_technical_architecture/code.html">
+          EXPLORE HEALTHHEAT ↗
+        </a>
+</div>
+</div>
+<!-- Visual Card -->
+<div class="lg:col-span-7 h-[380px] sm:h-[420px] rounded-2xl bg-gradient-to-br from-[#FDFCF7] to-[#F1ECE1] border border-borderline p-6 relative overflow-hidden flex flex-col justify-between">
+<div class="flex items-center justify-between font-mono text-[11px] pb-3 border-b border-borderline/80 z-20">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-terracotta-dark animate-pulse"></span>
+<span class="font-bold text-ink tracking-wider">[INFERENCE // LOOK BEYOND THE LABEL]</span>
+</div>
+<span class="bg-white px-2 py-0.5 rounded border border-borderline text-ink font-bold">ON-DEVICE MEDIAPIPE</span>
+</div>
+<div class="relative w-full h-full flex items-center justify-center">
+<!-- Bounding Box -->
+<div class="absolute left-8 top-10 w-64 h-52 border-2 border-dashed border-terracotta-dark/70 bg-terracotta/10 rounded-xl p-3 flex flex-col justify-between z-10 pointer-events-none">
+<div class="flex items-center justify-between font-mono text-[9px] bg-terracotta-dark text-white px-2 py-0.5 rounded font-bold w-fit">
+<span class="">DETECTION: MEAL_PLATE // SOUTH_ASIAN</span>
+</div>
+<div class="flex justify-between font-mono text-[10px] bg-white/95 p-2 rounded border border-borderline backdrop-blur-sm">
+<span class="text-ink font-semibold">STRUCTURED DATA</span>
+<span class="text-terracotta-dark font-bold">HEALTH LOGIC: OPTIMAL</span>
+</div>
+</div>
+<!-- Plate Illustration -->
+<div class="relative w-64 h-64 rounded-full bg-[#E5DDCE] border-4 border-[#B8AA94] shadow-xl flex items-center justify-center mr-16">
+<div class="w-56 h-56 rounded-full bg-[#8EA883] border-2 border-[#6F8A65] relative overflow-hidden flex items-center justify-center">
+<div class="w-28 h-28 rounded-full bg-[#FFFDF8] border-2 border-[#D8D2C2] shadow-sm flex items-center justify-center">
+<span class="font-mono text-[8px] text-ink-faint">GRAIN // BALANCED</span>
+</div>
+<div class="absolute top-3 left-10 w-14 h-14 rounded-full bg-[#D48956] border-2 border-ink/70 flex items-center justify-center text-[7px] font-mono text-white font-bold">LENTILS</div>
+<div class="absolute top-4 right-10 w-12 h-12 rounded-full bg-[#B29255] border-2 border-ink/70 flex items-center justify-center text-[7px] font-mono text-white font-bold">GREENS</div>
+<div class="absolute bottom-6 right-8 w-14 h-14 rounded-full bg-[#7C9573] border-2 border-ink/70 flex items-center justify-center text-[7px] font-mono text-white font-bold">FIBER</div>
+<div class="absolute bottom-5 left-10 w-12 h-12 rounded-full bg-[#FFFDF9] border-2 border-ink/70 flex items-center justify-center text-[7px] font-mono text-ink font-bold">PROTEIN</div>
+</div>
+</div>
+<!-- Stickman Inspecting Nutrition with Caliper & Loupe -->
+<div class="absolute right-4 bottom-2 w-36 h-64 z-20 pointer-events-none">
+<svg class="w-full h-full" fill="none" viewBox="0 0 140 240">
+<ellipse cx="70" cy="225" fill="#2C241D" opacity="0.25" rx="28" ry="5"></ellipse>
+<path d="M55 135 L42 178 L34 220" stroke="#202124" stroke-linecap="round" stroke-width="4.5"></path>
+<path d="M34 220 L24 223" stroke="#202124" stroke-linecap="round" stroke-width="5.5"></path>
+<path d="M78 135 L86 178 L94 220" stroke="#202124" stroke-linecap="round" stroke-width="4.5"></path>
+<path d="M94 220 L104 223" stroke="#202124" stroke-linecap="round" stroke-width="5.5"></path>
+<path d="M53 82 C49 100 51 120 55 136 L80 136 C84 120 85 100 81 82 Z" fill="#5577A8" stroke="#202124" stroke-width="4"></path>
+<!-- Arm holding Magnifying Loupe -->
+<g>
+<path d="M53 88 L28 102 L-2 110" stroke="#202124" stroke-linecap="round" stroke-width="4"></path>
+<circle cx="-10" cy="112" fill="none" r="14" stroke="#F0B28F" stroke-width="3"></circle>
+<line stroke="#F0B28F" stroke-linecap="round" stroke-width="3.5" x1="-1" x2="8" y1="121" y2="130"></line>
+<circle cx="-10" cy="112" fill="#F0B28F" opacity="0.3" r="6"></circle>
+</g>
+<path d="M80 88 L100 108 L88 128" stroke="#202124" stroke-linecap="round" stroke-width="4"></path>
+<rect fill="#FAF7F0" height="26" rx="2" stroke="#202124" stroke-width="2" width="20" x="80" y="122"></rect>
+<circle cx="90" cy="132" fill="#A8B99C" r="3"></circle>
+<circle cx="68" cy="60" fill="#F0D4BF" r="17" stroke="#202124" stroke-width="4"></circle>
+<path d="M51 58 C51 43 59 38 72 38 C82 38 86 46 85 56 Z" fill="#202124"></path>
+<circle cx="71" cy="61" fill="#FFF" fill-opacity="0.25" r="5" stroke="#202124" stroke-width="2"></circle>
+<circle cx="72" cy="61" fill="#202124" r="1.6"></circle>
+</svg>
+</div>
+</div>
+<div class="flex items-center justify-between font-mono text-[10px] text-ink-faint pt-2 border-t border-borderline/60">
+<span class="">DEVICE: LOCAL_FIRST_ROOM_DB</span>
+<span class="text-terracotta-dark font-semibold">ZERO_CLOUD_TELEMETRY</span>
+</div>
+</div>
+</article>
+</section>
+<!-- ========================================================================= -->
+<!-- 05 — IRIS (02 · HEALTHCARE / INFORMATION) -->
+<!-- ========================================================================= -->
+<section class="px-6 md:px-12 max-w-[1720px] mx-auto pb-12">
+<article class="p-8 lg:p-12 rounded-3xl bg-paper-card border border-borderline shadow-xl shadow-stone-900/5 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center scroll-reveal visible" id="p2">
+<div class="lg:col-span-5 space-y-6">
+<div class="flex items-center gap-3">
+<span class="font-mono text-xs font-bold px-2.5 py-1 rounded bg-cobalt/20 text-cobalt-dark border border-cobalt/40">02 · HEALTHCARE / INFORMATION</span>
+</div>
+<div>
+<h3 class="font-display font-extrabold text-4xl sm:text-5xl tracking-tight text-ink mb-2">IRIS</h3>
+<div class="font-mono text-xs font-bold text-cobalt tracking-wide uppercase mb-3">FIND THE SIGNAL IN MEDICAL RESEARCH.</div>
+<p class="font-body text-base md:text-lg text-ink-muted leading-relaxed">
+          Medical research generates an overwhelming volume of information. But useful intelligence remains heavily fragmented. IRIS unifies raw scholarly data and builds living investigator graphs, answering natural-language queries with traceable bibliographic proof.
+        </p>
+</div>
+<div class="flex flex-wrap gap-2 pt-1">
+<span class="px-3 py-1.5 rounded-lg bg-paper-dim border border-borderline font-mono text-xs text-ink font-medium">MEDICAL INTELLIGENCE</span>
+<span class="px-3 py-1.5 rounded-lg bg-paper-dim border border-borderline font-mono text-xs text-ink font-medium">MULTI-AGENT AI</span>
+<span class="px-3 py-1.5 rounded-lg bg-paper-dim border border-borderline font-mono text-xs text-ink font-medium">KOL DISCOVERY</span>
+<span class="px-3 py-1.5 rounded-lg bg-paper-dim border border-borderline font-mono text-xs text-ink font-medium">SCHOLARLY GRAPH</span>
+</div>
+<div class="flex items-center justify-between py-3 border-y border-borderline/60 font-mono text-xs">
+<div class="text-ink-muted font-bold">PROCESS: <span class="text-ink">PAST → PRESENT → NEXT</span></div>
+<div class="font-hand text-lg text-cobalt font-bold">Context changes the decision</div>
+</div>
+<div class="pt-2">
+<a class="inline-flex items-center gap-2 text-xs font-mono font-bold tracking-wider text-ink hover:text-cobalt transition-colors border-b-2 border-current pb-1" href="../iris_medical_intelligence_research_platform/code.html">
+          EXPLORE IRIS ↗
+        </a>
+</div>
+</div>
+<!-- Visual Card -->
+<div class="lg:col-span-7 h-[380px] sm:h-[420px] rounded-2xl bg-gradient-to-br from-[#F5F8FA] to-[#E9EFF5] border border-borderline p-6 relative overflow-hidden flex flex-col justify-between">
+<div class="flex items-center justify-between font-mono text-[11px] pb-3 border-b border-borderline/80 z-20">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-cobalt animate-pulse"></span>
+<span class="font-bold text-ink tracking-wider">[CONNECTED_TIMELINE // LONGITUDINAL]</span>
+</div>
+<span class="bg-white px-2 py-0.5 rounded border border-borderline text-cobalt-dark font-bold">FHIR CONNECTED</span>
+</div>
+<div class="relative w-full h-full flex items-center justify-center">
+<!-- Connecting Timeline Bar -->
+<div class="absolute left-8 right-36 h-1.5 bg-cobalt/30 top-[52%] rounded-full">
+<div class="absolute left-[15%] -top-2 w-5 h-5 rounded-full bg-white border-2 border-cobalt flex items-center justify-center shadow-sm">
+<span class="w-2 h-2 rounded-full bg-cobalt"></span>
+</div>
+<div class="absolute left-[45%] -top-2 w-5 h-5 rounded-full bg-white border-2 border-terracotta-dark flex items-center justify-center shadow-sm">
+<span class="w-2 h-2 rounded-full bg-terracotta-dark"></span>
+</div>
+<div class="absolute left-[78%] -top-2 w-5 h-5 rounded-full bg-white border-2 border-sage-dark flex items-center justify-center shadow-sm">
+<span class="w-2 h-2 rounded-full bg-sage-dark"></span>
+</div>
+</div>
+<div class="absolute left-6 top-8 w-64 bg-white/95 backdrop-blur-md rounded-xl border border-borderline p-3.5 shadow-md space-y-2">
+<div class="flex items-center justify-between text-[10px] font-mono">
+<span class="font-bold text-cobalt">ORGANIZED PATIENT CONTEXT</span>
+<span class="text-sage-dark font-bold">SYNCHRONIZED</span>
+</div>
+<div class="space-y-1.5">
+<div class="w-full bg-paper-dim h-2 rounded-full overflow-hidden">
+<div class="bg-cobalt h-full w-4/5 rounded-full"></div>
+</div>
+<div class="w-full bg-paper-dim h-2 rounded-full overflow-hidden">
+<div class="bg-terracotta-dark h-full w-3/5 rounded-full"></div>
+</div>
+</div>
+<div class="text-[9px] font-mono text-ink-faint">RECORDS: CLINICAL_VISITS + LAB_REPORTS</div>
+</div>
+<!-- Stickman Gesturing & Connecting Timeline Nodes -->
+<div class="absolute right-4 bottom-2 w-36 h-64 z-20 pointer-events-none">
+<svg class="w-full h-full" fill="none" viewBox="0 0 140 240">
+<ellipse cx="70" cy="225" fill="#2C241D" opacity="0.25" rx="28" ry="5"></ellipse>
+<path d="M54 135 L46 178 L40 220" stroke="#202124" stroke-linecap="round" stroke-width="4.5"></path>
+<path d="M40 220 L30 223" stroke="#202124" stroke-linecap="round" stroke-width="5.5"></path>
+<path d="M78 135 L82 178 L88 220" stroke="#202124" stroke-linecap="round" stroke-width="4.5"></path>
+<path d="M88 220 L98 223" stroke="#202124" stroke-linecap="round" stroke-width="5.5"></path>
+<path d="M52 82 C48 100 50 120 54 136 L78 136 C82 120 83 100 79 82 Z" fill="#5577A8" stroke="#202124" stroke-width="4"></path>
+<path d="M52 88 L26 96 L-4 100" stroke="#202124" stroke-linecap="round" stroke-width="4"></path>
+<circle cx="-6" cy="100" fill="#5577A8" r="5"></circle>
+<path d="M79 88 L98 108 L86 128" stroke="#202124" stroke-linecap="round" stroke-width="4"></path>
+<rect fill="#FAF7F0" height="30" rx="3" stroke="#202124" stroke-width="2" width="22" x="80" y="118"></rect>
+<line stroke="#5577A8" stroke-width="1.5" x1="84" x2="98" y1="126" y2="126"></line>
+<line stroke="#A8B99C" stroke-width="1.5" x1="84" x2="94" y1="132" y2="132"></line>
+<circle cx="66" cy="60" fill="#F0D4BF" r="17" stroke="#202124" stroke-width="4"></circle>
+<path d="M50 58 C50 43 58 38 70 38 C80 38 84 46 83 56 Z" fill="#202124"></path>
+<circle cx="69" cy="61" fill="#FFF" fill-opacity="0.25" r="5" stroke="#202124" stroke-width="2"></circle>
+<circle cx="70" cy="61" fill="#202124" r="1.6"></circle>
+</svg>
+</div>
+</div>
+<div class="flex items-center justify-between font-mono text-[10px] text-ink-faint pt-2 border-t border-borderline/60">
+<span class="">COHESION: MULTI_FACILITY_GRAPH</span>
+<span class="text-cobalt-dark font-semibold">DOCTOR_CONTEXT: READY</span>
+</div>
+</div>
+</article>
+</section>
+<!-- ========================================================================= -->
+<!-- 06 — EXAMMIND (03 · RAG / AGENTS / EVALUATION) -->
+<!-- ========================================================================= -->
+<section class="px-6 md:px-12 max-w-[1720px] mx-auto pb-12">
+<article class="p-8 lg:p-12 rounded-3xl bg-paper-card border border-borderline shadow-xl shadow-stone-900/5 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center scroll-reveal visible" id="p3">
+<div class="lg:col-span-5 space-y-6">
+<div class="flex items-center gap-3">
+<span class="font-mono text-xs font-bold px-2.5 py-1 rounded bg-ochre/25 text-stone-900 border border-ochre/40">03 · RAG / AGENTS / EVALUATION</span>
+</div>
+<div>
+<h3 class="font-display font-extrabold text-4xl sm:text-5xl tracking-tight text-ink mb-2">ExamMind</h3>
+<div class="font-mono text-xs font-bold text-stone-800 tracking-wide uppercase mb-3">“JUST ASK AN LLM” ISN'T A LEARNING SYSTEM.</div>
+<p class="font-body text-base md:text-lg text-ink-muted leading-relaxed">
+          Students don't just need an answer. They need the right context, reasoning and feedback behind it. ExamMind explores a retrieval-based learning system where the path to an answer matters as much as the answer itself.
+        </p>
+</div>
+<div class="flex flex-wrap gap-2 pt-1">
+<span class="px-3 py-1.5 rounded-lg bg-paper-dim border border-borderline font-mono text-xs text-ink font-medium">RAG</span>
+<span class="px-3 py-1.5 rounded-lg bg-paper-dim border border-borderline font-mono text-xs text-ink font-medium">BM25 + RRF</span>
+<span class="px-3 py-1.5 rounded-lg bg-paper-dim border border-borderline font-mono text-xs text-ink font-medium">LLM EVALUATION</span>
+</div>
+<div class="flex items-center justify-between py-3 border-y border-borderline/60 font-mono text-xs">
+<div class="text-ink-muted font-bold">PROCESS: <span class="text-ink">RETRIEVE · REASON · EVALUATE</span></div>
+<div class="font-hand text-lg text-amber-700 font-bold">Question → Context → Reasoning</div>
+</div>
+<div class="pt-2 flex flex-wrap gap-4">
+<a class="inline-flex items-center gap-2 text-xs font-mono font-bold tracking-wider text-ink hover:text-terracotta-dark transition-colors border-b-2 border-current pb-1" href="../exammind_socratic_rag_evaluation_intelligence/code.html">
+          EXPLORE EXAMMIND ↗
+        </a>
+<a class="inline-flex items-center gap-2 text-xs font-mono font-bold tracking-wider text-ink hover:text-terracotta-dark transition-colors border-b-2 border-current pb-1" href="https://github.com/SetterUk/Exam_Mind" target="_blank">
+          GITHUB REPO ↗
+        </a>
+</div>
+</div>
+<!-- Visual Card -->
+<div class="lg:col-span-7 h-[380px] sm:h-[420px] rounded-2xl bg-gradient-to-br from-[#FDFBF3] to-[#F3ECD8] border border-borderline p-6 relative overflow-hidden flex flex-col justify-between">
+<div class="flex items-center justify-between font-mono text-[11px] pb-3 border-b border-borderline/80 z-20">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-ochre animate-pulse"></span>
+<span class="font-bold text-ink tracking-wider">[REASONING_CHAIN // CONTEXT_GRAPH]</span>
+</div>
+<span class="bg-white px-2 py-0.5 rounded border border-borderline text-stone-800 font-bold">BM25 + RRF</span>
+</div>
+<div class="relative w-full h-full flex items-center justify-center">
+<!-- Concept Graph -->
+<svg class="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 500 280">
+<line stroke="#5577A8" stroke-dasharray="3 3" stroke-width="2" x1="80" x2="160" y1="90" y2="160"></line>
+<line stroke="#F0B28F" stroke-width="2.5" x1="160" x2="260" y1="160" y2="100"></line>
+<line stroke="#A8B99C" stroke-width="2" x1="160" x2="220" y1="160" y2="210"></line>
+<line stroke="#E5C267" stroke-dasharray="2 2" stroke-width="2" x1="260" x2="330" y1="100" y2="140"></line>
+<circle cx="80" cy="90" fill="#FFF" r="18" stroke="#5577A8" stroke-width="3"></circle>
+<text fill="#5577A8" font-family="monospace" font-size="10" font-weight="bold" text-anchor="middle" x="80" y="94">QUERY</text>
+<circle cx="160" cy="160" fill="#FFF" r="24" stroke="#F0B28F" stroke-width="3.5"></circle>
+<text fill="#C86B43" font-family="monospace" font-size="10" font-weight="bold" text-anchor="middle" x="160" y="164">CONTEXT</text>
+<circle cx="260" cy="100" fill="#FFF" r="22" stroke="#A8B99C" stroke-width="3"></circle>
+<text fill="#486845" font-family="monospace" font-size="10" font-weight="bold" text-anchor="middle" x="260" y="104">REASON</text>
+<circle cx="220" cy="210" fill="#FFF" r="16" stroke="#5577A8" stroke-width="2.5"></circle>
+<text fill="#5577A8" font-family="monospace" font-size="9" font-weight="bold" text-anchor="middle" x="220" y="214">EVAL</text>
+</svg>
+<!-- Stickman on ladder / threading concept graph -->
+<div class="absolute right-4 bottom-2 w-36 h-64 z-20 pointer-events-none">
+<svg class="w-full h-full" fill="none" viewBox="0 0 140 240">
+<!-- Stepladder -->
+<path d="M48 220 L66 148 L88 220" stroke="#8A674B" stroke-linecap="round" stroke-width="3.5"></path>
+<line stroke="#8A674B" stroke-width="2.5" x1="54" x2="82" y1="195" y2="195"></line>
+<line stroke="#8A674B" stroke-width="2.5" x1="60" x2="76" y1="170" y2="170"></line>
+<ellipse cx="68" cy="225" fill="#2C241D" opacity="0.2" rx="24" ry="4"></ellipse>
+<path d="M60 120 L58 152 L60 172" stroke="#202124" stroke-linecap="round" stroke-width="4.5"></path>
+<path d="M74 120 L76 152 L74 172" stroke="#202124" stroke-linecap="round" stroke-width="4.5"></path>
+<path d="M56 70 C52 88 54 106 58 122 L78 122 C82 106 83 88 79 70 Z" fill="#5577A8" stroke="#202124" stroke-width="4"></path>
+<path d="M56 74 L38 52 L12 40" stroke="#202124" stroke-linecap="round" stroke-width="4"></path>
+<path d="M78 74 L58 54 L36 42" stroke="#202124" stroke-linecap="round" stroke-width="4"></path>
+<circle cx="12" cy="40" fill="#E5C267" r="5"></circle>
+<circle cx="68" cy="48" fill="#F0D4BF" r="16" stroke="#202124" stroke-width="4"></circle>
+<path d="M54 44 C54 30 62 26 74 26 C84 26 86 32 85 42 Z" fill="#202124"></path>
+<circle cx="66" cy="47" fill="#FFF" fill-opacity="0.25" r="5" stroke="#202124" stroke-width="2"></circle>
+<circle cx="66" cy="47" fill="#202124" r="1.6"></circle>
+</svg>
+</div>
+</div>
+<div class="flex items-center justify-between font-mono text-[10px] text-ink-faint pt-2 border-t border-borderline/60">
+<span class="">REASONING: STEP_BY_STEP_PATH</span>
+<span class="text-stone-800 font-semibold">FEEDBACK_LOOP: ACTIVE</span>
+</div>
+</div>
+</article>
+</section>
+<!-- ========================================================================= -->
+<!-- 07 — NESTING ENGINE (04 · OPTIMIZATION / GEOMETRY / INDUSTRIAL) -->
+<!-- ========================================================================= -->
+<section class="px-6 md:px-12 max-w-[1720px] mx-auto pb-12">
+<article class="p-8 lg:p-12 rounded-3xl bg-paper-card border border-borderline shadow-xl shadow-stone-900/5 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center scroll-reveal visible" id="p4">
+<div class="lg:col-span-5 space-y-6">
+<div class="flex items-center gap-3">
+<span class="font-mono text-xs font-bold px-2.5 py-1 rounded bg-sage/25 text-sage-dark border border-sage/40">04 · OPTIMIZATION / GEOMETRY / INDUSTRIAL</span>
+</div>
+<div>
+<h3 class="font-display font-extrabold text-4xl sm:text-5xl tracking-tight text-ink mb-2">Nesting Engine</h3>
+<div class="font-mono text-xs font-bold text-sage-dark tracking-wide uppercase mb-3">WASTE IS AN OPTIMIZATION PROBLEM.</div>
+<p class="font-body text-base md:text-lg text-ink-muted leading-relaxed">
+          When irregular parts have to be cut from a limited sheet of material, every empty space costs something. Nesting Engine explores the arrangement itself — fitting pieces within real constraints while trying to make better use of the material.
+        </p>
+</div>
+<div class="flex flex-wrap gap-2 pt-1">
+<span class="px-3 py-1.5 rounded-lg bg-paper-dim border border-borderline font-mono text-xs text-ink font-medium">OPTIMIZATION</span>
+<span class="px-3 py-1.5 rounded-lg bg-paper-dim border border-borderline font-mono text-xs text-ink font-medium">GEOMETRY</span>
+<span class="px-3 py-1.5 rounded-lg bg-paper-dim border border-borderline font-mono text-xs text-ink font-medium">CONSTRAINTS</span>
+<span class="px-3 py-1.5 rounded-lg bg-paper-dim border border-borderline font-mono text-xs text-ink font-medium">ALGORITHMS</span>
+</div>
+<div class="flex items-center justify-between py-3 border-y border-borderline/60 font-mono text-xs">
+<div class="text-ink-muted font-bold">PROCESS: <span class="text-ink">INPUT → ARRANGE → OPTIMIZE</span></div>
+<div class="font-hand text-lg text-emerald-800 font-bold">Make the material count</div>
+</div>
+<div class="pt-2">
+<a class="inline-flex items-center gap-2 text-xs font-mono font-bold tracking-wider text-ink hover:text-sage-dark transition-colors border-b-2 border-current pb-1" href="../nesting_engine_production_optimization_for_abhikalpan_construction/code.html">
+          EXPLORE NESTING ENGINE ↗
+        </a>
+</div>
+</div>
+<!-- Visual Card -->
+<div class="lg:col-span-7 h-[380px] sm:h-[420px] rounded-2xl bg-gradient-to-br from-[#F4F8F4] to-[#E7EFE6] border border-borderline p-6 relative overflow-hidden flex flex-col justify-between">
+<div class="flex items-center justify-between font-mono text-[11px] pb-3 border-b border-borderline/80 z-20">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-sage-dark animate-pulse"></span>
+<span class="font-bold text-ink tracking-wider">[MATERIAL_SHEET // ARRANGEMENT]</span>
+</div>
+<span class="bg-white px-2 py-0.5 rounded border border-borderline text-sage-dark font-bold">WASTE MINIMIZED</span>
+</div>
+<div class="relative w-full h-full flex items-center justify-center">
+<!-- 2D Material Sheet with Laser Sweep -->
+<div class="relative w-[340px] h-[210px] bg-[#DEE5DE] border-2 border-[#788E77] rounded-xl overflow-hidden shadow-inner mr-16">
+<div class="absolute top-0 bottom-0 w-0.5 bg-rose-500 shadow-[0_0_12px_#f43f5e] z-30 anim-laser"></div>
+<div class="absolute left-3 top-3 w-28 h-18 bg-cobalt/40 border-2 border-ink rounded p-1">
+<span class="font-mono text-[8px] font-bold text-ink">PART_A1</span>
+</div>
+<div class="absolute left-34 top-3 w-20 h-32 bg-terracotta/50 border-2 border-ink rounded p-1">
+<span class="font-mono text-[8px] font-bold text-ink">PART_B2</span>
+</div>
+<div class="absolute left-3 bottom-3 w-32 h-20 bg-ochre/40 border-2 border-ink rounded p-1">
+<span class="font-mono text-[8px] font-bold text-ink">PART_C3</span>
+</div>
+<div class="absolute right-3 bottom-3 w-28 h-16 bg-sage/60 border-2 border-ink rounded p-1">
+<span class="font-mono text-[8px] font-bold text-ink">PART_D4</span>
+</div>
+</div>
+<!-- Stickman Fitting Irregular Pieces -->
+<div class="absolute right-4 bottom-2 w-36 h-64 z-20 pointer-events-none">
+<svg class="w-full h-full" fill="none" viewBox="0 0 140 240">
+<ellipse cx="70" cy="225" fill="#2C241D" opacity="0.25" rx="28" ry="5"></ellipse>
+<path d="M52 135 L44 178 L38 220" stroke="#202124" stroke-linecap="round" stroke-width="4.5"></path>
+<path d="M38 220 L28 223" stroke="#202124" stroke-linecap="round" stroke-width="5.5"></path>
+<path d="M76 135 L80 178 L86 220" stroke="#202124" stroke-linecap="round" stroke-width="4.5"></path>
+<path d="M86 220 L96 223" stroke="#202124" stroke-linecap="round" stroke-width="5.5"></path>
+<path d="M50 82 C46 100 48 120 52 136 L76 136 C80 120 81 100 77 82 Z" fill="#5577A8" stroke="#202124" stroke-width="4"></path>
+<path d="M50 88 L26 104 L-4 98" stroke="#202124" stroke-linecap="round" stroke-width="4"></path>
+<polygon fill="#F0B28F" points="-8,92 4,88 0,106 -12,102" stroke="#202124" stroke-width="2"></polygon>
+<path d="M76 88 L96 108 L86 128" stroke="#202124" stroke-linecap="round" stroke-width="4"></path>
+<rect fill="#FAF7F0" height="26" rx="2" stroke="#202124" stroke-width="2" width="20" x="80" y="118"></rect>
+<circle cx="90" cy="126" fill="#E5C267" r="3"></circle>
+<circle cx="64" cy="60" fill="#F0D4BF" r="17" stroke="#202124" stroke-width="4"></circle>
+<path d="M48 58 C48 43 56 38 68 38 C78 38 82 46 81 56 Z" fill="#202124"></path>
+<circle cx="67" cy="61" fill="#FFF" fill-opacity="0.25" r="5" stroke="#202124" stroke-width="2"></circle>
+<circle cx="68" cy="61" fill="#202124" r="1.6"></circle>
+</svg>
+</div>
+</div>
+<div class="flex items-center justify-between font-mono text-[10px] text-ink-faint pt-2 border-t border-borderline/60">
+<span class="">CONSTRAINTS: BOUNDARY_TIGHT</span>
+<span class="text-sage-dark font-semibold">GEOMETRY: OPTIMIZED</span>
+</div>
+</div>
+</article>
+</section>
+<!-- ========================================================================= -->
+<!-- 08 — ASSET MANAGEMENT (05 · OPERATIONS / TRACKING / DATA) -->
+<!-- ========================================================================= -->
+<section class="px-6 md:px-12 max-w-[1720px] mx-auto pb-24">
+<article class="p-8 lg:p-12 rounded-3xl bg-paper-card border border-borderline shadow-xl shadow-stone-900/5 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center scroll-reveal visible" id="p5">
+<div class="lg:col-span-5 space-y-6">
+<div class="flex items-center gap-3">
+<span class="font-mono text-xs font-bold px-2.5 py-1 rounded bg-lilac/35 text-lilac-dark border border-lilac/50">05 · OPERATIONS / TRACKING / DATA</span>
+</div>
+<div>
+<h3 class="font-display font-extrabold text-4xl sm:text-5xl tracking-tight text-ink mb-2">Asset Management</h3>
+<div class="font-mono text-xs font-bold text-lilac-dark tracking-wide uppercase mb-3">WHEN EVERYTHING IS SOMEWHERE, NOTHING IS REALLY TRACKED.</div>
+<p class="font-body text-base md:text-lg text-ink-muted leading-relaxed">
+          Knowing that an asset exists isn't enough. You need to know where it is, who has it, where it came from and what happened to it along the way. This project explores turning that movement into information a team can actually use.
+        </p>
+</div>
+<div class="flex flex-wrap gap-2 pt-1">
+<span class="px-3 py-1.5 rounded-lg bg-paper-dim border border-borderline font-mono text-xs text-ink font-medium">ASSET TRACKING</span>
+<span class="px-3 py-1.5 rounded-lg bg-paper-dim border border-borderline font-mono text-xs text-ink font-medium">OPERATIONS</span>
+<span class="px-3 py-1.5 rounded-lg bg-paper-dim border border-borderline font-mono text-xs text-ink font-medium">DATA WORKFLOW</span>
+</div>
+<div class="flex items-center justify-between py-3 border-y border-borderline/60 font-mono text-xs">
+<div class="text-ink-muted font-bold">PROCESS: <span class="text-ink">ASSET → OWNER → MOVEMENT</span></div>
+<div class="font-hand text-lg text-lilac-dark font-bold">Where did it go?</div>
+</div>
+<div class="pt-2 flex flex-wrap gap-4">
+<a class="inline-flex items-center gap-2 text-xs font-mono font-bold tracking-wider text-ink hover:text-lilac-dark transition-colors border-b-2 border-current pb-1" href="../asset_management_production_component_lifecycle_for_abhikalpan_construction/code.html">
+          EXPLORE ASSET MANAGEMENT ↗
+        </a>
+<a class="inline-flex items-center gap-2 text-xs font-mono font-bold tracking-wider text-ink hover:text-lilac-dark transition-colors border-b-2 border-current pb-1" href="https://github.com/SetterUk/Abhikalpan_Asset_management" target="_blank">
+          GITHUB REPO ↗
+        </a>
+</div>
+</div>
+<!-- Visual Card -->
+<div class="lg:col-span-7 h-[380px] sm:h-[420px] rounded-2xl bg-gradient-to-br from-[#F6F4F8] to-[#E9E4ED] border border-borderline p-6 relative overflow-hidden flex flex-col justify-between">
+<div class="flex items-center justify-between font-mono text-[11px] pb-3 border-b border-borderline/80 z-20">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-lilac-dark animate-pulse"></span>
+<span class="font-bold text-ink tracking-wider">[PHYSICAL_FLOW // MOVEMENT_STREAM]</span>
+</div>
+<span class="bg-white px-2 py-0.5 rounded border border-borderline text-lilac-dark font-bold">STATE VERIFIED</span>
+</div>
+<div class="relative w-full h-full flex items-center justify-center">
+<!-- Conveyor Belt -->
+<div class="absolute left-6 right-36 bottom-14 h-4 bg-[#37383B] rounded-full border-2 border-ink overflow-hidden">
+<div class="w-full h-full bg-[repeating-linear-gradient(90deg,#555,#555_8px,#37383B_8px,#37383B_16px)] anim-conveyor"></div>
+</div>
+<!-- Tagged Parcels -->
+<div class="absolute left-16 bottom-18 w-14 h-14 bg-white rounded-lg border-2 border-ink shadow-md p-1.5 flex flex-col justify-between">
+<span class="font-mono text-[7px] text-cobalt font-bold">TAG #842</span>
+<div class="w-full h-1 bg-sage rounded-full"></div>
+</div>
+<div class="absolute left-44 bottom-18 w-14 h-14 bg-terracotta/40 rounded-lg border-2 border-ink shadow-md p-1.5 flex flex-col justify-between">
+<span class="font-mono text-[7px] text-terracotta-dark font-bold">TAG #843</span>
+<div class="w-full h-1 bg-terracotta-dark rounded-full"></div>
+</div>
+<!-- Scanner Ray -->
+<div class="absolute left-32 top-8 w-24 h-32 pointer-events-none flex flex-col items-center">
+<div class="w-10 h-4 bg-ink rounded-b-md"></div>
+<div class="w-full h-full bg-gradient-to-b from-rose-500/30 to-transparent border-x border-dashed border-rose-500/50"></div>
+</div>
+<!-- Stickman with Optical Scanner -->
+<div class="absolute right-4 bottom-2 w-36 h-64 z-20 pointer-events-none">
+<svg class="w-full h-full" fill="none" viewBox="0 0 140 240">
+<ellipse cx="70" cy="225" fill="#2C241D" opacity="0.25" rx="28" ry="5"></ellipse>
+<path d="M52 135 L44 178 L38 220" stroke="#202124" stroke-linecap="round" stroke-width="4.5"></path>
+<path d="M38 220 L28 223" stroke="#202124" stroke-linecap="round" stroke-width="5.5"></path>
+<path d="M74 135 L80 178 L86 220" stroke="#202124" stroke-linecap="round" stroke-width="4.5"></path>
+<path d="M86 220 L96 223" stroke="#202124" stroke-linecap="round" stroke-width="5.5"></path>
+<path d="M50 82 C46 100 48 120 52 136 L76 136 C80 120 81 100 77 82 Z" fill="#5577A8" stroke="#202124" stroke-width="4"></path>
+<path d="M50 88 L26 100 L-2 102" stroke="#202124" stroke-linecap="round" stroke-width="4"></path>
+<polygon fill="#F0B28F" points="-8,96 0,98 -2,110 -10,108" stroke="#202124" stroke-width="2"></polygon>
+<line stroke="#F43F5E" stroke-dasharray="3 3" stroke-width="2" x1="-10" x2="-45" y1="104" y2="120"></line>
+<path d="M76 88 L92 106 L78 124" stroke="#202124" stroke-linecap="round" stroke-width="4"></path>
+<circle cx="64" cy="60" fill="#F0D4BF" r="17" stroke="#202124" stroke-width="4"></circle>
+<path d="M48 58 C48 43 56 38 68 38 C78 38 82 46 81 56 Z" fill="#202124"></path>
+<circle cx="66" cy="61" fill="#FFF" fill-opacity="0.25" r="5" stroke="#202124" stroke-width="2"></circle>
+<circle cx="66" cy="61" fill="#202124" r="1.6"></circle>
+</svg>
+</div>
+</div>
+<div class="flex items-center justify-between font-mono text-[10px] text-ink-faint pt-2 border-t border-borderline/60">
+<span class="">TRACKING: ASSET_LIFECYCLE</span>
+<span class="text-lilac-dark font-semibold">ACTIONABLE_DATA: STREAMING</span>
+</div>
+</div>
+</article>
+</section>
+<!-- ========================================================================= -->
+<!-- 09 — TRANSITION INTO ABOUT -->
+<!-- ========================================================================= -->
+<section class="px-6 md:px-12 max-w-[1720px] mx-auto py-24 border-t border-borderline" id="about">
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-12 items-center">
+<div class="xl:col-span-7 space-y-6 scroll-reveal visible">
+<div class="font-mono text-xs font-bold text-cobalt tracking-widest uppercase">A LITTLE ABOUT HOW I THINK</div>
+<h2 class="font-display font-extrabold text-4xl sm:text-6xl lg:text-7xl leading-[0.92] tracking-tight text-ink">
+        I LIKE DIFFICULT PROBLEMS.
+      </h2>
+<div class="font-body text-lg md:text-xl text-ink-muted leading-relaxed space-y-4">
+<p class="">I don't just write code. I engineer outcomes.</p>
+<p class="font-semibold text-ink">3 Internships. Multiple production projects. 1 Research paper in the pipeline.</p>
+<p class="">
+          I've battle-tested my skills across 3 demanding internships, consistently delivering high-impact projects that actually move the needle. While others are busy copying tutorials, I'm architecting scalable ML systems and currently crafting a research paper that pushes the boundaries of medical intelligence.
+        </p>
+<p class="">
+          I thrive in the trenches — turning messy, complex problems into ruthless, elegant solutions. Let's build something that matters.
+        </p>
+</div>
+<div class="pt-4">
+<span class="font-mono text-xs font-bold text-terracotta-dark tracking-wider uppercase border-l-2 border-terracotta pl-3">
+          THE DOMAIN CHANGES. THE CURIOSITY DOESN'T.
+        </span>
+</div>
+</div>
+<!-- Illustrated Desk Vignette of Stickman Builder Thinking/Sketching under Desk Lamp -->
+<div class="xl:col-span-5 h-[380px] sm:h-[420px] rounded-3xl bg-paper-card border border-borderline p-8 relative overflow-hidden shadow-2xl shadow-stone-900/5 flex items-center justify-center scroll-reveal visible">
+<svg class="w-full h-full max-w-[460px]" fill="none" viewBox="0 0 400 320">
+<rect fill="#F4EFE6" height="200" rx="8" stroke="#DCD4C4" stroke-width="1.5" width="340" x="30" y="30"></rect>
+<line stroke="#DCD4C4" stroke-dasharray="4 4" stroke-width="1" x1="30" x2="370" y1="80" y2="80"></line>
+<line stroke="#DCD4C4" stroke-dasharray="4 4" stroke-width="1" x1="30" x2="370" y1="130" y2="130"></line>
+<line stroke="#DCD4C4" stroke-dasharray="4 4" stroke-width="1" x1="30" x2="370" y1="180" y2="180"></line>
+<!-- Desk -->
+<rect fill="#614D3E" height="14" rx="4" stroke="#413125" stroke-width="2" width="240" x="80" y="210"></rect>
+<line stroke="#4C3B2E" stroke-linecap="round" stroke-width="6" x1="110" x2="110" y1="224" y2="290"></line>
+<line stroke="#4C3B2E" stroke-linecap="round" stroke-width="6" x1="290" x2="290" y1="224" y2="290"></line>
+<!-- Desk Lamp Illuminating Draft -->
+<path d="M115 210 L130 145 L155 152" stroke="#E5C267" stroke-linecap="round" stroke-width="4"></path>
+<path d="M150 142 L172 158" stroke="#E5C267" stroke-linecap="round" stroke-width="7"></path>
+<polygon fill="#FEFCBF" opacity="0.45" points="168,156 280,210 190,210"></polygon>
+<rect fill="#FAF7F0" height="16" rx="2" stroke="#202124" stroke-width="2" width="16" x="260" y="194"></rect>
+<path d="M265 186 Q268 180 265 174" stroke="#A8B99C" stroke-linecap="round" stroke-width="1.5"></path>
+<rect fill="#FFFDF8" height="10" rx="1" stroke="#202124" stroke-width="1.5" width="40" x="180" y="200"></rect>
+<!-- Stickman Thinking & Sketching -->
+<g class="anim-breath">
+<line stroke="#202124" stroke-width="4.5" x1="200" x2="200" y1="230" y2="290"></line>
+<ellipse cx="200" cy="230" fill="#5577A8" rx="16" ry="5"></ellipse>
+<path d="M194 228 L175 255 L168 285" stroke="#202124" stroke-linecap="round" stroke-width="4.5"></path>
+<path d="M195 228 L206 172" stroke="#5577A8" stroke-linecap="round" stroke-width="14"></path>
+<path d="M204 178 L220 198 L206 205" stroke="#202124" stroke-linecap="round" stroke-width="4"></path>
+<path d="M198 180 L182 198 L194 205" stroke="#202124" stroke-linecap="round" stroke-width="4"></path>
+<line stroke="#F0B28F" stroke-linecap="round" stroke-width="3" x1="206" x2="216" y1="205" y2="202"></line>
+<circle cx="214" cy="155" fill="#F0D4BF" r="16" stroke="#202124" stroke-width="4"></circle>
+<path d="M200 151 C200 138 208 134 220 134 C228 134 231 140 229 150 Z" fill="#202124"></path>
+<circle cx="218" cy="156" fill="#FFF" fill-opacity="0.3" r="4.5" stroke="#202124" stroke-width="2"></circle>
+<circle cx="219" cy="156" fill="#202124" r="1.5"></circle>
+</g>
+<text fill="#8C8980" font-family="monospace" font-size="10" letter-spacing="0.1em" text-anchor="middle" x="200" y="310">
+          "TAKING THE MESS APART // PRAGMATIC BUILD"
+        </text>
+</svg>
+</div>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- 10 — A SHORT "ABOUT ME" -->
+<!-- ========================================================================= -->
+<section class="px-6 md:px-12 max-w-[1720px] mx-auto py-16">
+<div class="p-8 sm:p-12 lg:p-16 rounded-3xl bg-paper-card border border-borderline shadow-xl shadow-stone-900/5 space-y-8 scroll-reveal visible">
+<div class="font-mono text-xs font-bold text-cobalt tracking-widest uppercase">WHO I AM</div>
+<h2 class="font-display font-extrabold text-3xl sm:text-5xl lg:text-6xl tracking-tight text-ink">
+      I LIKE BUILDING THE WHOLE THING.
+    </h2>
+<div class="font-body text-base md:text-xl text-ink-muted leading-relaxed space-y-4 max-w-4xl">
+<p class="">I'm an AI/ML engineer who enjoys working beyond the model itself.</p>
+<p class="">
+        Understanding the problem. Designing the system. Working with the data. Building the backend. Testing the uncomfortable cases. Connecting everything together. Then putting it in someone's hands.
+      </p>
+<p class="">
+        I've ended up working across healthcare, nutrition, education, industrial optimization and operations.
+      </p>
+<p class="font-medium text-ink">Different domains. Same question:</p>
+</div>
+<div class="p-6 sm:p-8 rounded-2xl bg-paper-dim border border-borderline w-fit">
+<span class="font-display font-black text-2xl sm:text-4xl text-ink tracking-tight">
+        HOW CAN THIS ACTUALLY BE USEFUL?
+      </span>
+</div>
+<div class="pt-4 border-t border-borderline/80 flex flex-wrap items-center gap-2 font-mono text-xs font-semibold text-ink">
+<span class="px-2.5 py-1 rounded bg-white border border-borderline">PYTHON</span>
+<span class="px-2.5 py-1 rounded bg-white border border-borderline">KOTLIN</span>
+<span class="px-2.5 py-1 rounded bg-white border border-borderline">ML</span>
+<span class="px-2.5 py-1 rounded bg-white border border-borderline">GENAI</span>
+<span class="px-2.5 py-1 rounded bg-white border border-borderline">RAG</span>
+<span class="px-2.5 py-1 rounded bg-white border border-borderline">AGENTS</span>
+<span class="px-2.5 py-1 rounded bg-white border border-borderline">OPTIMIZATION</span>
+<span class="px-2.5 py-1 rounded bg-white border border-borderline">ON-DEVICE AI</span>
+<span class="px-2.5 py-1 rounded bg-white border border-borderline">SYSTEMS</span>
+</div>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- 11 — HOW I BUILD (6 ILLUSTRATED STEPS) -->
+<!-- ========================================================================= -->
+<section class="px-6 md:px-12 max-w-[1720px] mx-auto py-24 border-t border-borderline" id="how-i-build">
+<div class="mb-16 scroll-reveal visible">
+<div class="font-mono text-xs font-bold text-cobalt tracking-widest uppercase mb-3">MY APPROACH</div>
+<h2 class="font-display font-extrabold text-4xl sm:text-6xl lg:text-7xl leading-[0.92] tracking-tight text-ink">
+      FROM MESSY REALITY<br>
+      TO RESILIENT SOFTWARE.
+    </h2>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 border-t border-b border-borderline divide-y sm:divide-y-0 sm:divide-x divide-borderline">
+<!-- STEP 01 — FIND -->
+<div class="p-6 flex flex-col justify-between hover:bg-white transition-colors group">
+<div>
+<div class="font-mono text-xs font-bold text-cobalt mb-6">01 // FIND</div>
+<div class="h-28 flex items-center justify-center">
+<svg class="w-20 h-20" viewBox="0 0 100 100">
+<path d="M15 75 Q25 35 40 65 T65 30 T85 75" fill="none" stroke="#F0B28F" stroke-dasharray="4 2" stroke-width="2.5"></path>
+<circle cx="50" cy="32" fill="#F0D4BF" r="10" stroke="#202124" stroke-width="2.5"></circle>
+<path d="M50 42 L50 68" stroke="#5577A8" stroke-width="6"></path>
+<path d="M50 68 L42 88" stroke="#202124" stroke-width="3"></path>
+<path d="M50 68 L58 88" stroke="#202124" stroke-width="3"></path>
+<path d="M50 48 L34 34 L42 26" stroke="#202124" stroke-linecap="round" stroke-width="2.5"></path>
+</svg>
+</div>
+</div>
+<div class="pt-6">
+<strong class="font-display font-extrabold text-xl text-ink block mb-1">Find</strong>
+<div class="font-mono text-[11px] font-bold text-terracotta-dark mb-2">What is actually wrong?</div>
+<p class="font-body text-xs text-ink-muted leading-relaxed">
+          Start with the problem, not the technology.
+        </p>
+</div>
+</div>
+<!-- STEP 02 — UNDERSTAND -->
+<div class="p-6 flex flex-col justify-between hover:bg-white transition-colors group">
+<div>
+<div class="font-mono text-xs font-bold text-cobalt mb-6">02 // UNDERSTAND</div>
+<div class="h-28 flex items-center justify-center">
+<svg class="w-20 h-20" viewBox="0 0 100 100">
+<circle cx="38" cy="35" fill="#F0D4BF" r="10" stroke="#202124" stroke-width="2.5"></circle>
+<path d="M38 45 L38 72" stroke="#5577A8" stroke-width="6"></path>
+<path d="M38 72 L30 90" stroke="#202124" stroke-width="3"></path>
+<path d="M38 72 L46 90" stroke="#202124" stroke-width="3"></path>
+<path d="M38 52 L54 52 L68 46" stroke="#202124" stroke-width="2.5"></path>
+<circle cx="70" cy="46" fill="none" r="10" stroke="#5577A8" stroke-width="3"></circle>
+<line stroke="#5577A8" stroke-width="3" x1="77" x2="86" y1="53" y2="62"></line>
+</svg>
+</div>
+</div>
+<div class="pt-6">
+<strong class="font-display font-extrabold text-xl text-ink block mb-1">Understand</strong>
+<div class="font-mono text-[11px] font-bold text-cobalt mb-2">Map the moving parts.</div>
+<p class="font-body text-xs text-ink-muted leading-relaxed">
+          Data. Users. Constraints. Failure cases. The things that don't fit neatly into the requirements.
+        </p>
+</div>
+</div>
+<!-- STEP 03 — DESIGN -->
+<div class="p-6 flex flex-col justify-between hover:bg-white transition-colors group">
+<div>
+<div class="font-mono text-xs font-bold text-cobalt mb-6">03 // DESIGN</div>
+<div class="h-28 flex items-center justify-center">
+<svg class="w-20 h-20" viewBox="0 0 100 100">
+<rect fill="#FFF" height="36" rx="3" stroke="#202124" stroke-width="2" width="42" x="52" y="24"></rect>
+<line stroke="#A8B99C" stroke-width="2" x1="58" x2="76" y1="36" y2="36"></line>
+<line stroke="#5577A8" stroke-width="2" x1="58" x2="84" y1="44" y2="44"></line>
+<circle cx="34" cy="35" fill="#F0D4BF" r="10" stroke="#202124" stroke-width="2.5"></circle>
+<path d="M34 45 L34 72" stroke="#5577A8" stroke-width="6"></path>
+<path d="M34 72 L26 90" stroke="#202124" stroke-width="3"></path>
+<path d="M34 72 L42 90" stroke="#202124" stroke-width="3"></path>
+<path d="M34 50 L48 40 L54 38" stroke="#202124" stroke-width="2.5"></path>
+</svg>
+</div>
+</div>
+<div class="pt-6">
+<strong class="font-display font-extrabold text-xl text-ink block mb-1">Design</strong>
+<div class="font-mono text-[11px] font-bold text-sage-dark mb-2">Choose the right shape.</div>
+<p class="font-body text-xs text-ink-muted leading-relaxed mb-2">
+          Sometimes it's ML. Sometimes it's retrieval, optimization, rules or straightforward engineering.
+        </p>
+<span class="inline-block font-mono text-[10px] font-bold bg-amber-100 text-amber-900 px-1.5 py-0.5 rounded">
+          The model isn't the product.
+        </span>
+</div>
+</div>
+<!-- STEP 04 — BUILD -->
+<div class="p-6 flex flex-col justify-between hover:bg-white transition-colors group">
+<div>
+<div class="font-mono text-xs font-bold text-cobalt mb-6">04 // BUILD</div>
+<div class="h-28 flex items-center justify-center">
+<svg class="w-20 h-20" viewBox="0 0 100 100">
+<circle cx="72" cy="50" fill="none" r="15" stroke="#F0B28F" stroke-dasharray="6 3" stroke-width="3"></circle>
+<circle cx="34" cy="35" fill="#F0D4BF" r="10" stroke="#202124" stroke-width="2.5"></circle>
+<path d="M34 45 L34 72" stroke="#5577A8" stroke-width="6"></path>
+<path d="M34 72 L26 90" stroke="#202124" stroke-width="3"></path>
+<path d="M34 72 L42 90" stroke="#202124" stroke-width="3"></path>
+<path d="M34 50 L52 48 L64 48" stroke="#202124" stroke-width="2.5"></path>
+<circle cx="66" cy="48" fill="#202124" r="4"></circle>
+</svg>
+</div>
+</div>
+<div class="pt-6">
+<strong class="font-display font-extrabold text-xl text-ink block mb-1">Build</strong>
+<div class="font-mono text-[11px] font-bold text-terracotta-dark mb-2">Make the first version real.</div>
+<p class="font-body text-xs text-ink-muted leading-relaxed">
+          Something people can touch, test, break and react to.
+        </p>
+</div>
+</div>
+<!-- STEP 05 — TEST -->
+<div class="p-6 flex flex-col justify-between hover:bg-white transition-colors group">
+<div>
+<div class="font-mono text-xs font-bold text-cobalt mb-6">05 // TEST</div>
+<div class="h-28 flex items-center justify-center">
+<svg class="w-20 h-20" viewBox="0 0 100 100">
+<rect fill="#FFF" height="28" rx="3" stroke="#202124" stroke-width="2" width="36" x="58" y="30"></rect>
+<path d="M62 44 L68 44 L72 36 L76 52 L80 44 L88 44" fill="none" stroke="#F43F5E" stroke-width="2"></path>
+<circle cx="35" cy="35" fill="#F0D4BF" r="10" stroke="#202124" stroke-width="2.5"></circle>
+<path d="M35 45 L35 72" stroke="#5577A8" stroke-width="6"></path>
+<path d="M35 72 L28 90" stroke="#202124" stroke-width="3"></path>
+<path d="M35 72 L42 90" stroke="#202124" stroke-width="3"></path>
+<path d="M35 50 L50 48" stroke="#202124" stroke-width="2.5"></path>
+</svg>
+</div>
+</div>
+<div class="pt-6">
+<strong class="font-display font-extrabold text-xl text-ink block mb-1">Test</strong>
+<div class="font-mono text-[11px] font-bold text-rose-700 mb-2">Try to prove yourself wrong.</div>
+<p class="font-body text-xs text-ink-muted leading-relaxed">
+          Evaluate it. Find the ugly cases. Fix what breaks.
+        </p>
+</div>
+</div>
+<!-- STEP 06 — SHIP -->
+<div class="p-6 flex flex-col justify-between hover:bg-white transition-colors group">
+<div>
+<div class="font-mono text-xs font-bold text-cobalt mb-6">06 // SHIP</div>
+<div class="h-28 flex items-center justify-center">
+<svg class="w-20 h-20" viewBox="0 0 100 100">
+<rect fill="#FFF" height="32" rx="3" stroke="#202124" stroke-width="2" width="20" x="68" y="36"></rect>
+<circle cx="78" cy="52" fill="#10B981" r="3.5"></circle>
+<circle cx="38" cy="35" fill="#F0D4BF" r="10" stroke="#202124" stroke-width="2.5"></circle>
+<path d="M38 45 L38 72" stroke="#5577A8" stroke-width="6"></path>
+<path d="M38 72 L30 90" stroke="#202124" stroke-width="3"></path>
+<path d="M38 72 L46 90" stroke="#202124" stroke-width="3"></path>
+<path d="M38 50 L56 50 L68 50" stroke="#202124" stroke-width="2.5"></path>
+</svg>
+</div>
+</div>
+<div class="pt-6">
+<strong class="font-display font-extrabold text-xl text-ink block mb-1">Ship</strong>
+<div class="font-mono text-[11px] font-bold text-emerald-700 mb-2">Make it useful.</div>
+<p class="font-body text-xs text-ink-muted leading-relaxed">
+          A working system beats an impressive demo.
+        </p>
+</div>
+</div>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- 12 — RESEARCH & OPEN SOURCE -->
+<!-- ========================================================================= -->
+<section class="px-6 md:px-12 max-w-[1720px] mx-auto py-24 border-t border-borderline" id="research">
+<div class="mb-12 scroll-reveal visible">
+<div class="font-mono text-xs font-bold text-cobalt tracking-widest uppercase mb-3">RESEARCH / OPEN SOURCE</div>
+<h2 class="font-display font-extrabold text-4xl sm:text-6xl lg:text-7xl leading-[0.92] tracking-tight text-ink mb-4">
+      THINGS I'M TRYING TO UNDERSTAND.
+    </h2>
+<p class="font-body text-lg text-ink-muted max-w-2xl leading-relaxed">
+      Some things I build to solve a problem. Some things I build because I want to understand the problem itself.
+    </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+<!-- BLOCK 1: AI SYSTEMS -->
+<div class="p-8 rounded-2xl bg-paper-card border border-borderline hover:border-ink transition-all flex flex-col justify-between group">
+<div>
+<div class="flex items-center justify-between text-xs font-mono text-ink-faint mb-4">
+<span class="text-cobalt font-bold">REPO // AI_SYSTEMS</span>
+<span class="group-hover:translate-x-1 transition-transform">↗</span>
+</div>
+<h3 class="font-display font-bold text-2xl text-ink group-hover:text-cobalt transition-colors mb-2">
+          AI SYSTEMS
+        </h3>
+<p class="font-body text-sm text-ink-muted leading-relaxed">
+          Retrieval, agents, evaluation and the systems around LLMs.
+        </p>
+</div>
+<div class="pt-6 font-mono text-xs text-ink-faint border-t border-borderline/60 flex items-center justify-between">
+<span class="text-ink font-semibold">RAG · AGENTS · EVALUATION</span>
+<span class="">EXPERIMENT_01</span>
+</div>
+</div>
+<!-- BLOCK 2: EFFICIENT AI -->
+<div class="p-8 rounded-2xl bg-paper-card border border-borderline hover:border-ink transition-all flex flex-col justify-between group">
+<div>
+<div class="flex items-center justify-between text-xs font-mono text-ink-faint mb-4">
+<span class="text-terracotta-dark font-bold">REPO // EFFICIENT_AI</span>
+<span class="group-hover:translate-x-1 transition-transform">↗</span>
+</div>
+<h3 class="font-display font-bold text-2xl text-ink group-hover:text-cobalt transition-colors mb-2">
+          EFFICIENT AI
+        </h3>
+<p class="font-body text-sm text-ink-muted leading-relaxed">
+          Exploring how capable models can become smaller, cheaper and more practical.
+        </p>
+</div>
+<div class="pt-6 font-mono text-xs text-ink-faint border-t border-borderline/60 flex items-center justify-between">
+<span class="text-ink font-semibold">PEFT · LoRA · KNOWLEDGE DISTILLATION</span>
+<span class="">EXPERIMENT_02</span>
+</div>
+</div>
+<!-- BLOCK 3: ON-DEVICE AI -->
+<div class="p-8 rounded-2xl bg-paper-card border border-borderline hover:border-ink transition-all flex flex-col justify-between group">
+<div>
+<div class="flex items-center justify-between text-xs font-mono text-ink-faint mb-4">
+<span class="text-sage-dark font-bold">REPO // ON_DEVICE_AI</span>
+<span class="group-hover:translate-x-1 transition-transform">↗</span>
+</div>
+<h3 class="font-display font-bold text-2xl text-ink group-hover:text-cobalt transition-colors mb-2">
+          ON-DEVICE AI
+        </h3>
+<p class="font-body text-sm text-ink-muted leading-relaxed">
+          What happens when useful intelligence has to run where the user is?
+        </p>
+</div>
+<div class="pt-6 font-mono text-xs text-ink-faint border-t border-borderline/60 flex items-center justify-between">
+<span class="text-ink font-semibold">SLMs · EDGE AI · LOCAL INFERENCE</span>
+<span class="">EXPERIMENT_03</span>
+</div>
+</div>
+<!-- BLOCK 4: APPLIED ML -->
+<div class="p-8 rounded-2xl bg-paper-card border border-borderline hover:border-ink transition-all flex flex-col justify-between group">
+<div>
+<div class="flex items-center justify-between text-xs font-mono text-ink-faint mb-4">
+<span class="text-stone-800 font-bold">REPO // APPLIED_ML</span>
+<span class="group-hover:translate-x-1 transition-transform">↗</span>
+</div>
+<h3 class="font-display font-bold text-2xl text-ink group-hover:text-cobalt transition-colors mb-2">
+          APPLIED ML
+        </h3>
+<p class="font-body text-sm text-ink-muted leading-relaxed">
+          Experiments where machine learning meets problems outside the benchmark.
+        </p>
+</div>
+<div class="pt-6 font-mono text-xs text-ink-faint border-t border-borderline/60 flex items-center justify-between">
+<span class="text-ink font-semibold">ML · OPTIMIZATION · REAL-WORLD DATA</span>
+<span class="">EXPERIMENT_04</span>
+</div>
+</div>
+</div>
+
+</section>
+<!-- ========================================================================= -->
+<!-- 13 — SMALL "CURRENTLY" -->
+<!-- ========================================================================= -->
+<section class="px-6 md:px-12 max-w-[1720px] mx-auto py-12">
+<div class="p-8 rounded-2xl bg-paper-card border border-borderline flex flex-col md:flex-row md:items-center justify-between gap-6 scroll-reveal visible">
+<div class="space-y-2">
+<div class="flex items-center gap-2 font-mono text-xs font-bold text-emerald-700 uppercase">
+<span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+        CURRENTLY
+      </div>
+<p class="font-body text-lg md:text-xl font-medium text-ink">
+        Building things. Breaking things. Learning how to build them better.
+      </p>
+</div>
+<div class="font-mono text-xs font-semibold text-ink-muted flex items-center gap-2">
+<span class="px-3 py-1 rounded bg-paper-dim border border-borderline">AI/ML · PRODUCT · SYSTEMS · RESEARCH</span>
+</div>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- 14 — CONTACT -->
+<!-- ========================================================================= -->
+<section class="px-6 md:px-12 max-w-[1720px] mx-auto py-24 border-t border-borderline" id="contact">
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-12 items-center">
+<div class="xl:col-span-7 space-y-8 scroll-reveal visible">
+<div class="font-mono text-xs font-bold text-cobalt tracking-widest uppercase">WHAT'S NEXT?</div>
+<h2 class="font-display font-extrabold text-5xl sm:text-7xl lg:text-[88px] leading-[0.88] tracking-tight text-ink">
+        HAVE A PROBLEM<br>
+        WORTH BUILDING?
+      </h2>
+<p class="font-body text-lg md:text-xl text-ink-muted max-w-lg leading-relaxed">
+        If there's something messy, interesting, or slightly impossible that you think could be built better — I'd like to hear about it.
+      </p>
+<div class="pt-2">
+<a class="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-ink text-paper font-mono font-bold text-sm tracking-wider hover:bg-cobalt transition-all shadow-md" href="../let_s_talk_koushik_upadhyay_contact/code.html">
+<span class="">LET'S TALK ↗</span>
+</a>
+</div>
+<div class="pt-4 font-mono text-xs text-ink-muted">
+        AI/ML engineering · intelligent systems · products · experiments
+      </div>
+</div>
+<!-- Illustrated Vignette -->
+<div class="xl:col-span-5 h-[400px] sm:h-[440px] rounded-3xl bg-gradient-to-b from-[#F2EDE2] via-[#FAF7F0] to-[#E5DDD0] border border-borderline p-8 relative overflow-hidden shadow-2xl shadow-stone-900/5 flex items-center justify-center scroll-reveal visible">
+<svg class="w-full h-full max-w-[440px]" fill="none" viewBox="0 0 400 300">
+<circle cx="280" cy="80" fill="#F0B28F" opacity="0.35" r="28"></circle>
+<circle cx="280" cy="80" fill="#FAF7F0" r="20"></circle>
+<path d="M0 220 Q120 180 250 210 T400 190 L400 300 L0 300 Z" fill="#A8B99C" opacity="0.4"></path>
+<path d="M0 240 Q150 200 300 230 T400 215 L400 300 L0 300 Z" fill="#5577A8" opacity="0.3"></path>
+<path d="M0 260 Q180 235 400 250 L400 300 L0 300 Z" fill="#614D3E"></path>
+<line stroke="#202124" stroke-width="3" x1="280" x2="280" y1="245" y2="120"></line>
+<polygon fill="#10B981" points="280,120 330,135 280,150"></polygon>
+<text fill="#FFF" font-family="monospace" font-size="9" font-weight="bold" x="290" y="139">DISPATCH</text>
+<!-- Stickman Marching -->
+<g class="anim-float">
+<ellipse cx="190" cy="252" fill="#2C241D" opacity="0.3" rx="24" ry="5"></ellipse>
+<path d="M185 175 L170 212 L158 250" stroke="#202124" stroke-linecap="round" stroke-width="4.5"></path>
+<path d="M198 175 L210 212 L225 250" stroke="#202124" stroke-linecap="round" stroke-width="4.5"></path>
+<path d="M184 125 L198 125 L196 178 L182 178 Z" fill="#5577A8" stroke="#202124" stroke-width="4"></path>
+<rect fill="#8A5A36" height="24" rx="3" stroke="#202124" stroke-width="2.5" width="14" x="170" y="130"></rect>
+<path d="M184 132 L168 155 L154 170" stroke="#202124" stroke-linecap="round" stroke-width="4"></path>
+<path d="M198 132 L214 155 L228 166" stroke="#202124" stroke-linecap="round" stroke-width="4"></path>
+<rect fill="#FAF7F0" height="20" rx="2" stroke="#202124" stroke-width="2" transform="rotate(15 224 160)" width="16" x="224" y="160"></rect>
+<circle cx="195" cy="105" fill="#F0D4BF" r="16" stroke="#202124" stroke-width="4"></circle>
+<path d="M182 101 C182 88 189 84 201 84 C211 84 213 90 212 100 Z" fill="#202124"></path>
+<circle cx="199" cy="106" fill="#FFF" fill-opacity="0.3" r="4.5" stroke="#202124" stroke-width="2"></circle>
+<circle cx="200" cy="106" fill="#202124" r="1.5"></circle>
+</g>
+</svg>
+</div>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- 15 — FOOTER -->
+<!-- ========================================================================= -->
+<footer class="px-6 md:px-12 py-16 border-t border-borderline bg-paper">
+<div class="max-w-[1720px] mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-8 mb-12">
+<!-- Left -->
+<div>
+<div class="font-mono text-2xl font-black text-ink mb-1">K/</div>
+<div class="font-display font-extrabold text-lg tracking-tight text-ink">KOUSHIK UPADHYAY</div>
+</div>
+<!-- Middle -->
+<div class="font-mono text-xs font-semibold text-ink-muted uppercase tracking-wider">
+      AI/ML ENGINEER · BUILDER · LEARNER · EXPERIMENTER
+    </div>
+<!-- Right -->
+<div class="flex items-center gap-6 font-mono text-xs font-bold text-ink">
+<a class="hover:text-cobalt transition-colors" href="https://github.com/SetterUk" target="_blank">GITHUB ↗</a>
+<a class="hover:text-cobalt transition-colors" href="https://www.linkedin.com/in/koushik-upadhyay-95565932b/" target="_blank">LINKEDIN ↗</a>
+<span class="text-ink-muted">Koushik4067@gmail.com</span>
+<a class="hover:text-cobalt transition-colors" href="../career_journey_koushik_upadhyay/code.html">RESUME ↗</a>
+</div>
+</div>
+<!-- Bottom Bar with Signature Stickman Vignette -->
+<div class="max-w-[1720px] mx-auto pt-8 border-t border-borderline/60 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-xs text-ink-faint">
+<div class="">© 2026 Koushik Upadhyay</div>
+<!-- Signature Vignette: Little Stickman sitting comfortably -->
+<div class="flex items-center gap-3">
+<svg class="w-10 h-10 overflow-visible" viewBox="0 0 40 40">
+<!-- Floor line -->
+<line stroke="#DCD4C4" stroke-width="1.5" x1="2" x2="38" y1="36" y2="36"></line>
+<!-- Sitting legs -->
+<path d="M18 26 L18 34 L28 34" stroke="#202124" stroke-linecap="round" stroke-width="2.5"></path>
+<!-- Torso -->
+<path d="M18 16 L18 26" stroke="#5577A8" stroke-linecap="round" stroke-width="4"></path>
+<!-- Arm on knee -->
+<path d="M18 18 L24 24 L22 28" stroke="#202124" stroke-linecap="round" stroke-width="2"></path>
+<!-- Head -->
+<circle cx="18" cy="11" fill="#F0D4BF" r="5" stroke="#202124" stroke-width="1.5"></circle>
+</svg>
+<span class="font-hand text-xl text-terracotta-dark font-bold">still building.</span>
+</div>
+</div>
+</footer>
+</main>
+<script>
+  // Mouse follower
+  const cursor = document.getElementById('cursor');
+  window.addEventListener('pointermove', (e) => {
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top = e.clientY + 'px';
+  });
+
+  document.querySelectorAll('a, button, .orb-card').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      cursor.style.width = '28px';
+      cursor.style.height = '28px';
+      cursor.style.backgroundColor = 'var(--terracotta)';
+      cursor.style.opacity = '0.5';
+    });
+    el.addEventListener('mouseleave', () => {
+      cursor.style.width = '14px';
+      cursor.style.height = '14px';
+      cursor.style.backgroundColor = 'var(--ink)';
+      cursor.style.opacity = '1';
+    });
+  });
+
+  // Scroll reveal observer
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
+
+  // Subtle Hero Parallax
+  const heroScene = document.getElementById('hero-scene');
+  const heroStickman = document.getElementById('hero-stickman');
+  if (heroScene && heroStickman) {
+    heroScene.addEventListener('pointermove', (e) => {
+      const rect = heroScene.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      heroStickman.style.transform = `translate(${x * 16}px, ${y * 10}px)`;
+    });
+    heroScene.addEventListener('pointerleave', () => {
+      heroStickman.style.transform = `translate(0px, 0px)`;
+    });
+  }
+</script>
+
+
+</body></html>

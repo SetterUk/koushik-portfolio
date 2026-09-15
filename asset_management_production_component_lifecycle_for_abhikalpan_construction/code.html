@@ -1,0 +1,1536 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>05 // ASSET MANAGEMENT — Production System for Abhikalpan Construction Pvt. Ltd.</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..700&amp;family=Hanken+Grotesk:ital,wght@0,300..700;1,300..700&amp;family=JetBrains+Mono:ital,wght@0,400..700;1,400..700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+    @layer base {
+      html, body {
+        margin: 0;
+        padding: 0;
+        background-color: #F7F3EA;
+        color: #1f2124;
+      }
+      body {
+        overscroll-behavior-y: auto;
+      }
+      main > :first-child {
+        margin-top: 0 !important;
+      }
+    }
+    .sticky-note {
+      box-shadow: 2px 3px 12px -2px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.05);
+      transform: rotate(-1.2deg);
+    }
+    .technical-grid {
+      background-image: radial-gradient(#c4c6d1 0.75px, transparent 0.75px);
+      background-size: 16px 16px;
+    }
+    pre code {
+      font-family: 'JetBrains Mono', monospace;
+    }
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f4f3f7;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #c4c6d1;
+      border-radius: 3px;
+    }
+  </style>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#2c4a7e",
+            "primary-container": "#103366",
+            "on-primary": "#ffffff",
+            "tertiary": "#e27d60",
+            "tertiary-container": "#611d04",
+            "on-tertiary": "#ffffff",
+            "secondary": "#85a392",
+            "secondary-dark": "#476553",
+            "on-secondary": "#ffffff",
+            "background": "#F7F3EA",
+            "surface": "#F7F3EA",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-low": "#f4f3f7",
+            "surface-container": "#efedf1",
+            "surface-container-high": "#e9e7eb",
+            "surface-container-highest": "#e3e2e6",
+            "on-surface": "#1f2124",
+            "on-surface-variant": "#43474f",
+            "outline": "#747780",
+            "outline-variant": "#c4c6d1",
+            "error": "#dc2626",
+            "error-container": "#fee2e2",
+            "on-error-container": "#991b1b"
+          },
+          borderRadius: {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          fontFamily: {
+            "display": ["Bricolage Grotesque", "sans-serif"],
+            "body": ["Hanken Grotesk", "sans-serif"],
+            "mono": ["JetBrains Mono", "monospace"]
+          }
+        }
+      }
+    }
+  </script>
+
+<!-- UNIFIED BACKGROUND -->
+<style>
+    body, main, html {
+        background-color: #F7F3EA !important;
+    }
+</style>
+</head>
+<body class="bg-background font-body text-on-surface antialiased">
+<!-- GLOBAL STICKY PROGRESS INDICATOR -->
+<!-- UNIFIED NAVBAR -->
+<header class="fixed top-0 left-0 right-0 h-20 px-6 md:px-12 flex items-center justify-between z-50 bg-[#F7F3EA]/90 backdrop-blur-md border-b border-[#DCD4C4]/70" style="font-family: 'JetBrains Mono', monospace;">
+<a class="flex items-center gap-3 group" href="../koushik_upadhyay_ai_ml_engineer_builder/code.html#top">
+<div class="w-9 h-9 rounded-xl bg-[#202124] text-[#F7F3EA] flex items-center justify-center font-extrabold text-sm group-hover:bg-[#5577A8] transition-colors shadow-sm">
+      K/
+    </div>
+<span class="font-bold text-sm tracking-tight text-[#202124] group-hover:text-[#5577A8] transition-colors hidden sm:inline" style="font-family: 'Bricolage Grotesque', sans-serif;">KOUSHIK UPADHYAY</span>
+</a>
+<nav class="hidden md:flex items-center gap-8 text-xs font-semibold tracking-wider text-[#5A5852]">
+<a class="hover:text-[#202124] transition-colors hover:underline underline-offset-8" href="../koushik_upadhyay_ai_ml_engineer_builder/code.html#work">WORK</a>
+<a class="hover:text-[#202124] transition-colors hover:underline underline-offset-8" href="../koushik_upadhyay_ai_ml_engineer_builder/code.html#about">ABOUT</a>
+<a class="hover:text-[#202124] transition-colors hover:underline underline-offset-8" href="../career_journey_koushik_upadhyay/code.html">CAREER</a>
+<a class="hover:text-[#202124] transition-colors hover:underline underline-offset-8" href="../how_i_build_engineering_philosophy_methodology/code.html">HOW I BUILD</a>
+<a class="hover:text-[#202124] transition-colors hover:underline underline-offset-8" href="../koushik_upadhyay_ai_ml_engineer_builder/code.html#research">RESEARCH</a>
+<a class="hover:text-[#202124] transition-colors hover:underline underline-offset-8" href="../let_s_talk_koushik_upadhyay_contact/code.html">CONTACT</a>
+</nav>
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#DCD4C4] bg-[#eae8ee] text-xs font-medium shadow-sm">
+<span class="w-2 h-2 rounded-full bg-[#10B981] animate-pulse"></span>
+<span class="text-[#202124]">AI / ML ENGINEER</span>
+</div>
+<a class="md:hidden w-8 h-8 rounded-full bg-[#202124] text-[#F7F3EA] flex items-center justify-center text-xs" href="../let_s_talk_koushik_upadhyay_contact/code.html">?</a>
+</div>
+</header>
+<main class="w-full pt-14">
+<!-- SUB-BAR METADATA RUNNER -->
+<div class="w-full bg-surface-container-low border-b border-outline-variant/40 py-2">
+<div class="max-w-[1360px] mx-auto px-6 flex flex-wrap items-center justify-between text-xs font-mono text-on-surface-variant gap-2">
+<div class="flex items-center gap-2">
+<span class="text-primary font-bold">CLIENT: ABHIKALPAN CONSTRUCTION PVT. LTD.</span>
+<span>•</span>
+<span>DOMAIN: INDUSTRIAL ASSET &amp; FAÇADE ASSEMBLY WORKFLOW</span>
+</div>
+<div class="flex items-center gap-4">
+<span>ON-PREMISE AIR-GAPPED LAN</span>
+<span>•</span>
+<span class="text-secondary-dark font-semibold">100% AUDIT ACCURACY</span>
+</div>
+</div>
+</div>
+<!-- HERO SECTION -->
+<section class="w-full py-16 lg:py-24 bg-background border-b border-outline-variant/40 technical-grid relative">
+<div class="max-w-[1360px] mx-auto px-6">
+<!-- Eyebrow -->
+<div class="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-on-surface-variant mb-4">
+<span class="px-2 py-0.5 rounded bg-primary/10 text-primary font-bold">05 / SELECTED WORK</span>
+<span>•</span>
+<span>PRODUCTION / ENTERPRISE SOFTWARE</span>
+<span>•</span>
+<span class="text-tertiary-container font-semibold">MONOGRAPH SPEC</span>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+<div class="lg:col-span-7 flex flex-col gap-6">
+<h1 class="font-display text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-on-surface leading-[1.05] uppercase">
+              FROM PRODUCTION<br/>
+<span class="text-primary italic">TO HANDOVER.</span>
+</h1>
+<p class="font-body text-lg sm:text-xl text-on-surface-variant max-w-2xl leading-relaxed">
+              A production asset-management platform built for <strong class="text-on-surface">Abhikalpan Construction Pvt. Ltd.</strong> to track aluminium window and door components through production, palleting, QC, and final client handover.
+            </p>
+<!-- Production Proof Badge Banner -->
+<div class="p-5 rounded-lg bg-surface-container-lowest border-2 border-primary/30 shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+<div class="flex items-start gap-3">
+<span class="w-3.5 h-3.5 rounded-full bg-secondary-dark mt-1 flex-shrink-0"></span>
+<div>
+<div class="font-mono text-xs uppercase tracking-wider font-bold text-on-surface flex items-center gap-2">
+                    LIVE IN PRODUCTION · ABHIKALPAN CONSTRUCTION PVT. LTD.
+                  </div>
+<div class="font-body text-xs text-on-surface-variant mt-0.5">
+                    Direct on-premise deployment on client LAN server · Deployed on their hardware
+                  </div>
+</div>
+</div>
+<span class="px-3 py-1 rounded bg-secondary/20 text-secondary-dark font-mono text-xs font-bold uppercase tracking-wider whitespace-nowrap">
+                PROD-VERIFIED
+              </span>
+</div>
+<!-- Telemetry Metrics Strip -->
+<div class="grid grid-cols-3 gap-4 pt-2">
+<div class="p-4 rounded bg-surface-container-low border border-outline-variant/60">
+<div class="font-mono text-xs text-on-surface-variant uppercase">COMPONENTS</div>
+<div class="font-display text-3xl font-bold text-primary mt-1">10,000+</div>
+<div class="font-mono text-[11px] text-secondary-dark mt-1">Tracked End-to-End</div>
+</div>
+<div class="p-4 rounded bg-surface-container-low border border-outline-variant/60">
+<div class="font-mono text-xs text-on-surface-variant uppercase">CONCURRENCY</div>
+<div class="font-display text-3xl font-bold text-secondary-dark mt-1">0</div>
+<div class="font-mono text-[11px] text-on-surface-variant mt-1">Race Conditions in Prod</div>
+</div>
+<div class="p-4 rounded bg-surface-container-low border border-outline-variant/60">
+<div class="font-mono text-xs text-on-surface-variant uppercase">DATA HOSTING</div>
+<div class="font-display text-3xl font-bold text-on-surface mt-1">100%</div>
+<div class="font-mono text-[11px] text-on-surface-variant mt-1">On-Prem LAN Server</div>
+</div>
+</div>
+<div class="pt-6">
+<a href="https://github.com/SetterUk/Abhikalpan_Asset_management" target="_blank" class="px-6 py-3 rounded bg-primary text-on-primary font-mono text-sm uppercase tracking-wider font-bold inline-flex items-center gap-2 hover:opacity-90 transition-opacity shadow-sm">
+  <span class="material-symbols-outlined text-[18px]">code</span>
+  VIEW GITHUB REPO
+</a>
+</div>
+</div>
+<!-- Hero Character Vignette: Extrusion Yard & Floating Manifest -->
+<div class="lg:col-span-5 flex flex-col gap-4">
+<div class="p-6 rounded-xl bg-surface-container border border-outline-variant relative overflow-hidden shadow-sm">
+<!-- SVG Builder with Extruded Component -->
+<div class="w-full flex justify-center py-4">
+<svg class="w-full max-w-sm h-auto text-on-surface" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 340 240">
+<!-- Ground Staging Line -->
+<line class="stroke-on-surface" stroke-width="2.5" x1="20" x2="320" y1="210" y2="210"></line>
+<!-- Pallet Stack in background -->
+<rect class="stroke-outline-variant fill-surface-container-high" height="20" rx="1" width="80" x="220" y="140"></rect>
+<rect class="stroke-outline-variant fill-surface-container-high" height="20" rx="1" width="70" x="225" y="160"></rect>
+<rect class="stroke-outline fill-surface-container-highest" height="30" rx="1" width="90" x="215" y="180"></rect>
+<line class="stroke-outline-variant" stroke-dasharray="2 2" x1="240" x2="240" y1="180" y2="210"></line>
+<line class="stroke-outline-variant" stroke-dasharray="2 2" x1="270" x2="270" y1="180" y2="210"></line>
+<!-- Extrusion Profile Rack -->
+<line class="stroke-outline" stroke-width="2" x1="20" x2="20" y1="210" y2="100"></line>
+<line class="stroke-outline" stroke-width="2" x1="60" x2="60" y1="210" y2="100"></line>
+<line class="stroke-outline" x1="15" x2="65" y1="130" y2="130"></line>
+<line class="stroke-outline" x1="15" x2="65" y1="170" y2="170"></line>
+<!-- Raw aluminium bars resting on rack -->
+<rect class="fill-outline-variant stroke-outline" height="6" rx="1" width="44" x="18" y="122"></rect>
+<rect class="fill-outline-variant stroke-outline" height="6" rx="1" width="44" x="18" y="162"></rect>
+<!-- Builder Stickman Character -->
+<!-- Head -->
+<circle class="stroke-on-surface fill-background" cx="130" cy="100" r="14" stroke-width="2"></circle>
+<!-- Hardhat -->
+<path class="stroke-tertiary-container fill-tertiary/40" d="M 115 96 C 117 84, 143 84, 145 96 Z" stroke-width="2"></path>
+<!-- Curious / focused eye -->
+<circle cx="134" cy="100" fill="currentColor" r="1.5"></circle>
+<!-- Body -->
+<line class="stroke-on-surface" stroke-width="2.2" x1="130" x2="130" y1="114" y2="160"></line>
+<!-- Left Arm holding the long extrusion -->
+<path class="stroke-on-surface" d="M 130 124 L 105 136 L 90 142" stroke-width="2.2"></path>
+<!-- Right Arm supporting extrusion -->
+<path class="stroke-on-surface" d="M 130 126 L 155 138 L 175 142" stroke-width="2.2"></path>
+<!-- The Extruded Aluminium Bar being held -->
+<rect class="stroke-primary fill-primary/20" height="9" rx="1" stroke-width="2" width="120" x="75" y="138"></rect>
+<line class="stroke-primary" stroke-dasharray="3 3" x1="75" x2="195" y1="142" y2="142"></line>
+<!-- Legs -->
+<line class="stroke-on-surface" stroke-width="2.2" x1="130" x2="116" y1="160" y2="210"></line>
+<line class="stroke-on-surface" stroke-width="2.2" x1="130" x2="144" y1="160" y2="210"></line>
+</svg>
+</div>
+<!-- Floating Digital Manifest Tag -->
+<div class="p-3 rounded bg-surface-container-lowest border-2 border-primary font-mono text-[11px] space-y-1 shadow-md">
+<div class="flex items-center justify-between border-b border-outline-variant/60 pb-1">
+<span class="font-bold text-primary">TAG_ID: #10482</span>
+<span class="px-1.5 py-0.2 rounded bg-tertiary/20 text-tertiary-container font-bold">STATE: INPUT</span>
+</div>
+<div class="grid grid-cols-2 gap-1 text-on-surface-variant pt-1">
+<div>PROJECT: <span class="text-on-surface font-semibold">IPO-023</span></div>
+<div>TOWER: <span class="text-on-surface font-semibold">B</span></div>
+<div>FLAT: <span class="text-on-surface font-semibold">A-1204</span></div>
+<div>UNIT: <span class="text-on-surface font-semibold">WINDOW W-02</span></div>
+</div>
+</div>
+<!-- Handwritten Sticky Note -->
+<div class="sticky-note mt-3 p-3 bg-[#fff7d6] border border-[#ebd88d] text-on-surface text-xs font-mono rounded">
+<div class="font-bold text-tertiary-container flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">push_pin</span> [FLOOR QUESTION]
+                </div>
+<p class="mt-1 italic text-on-surface font-semibold">
+                  “Where does this specific extrusion go? Which pallet? Which truck? Which flat?”
+                </p>
+</div>
+</div>
+<!-- Scroll prompt banner -->
+<div class="p-3 rounded bg-surface-container-low border border-outline-variant/60 text-center font-mono text-xs text-primary font-bold flex items-center justify-center gap-2 uppercase tracking-wider">
+<span>SCROLL ↓ FOLLOW ONE COMPONENT THROUGH THE SYSTEM</span>
+<span class="material-symbols-outlined text-sm animate-bounce">south</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 01 // THE COMPONENT (THE PROTAGONIST) -->
+<section class="w-full py-16 bg-surface-container-low border-b border-outline-variant/40">
+<div class="max-w-[1360px] mx-auto px-6">
+<div class="flex flex-col gap-2 mb-8">
+<span class="font-mono text-xs text-primary uppercase tracking-widest font-bold">01 // THE COMPONENT</span>
+<h2 class="font-display text-3xl sm:text-4xl font-bold uppercase text-on-surface">
+            MEET THE PROTAGONIST: <span class="text-primary">COMPONENT #10482</span>
+</h2>
+<p class="font-body text-base text-on-surface-variant max-w-3xl">
+            In architectural construction, a high-rise façade is not an abstract drawing. It is thousands of precisely milled, anodized aluminium extrusions. If one single sash frame is fabricated 3mm off or delivered to Tower A instead of Tower B, an entire flat's handover halts.
+          </p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+<div class="lg:col-span-6 p-6 rounded-xl bg-surface-container-lowest border border-outline-variant shadow-sm space-y-4">
+<div class="flex items-center justify-between border-b border-outline-variant/60 pb-3">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-primary"></span>
+<span class="font-mono text-xs uppercase font-bold text-on-surface">PHYSICAL ASSET PASSPORT</span>
+</div>
+<span class="font-mono text-xs text-primary font-bold">SERIAL: AK-EXT-10482</span>
+</div>
+<div class="p-4 bg-surface-container-low rounded border border-outline-variant/40 font-mono text-xs space-y-2">
+<div class="flex justify-between"><span class="text-on-surface-variant">Profile Spec:</span> <span class="font-bold text-on-surface">Jindal Section 27044 (Heavy Sash Outer)</span></div>
+<div class="flex justify-between"><span class="text-on-surface-variant">Cut Dimensions:</span> <span class="font-bold text-on-surface">2,450mm × 48mm × 1.6mm Gauge</span></div>
+<div class="flex justify-between"><span class="text-on-surface-variant">Finish:</span> <span class="font-bold text-tertiary-container">Architectural Champagne Anodized (25 Micron)</span></div>
+<div class="flex justify-between"><span class="text-on-surface-variant">Glass Spec:</span> <span class="font-bold text-on-surface">6mm Toughened Clear Float + EPDM Gasket</span></div>
+<div class="flex justify-between"><span class="text-on-surface-variant">Target Handover:</span> <span class="font-bold text-secondary-dark">Tower B // Flat A-1204 // Master Bed Balcony</span></div>
+</div>
+<div class="flex items-center gap-2 text-xs font-mono text-on-surface-variant">
+<span class="material-symbols-outlined text-base text-secondary-dark">check_box</span>
+<span>Bar code stamped at raw intake. Requires 5 deterministic state transitions before site installation.</span>
+</div>
+</div>
+<div class="lg:col-span-6 flex flex-col gap-4">
+<div class="p-5 rounded-lg bg-surface-container border border-outline-variant">
+<h3 class="font-display text-lg font-bold text-on-surface uppercase mb-2">The Multi-Story Lifecycle Problem</h3>
+<p class="font-body text-sm text-on-surface-variant leading-relaxed">
+                When Abhikalpan builds a multi-story residential project like IPO-023, there are over 10,000 distinct aluminium profiles. Each one is custom cut to millimeter tolerances. The journey of #10482 spans 4 distinct facilities: raw extrusion stocking, factory precision cutting &amp; crimping, central pallet assembly, and crane site hoisting.
+              </p>
+</div>
+<div class="p-4 rounded-lg bg-primary/10 border border-primary/20 font-mono text-xs text-primary leading-relaxed">
+<strong>CORE SYSTEM GOAL:</strong> At any second of the day, any site supervisor or client engineer should query <code class="bg-surface-container-lowest px-1 rounded font-bold text-on-surface">#10482</code> and know its exact physical coordinates, pallet container, inspection report, and custody holder.
+            </div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 02 // INPUT — IT STARTS WITH A SPREADSHEET -->
+<section class="w-full py-16 bg-background border-b border-outline-variant/40">
+<div class="max-w-[1360px] mx-auto px-6">
+<div class="flex flex-col gap-2 mb-8">
+<span class="font-mono text-xs text-tertiary-container uppercase tracking-widest font-bold">02 // INTAKE PIPELINE</span>
+<h2 class="font-display text-3xl sm:text-4xl font-bold uppercase text-on-surface">
+            IT STARTS WITH A <span class="text-primary">SPREADSHEET.</span>
+</h2>
+<p class="font-body text-base text-on-surface-variant max-w-3xl">
+            Clients supply project schedules as massive nested Excel workbooks. The platform ingests this tabular chaos, verifies architectural constraints, normalizes rows into atomic entities, and stores them in PostgreSQL.
+          </p>
+</div>
+<!-- Pipeline Diagram -->
+<div class="p-6 rounded-xl bg-surface-container-lowest border border-outline-variant shadow-sm mb-6">
+<div class="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-4 font-mono text-xs">
+<!-- Stage 1 -->
+<div class="p-4 rounded bg-surface-container-low border border-outline-variant/60 flex-1">
+<div class="text-outline uppercase text-[10px] font-bold">STAGE 01</div>
+<div class="font-bold text-sm text-on-surface mt-1 flex items-center gap-1.5">
+<span class="material-symbols-outlined text-lg text-primary">table_view</span>
+                EXCEL (.XLSX)
+              </div>
+<div class="text-on-surface-variant text-[11px] mt-1">Multi-tab project BOM with 4,500+ unvalidated raw component rows</div>
+</div>
+<span class="material-symbols-outlined text-outline hidden lg:block">arrow_forward</span>
+<span class="material-symbols-outlined text-outline lg:hidden self-center">arrow_downward</span>
+<!-- Stage 2 -->
+<div class="p-4 rounded bg-surface-container-low border border-outline-variant/60 flex-1">
+<div class="text-outline uppercase text-[10px] font-bold">STAGE 02</div>
+<div class="font-bold text-sm text-primary mt-1 flex items-center gap-1.5">
+<span class="material-symbols-outlined text-lg text-primary">rule</span>
+                SCHEMA VALIDATION
+              </div>
+<div class="text-on-surface-variant text-[11px] mt-1">Pydantic models verify tower/flat codes, length bounds &amp; unit specs</div>
+</div>
+<span class="material-symbols-outlined text-outline hidden lg:block">arrow_forward</span>
+<span class="material-symbols-outlined text-outline lg:hidden self-center">arrow_downward</span>
+<!-- Stage 3 -->
+<div class="p-4 rounded bg-surface-container-low border border-outline-variant/60 flex-1">
+<div class="text-outline uppercase text-[10px] font-bold">STAGE 03</div>
+<div class="font-bold text-sm text-tertiary-container mt-1 flex items-center gap-1.5">
+<span class="material-symbols-outlined text-lg text-tertiary">alt_route</span>
+                NORMALIZATION
+              </div>
+<div class="text-on-surface-variant text-[11px] mt-1">De-duplicates profiles, maps foreign keys to projects &amp; creates unit trees</div>
+</div>
+<span class="material-symbols-outlined text-outline hidden lg:block">arrow_forward</span>
+<span class="material-symbols-outlined text-outline lg:hidden self-center">arrow_downward</span>
+<!-- Stage 4 -->
+<div class="p-4 rounded bg-secondary/15 border border-secondary/40 flex-1">
+<div class="text-secondary-dark uppercase text-[10px] font-bold">STAGE 04</div>
+<div class="font-bold text-sm text-secondary-dark mt-1 flex items-center gap-1.5">
+<span class="material-symbols-outlined text-lg text-secondary-dark">database</span>
+                POSTGRESQL INSERT
+              </div>
+<div class="text-on-surface-variant text-[11px] mt-1">Atomic bulk transaction. State set to <code class="font-bold">INPUT</code> for all records</div>
+</div>
+</div>
+</div>
+<!-- Sticky Note Callout -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+<div class="md:col-span-8 flex items-center gap-4 p-4 rounded bg-surface-container border border-outline-variant">
+<svg class="w-16 h-16 flex-shrink-0 text-on-surface" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 80 80">
+<circle cx="30" cy="25" r="10"></circle>
+<line x1="30" x2="30" y1="35" y2="60"></line>
+<line x1="30" x2="15" y1="42" y2="52"></line>
+<line x1="30" x2="45" y1="42" y2="40"></line>
+<line x1="30" x2="20" y1="60" y2="78"></line>
+<line x1="30" x2="40" y1="60" y2="78"></line>
+<rect class="stroke-primary fill-primary/10" height="24" rx="2" width="28" x="45" y="28"></rect>
+<line stroke-width="1.2" x1="49" x2="69" y1="34" y2="34"></line>
+<line stroke-width="1.2" x1="49" x2="65" y1="40" y2="40"></line>
+</svg>
+<div>
+<div class="font-mono text-xs text-primary font-bold uppercase">BULK INGESTION ENGINE</div>
+<p class="font-body text-sm text-on-surface-variant mt-0.5">
+                Instead of slow one-by-one queries, the FastAPI backend processes multi-megabyte Excel uploads in a background chunked worker. 10,000 components are parsed, checksummed, and staged in under 1.8 seconds.
+              </p>
+</div>
+</div>
+<div class="md:col-span-4">
+<div class="sticky-note p-4 bg-[#fff7d6] border border-[#ebd88d] rounded font-mono text-xs text-on-surface">
+<span class="font-bold text-tertiary-container block mb-1">“THE FACTORY LAW”</span>
+<p class="italic">
+                “A spreadsheet is useful on an executive’s desk. Until 20 supervisors have to work from it simultaneously on the dusty floor.”
+              </p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 03 // PRODUCTION — NOW IT HAS A JOB -->
+<section class="w-full py-16 bg-surface-container-low border-b border-outline-variant/40">
+<div class="max-w-[1360px] mx-auto px-6">
+<div class="flex flex-col gap-2 mb-8">
+<span class="font-mono text-xs text-secondary-dark uppercase tracking-widest font-bold">03 // FLOOR EXECUTION</span>
+<h2 class="font-display text-3xl sm:text-4xl font-bold uppercase text-on-surface">
+            NOW IT HAS <span class="text-primary">A JOB.</span>
+</h2>
+<p class="font-body text-base text-on-surface-variant max-w-3xl">
+            When raw components are ready for fabrication, the floor supervisor doesn't sift through paperwork. Using a high-contrast, tactile interface built for rugged tablets and smartphones, they search by unit, sort by profile, and flip status to PRODUCTION.
+          </p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+<!-- Mobile / Tablet Interface Mockup -->
+<div class="lg:col-span-7 bg-surface-container-lowest border-2 border-outline-variant rounded-xl shadow-md overflow-hidden">
+<!-- Mockup Header -->
+<div class="bg-surface-container-high px-4 py-3 border-b border-outline-variant flex items-center justify-between font-mono text-xs">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary-dark"></span>
+<span class="font-bold text-on-surface">FLOOR TERMINAL // BAY 2B</span>
+</div>
+<span class="text-on-surface-variant">WORKER: S. KUMAR (LEAD)</span>
+</div>
+<!-- Search & Actions -->
+<div class="p-4 bg-surface-container-low border-b border-outline-variant/50 flex flex-wrap items-center justify-between gap-3">
+<div class="flex items-center gap-2 bg-surface-container-lowest px-3 py-2 rounded border border-outline-variant text-xs font-mono flex-1 min-w-[200px]">
+<span class="material-symbols-outlined text-sm text-outline">search</span>
+<span class="text-on-surface font-semibold">TOWER: B | FLAT: A-1204</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="px-3 py-1.5 rounded bg-primary text-on-primary font-mono text-xs font-bold uppercase tracking-wider">
+                  ACTION: BATCH CUT
+                </span>
+</div>
+</div>
+<!-- Floor List Mockup Items -->
+<div class="p-4 divide-y divide-outline-variant/40 space-y-3 font-mono text-xs">
+<!-- Item Active #10482 -->
+<div class="pt-3 first:pt-0 flex items-center justify-between gap-3">
+<div>
+<div class="flex items-center gap-2">
+<span class="font-bold text-primary text-sm">#10482</span>
+<span class="text-on-surface font-semibold">Jindal Outer Sash (2450mm)</span>
+<span class="px-2 py-0.5 rounded bg-secondary/20 text-secondary-dark text-[10px] font-bold">STATE MUTATED</span>
+</div>
+<div class="text-[11px] text-on-surface-variant mt-0.5">Assigned to: Miter Saw Station #3 · Barcode verified</div>
+</div>
+<button class="px-3 py-2 rounded bg-primary text-on-primary font-bold text-[11px] uppercase tracking-wider shadow-sm hover:bg-primary-container">
+                  IN PRODUCTION ✓
+                </button>
+</div>
+<!-- Item 2 -->
+<div class="pt-3 flex items-center justify-between gap-3 opacity-60">
+<div>
+<div class="flex items-center gap-2">
+<span class="font-bold text-on-surface">#10483</span>
+<span class="text-on-surface">Jindal Outer Sash (2450mm)</span>
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant text-[10px]">INPUT</span>
+</div>
+<div class="text-[11px] text-on-surface-variant mt-0.5">Queued behind batch #81</div>
+</div>
+<button class="px-3 py-2 rounded bg-surface-container-high text-on-surface font-bold text-[11px] uppercase tracking-wider">
+                  MOVE TO PROD
+                </button>
+</div>
+</div>
+</div>
+<!-- Tactile Engineering Highlights -->
+<div class="lg:col-span-5 space-y-4">
+<div class="p-5 rounded-lg bg-surface-container-lowest border border-outline-variant">
+<h3 class="font-display text-base font-bold text-on-surface uppercase mb-1">State Mutation Guarantee</h3>
+<p class="font-body text-sm text-on-surface-variant leading-relaxed">
+                When the operator taps "MOVE TO PROD", the backend performs an immediate state-machine transition from <code class="bg-surface-container px-1 py-0.5 rounded font-mono font-bold text-primary">INPUT</code> to <code class="bg-surface-container px-1 py-0.5 rounded font-mono font-bold text-secondary-dark">PRODUCTION</code>. The system stamps the operator ID, precise machine timestamp, and cutting station allocation.
+              </p>
+</div>
+<div class="p-4 rounded-lg bg-surface-container border border-outline-variant/60 font-mono text-xs space-y-1">
+<div class="text-primary font-bold">TACTILE DESIGN FOR INDUSTRIAL ENVIRONMENTS:</div>
+<div class="text-on-surface-variant">• 48px minimum touch targets for gloved fingers</div>
+<div class="text-on-surface-variant">• High-contrast monochrome &amp; bold color chips legible under harsh halogen yard fixtures</div>
+<div class="text-on-surface-variant">• Zero nested modals; single-touch confirmation with instant tactile audio feedback</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 04 // PALLETING — ONE COMPONENT ISN'T THE DELIVERY. THE PALLET IS. -->
+<section class="w-full py-16 bg-background border-b border-outline-variant/40">
+<div class="max-w-[1360px] mx-auto px-6">
+<div class="flex flex-col gap-2 mb-8">
+<span class="font-mono text-xs text-primary uppercase tracking-widest font-bold">04 // PALLET ASSEMBLY</span>
+<h2 class="font-display text-3xl sm:text-4xl font-bold uppercase text-on-surface">
+            ONE COMPONENT ISN’T THE DELIVERY.<br/><span class="text-primary">THE PALLET IS.</span>
+</h2>
+<p class="font-body text-base text-on-surface-variant max-w-3xl">
+            You cannot send single window sashes loose on an open flatbed truck. Components are bundled into heavy steel pallets organized strictly by tower and floor. The pallet becomes the unified atomic shipping container.
+          </p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+<!-- Pallet Grouping Visualization -->
+<div class="lg:col-span-7 p-6 rounded-xl bg-surface-container-lowest border-2 border-outline-variant relative shadow-sm">
+<div class="flex items-center justify-between border-b border-outline-variant/60 pb-3 mb-4 font-mono text-xs">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-base">inventory_2</span>
+<span class="font-bold text-on-surface">CONTAINER AGGREGATION: PALLET #PL-084</span>
+</div>
+<span class="px-2 py-0.5 rounded bg-primary text-on-primary font-bold">4 COMPONENTS BUNDLED</span>
+</div>
+<!-- The Components bundled together -->
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-5">
+<div class="p-3 rounded bg-surface-container-low border border-outline-variant font-mono text-xs text-center">
+<div class="text-outline text-[10px]">EXTRUSION 1</div>
+<div class="font-bold text-on-surface mt-1">#10481</div>
+<div class="text-[10px] text-secondary-dark mt-1">Outer Track</div>
+</div>
+<div class="p-3 rounded bg-primary/15 border-2 border-primary font-mono text-xs text-center shadow-sm">
+<div class="text-primary text-[10px] font-bold">PROTAGONIST</div>
+<div class="font-bold text-primary text-sm mt-1">#10482</div>
+<div class="text-[10px] text-primary font-semibold mt-1">Sash Frame</div>
+</div>
+<div class="p-3 rounded bg-surface-container-low border border-outline-variant font-mono text-xs text-center">
+<div class="text-outline text-[10px]">EXTRUSION 3</div>
+<div class="font-bold text-on-surface mt-1">#10483</div>
+<div class="text-[10px] text-secondary-dark mt-1">Interlock Bar</div>
+</div>
+<div class="p-3 rounded bg-surface-container-low border border-outline-variant font-mono text-xs text-center">
+<div class="text-outline text-[10px]">EXTRUSION 4</div>
+<div class="font-bold text-on-surface mt-1">#10484</div>
+<div class="text-[10px] text-secondary-dark mt-1">Bottom Rail</div>
+</div>
+</div>
+<!-- Cryptographic QR Code Banner -->
+<div class="p-4 rounded-lg bg-surface-container border border-outline-variant flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-xs">
+<div class="flex items-center gap-4">
+<!-- SVG QR Code Icon -->
+<div class="w-16 h-16 bg-surface-container-lowest border border-outline p-1 rounded flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-4xl text-on-surface">qr_code_2</span>
+</div>
+<div>
+<div class="font-bold text-sm text-on-surface">PALLET MANIFEST QR: PL-084</div>
+<div class="text-on-surface-variant text-[11px] mt-0.5">SHA256: 7f89d3...c10b | SIGNED DISPATCH</div>
+<div class="text-primary text-[11px] mt-0.5 font-semibold">TOWER B // 12TH FLOOR MULTI-UNIT BUNDLE</div>
+</div>
+</div>
+<span class="px-3 py-1.5 rounded bg-secondary text-on-secondary font-bold text-[11px] uppercase tracking-wider whitespace-nowrap">
+                SEALED &amp; TAGGED
+              </span>
+</div>
+</div>
+<!-- Character Annotation -->
+<div class="lg:col-span-5 flex flex-col gap-4">
+<div class="p-6 rounded-xl bg-surface-container-low border border-outline-variant flex flex-col gap-3">
+<div class="font-mono text-xs text-primary font-bold uppercase tracking-wider">
+                COMPOSITE ATOMICITY
+              </div>
+<p class="font-body text-sm text-on-surface-variant leading-relaxed">
+                By grouping components into Pallets, Abhikalpan eliminated single-item loss. The Pallet ID references foreign keys of every component inside it. If Pallet PL-084 moves, all 4 bundled extrusions move simultaneously in the relational graph.
+              </p>
+<div class="sticky-note p-3 bg-[#fff7d6] border border-[#ebd88d] rounded font-mono text-xs mt-2">
+<span class="font-bold text-tertiary-container block">STICKER APPLIED:</span>
+                “Okay. Now we don’t track 10,000 loose bars. We track 400 verified, scan-ready pallets.”
+              </div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 05 // THE PROBLEM WITH MULTIPLE PEOPLE — CONCURRENCY & RACE CONDITIONS -->
+<section class="w-full py-16 bg-surface-container-low border-b border-outline-variant/40">
+<div class="max-w-[1360px] mx-auto px-6">
+<div class="flex flex-col gap-2 mb-8">
+<div class="inline-flex items-center gap-2 text-error font-mono text-xs uppercase tracking-widest font-bold">
+<span class="w-2 h-2 rounded-full bg-error"></span>
+            05 // CONCURRENCY ENGINEERING
+          </div>
+<h2 class="font-display text-3xl sm:text-4xl font-bold uppercase text-on-surface">
+            WHAT HAPPENS WHEN TWO PEOPLE<br/><span class="text-error">CLICK AT ONCE?</span>
+</h2>
+<p class="font-body text-base text-on-surface-variant max-w-3xl">
+            This is where naive CRUD applications disintegrate in industrial reality. Two supervisors across two ends of a 100-meter fabrication bay attempt to allocate component #10482 to different pallets at the exact same millisecond.
+          </p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- The Catastrophic Failure Mode (Unprotected) -->
+<div class="lg:col-span-5 p-6 rounded-xl bg-error-container/20 border-2 border-error/40 flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between border-b border-error/30 pb-3 mb-4 font-mono text-xs text-error font-bold">
+<span>NAIVE APP FAILURE MODE</span>
+<span>DATA CORRUPTION</span>
+</div>
+<div class="space-y-3 font-mono text-xs">
+<div class="p-3 rounded bg-surface-container-lowest border border-error/30">
+<div class="text-error font-bold">08:14:02.100 UTC</div>
+<div class="text-on-surface">Supervisor A queries #10482 (Status: UNASSIGNED)</div>
+</div>
+<div class="p-3 rounded bg-surface-container-lowest border border-error/30">
+<div class="text-error font-bold">08:14:02.105 UTC</div>
+<div class="text-on-surface">Supervisor B queries #10482 (Status: UNASSIGNED)</div>
+</div>
+<div class="p-3 rounded bg-surface-container-lowest border border-error/30">
+<div class="text-error font-bold">08:14:02.120 UTC</div>
+<div class="text-on-surface">Supervisor A assigns to Pallet #PL-084</div>
+</div>
+<div class="p-3 rounded bg-surface-container-lowest border border-error/30">
+<div class="text-error font-bold">08:14:02.122 UTC</div>
+<div class="text-on-surface">Supervisor B overwrites &amp; assigns to Pallet #PL-099</div>
+</div>
+</div>
+<div class="mt-4 p-3 rounded bg-error text-on-primary font-mono text-xs font-bold space-y-1">
+<div>❌ DOUBLE BOOKING OCCURRED</div>
+<div>❌ PHYSICAL DISPATCH MISMATCH AT THE TRUCK</div>
+<div>❌ INCONSISTENT AUDIT STATE</div>
+</div>
+</div>
+</div>
+<!-- The Deterministic Engineering Solution -->
+<div class="lg:col-span-7 p-6 rounded-xl bg-surface-container-lowest border-2 border-secondary-dark shadow-md flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between border-b border-outline-variant/60 pb-3 mb-4 font-mono text-xs">
+<span class="font-bold text-secondary-dark flex items-center gap-1.5">
+<span class="material-symbols-outlined text-base">lock</span>
+                  POSTGRESQL ROW-LEVEL LOCKING
+                </span>
+<span class="px-2 py-0.5 rounded bg-secondary/20 text-secondary-dark font-bold">ACID ATOMIC</span>
+</div>
+<!-- Transaction Code Snippet -->
+<div class="p-4 rounded-lg bg-surface-container font-mono text-xs text-on-surface overflow-x-auto mb-4 border border-outline-variant/60">
+<pre><code><span class="text-outline">-- Deterministic Concurrency Control in SQLAlchemy Async</span>
+<span class="text-primary font-bold">async with</span> session.begin():
+    stmt = (
+        select(Component)
+        .where(Component.id == <span class="text-tertiary-container font-bold">10482</span>)
+        .<span class="text-error font-bold">with_for_update</span>()  <span class="text-outline"># &lt;-- PostgreSQL Row-Level Lock</span>
+    )
+    component = await session.scalar(stmt)
+    
+    <span class="text-primary font-bold">if</span> component.pallet_id <span class="text-primary font-bold">is not None</span>:
+        <span class="text-error font-bold">raise</span> ConcurrencyCollisionError(<span class="text-on-surface-variant">"Already assigned to Pallet PL-084"</span>)
+        
+    component.pallet_id = target_pallet_id
+    component.status = <span class="text-secondary-dark font-bold">ComponentStatus.PALLETED</span>
+    <span class="text-outline"># Implicit commit releases lock cleanly</span></code></pre>
+</div>
+<div class="p-4 rounded bg-secondary/10 border border-secondary/30 font-mono text-xs text-on-surface space-y-1">
+<div class="font-bold text-secondary-dark uppercase">RACE CONDITION → DETERMINISTICALLY PREVENTED:</div>
+<div>Supervisor B receives an immediate 409 Conflict with clear UI notice: <em>“Component #10482 was just locked by Supervisor A.”</em> Zero phantom double assignments ever reach the fabrication yard.</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 06 // QC — BEFORE IT LEAVES, VERIFY EVERYTHING. -->
+<section class="w-full py-16 bg-background border-b border-outline-variant/40">
+<div class="max-w-[1360px] mx-auto px-6">
+<div class="flex flex-col gap-2 mb-8">
+<span class="font-mono text-xs text-tertiary-container uppercase tracking-widest font-bold">06 // QUALITY ASSURANCE GATE</span>
+<h2 class="font-display text-3xl sm:text-4xl font-bold uppercase text-on-surface">
+            BEFORE IT LEAVES, <span class="text-primary">VERIFY EVERYTHING.</span>
+</h2>
+<p class="font-body text-base text-on-surface-variant max-w-3xl">
+            Pallets do not move from factory to flatbed truck on goodwill. At the QC Gate, the inspector scans the pallet QR code and performs an item-by-item reconciliation against the manifest.
+          </p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+<!-- Flow Diagram -->
+<div class="lg:col-span-8 p-6 rounded-xl bg-surface-container-lowest border border-outline-variant shadow-sm space-y-6">
+<div class="flex flex-wrap items-center justify-between gap-4 font-mono text-xs border-b border-outline-variant/60 pb-3">
+<span class="font-bold text-on-surface">QC INSPECTION PROTOCOL: BAY 04</span>
+<span class="text-on-surface-variant">OPERATOR: QC_LEAD_VARMA</span>
+</div>
+<div class="flex flex-col sm:flex-row items-center justify-between gap-3 text-center font-mono text-xs">
+<div class="p-3 rounded bg-surface-container-low border border-outline-variant flex-1 w-full">
+<div class="text-primary font-bold">1. PALLET SCAN</div>
+<div class="text-on-surface-variant text-[11px] mt-1">Reads Pallet #PL-084 QR</div>
+</div>
+<span class="material-symbols-outlined text-outline">arrow_forward</span>
+<div class="p-3 rounded bg-surface-container-low border border-outline-variant flex-1 w-full">
+<div class="text-secondary-dark font-bold">2. RECONCILIATION</div>
+<div class="text-on-surface-variant text-[11px] mt-1">Item-by-item verification</div>
+</div>
+<span class="material-symbols-outlined text-outline">arrow_forward</span>
+<div class="p-3 rounded bg-surface-container-low border border-outline-variant flex-1 w-full">
+<div class="text-error font-bold">3. DISCREPANCY?</div>
+<div class="text-on-surface-variant text-[11px] mt-1">Instant alert trigger</div>
+</div>
+<span class="material-symbols-outlined text-outline">arrow_forward</span>
+<div class="p-3 rounded bg-secondary/20 border border-secondary/40 flex-1 w-full">
+<div class="text-secondary-dark font-bold">4. QC SEAL</div>
+<div class="text-on-surface-variant text-[11px] mt-1">Cryptographic sign-off</div>
+</div>
+</div>
+<!-- Simulated Mismatch Alert Box -->
+<div class="p-4 rounded-lg bg-error-container/25 border-2 border-error font-mono text-xs space-y-2">
+<div class="flex items-center justify-between text-error font-bold">
+<span class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-base">warning</span>
+                  QC EXCEPTION DETECTED IN TEST BATCH
+                </span>
+<span>CODE: QC-ERR-091</span>
+</div>
+<p class="text-on-surface">
+                “Component <code class="font-bold text-error">#10489</code> missing from Pallet PL-084 or finish scratched (&gt;0.5mm). System halts pallet dispatch gate pass. Discrepancy logged directly to Plant Director’s dashboard.”
+              </p>
+</div>
+</div>
+<!-- Protagonist Status in QC -->
+<div class="lg:col-span-4 p-6 rounded-xl bg-surface-container border border-outline-variant space-y-3 font-mono text-xs">
+<div class="text-primary font-bold uppercase">PROTAGONIST CHECKPOINT:</div>
+<div class="p-3 rounded bg-surface-container-lowest border border-outline-variant/60 space-y-1">
+<div class="flex justify-between"><span>COMPONENT:</span> <span class="font-bold">#10482</span></div>
+<div class="flex justify-between"><span>MICRON COATING:</span> <span class="font-bold text-secondary-dark">26.2 µm (PASS)</span></div>
+<div class="flex justify-between"><span>MITER ANGLE:</span> <span class="font-bold text-secondary-dark">45.0° (PASS)</span></div>
+<div class="flex justify-between"><span>STATUS:</span> <span class="font-bold text-secondary-dark">QC_VERIFIED ✓</span></div>
+</div>
+<p class="text-on-surface-variant font-body text-xs leading-relaxed">
+              Every verification records the digital signature of the inspecting engineer. No damaged aluminium ever leaves the factory perimeter.
+            </p>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 07 // HANDOVER — THE LAST STEP ISN'T DELIVERY. IT'S PROOF. -->
+<section class="w-full py-16 bg-surface-container-low border-b border-outline-variant/40">
+<div class="max-w-[1360px] mx-auto px-6">
+<div class="flex flex-col gap-2 mb-8">
+<span class="font-mono text-xs text-primary uppercase tracking-widest font-bold">07 // CLIENT HANDOVER</span>
+<h2 class="font-display text-3xl sm:text-4xl font-bold uppercase text-on-surface">
+            THE LAST STEP ISN’T DELIVERY.<br/><span class="text-primary">IT’S PROOF.</span>
+</h2>
+<p class="font-body text-base text-on-surface-variant max-w-3xl">
+            A construction firm only bills milestones when the client signs off. The component arrives at the construction site, is verified at the unloading bay, and receives the client’s cryptographic digital signature.
+          </p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- Flow Chain -->
+<div class="lg:col-span-5 space-y-4">
+<div class="p-5 rounded-lg bg-surface-container-lowest border border-outline-variant space-y-3 font-mono text-xs">
+<div class="font-bold text-on-surface uppercase border-b border-outline-variant/60 pb-2">
+                FOUR-POINT GATE HANDOVER
+              </div>
+<div class="flex items-start gap-2">
+<span class="text-primary font-bold">01.</span>
+<span>Physical truck arrives at Tower B site gate</span>
+</div>
+<div class="flex items-start gap-2">
+<span class="text-primary font-bold">02.</span>
+<span>Site receiver scans pallet QR on mobile browser</span>
+</div>
+<div class="flex items-start gap-2">
+<span class="text-primary font-bold">03.</span>
+<span>Client Quality Inspector verifies sashes on site</span>
+</div>
+<div class="flex items-start gap-2">
+<span class="text-secondary-dark font-bold">04.</span>
+<span class="font-bold text-on-surface">Client signs touch screen → Immutable SHA-256 certificate generated</span>
+</div>
+</div>
+<div class="sticky-note p-4 bg-[#fff7d6] border border-[#ebd88d] rounded font-mono text-xs text-on-surface">
+<span class="font-bold text-tertiary-container block">ZERO DISPUTE BILLING:</span>
+              “There is no 'we didn't receive Tower B 12th floor windows'. The timestamped client signature is right there in the ledger.”
+            </div>
+</div>
+<!-- Handover Certificate Preview Card -->
+<div class="lg:col-span-7 p-6 rounded-xl bg-surface-container-lowest border-2 border-primary/50 shadow-md font-mono text-xs space-y-4">
+<div class="flex items-center justify-between border-b-2 border-on-surface pb-3">
+<div>
+<div class="text-sm font-bold text-on-surface uppercase">DIGITAL HANDOVER CERTIFICATE</div>
+<div class="text-on-surface-variant text-[11px]">ABHIKALPAN CONSTRUCTION PVT. LTD. // CLIENT ARCHIVE</div>
+</div>
+<span class="px-2 py-1 rounded bg-secondary/20 text-secondary-dark font-bold">
+                CERT: HC-2024-0418
+              </span>
+</div>
+<div class="grid grid-cols-2 gap-3 text-[11px] bg-surface-container-low p-3 rounded border border-outline-variant/40">
+<div>PROJECT: <strong>IPO-023 TOWER B</strong></div>
+<div>UNIT ALLOCATION: <strong>FLAT A-1204</strong></div>
+<div>PALLET ID: <strong>PL-084</strong></div>
+<div>COMPONENTS: <strong>4 of 4 VERIFIED (Incl. #10482)</strong></div>
+<div>SITE RECEIVER: <strong>R. M. Verma (Site Eng)</strong></div>
+<div>CLIENT SIGNATORY: <strong>K. L. Mehta (Client PM)</strong></div>
+</div>
+<!-- Simulated SVG Signature Box -->
+<div class="p-3 rounded bg-surface-container border border-dashed border-outline flex items-center justify-between">
+<div>
+<div class="text-[10px] text-outline uppercase font-bold">CLIENT DIGITAL SIGNATURE</div>
+<!-- Signature line SVG -->
+<svg class="w-36 h-10 text-primary" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 140 40">
+<path d="M 10 28 C 30 10, 35 35, 50 15 C 65 3, 70 30, 95 18 C 110 8, 120 25, 130 20"></path>
+</svg>
+</div>
+<div class="text-right text-[10px] text-on-surface-variant font-mono">
+<div>HASH: 0x4a9f...e02b</div>
+<div>2024-05-18 16:42:19 IST</div>
+<div class="text-secondary-dark font-bold">STATUS: TRANSFERRED</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 08 // THE WHOLE JOURNEY (THE HERO MOMENT) -->
+<section class="w-full py-16 bg-background border-b border-outline-variant/40">
+<div class="max-w-[1360px] mx-auto px-6">
+<div class="flex flex-col gap-2 mb-8">
+<span class="font-mono text-xs text-primary uppercase tracking-widest font-bold">08 // THE COMPLETE LIFECYCLE</span>
+<h2 class="font-display text-3xl sm:text-4xl font-bold uppercase text-on-surface">
+            THE WHOLE <span class="text-primary">JOURNEY.</span>
+</h2>
+<p class="font-body text-base text-on-surface-variant max-w-3xl">
+            From an unverified row in an Excel workbook to a bolted architectural frame in Flat A-1204. Component #10482 moved through 5 verifiable state nodes without a single human gap.
+          </p>
+</div>
+<!-- 5-Stage Interactive Full Timeline -->
+<div class="p-6 rounded-xl bg-surface-container-lowest border border-outline-variant shadow-sm mb-6">
+<div class="grid grid-cols-1 sm:grid-cols-5 gap-3" id="journeyTimeline">
+<!-- Node 1 -->
+<div class="journey-node active cursor-pointer p-4 rounded bg-primary text-on-primary font-mono text-xs transition-all" data-step="1">
+<div class="text-primary-fixed text-[10px] uppercase font-bold">STEP 01</div>
+<div class="text-sm font-bold mt-1">INPUT</div>
+<div class="text-[11px] text-surface-variant mt-2">BOM Upload &amp; Schema Validation</div>
+</div>
+<!-- Node 2 -->
+<div class="journey-node cursor-pointer p-4 rounded bg-surface-container-high text-on-surface hover:bg-surface-variant font-mono text-xs transition-all" data-step="2">
+<div class="text-outline text-[10px] uppercase font-bold">STEP 02</div>
+<div class="text-sm font-bold mt-1">PRODUCTION</div>
+<div class="text-[11px] text-on-surface-variant mt-2">Miter Saw Cut &amp; Station Assign</div>
+</div>
+<!-- Node 3 -->
+<div class="journey-node cursor-pointer p-4 rounded bg-surface-container-high text-on-surface hover:bg-surface-variant font-mono text-xs transition-all" data-step="3">
+<div class="text-outline text-[10px] uppercase font-bold">STEP 03</div>
+<div class="text-sm font-bold mt-1">PALLET</div>
+<div class="text-[11px] text-on-surface-variant mt-2">Bundled to Pallet PL-084</div>
+</div>
+<!-- Node 4 -->
+<div class="journey-node cursor-pointer p-4 rounded bg-surface-container-high text-on-surface hover:bg-surface-variant font-mono text-xs transition-all" data-step="4">
+<div class="text-outline text-[10px] uppercase font-bold">STEP 04</div>
+<div class="text-sm font-bold mt-1">QC GATE</div>
+<div class="text-[11px] text-on-surface-variant mt-2">Micron &amp; Tolerance Verification</div>
+</div>
+<!-- Node 5 -->
+<div class="journey-node cursor-pointer p-4 rounded bg-surface-container-high text-on-surface hover:bg-surface-variant font-mono text-xs transition-all" data-step="5">
+<div class="text-outline text-[10px] uppercase font-bold">STEP 05</div>
+<div class="text-sm font-bold mt-1">HANDOVER</div>
+<div class="text-[11px] text-on-surface-variant mt-2">Client Digital Sign-Off</div>
+</div>
+</div>
+<!-- Dynamic Display Box for Timeline Nodes -->
+<div class="mt-6 p-5 rounded-lg bg-surface-container-low border border-outline-variant/60 font-mono text-xs space-y-2" id="journeyDetailBox">
+<div class="flex items-center justify-between">
+<span class="font-bold text-primary text-sm uppercase" id="journeyTitle">NODE 01 // INPUT &amp; BOM REGISTRATION</span>
+<span class="px-2 py-0.5 rounded bg-surface-container-highest text-on-surface" id="journeyCode">STATE: COMPONENT_REGISTERED</span>
+</div>
+<p class="font-body text-sm text-on-surface-variant" id="journeyDesc">
+              Ingested from client master spreadsheet <code class="font-mono">IPO-023-Rev4.xlsx</code>. The extrusion was assigned unique serial <code class="font-mono font-bold text-on-surface">#10482</code>, bound to Tower B Flat A-1204, and queued into the factory staging buffer.
+            </p>
+</div>
+</div>
+<!-- Core Engineering Axiom Callout Banner -->
+<div class="p-6 rounded-xl bg-primary text-on-primary font-mono text-center space-y-2 shadow-md">
+<div class="text-xs uppercase tracking-widest text-primary-fixed">THE THREE LAWS OF PRODUCTION DETERMINISM</div>
+<div class="font-display text-xl sm:text-2xl font-bold tracking-tight leading-snug">
+            “EVERY STEP HAS A STATE.<br/>
+            EVERY STATE HAS A RECORD.<br/>
+            EVERY ACTION HAS AN AUDIT TRAIL.”
+          </div>
+</div>
+</div>
+</section>
+<!-- SECTION 09 // THREE PEOPLE. ONE SYSTEM. (RBAC) -->
+<section class="w-full py-16 bg-surface-container-low border-b border-outline-variant/40">
+<div class="max-w-[1360px] mx-auto px-6">
+<div class="flex flex-col gap-2 mb-8">
+<span class="font-mono text-xs text-secondary-dark uppercase tracking-widest font-bold">09 // ROLE-BASED ACCESS CONTROL</span>
+<h2 class="font-display text-3xl sm:text-4xl font-bold uppercase text-on-surface">
+            THREE PEOPLE. <span class="text-primary">ONE SYSTEM.</span>
+</h2>
+<p class="font-body text-base text-on-surface-variant max-w-3xl">
+            A system cannot display everything to everybody. Field supervisors would drown in financial schedules, while clients must never see internal scrap percentages or worker wages.
+          </p>
+</div>
+<!-- 3-Persona Architectural Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Persona 1: Admin -->
+<div class="p-6 rounded-xl bg-surface-container-lowest border-2 border-primary/30 flex flex-col justify-between shadow-sm">
+<div>
+<div class="flex items-center justify-between font-mono text-xs mb-3">
+<span class="px-2 py-0.5 rounded bg-primary text-on-primary font-bold">ROLE 01 // ADMIN</span>
+<span class="material-symbols-outlined text-primary">admin_panel_settings</span>
+</div>
+<div class="font-display text-xl font-bold text-on-surface mb-2">
+                “I control the system.”
+              </div>
+<p class="font-body text-sm text-on-surface-variant mb-4 leading-relaxed">
+                Project provisioning, Excel BOM ingestion, user authorization grants, factory bay mapping, and global audit log examination.
+              </p>
+</div>
+<div class="pt-3 border-t border-outline-variant/40 font-mono text-[11px] text-on-surface space-y-1">
+<div class="text-primary font-bold">PERMISSIONS:</div>
+<div>• POST /api/projects/upload</div>
+<div>• DELETE /api/components/override</div>
+<div>• GET /api/audit/system-stream</div>
+</div>
+</div>
+<!-- Persona 2: Supervisor -->
+<div class="p-6 rounded-xl bg-surface-container-lowest border-2 border-secondary-dark/40 flex flex-col justify-between shadow-sm">
+<div>
+<div class="flex items-center justify-between font-mono text-xs mb-3">
+<span class="px-2 py-0.5 rounded bg-secondary-dark text-on-secondary font-bold">ROLE 02 // SUPERVISOR</span>
+<span class="material-symbols-outlined text-secondary-dark">engineering</span>
+</div>
+<div class="font-display text-xl font-bold text-on-surface mb-2">
+                “I move the work.”
+              </div>
+<p class="font-body text-sm text-on-surface-variant mb-4 leading-relaxed">
+                Floor execution, batch routing, station allocation, row-level locking pallet bundling, and dispatch QC handshakes.
+              </p>
+</div>
+<div class="pt-3 border-t border-outline-variant/40 font-mono text-[11px] text-on-surface space-y-1">
+<div class="text-secondary-dark font-bold">PERMISSIONS:</div>
+<div>• PATCH /api/components/mutate-state</div>
+<div>• POST /api/pallets/bundle</div>
+<div>• GET /api/floor/mobile-manifest</div>
+</div>
+</div>
+<!-- Persona 3: Client -->
+<div class="p-6 rounded-xl bg-surface-container-lowest border-2 border-tertiary/40 flex flex-col justify-between shadow-sm">
+<div>
+<div class="flex items-center justify-between font-mono text-xs mb-3">
+<span class="px-2 py-0.5 rounded bg-tertiary-container text-on-tertiary font-bold">ROLE 03 // CLIENT</span>
+<span class="material-symbols-outlined text-tertiary-container">real_estate_agent</span>
+</div>
+<div class="font-display text-xl font-bold text-on-surface mb-2">
+                “I see what belongs to me.”
+              </div>
+<p class="font-body text-sm text-on-surface-variant mb-4 leading-relaxed">
+                Segregated read-only views of assigned towers and flats, truck dispatch ETA telemetry, and final digital acceptance sign-off.
+              </p>
+</div>
+<div class="pt-3 border-t border-outline-variant/40 font-mono text-[11px] text-on-surface space-y-1">
+<div class="text-tertiary-container font-bold">PERMISSIONS:</div>
+<div>• GET /api/client/handover-status</div>
+<div>• POST /api/client/sign-certificate</div>
+<div>• ❌ STRICT TENANT ISOLATION</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 10 // THE DATABASE — THE UI IS ONLY THE SURFACE -->
+<section class="w-full py-16 bg-background border-b border-outline-variant/40">
+<div class="max-w-[1360px] mx-auto px-6">
+<div class="flex flex-col gap-2 mb-8">
+<span class="font-mono text-xs text-primary uppercase tracking-widest font-bold">10 // RELATIONAL TOPOLOGY</span>
+<h2 class="font-display text-3xl sm:text-4xl font-bold uppercase text-on-surface">
+            THE UI IS ONLY <span class="text-primary">THE SURFACE.</span>
+</h2>
+<p class="font-body text-base text-on-surface-variant max-w-3xl">
+            A slick frontend cannot save a corrupted database. The core architectural achievement was an airtight relational schema that makes dangling records physically impossible.
+          </p>
+</div>
+<div class="p-6 rounded-xl bg-surface-container-lowest border-2 border-outline-variant font-mono text-xs shadow-sm overflow-x-auto">
+<div class="min-w-[760px] space-y-6">
+<!-- Schema ASCII Graph -->
+<div class="p-4 bg-surface-container-low rounded border border-outline-variant/60">
+<div class="text-primary font-bold mb-3 uppercase tracking-wider">
+                RELATIONAL SCHEMA &amp; FOREIGN KEY TREE
+              </div>
+<pre class="leading-relaxed text-[11px] text-on-surface">[USERS] ──&lt; (created_by) ── [PROJECTS] ──&lt; [COMPONENTS] ──&lt; [PRODUCTION_LOGS]
+                                  │               │
+                                  │               ├─&gt; [PALLETS] ──&lt; [HANDOVER_RECORDS]
+                                  │               │
+                                  └───────────────┴─&gt; [AUDIT_LOGS (Immutable Append-Only)]
+                                                  │
+                                                  └─&gt; [FABTRACK_STAGES]
+              </pre>
+</div>
+<!-- Schema Table Cards -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<div class="p-3 bg-surface-container rounded border border-outline-variant/60">
+<div class="font-bold text-primary border-b border-outline-variant/40 pb-1">TABLE: components</div>
+<div class="text-[11px] text-on-surface-variant mt-2 space-y-1">
+<div>• id: BIGSERIAL (PK)</div>
+<div>• serial_no: VARCHAR(64) UNIQUE</div>
+<div>• project_id: INT (FK -&gt; projects)</div>
+<div>• pallet_id: INT (FK -&gt; pallets, NULL)</div>
+<div>• status: component_status_enum</div>
+<div>• flat_id: VARCHAR(32)</div>
+</div>
+</div>
+<div class="p-3 bg-surface-container rounded border border-outline-variant/60">
+<div class="font-bold text-secondary-dark border-b border-outline-variant/40 pb-1">TABLE: pallets</div>
+<div class="text-[11px] text-on-surface-variant mt-2 space-y-1">
+<div>• id: BIGSERIAL (PK)</div>
+<div>• qr_code_hash: VARCHAR(128)</div>
+<div>• project_id: INT (FK)</div>
+<div>• qc_status: qc_enum</div>
+<div>• sealed_by: INT (FK -&gt; users)</div>
+<div>• dispatch_time: TIMESTAMP WITH TZ</div>
+</div>
+</div>
+<div class="p-3 bg-surface-container rounded border border-outline-variant/60">
+<div class="font-bold text-tertiary-container border-b border-outline-variant/40 pb-1">TABLE: audit_logs</div>
+<div class="text-[11px] text-on-surface-variant mt-2 space-y-1">
+<div>• id: UUID (PK)</div>
+<div>• entity_id: BIGINT</div>
+<div>• previous_state: JSONB</div>
+<div>• new_state: JSONB</div>
+<div>• actor_id: INT (FK)</div>
+<div>• ip_hash: VARCHAR(64)</div>
+</div>
+</div>
+</div>
+<!-- Editorial Engineering Quote -->
+<div class="p-4 rounded bg-primary/10 border-l-4 border-primary text-on-surface font-body text-sm leading-relaxed">
+<strong class="font-mono text-xs uppercase text-primary block mb-1">ARCHITECTURAL LESSON:</strong>
+              “The hard part of this platform wasn’t displaying the data nicely. The hard part was keeping the data mathematically correct while 25 operators on spotty Wi-Fi changed it simultaneously.”
+            </div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 11 // PRODUCTION ENGINEERING & BACKEND STACK -->
+<section class="w-full py-16 bg-surface-container-low border-b border-outline-variant/40">
+<div class="max-w-[1360px] mx-auto px-6">
+<div class="flex flex-col gap-2 mb-8">
+<span class="font-mono text-xs text-primary uppercase tracking-widest font-bold">11 // SYSTEM SPECIFICATION</span>
+<h2 class="font-display text-3xl sm:text-4xl font-bold uppercase text-on-surface">
+            PRODUCTION ENGINEERING &amp; <span class="text-primary">BACKEND STACK.</span>
+</h2>
+<p class="font-body text-base text-on-surface-variant max-w-3xl">
+            Engineered for deterministic uptime on Abhikalpan’s local bare-metal Linux host without third-party SaaS dependencies or external cloud fragility.
+          </p>
+</div>
+<!-- Stack Pipeline Flow -->
+<div class="p-6 rounded-xl bg-surface-container-lowest border border-outline-variant mb-6 shadow-sm font-mono text-xs">
+<div class="flex flex-col md:flex-row items-center justify-between gap-3 text-center">
+<div class="p-4 rounded bg-surface-container-low border border-outline-variant/60 flex-1 w-full">
+<div class="font-bold text-on-surface text-sm">NEXT.JS 14</div>
+<div class="text-on-surface-variant text-[11px] mt-1">App Router, SSR Manifests &amp; Tailored PWAs</div>
+</div>
+<span class="material-symbols-outlined text-outline">trending_flat</span>
+<div class="p-4 rounded bg-surface-container-low border border-outline-variant/60 flex-1 w-full">
+<div class="font-bold text-primary text-sm">FASTAPI CORE</div>
+<div class="text-on-surface-variant text-[11px] mt-1">Async Handlers &amp; Pydantic Schema Guards</div>
+</div>
+<span class="material-symbols-outlined text-outline">trending_flat</span>
+<div class="p-4 rounded bg-surface-container-low border border-outline-variant/60 flex-1 w-full">
+<div class="font-bold text-secondary-dark text-sm">ASYNC SQLALCHEMY</div>
+<div class="text-on-surface-variant text-[11px] mt-1">Connection Pooling &amp; Row-Level Locks</div>
+</div>
+<span class="material-symbols-outlined text-outline">trending_flat</span>
+<div class="p-4 rounded bg-surface-container-low border border-outline-variant/60 flex-1 w-full">
+<div class="font-bold text-on-surface text-sm">POSTGRESQL 16</div>
+<div class="text-on-surface-variant text-[11px] mt-1">On-Premise LAN Host with ACID Guarantees</div>
+</div>
+</div>
+</div>
+<!-- Engineering Badges Bento -->
+<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 font-mono text-xs">
+<div class="p-3 rounded bg-surface-container-lowest border border-outline-variant">
+<div class="text-outline text-[10px]">INDEXING</div>
+<div class="font-bold text-on-surface mt-1">COMPOSITE B-TREE</div>
+<div class="text-[10px] text-on-surface-variant mt-1">(project_id, status, flat_id)</div>
+</div>
+<div class="p-3 rounded bg-surface-container-lowest border border-outline-variant">
+<div class="text-outline text-[10px]">TRANSACTIONS</div>
+<div class="font-bold text-primary mt-1">STRICT ACID</div>
+<div class="text-[10px] text-on-surface-variant mt-1">Zero dirty reads or lost updates</div>
+</div>
+<div class="p-3 rounded bg-surface-container-lowest border border-outline-variant">
+<div class="text-outline text-[10px]">MIGRATIONS</div>
+<div class="font-bold text-on-surface mt-1">ALEMBIC VERSIONED</div>
+<div class="text-[10px] text-on-surface-variant mt-1">Deterministic schema evolutions</div>
+</div>
+<div class="p-3 rounded bg-surface-container-lowest border border-outline-variant">
+<div class="text-outline text-[10px]">RATE LIMITS</div>
+<div class="font-bold text-secondary-dark mt-1">TOKEN BUCKET</div>
+<div class="text-[10px] text-on-surface-variant mt-1">Prevents scanner hammer loops</div>
+</div>
+<div class="p-3 rounded bg-surface-container-lowest border border-outline-variant">
+<div class="text-outline text-[10px]">TELEMETRY</div>
+<div class="font-bold text-on-surface mt-1">SENTRY + PROMETHEUS</div>
+<div class="text-[10px] text-on-surface-variant mt-1">Sub-second error triage</div>
+</div>
+<div class="p-3 rounded bg-surface-container-lowest border border-outline-variant">
+<div class="text-outline text-[10px]">SOVEREIGNTY</div>
+<div class="font-bold text-tertiary-container mt-1">AIR-GAPPED LAN</div>
+<div class="text-[10px] text-on-surface-variant mt-1">No monthly SaaS subscription fees</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 12 // REPORTING & AUDITABILITY -->
+<section class="w-full py-16 bg-background border-b border-outline-variant/40">
+<div class="max-w-[1360px] mx-auto px-6">
+<div class="flex flex-col gap-2 mb-8">
+<span class="font-mono text-xs text-secondary-dark uppercase tracking-widest font-bold">12 // REPORTING &amp; AUDIT</span>
+<h2 class="font-display text-3xl sm:text-4xl font-bold uppercase text-on-surface">
+            IF THE SYSTEM DID IT,<br/><span class="text-primary">THE SYSTEM SHOULD PROVE IT.</span>
+</h2>
+<p class="font-body text-base text-on-surface-variant max-w-3xl">
+            Contractual disputes are solved with documentation. With a single click, administrators generate site manifests, PDF bills-of-lading, and component movement chronologies.
+          </p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+<!-- Report Generator Simulation -->
+<div class="lg:col-span-7 p-6 rounded-xl bg-surface-container-lowest border-2 border-outline-variant shadow-sm space-y-4">
+<div class="flex items-center justify-between border-b border-outline-variant/60 pb-3 font-mono text-xs">
+<span class="font-bold text-on-surface uppercase">ON-DEMAND RECONCILIATION EXPORT</span>
+<span class="text-primary font-bold">PROJECT: IPO-023</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-3 font-mono text-xs">
+<div class="p-3 rounded bg-surface-container-low border border-outline-variant flex flex-col justify-between">
+<div>
+<div class="font-bold text-on-surface">DISPATCH MANIFEST</div>
+<div class="text-on-surface-variant text-[11px] mt-1">PDF Bill of Lading with verified QR check hashes</div>
+</div>
+<button class="mt-3 px-2 py-1 rounded bg-primary text-on-primary text-[10px] font-bold uppercase">
+                  EXPORT PDF ↗
+                </button>
+</div>
+<div class="p-3 rounded bg-surface-container-low border border-outline-variant flex flex-col justify-between">
+<div>
+<div class="font-bold text-on-surface">FLAT RECONCILIATION</div>
+<div class="text-on-surface-variant text-[11px] mt-1">Multi-tower Excel sheet with unit-by-unit completion %</div>
+</div>
+<button class="mt-3 px-2 py-1 rounded bg-surface-container-high text-on-surface text-[10px] font-bold uppercase">
+                  EXPORT XLSX ↗
+                </button>
+</div>
+<div class="p-3 rounded bg-surface-container-low border border-outline-variant flex flex-col justify-between">
+<div>
+<div class="font-bold text-on-surface">AUDIT LOG TRAIL</div>
+<div class="text-on-surface-variant text-[11px] mt-1">Chronological JSON export with actor ID and timestamps</div>
+</div>
+<button class="mt-3 px-2 py-1 rounded bg-surface-container-high text-on-surface text-[10px] font-bold uppercase">
+                  DUMP AUDIT ↗
+                </button>
+</div>
+</div>
+<div class="p-3 rounded bg-surface-container font-mono text-xs text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-sm text-secondary-dark">task_alt</span>
+<span>Audit records are tamper-evident: row updates append new entries to the immutable ledger.</span>
+</div>
+</div>
+<!-- Character Action Sketch -->
+<div class="lg:col-span-5 flex flex-col gap-4">
+<div class="p-5 rounded-lg bg-surface-container-low border border-outline-variant flex items-center gap-4">
+<svg class="w-20 h-20 text-on-surface flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 100 100">
+<circle cx="50" cy="30" r="12"></circle>
+<line x1="50" x2="50" y1="42" y2="70"></line>
+<line x1="50" x2="25" y1="52" y2="40"></line>
+<line x1="50" x2="75" y1="52" y2="60"></line>
+<line x1="50" x2="35" y1="70" y2="95"></line>
+<line x1="50" x2="65" y1="70" y2="95"></line>
+<!-- Stamp -->
+<circle class="stroke-primary fill-primary/20" cx="78" cy="65" r="8"></circle>
+</svg>
+<div>
+<div class="font-mono text-xs text-primary font-bold uppercase">ZERO SPREADSHEET DESYNC</div>
+<p class="font-body text-xs text-on-surface-variant mt-1 leading-relaxed">
+                  When project directors head into joint-venture billing meetings, they don’t guess. They generate a cryptographically sealed dispatch report in 4 seconds.
+                </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 13 // FABTRACK — THEN THE WORKFLOW GREW -->
+<section class="w-full py-16 bg-surface-container-low border-b border-outline-variant/40">
+<div class="max-w-[1360px] mx-auto px-6">
+<div class="flex flex-col gap-2 mb-8">
+<span class="font-mono text-xs text-tertiary-container uppercase tracking-widest font-bold">13 // EXTENSIBLE ARCHITECTURE</span>
+<h2 class="font-display text-3xl sm:text-4xl font-bold uppercase text-on-surface">
+            THEN THE WORKFLOW <span class="text-primary">GREW.</span>
+</h2>
+<p class="font-body text-base text-on-surface-variant max-w-3xl">
+            Software built for real clients rarely stays static. As Abhikalpan’s operations matured, they requested an end-to-end manufacturing module: <strong class="text-on-surface">FabTrack</strong>.
+          </p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+<div class="lg:col-span-12 space-y-6">
+<!-- Workflow Expansion Comparison -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 font-mono text-xs">
+<!-- Flow A: Original -->
+<div class="p-5 rounded-xl bg-surface-container-lowest border border-outline-variant/80">
+<div class="text-outline uppercase text-[10px] font-bold mb-2">ORIGINAL WORKFLOW (V1)</div>
+<div class="flex items-center gap-1.5 flex-wrap font-bold text-on-surface">
+<span class="px-2 py-1 rounded bg-surface-container-high">INPUT</span>
+<span>→</span>
+<span class="px-2 py-1 rounded bg-surface-container-high">PRODUCTION</span>
+<span>→</span>
+<span class="px-2 py-1 rounded bg-surface-container-high">PALLET</span>
+<span>→</span>
+<span class="px-2 py-1 rounded bg-surface-container-high">QC</span>
+<span>→</span>
+<span class="px-2 py-1 rounded bg-secondary/20 text-secondary-dark">HANDOVER</span>
+</div>
+<p class="font-body text-xs text-on-surface-variant mt-3">
+                  Core custody tracking from raw Excel intake through pallet dispatch and client handover signature.
+                </p>
+</div>
+<!-- Flow B: FabTrack Extended -->
+<div class="p-5 rounded-xl bg-surface-container-lowest border-2 border-primary">
+<div class="text-primary uppercase text-[10px] font-bold mb-2">EXPANDED ENTERPRISE (FABTRACK V2)</div>
+<div class="flex items-center gap-1.5 flex-wrap font-bold text-primary">
+<span class="px-2 py-1 rounded bg-primary/10">ORDER</span>
+<span>→</span>
+<span class="px-2 py-1 rounded bg-primary/10">B-CUT OPTIMIZED</span>
+<span>→</span>
+<span class="px-2 py-1 rounded bg-primary/10">FAB QC</span>
+<span>→</span>
+<span class="px-2 py-1 rounded bg-primary/10">PDI</span>
+<span>→</span>
+<span class="px-2 py-1 rounded bg-secondary/20 text-secondary-dark">CLIENT VERIFY</span>
+</div>
+<p class="font-body text-xs text-on-surface-variant mt-3">
+                  Integrated bar-cutting optimization algorithms, pre-delivery factory inspections (PDI), and hardware accessory lock checks.
+                </p>
+</div>
+</div>
+<!-- Engineering Takeaway -->
+<div class="p-5 rounded-lg bg-surface-container border border-outline-variant font-body text-sm text-on-surface leading-relaxed">
+<strong class="font-mono text-xs uppercase text-primary block mb-1">THE SYSTEM DESIGN PRINCIPLE:</strong>
+              “We didn't hardcode a rigid single sequence. We designed a state engine where state transitions are configured as directed acyclic graph (DAG) rules in Python. When the client needed new steps like B-Cut and PDI, the underlying schema supported them without breaking existing project data.”
+            </div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 14 // PRODUCTION CREDIBILITY -->
+<section class="w-full py-16 bg-background border-b border-outline-variant/40">
+<div class="max-w-[1360px] mx-auto px-6">
+<div class="flex flex-col gap-2 mb-8">
+<span class="font-mono text-xs text-secondary-dark uppercase tracking-widest font-bold">14 // REAL-WORLD RUNTIME</span>
+<h2 class="font-display text-3xl sm:text-4xl font-bold uppercase text-on-surface">
+            THIS IS <span class="text-secondary-dark">LIVE.</span>
+</h2>
+<p class="font-body text-base text-on-surface-variant max-w-3xl">
+            Not a localhost prototype. Not a portfolio conceptual wireframe. This platform runs inside Abhikalpan Construction Pvt. Ltd.’s actual fabrication facility, driving operations every morning.
+          </p>
+</div>
+<!-- Walk from Laptop to Yard Visual -->
+<div class="p-6 rounded-xl bg-surface-container-low border-2 border-outline-variant shadow-sm mb-6">
+<div class="flex flex-col lg:flex-row items-center justify-between gap-6">
+<div class="space-y-3 max-w-xl">
+<div class="inline-flex items-center gap-2 px-2.5 py-1 rounded bg-secondary/20 text-secondary-dark font-mono text-xs font-bold">
+<span class="w-2 h-2 rounded-full bg-secondary-dark animate-pulse"></span>
+                ACTIVE ON-PREMISE PRODUCTION DEPLOYMENT
+              </div>
+<h3 class="font-display text-2xl font-bold text-on-surface">
+                Code → Product → Deployment → Real Users → Real Work
+              </h3>
+<p class="font-body text-sm text-on-surface-variant leading-relaxed">
+                The software lives on dedicated on-premise hardware inside their central headquarters and connects over secure local Wi-Fi to rugged tablets across three fabrication sheds.
+              </p>
+</div>
+<!-- Client Quote Stamp -->
+<div class="p-5 rounded-lg bg-surface-container-lowest border border-outline-variant max-w-md font-mono text-xs space-y-2">
+<div class="text-tertiary-container font-bold">CLIENT VERIFICATION:</div>
+<p class="italic font-body text-sm text-on-surface">
+                “Tracking thousands of custom window profiles across towers used to create weekly site standstills. This system gave our foremen and site engineers complete clarity.”
+              </p>
+<div class="pt-2 border-t border-outline-variant/40 text-[11px] text-on-surface-variant">
+                OPERATIONS DIRECTORATE · ABHIKALPAN CONSTRUCTION PVT. LTD.
+              </div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 15 // WHAT THIS PROJECT TAUGHT ME -->
+<section class="w-full py-16 bg-surface-container-low border-b border-outline-variant/40">
+<div class="max-w-[1360px] mx-auto px-6">
+<div class="flex flex-col gap-2 mb-8">
+<span class="font-mono text-xs text-primary uppercase tracking-widest font-bold">15 // RETROSPECTIVE</span>
+<h2 class="font-display text-3xl sm:text-4xl font-bold uppercase text-on-surface">
+            WHAT THIS PROJECT <span class="text-primary">TAUGHT ME.</span>
+</h2>
+<p class="font-body text-base text-on-surface-variant max-w-3xl">
+            Engineering lessons forged in physical factories where errors result in wasted raw steel, missed crane lifts, and halted handovers.
+          </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Lesson 1 -->
+<div class="p-6 rounded-xl bg-surface-container-lowest border border-outline-variant flex flex-col justify-between shadow-sm">
+<div>
+<div class="font-mono text-xs text-primary font-bold mb-2">PRINCIPLE 01</div>
+<h3 class="font-display text-lg font-bold text-on-surface mb-2">
+                “DATA IS A WORKFLOW.”
+              </h3>
+<p class="font-body text-sm text-on-surface-variant leading-relaxed">
+                A physical component is not just an inert row in a database. It is a physical machine part in motion through saws, welders, trucks, and cranes. Your software must mirror real physical friction.
+              </p>
+</div>
+<div class="mt-4 pt-3 border-t border-outline-variant/40 font-mono text-xs text-primary font-semibold">
+              STATE MACHINE PARADIGM
+            </div>
+</div>
+<!-- Lesson 2 -->
+<div class="p-6 rounded-xl bg-surface-container-lowest border border-outline-variant flex flex-col justify-between shadow-sm">
+<div>
+<div class="font-mono text-xs text-error font-bold mb-2">PRINCIPLE 02</div>
+<h3 class="font-display text-lg font-bold text-on-surface mb-2">
+                “CONCURRENCY IS A PRODUCT PROBLEM.”
+              </h3>
+<p class="font-body text-sm text-on-surface-variant leading-relaxed">
+                When two floor workers click at the exact same moment, database locks and error handling are not obscure backend details—they are the user experience.
+              </p>
+</div>
+<div class="mt-4 pt-3 border-t border-outline-variant/40 font-mono text-xs text-error font-semibold">
+              ROW-LEVEL INTEGRITY
+            </div>
+</div>
+<!-- Lesson 3 -->
+<div class="p-6 rounded-xl bg-surface-container-lowest border border-outline-variant flex flex-col justify-between shadow-sm">
+<div>
+<div class="font-mono text-xs text-secondary-dark font-bold mb-2">PRINCIPLE 03</div>
+<h3 class="font-display text-lg font-bold text-on-surface mb-2">
+                “PRODUCTION CHANGES ‘DONE’.”
+              </h3>
+<p class="font-body text-sm text-on-surface-variant leading-relaxed">
+                A feature is never done when it tests green on a developer's MacBook. It is only done when thirty factory operators depend on it under morning deadlines.
+              </p>
+</div>
+<div class="mt-4 pt-3 border-t border-outline-variant/40 font-mono text-xs text-secondary-dark font-semibold">
+              REAL-WORLD UTILITY
+            </div>
+</div>
+</div>
+</div>
+</section>
+<!-- FINAL SCENE & CONTINUITY BRIDGE -->
+<section class="w-full py-16 bg-background">
+<div class="max-w-[1360px] mx-auto px-6">
+<!-- Protagonist Completed Checklist Card -->
+<div class="p-8 rounded-xl bg-surface-container-lowest border-2 border-primary shadow-md mb-12">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+<div class="lg:col-span-5 flex flex-col items-center text-center">
+<!-- Builder holding finished component with checkmark -->
+<svg class="w-48 h-48 text-on-surface" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 160 160">
+<circle class="fill-background" cx="80" cy="45" r="14"></circle>
+<path class="fill-secondary/30 stroke-secondary-dark" d="M 66 40 C 68 28, 92 28, 94 40 Z"></path>
+<!-- Smile -->
+<path d="M 75 48 Q 80 54 85 48"></path>
+<line x1="80" x2="80" y1="59" y2="105"></line>
+<!-- Arms holding the component high in victory -->
+<line x1="80" x2="50" y1="70" y2="50"></line>
+<line x1="80" x2="110" y1="70" y2="50"></line>
+<!-- Finished Aluminium Window Profile with Ribbon -->
+<rect class="fill-primary stroke-primary" height="8" rx="2" width="90" x="35" y="45"></rect>
+<!-- Legs -->
+<line x1="80" x2="65" y1="105" y2="145"></line>
+<line x1="80" x2="95" y1="105" y2="145"></line>
+<!-- Ground -->
+<line stroke-width="2.5" x1="40" x2="120" y1="145" y2="145"></line>
+</svg>
+<div class="sticky-note mt-2 p-2 bg-[#fff7d6] border border-[#ebd88d] font-mono text-xs rounded">
+                “Component #10482: Made it all the way.”
+              </div>
+</div>
+<div class="lg:col-span-7 space-y-4 font-mono text-xs">
+<div class="flex items-center justify-between border-b border-outline-variant/60 pb-2">
+<span class="text-sm font-bold text-on-surface uppercase">COMPONENT #10482 // FINAL AUDIT SUMMARY</span>
+<span class="px-2 py-0.5 rounded bg-secondary/20 text-secondary-dark font-bold">100% VERIFIED</span>
+</div>
+<div class="space-y-2">
+<div class="flex items-center justify-between p-2 rounded bg-surface-container-low border border-outline-variant/40">
+<span>STAGE 1: INPUT &amp; BOM REGISTRATION</span>
+<span class="text-secondary-dark font-bold">COMPLETED ✓</span>
+</div>
+<div class="flex items-center justify-between p-2 rounded bg-surface-container-low border border-outline-variant/40">
+<span>STAGE 2: PRECISION MITER PRODUCTION</span>
+<span class="text-secondary-dark font-bold">COMPLETED ✓</span>
+</div>
+<div class="flex items-center justify-between p-2 rounded bg-surface-container-low border border-outline-variant/40">
+<span>STAGE 3: BUNDLED IN PALLET #PL-084</span>
+<span class="text-secondary-dark font-bold">COMPLETED ✓</span>
+</div>
+<div class="flex items-center justify-between p-2 rounded bg-surface-container-low border border-outline-variant/40">
+<span>STAGE 4: QUALITY CONTROL CLEARANCE</span>
+<span class="text-secondary-dark font-bold">COMPLETED ✓</span>
+</div>
+<div class="flex items-center justify-between p-2 rounded bg-surface-container-low border border-outline-variant/40">
+<span>STAGE 5: CLIENT SITE HANDOVER SIGN-OFF</span>
+<span class="text-secondary-dark font-bold">COMPLETED ✓</span>
+</div>
+</div>
+<div class="pt-2 flex items-center justify-between">
+<span class="px-3 py-1 rounded bg-primary text-on-primary font-bold text-xs uppercase tracking-widest">
+                  BUILT. SHIPPED. USED.
+                </span>
+<span class="text-on-surface-variant text-[11px]">FLAT A-1204 INSTALLED</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Bridge to Case 04 (Nesting Engine) -->
+<div class="p-6 rounded-xl bg-surface-container border border-outline-variant flex flex-col md:flex-row items-center justify-between gap-6">
+<div>
+<div class="font-mono text-xs text-primary font-bold uppercase tracking-wider">
+              CONTINUITY // RELATED PRODUCTION SYSTEM
+            </div>
+<h3 class="font-display text-xl font-bold text-on-surface mt-1">
+              04 · THE NESTING ENGINE — Computational 2D Scrap Minimization
+            </h3>
+<p class="font-body text-sm text-on-surface-variant max-w-2xl mt-0.5 leading-relaxed">
+              Deployed on the exact same shop floor to optimize raw aluminium and steel plate cutting patterns before asset tracking begins.
+            </p>
+</div>
+<div class="flex items-center gap-3">
+<a class="px-4 py-2 rounded bg-primary text-on-primary font-mono text-xs font-bold uppercase tracking-wider hover:bg-primary-container transition-colors" href="../nesting_engine_production_optimization_for_abhikalpan_construction/code.html">
+              EXPLORE CASE 04 ↗
+            </a>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- EDITORIAL FOOTER -->
+<footer class="w-full bg-surface-container-low border-t border-outline-variant/60 py-12">
+<div class="max-w-[1360px] mx-auto px-6">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8 mb-8">
+<div class="md:col-span-5 space-y-2">
+<div class="font-display text-xl font-bold text-on-surface">Koushik Upadhyay</div>
+<div class="font-mono text-xs text-primary font-semibold">AI/ML ENGINEER &amp; PRODUCTION SYSTEMS BUILDER</div>
+<p class="font-body text-xs text-on-surface-variant max-w-sm leading-relaxed">
+            Architecting deterministic distributed software, retrieval-augmented workflows, and production systems that survive contact with real-world physical operations.
+          </p>
+</div>
+<div class="md:col-span-4 font-mono text-xs space-y-2">
+<div class="text-on-surface font-bold uppercase tracking-wider">Index // Works</div>
+<div><a class="text-on-surface-variant hover:text-primary transition-colors" href="../nesting_engine_production_optimization_for_abhikalpan_construction/code.html">04 // THE NESTING ENGINE (COMPUTATIONAL GEOMETRY)</a></div>
+<div><a class="text-primary font-bold" href="#work">05 // ASSET MANAGEMENT (ABHIKALPAN LAN)</a></div>
+<div><a class="text-on-surface-variant hover:text-primary transition-colors" href="../how_i_build_engineering_philosophy_methodology/code.html">HOW I BUILD // SYSTEMS ARCHITECTURE</a></div>
+</div>
+<div class="md:col-span-3 font-mono text-xs space-y-2">
+<div class="text-on-surface font-bold uppercase tracking-wider">Direct Connect</div>
+<div><a class="text-on-surface-variant hover:text-primary transition-colors" href="https://github.com/SetterUk" rel="noreferrer" target="_blank">GITHUB ↗</a></div>
+<div><a class="text-on-surface-variant hover:text-primary transition-colors" href="https://www.linkedin.com/in/koushik-upadhyay-95565932b/" rel="noreferrer" target="_blank">LINKEDIN ↗</a></div>
+<div><span class="text-on-surface-variant">Koushik4067@gmail.com</span></div>
+</div>
+</div>
+<div class="pt-6 border-t border-outline-variant/40 flex flex-col sm:flex-row items-center justify-between font-mono text-xs text-on-surface-variant gap-2">
+<div>REF: CASE-SPEC-05 · ASSET-MGMT-ABHIKALPAN</div>
+<div>© 2025 KOUSHIK UPADHYAY · ALL RIGHTS RESERVED.</div>
+</div>
+</div>
+</footer>
+<!-- CLIENT-SIDE INTERACTIVITY SCRIPT -->
+<script>
+    (function() {
+      // 1. Reading Progress Bar
+      window.addEventListener('scroll', function() {
+        const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = height > 0 ? (winScroll / height) * 100 : 0;
+        const bar = document.getElementById('readingProgress');
+        if (bar) bar.style.width = scrolled + '%';
+      });
+
+      // 2. Interactive Journey Timeline in Section 08
+      const journeyNodes = document.querySelectorAll('.journey-node');
+      const journeyTitle = document.getElementById('journeyTitle');
+      const journeyCode = document.getElementById('journeyCode');
+      const journeyDesc = document.getElementById('journeyDesc');
+
+      const journeyData = {
+        '1': {
+          title: 'NODE 01 // INPUT & BOM REGISTRATION',
+          code: 'STATE: COMPONENT_REGISTERED',
+          desc: 'Ingested from client master spreadsheet IPO-023-Rev4.xlsx. Extrusion was assigned unique serial #10482, bound to Tower B Flat A-1204, and queued into the factory staging buffer.'
+        },
+        '2': {
+          title: 'NODE 02 // PRODUCTION & PRECISION MITER',
+          code: 'STATE: IN_PRODUCTION',
+          desc: 'Operator S. Kumar pulled batch #81. Component #10482 cut on 45° CNC miter saw, crimped, corner cleat fastened, and inspected for burr tolerances.'
+        },
+        '3': {
+          title: 'NODE 03 // CONTAINER AGGREGATION',
+          code: 'STATE: PALLET_SEALED',
+          desc: 'Bundled into Pallet PL-084 alongside companion profiles #10481, #10483, and #10484. Cryptographic QR dispatch sticker affixed.'
+        },
+        '4': {
+          title: 'NODE 04 // QUALITY ASSURANCE CLEARANCE',
+          code: 'STATE: QC_VERIFIED',
+          desc: 'QC Bay 4 scan. Anodized micron thickness verified at 26.2 µm. Gasket seal tension checked. Sign-off recorded by QC Inspector Varma.'
+        },
+        '5': {
+          title: 'NODE 05 // SITE DELIVERY & CLIENT SIGNATURE',
+          code: 'STATE: CLIENT_TRANSFERRED',
+          desc: 'Received at Tower B unloading hoist. Client representative K. L. Mehta signed digital certificate HC-2024-0418. Milestone unlocked for billing.'
+        }
+      };
+
+      journeyNodes.forEach(node => {
+        node.addEventListener('click', function() {
+          journeyNodes.forEach(n => {
+            n.classList.remove('active', 'bg-primary', 'text-on-primary');
+            n.classList.add('bg-surface-container-high', 'text-on-surface');
+          });
+          this.classList.add('active', 'bg-primary', 'text-on-primary');
+          this.classList.remove('bg-surface-container-high', 'text-on-surface');
+
+          const step = this.getAttribute('data-step');
+          const data = journeyData[step];
+          if (data) {
+            if (journeyTitle) journeyTitle.innerText = data.title;
+            if (journeyCode) journeyCode.innerText = data.code;
+            if (journeyDesc) journeyDesc.innerText = data.desc;
+          }
+        });
+      });
+    })();
+  </script>
+</body></html>

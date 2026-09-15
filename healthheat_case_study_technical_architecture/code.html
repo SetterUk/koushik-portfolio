@@ -1,0 +1,1379 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>HealthHeat — Case Study &amp; Technical Architecture</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&amp;family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        "paper": "#F7F3EA",
+        "ink": "#1f2124",
+        "primary": "#2c4a7e",
+        "primary-dark": "#103366",
+        "terracotta": "#e27d60",
+        "sage": "#85a392",
+        "surface-low": "#f4f3f7",
+        "surface-card": "#ffffff",
+        "surface-dim": "#dbd9dd",
+        "outline": "#747780",
+        "outline-variant": "#c4c6d1",
+        "error": "#ba1a1a",
+        "error-container": "#ffdad6"
+      },
+      fontFamily: {
+        serif: ["DM Serif Display", "Georgia", "serif"],
+        sans: ["Inter", "system-ui", "sans-serif"],
+        mono: ["JetBrains Mono", "monospace"]
+      }
+    }
+  }
+};
+</script>
+<style>
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #F7F3EA;
+  color: #1f2124;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #F7F3EA; }
+::-webkit-scrollbar-thumb { background: #c4c6d1; border-radius: 9999px; }
+::-webkit-scrollbar-thumb:hover { background: #2c4a7e; }
+
+@keyframes floatBob { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-5px); } }
+@keyframes headNod { 0%, 100% { transform: rotate(0deg); } 35% { transform: rotate(-3deg); } 70% { transform: rotate(2deg); } }
+@keyframes handDraft { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(-2px, 2px); } }
+@keyframes gentleLamp { 0%, 100% { opacity: 0.12; } 50% { opacity: 0.25; } }
+@keyframes footTap { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(-7deg); } }
+@keyframes walkBob { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-4px) rotate(1.5deg); } }
+@keyframes scanLaser { 0% { top: 12%; opacity: 0.3; } 50% { top: 78%; opacity: 1; } 100% { top: 12%; opacity: 0.3; } }
+@keyframes marchLine { to { stroke-dashoffset: -20; } }
+
+.anim-bob { animation: floatBob 4s ease-in-out infinite; }
+.anim-head { transform-origin: 260px 180px; animation: headNod 5.5s ease-in-out infinite; }
+.anim-draft { transform-origin: 185px 190px; animation: handDraft 2.5s ease-in-out infinite; }
+.anim-lamp { animation: gentleLamp 4s ease-in-out infinite; }
+.anim-foottap { transform-origin: 180px 280px; animation: footTap 1.2s ease-in-out infinite; }
+.anim-walk { animation: walkBob 1.8s ease-in-out infinite; }
+.laser-beam { animation: scanLaser 2.6s ease-in-out infinite; }
+.flow-line { stroke-dasharray: 6 4; animation: marchLine 1.2s linear infinite; }
+
+.technical-grid {
+  background-size: 24px 24px;
+  background-image: 
+    linear-gradient(to right, rgba(44, 74, 126, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(44, 74, 126, 0.05) 1px, transparent 1px);
+}
+
+.reveal-item {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-item.revealed { opacity: 1; transform: translateY(0); }
+
+#cursor-follower {
+  pointer-events: none;
+  transition: transform 0.12s ease-out, width 0.22s ease, height 0.22s ease, border-color 0.2s ease;
+  z-index: 9999;
+}
+</style>
+
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;600;700;800&family=Caveat:wght@500;600;700&family=Hanken+Grotesk:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- UNIFIED BACKGROUND -->
+<style>
+    body, main, html {
+        background-color: #F7F3EA !important;
+    }
+</style>
+</head>
+<body class="bg-paper font-sans text-ink antialiased min-h-screen flex flex-col relative selection:bg-sage/30 selection:text-ink">
+<!-- Interactive Cursor Follower -->
+<div class="fixed top-0 left-0 w-7 h-7 rounded-full border border-primary/40 -translate-x-1/2 -translate-y-1/2 hidden md:block backdrop-blur-[1px]" id="cursor-follower"></div>
+<!-- Top Scroll Progress Indicator -->
+<div class="fixed top-0 left-0 w-full h-[3px] z-[60] bg-outline-variant/30">
+<div class="h-full bg-gradient-to-r from-primary via-sage to-terracotta w-0 transition-[width] duration-75" id="scroll-progress-bar"></div>
+</div>
+<!-- 1. NAVIGATION BAR -->
+<!-- UNIFIED NAVBAR -->
+<header class="fixed top-0 left-0 right-0 h-20 px-6 md:px-12 flex items-center justify-between z-50 bg-[#F7F3EA]/90 backdrop-blur-md border-b border-[#DCD4C4]/70" style="font-family: 'JetBrains Mono', monospace;">
+<a class="flex items-center gap-3 group" href="../koushik_upadhyay_ai_ml_engineer_builder/code.html#top">
+<div class="w-9 h-9 rounded-xl bg-[#202124] text-[#F7F3EA] flex items-center justify-center font-extrabold text-sm group-hover:bg-[#5577A8] transition-colors shadow-sm">
+      K/
+    </div>
+<span class="font-bold text-sm tracking-tight text-[#202124] group-hover:text-[#5577A8] transition-colors hidden sm:inline" style="font-family: 'Bricolage Grotesque', sans-serif;">KOUSHIK UPADHYAY</span>
+</a>
+<nav class="hidden md:flex items-center gap-8 text-xs font-semibold tracking-wider text-[#5A5852]">
+<a class="hover:text-[#202124] transition-colors hover:underline underline-offset-8" href="../koushik_upadhyay_ai_ml_engineer_builder/code.html#work">WORK</a>
+<a class="hover:text-[#202124] transition-colors hover:underline underline-offset-8" href="../koushik_upadhyay_ai_ml_engineer_builder/code.html#about">ABOUT</a>
+<a class="hover:text-[#202124] transition-colors hover:underline underline-offset-8" href="../career_journey_koushik_upadhyay/code.html">CAREER</a>
+<a class="hover:text-[#202124] transition-colors hover:underline underline-offset-8" href="../how_i_build_engineering_philosophy_methodology/code.html">HOW I BUILD</a>
+<a class="hover:text-[#202124] transition-colors hover:underline underline-offset-8" href="../koushik_upadhyay_ai_ml_engineer_builder/code.html#research">RESEARCH</a>
+<a class="hover:text-[#202124] transition-colors hover:underline underline-offset-8" href="../let_s_talk_koushik_upadhyay_contact/code.html">CONTACT</a>
+</nav>
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#DCD4C4] bg-[#eae8ee] text-xs font-medium shadow-sm">
+<span class="w-2 h-2 rounded-full bg-[#10B981] animate-pulse"></span>
+<span class="text-[#202124]">AI / ML ENGINEER</span>
+</div>
+<a class="md:hidden w-8 h-8 rounded-full bg-[#202124] text-[#F7F3EA] flex items-center justify-center text-xs" href="../let_s_talk_koushik_upadhyay_contact/code.html">?</a>
+</div>
+</header>
+<!-- MAIN CONTENT WRAPPER -->
+<main class="w-full pt-20 flex-1 bg-paper" id="top">
+<!-- Breadcrumb line -->
+<div class="w-full bg-surface-low border-b border-outline-variant/30 py-2.5 px-6">
+<div class="max-w-[1280px] mx-auto flex flex-wrap items-center justify-between gap-3 font-mono text-xs">
+<div class="flex items-center gap-2">
+<span class="text-[#43474f]">PORTFOLIO //</span>
+<span class="text-primary font-bold">PROJECT #01 — HEALTHHEAT</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded bg-sage/20 text-[#1f2124] font-semibold text-[11px] border border-sage/40">
+<span class="w-1.5 h-1.5 rounded-full bg-sage inline-block"></span>
+          LOCAL-FIRST NUTRITION INTELLIGENCE
+        </span>
+<span class="hidden sm:inline-block text-[#747780]">K/CASE_STUDY_01.MD</span>
+</div>
+</div>
+</div>
+<!-- 2. HERO SECTION -->
+<section class="w-full bg-paper technical-grid relative overflow-hidden py-14 lg:py-20 border-b border-outline-variant/30">
+<div class="max-w-[1280px] mx-auto px-6 relative z-10">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+<!-- Left: Huge Editorial Statement -->
+<div class="lg:col-span-7 flex flex-col gap-4 reveal-item revealed">
+<div class="flex items-center gap-2">
+<span class="font-mono text-xs uppercase tracking-widest text-primary font-bold px-2 py-0.5 bg-primary/10 rounded border border-primary/20">
+              01 / HEALTHHEAT — CASE STUDY // ENGINEERING NOTEBOOK
+            </span>
+</div>
+<h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl text-ink leading-[1.08] tracking-tight">
+            Food shouldn't need a nutrition degree.
+          </h1>
+<p class="text-base sm:text-lg text-[#43474f] max-w-xl leading-relaxed">
+            A local-first nutrition intelligence app engineered to transform cold, regulatory micro-print into instantaneous, tailored personal clarity—100% on-device, zero cloud leakage.
+          </p>
+<!-- Tech metadata chips -->
+<div class="flex flex-wrap gap-2 pt-2 font-mono text-xs">
+<span class="px-2.5 py-1 bg-surface-low rounded font-medium border border-outline-variant/50">ANDROID (Jetpack Compose)</span>
+<span class="px-2.5 py-1 bg-primary/10 rounded text-primary font-semibold border border-primary/30">ON-DEVICE AI (MediaPipe + Gemma 2B)</span>
+<span class="px-2.5 py-1 bg-surface-low rounded font-medium border border-outline-variant/50">NUTRITION INTELLIGENCE</span>
+<span class="px-2.5 py-1 bg-surface-low rounded font-medium border border-outline-variant/50">ROOM SQLITE (FTS5)</span>
+</div>
+<!-- Metrics strip -->
+<div class="grid grid-cols-3 gap-4 pt-4 border-t border-outline-variant/30 mt-2">
+<div class="p-3 rounded-lg bg-surface-low/80 border border-outline-variant/30">
+<span class="font-mono text-[11px] text-[#43474f] block uppercase tracking-wider">Timeline</span>
+<span class="font-mono text-xl font-bold text-ink">12 Weeks</span>
+</div>
+<div class="p-3 rounded-lg bg-surface-low/80 border border-outline-variant/30">
+<span class="font-mono text-[11px] text-[#43474f] block uppercase tracking-wider">Inference Latency</span>
+<span class="font-mono text-xl font-bold text-primary">180ms</span>
+</div>
+<div class="p-3 rounded-lg bg-surface-low/80 border border-outline-variant/30">
+<span class="font-mono text-[11px] text-[#43474f] block uppercase tracking-wider">Offline Status</span>
+<span class="font-mono text-xl font-bold text-sage">100% Zero-Cloud</span>
+</div>
+</div>
+</div>
+<!-- Right: Hand-Drawn Stickman & Grocery Shelf Vignette -->
+<div class="lg:col-span-5 relative reveal-item revealed">
+<div class="bg-surface-low rounded-2xl p-5 border border-outline-variant/50 relative overflow-hidden shadow-sm group hover:border-primary/50 transition-all duration-300">
+<div class="absolute top-3 right-3 font-mono text-[10px] uppercase tracking-widest text-[#43474f] border border-outline-variant/40 px-2 py-0.5 rounded flex items-center gap-1.5 bg-paper">
+<span class="w-1.5 h-1.5 rounded-full bg-terracotta animate-ping"></span>
+              FIELD_STUDY_01
+            </div>
+<!-- Stylized Grocery Shelf Scene -->
+<svg class="w-full h-auto text-ink select-none" fill="none" viewbox="0 0 460 380" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#E4DDCF" height="12" rx="2" width="420" x="20" y="40"></rect>
+<rect fill="#E4DDCF" height="12" rx="2" width="420" x="20" y="160"></rect>
+<rect fill="#E4DDCF" height="12" rx="2" width="420" x="20" y="280"></rect>
+<line stroke="#d1c9ba" stroke-width="4" x1="30" x2="30" y1="40" y2="340"></line>
+<line stroke="#d1c9ba" stroke-width="4" x1="430" x2="430" y1="40" y2="340"></line>
+<!-- Food boxes on shelves -->
+<rect fill="#f0b28f" fill-opacity="0.5" height="95" rx="2" stroke="#1f2124" stroke-width="1.5" width="48" x="45" y="65"></rect>
+<polygon class="animate-pulse" fill="#ba1a1a" points="69,85 75,95 63,95"></polygon>
+<text fill="#fff" font-size="8" font-weight="bold" x="67" y="94">!</text>
+<rect fill="#85a392" fill-opacity="0.4" height="80" rx="2" stroke="#1f2124" stroke-width="1.5" width="40" x="100" y="80"></rect>
+<rect fill="#2c4a7e" fill-opacity="0.25" height="90" rx="2" stroke="#1f2124" stroke-width="1.5" width="52" x="148" y="70"></rect>
+<rect fill="#E4DDCF" height="100" rx="2" stroke="#1f2124" stroke-width="1.5" width="56" x="360" y="60"></rect>
+<!-- Interactive Floating Loupe on the package -->
+<g class="cursor-pointer group/lens">
+<circle class="group-hover/lens:scale-110 transition-transform" cx="197" cy="218" fill="#F7F3EA" fill-opacity="0.95" r="22" stroke="#2c4a7e" stroke-width="2"></circle>
+<line stroke="#2c4a7e" stroke-linecap="round" stroke-width="3" x1="212" x2="225" y1="233" y2="246"></line>
+<text fill="#ba1a1a" font-family="JetBrains Mono" font-size="7" font-weight="bold" x="182" y="215">MALTODEX</text>
+<text fill="#2c4a7e" font-family="JetBrains Mono" font-size="7" x="182" y="225">SUGAR 18g</text>
+</g>
+<!-- Character: Hand-drawn stickman with glasses & bag -->
+<line stroke="#1f2124" stroke-linecap="round" stroke-width="3.5" x1="260" x2="250" y1="285" y2="355"></line>
+<line stroke="#1f2124" stroke-linecap="round" stroke-width="3.5" x1="260" x2="275" y1="285" y2="355"></line>
+<ellipse cx="245" cy="357" fill="#1f2124" rx="8" ry="3"></ellipse>
+<ellipse cx="280" cy="357" fill="#1f2124" rx="8" ry="3"></ellipse>
+<!-- Satchel strap & bag -->
+<path d="M245 200 L275 270" stroke="#e27d60" stroke-linecap="round" stroke-width="3"></path>
+<rect fill="#e27d60" height="26" rx="3" width="22" x="270" y="260"></rect>
+<!-- Torso in Muted Cobalt -->
+<path d="M260 215 L260 285" stroke="#2c4a7e" stroke-linecap="round" stroke-width="14"></path>
+<!-- Left arm holding cereal box -->
+<path d="M255 220 L220 235 L205 225" stroke="#1f2124" stroke-linecap="round" stroke-width="3"></path>
+<!-- Cereal box in hand -->
+<g transform="translate(180, 195) rotate(-10)">
+<rect fill="#F7F3EA" height="48" rx="2" stroke="#1f2124" stroke-width="2" width="34" x="0" y="0"></rect>
+<rect fill="#e27d60" fill-opacity="0.8" height="8" width="26" x="4" y="5"></rect>
+<line stroke="#1f2124" stroke-width="1" x1="4" x2="30" y1="18" y2="18"></line>
+<line stroke="#747780" stroke-width="0.8" x1="4" x2="26" y1="23" y2="23"></line>
+<line stroke="#747780" stroke-width="0.8" x1="4" x2="28" y1="28" y2="28"></line>
+</g>
+<!-- Right arm scratched head -->
+<path d="M265 220 L285 205 L280 185" stroke="#1f2124" stroke-linecap="round" stroke-width="3"></path>
+<!-- Head & Spectacles with gentle nod -->
+<g class="anim-head">
+<circle cx="260" cy="180" fill="#f7f3ea" r="16" stroke="#1f2124" stroke-width="2.5"></circle>
+<path d="M245 180 C245 162 265 156 278 165 C275 168 268 167 262 170 C256 172 250 178 245 180 Z" fill="#1f2124"></path>
+<circle cx="253" cy="180" fill="none" r="4.5" stroke="#1f2124" stroke-width="1.5"></circle>
+<circle cx="264" cy="180" fill="none" r="4.5" stroke="#1f2124" stroke-width="1.5"></circle>
+<line stroke="#1f2124" stroke-width="1.5" x1="257.5" x2="259.5" y1="180" y2="180"></line>
+<path d="M255 190 Q260 188 265 191" fill="none" stroke="#1f2124" stroke-width="1.5"></path>
+</g>
+<!-- Floating Thought Bubble -->
+<g class="anim-bob cursor-pointer transition-transform hover:scale-105" transform="translate(36, 12)">
+<path d="M 120 40 Q 110 10 180 10 Q 250 10 240 40 Q 235 65 170 65 L 150 78 L 155 65 Q 120 65 120 40 Z" fill="#FFFFFF" filter="drop-shadow(0 2px 5px rgba(0,0,0,0.06))" stroke="#2c4a7e" stroke-width="1.5"></path>
+<text fill="#103366" font-family="JetBrains Mono" font-size="10.5" font-weight="600" x="132" y="32">"Okay... but what does</text>
+<text fill="#103366" font-family="JetBrains Mono" font-size="10.5" font-weight="600" x="132" y="47">this actually mean for me?"</text>
+</g>
+<!-- Flow guide arrow -->
+<path class="flow-line" d="M 330 250 C 370 270 380 320 380 360" fill="none" stroke="#85a392" stroke-width="2"></path>
+<polygon fill="#85a392" points="380,366 376,356 384,356"></polygon>
+</svg>
+<!-- Bottom Caption & Scroll Directive -->
+<div class="pt-3 border-t border-outline-variant/30 flex items-center justify-between font-mono text-xs">
+<span class="text-[#43474f] italic">FIG 01.1 — The Cognitive Gap in Aisle 4</span>
+<a class="font-semibold text-primary inline-flex items-center gap-1 hover:underline" href="#section-problem">
+<span>SCROLL DOWN</span>
+<span class="material-symbols-outlined text-[15px] animate-bounce">arrow_downward</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 3. THE PROBLEM & METABOLIC LENS SIMULATOR -->
+<section class="w-full bg-surface-low py-16 border-b border-outline-variant/30" id="section-problem">
+<div class="max-w-[1280px] mx-auto px-6 flex flex-col gap-8 reveal-item revealed">
+<div class="max-w-3xl flex flex-col gap-2">
+<span class="font-mono text-xs uppercase tracking-widest text-terracotta font-bold">THE PROBLEM</span>
+<h2 class="font-serif text-3xl sm:text-4xl text-ink tracking-tight">
+          The label tells you what's inside. Not what it means for you.
+        </h2>
+<p class="text-base text-[#43474f] leading-relaxed">
+          Nutrition labels contain raw metrics: serving sizes, daily values, sodium, saturated fats, hidden sugars. But turning that data into an actionable health decision requires context that consumers simply do not have in a fast-paced grocery aisle.
+        </p>
+</div>
+<!-- Problem Deconstruction & Interactive Metabolic Lens Simulator -->
+<div class="bg-surface-card rounded-2xl p-6 border border-outline-variant/40 shadow-sm flex flex-col gap-6">
+<div class="flex items-center justify-between flex-wrap gap-3 border-b border-outline-variant/20 pb-4">
+<div class="flex items-center gap-2">
+<span class="font-mono text-xs uppercase tracking-wider text-ink font-bold">VISUAL PROBLEM DECONSTRUCTION</span>
+<span class="px-2 py-0.5 rounded bg-primary/10 text-primary font-mono text-[10px] uppercase font-bold">METABOLIC LENS SIMULATOR</span>
+</div>
+<!-- Persona Selector Buttons -->
+<div class="flex items-center bg-surface-low p-1 rounded-lg border border-outline-variant/50 gap-1 text-xs font-mono">
+<button class="px-3 py-1 rounded bg-surface-card font-semibold text-primary shadow-sm transition-all" id="btn-persona-diabetic" onclick="switchPersona('diabetic')">Pre-Diabetic</button>
+<button class="px-3 py-1 rounded hover:bg-surface-card/60 text-[#43474f] transition-all" id="btn-persona-allergy" onclick="switchPersona('allergy')">Soy Allergy</button>
+<button class="px-3 py-1 rounded hover:bg-surface-card/60 text-[#43474f] transition-all" id="btn-persona-athlete" onclick="switchPersona('athlete')">Endurance Runner</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-11 gap-4 items-center">
+<!-- Step 1: Raw Food Label Breakdown -->
+<div class="md:col-span-3 bg-surface-low rounded-xl p-4 border border-outline-variant/60 flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<span class="font-mono text-xs text-terracotta font-bold uppercase">RAW LABEL METRICS</span>
+<span class="material-symbols-outlined text-[18px] text-terracotta">receipt_long</span>
+</div>
+<div class="font-mono text-xs text-[#43474f] flex flex-col gap-1.5 pt-1">
+<span class="bg-surface-card px-2 py-1 rounded border border-outline-variant/30 font-semibold text-ink">INGR: MALTODEXTRIN, SOY LECITHIN</span>
+<span class="bg-surface-card px-2 py-1 rounded border border-outline-variant/30">SODIUM: 680mg (30% DV)</span>
+<span class="bg-surface-card px-2 py-1 rounded border border-outline-variant/30 text-error font-semibold">ADDED SUGAR: 18g (HIGH)</span>
+<span class="bg-surface-card px-2 py-1 rounded border border-outline-variant/30">SERVING: 40g (CONTAINS 2.5 SERVINGS)</span>
+</div>
+<span class="font-mono text-[11px] text-[#43474f] italic mt-1">"Is 680mg bad if this is my only salt today?"</span>
+</div>
+<!-- Arrow -->
+<div class="md:col-span-1 flex justify-center items-center">
+<span class="material-symbols-outlined text-primary text-[28px] rotate-90 md:rotate-0 animate-pulse">arrow_forward</span>
+</div>
+<!-- Step 2: Personal Metabolic Lens -->
+<div class="md:col-span-3 bg-primary/5 rounded-xl p-4 border border-primary/20 flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<span class="font-mono text-xs text-primary font-bold uppercase">METABOLIC PROFILE</span>
+<span class="material-symbols-outlined text-[18px] text-primary">person_check</span>
+</div>
+<div class="font-mono text-xs text-[#43474f] flex flex-col gap-1.5 pt-1" id="persona-lens-content">
+<span class="bg-surface-card px-2 py-1 rounded text-primary font-semibold border border-primary/20">• CLINICAL: Pre-diabetic (Hba1c 5.9)</span>
+<span class="bg-surface-card px-2 py-1 rounded text-primary font-semibold border border-primary/20">• GOAL: Keep sodium &lt; 1500mg/day</span>
+<span class="bg-surface-card px-2 py-1 rounded text-error font-semibold border border-error/20">• ALLERGY: Mild soy intolerance</span>
+<span class="bg-surface-card px-2 py-1 rounded text-ink border border-outline-variant/30">• INTAKE: Already had 920mg Na today</span>
+</div>
+<span class="font-mono text-[11px] text-primary italic mt-1">Ground truth deterministic intersection</span>
+</div>
+<!-- Arrow -->
+<div class="md:col-span-1 flex justify-center items-center">
+<span class="material-symbols-outlined text-sage text-[28px] rotate-90 md:rotate-0 animate-pulse">arrow_forward</span>
+</div>
+<!-- Step 3: Actionable Personalized Verdict -->
+<div class="md:col-span-3 bg-error-container/40 rounded-xl p-4 border border-error/40 flex flex-col gap-2 transition-all shadow-sm" id="actionable-verdict-card">
+<div class="flex items-center justify-between">
+<span class="font-mono text-xs text-error font-bold uppercase" id="verdict-tag">ACTIONABLE VERDICT</span>
+<span class="material-symbols-outlined text-[18px] text-error" id="verdict-icon">warning</span>
+</div>
+<div class="text-sm">
+<p class="font-bold text-error mb-1" id="verdict-title">Caution: High Spike Potential</p>
+<p class="text-[#43474f] text-xs leading-relaxed" id="verdict-body">
+                Maltodextrin spikes your glucose index faster than table sugar. Consuming the whole pack also puts you at 106% of your daily sodium ceiling.
+              </p>
+</div>
+<div class="mt-2 pt-2 border-t border-outline-variant/30 flex items-center justify-between font-mono text-[11px]">
+<span class="font-bold text-terracotta uppercase" id="verdict-action">SWAP RECOMMENDED</span>
+<span class="text-[#43474f]" id="verdict-swap-id">ID: #4091 OATS</span>
+</div>
+</div>
+</div>
+<!-- Key Axiom Banner -->
+<div class="p-3.5 bg-surface-low rounded-xl border border-outline-variant/40 flex items-center gap-3">
+<span class="w-2.5 h-2.5 rounded-full bg-terracotta animate-ping"></span>
+<span class="font-sans text-sm sm:text-base text-ink font-medium">
+            Key Axiom: <strong class="text-terracotta font-serif text-lg italic">“Same food. Different person. Completely different decision.”</strong>
+</span>
+</div>
+</div>
+</div>
+</section>
+<!-- 4. CHARACTER INVESTIGATION: LAB NOTEBOOK ENTRY #047 -->
+<section class="w-full bg-paper py-16 border-b border-outline-variant/30 relative">
+<div class="max-w-[1280px] mx-auto px-6">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+<!-- Left: Vignette of Builder at Wooden Engineering Desk -->
+<div class="lg:col-span-6 bg-surface-low rounded-2xl p-6 border border-outline-variant/50 relative shadow-sm reveal-item revealed">
+<div class="flex items-center justify-between border-b border-outline-variant/30 pb-2 mb-4 font-mono text-xs">
+<span class="text-[#43474f] uppercase tracking-wider font-semibold">LAB NOTEBOOK — ENTRY #047</span>
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span class="text-primary font-semibold">INVESTIGATION PHASE</span>
+</div>
+</div>
+<!-- SVG Desk Vignette with Animated Hand & Glowing Warm Lamp -->
+<svg class="w-full h-auto select-none" fill="none" viewbox="0 0 500 320" xmlns="http://www.w3.org/2000/svg">
+<polygon class="anim-lamp pointer-events-none" fill="#f0b28f" points="120,40 20,300 300,300"></polygon>
+<rect fill="#E4DDCF" height="14" rx="2" width="460" x="20" y="220"></rect>
+<line stroke="#747780" stroke-width="4" x1="60" x2="60" y1="234" y2="300"></line>
+<line stroke="#747780" stroke-width="4" x1="440" x2="440" y1="234" y2="300"></line>
+<!-- Wooden Table Accent -->
+<line stroke="#b8936d" stroke-width="3" x1="20" x2="480" y1="222" y2="222"></line>
+<!-- Warm Desk Lamp -->
+<path d="M90 220 L110 130 L135 80" fill="none" stroke="#1f2124" stroke-width="3"></path>
+<circle cx="90" cy="220" fill="#1f2124" r="6"></circle>
+<circle cx="110" cy="130" fill="#1f2124" r="4"></circle>
+<path d="M125 70 L150 90 L130 100 Z" fill="#1f2124"></path>
+<!-- Sticky Notes on Pinboard -->
+<g class="cursor-pointer group/s1" onclick="highlightSticky('s1')">
+<rect class="transition-all group-hover/s1:-translate-y-1 shadow-sm" fill="#ffdbd0" height="46" id="s1" rx="3" stroke="#1f2124" stroke-width="1" width="85" x="240" y="30"></rect>
+<text fill="#611d04" font-family="JetBrains Mono" font-size="8" font-weight="bold" x="248" y="48">Can AI decide this?</text>
+<text fill="#611d04" font-family="JetBrains Mono" font-size="7" x="248" y="62">→ NO: Too risky.</text>
+</g>
+<g class="cursor-pointer group/s2" onclick="highlightSticky('s2')">
+<rect class="transition-all group-hover/s2:-translate-y-1 shadow-sm" fill="#c7e8d1" height="48" id="s2" rx="3" stroke="#1f2124" stroke-width="1" width="105" x="340" y="22"></rect>
+<text fill="#032012" font-family="JetBrains Mono" font-size="8" font-weight="bold" x="348" y="42">Where is ground truth?</text>
+<text fill="#032012" font-family="JetBrains Mono" font-size="7" x="348" y="56">→ Offline SQLite DB</text>
+</g>
+<g class="cursor-pointer group/s3" onclick="highlightSticky('s3')">
+<rect class="transition-all group-hover/s3:-translate-y-1 shadow-sm" fill="#d7e2ff" height="46" id="s3" rx="3" stroke="#1f2124" stroke-width="1" width="118" x="260" y="85"></rect>
+<text fill="#001a40" font-family="JetBrains Mono" font-size="8" font-weight="bold" x="268" y="103">Deterministic logic?</text>
+<text fill="#001a40" font-family="JetBrains Mono" font-size="7" x="268" y="117">→ Allergen rules</text>
+</g>
+<g class="cursor-pointer group/s4" onclick="highlightSticky('s4')">
+<rect class="transition-all group-hover/s4:-translate-y-1 shadow-sm" fill="#F7F3EA" height="48" id="s4" rx="3" stroke="#1f2124" stroke-width="1" width="92" x="385" y="80"></rect>
+<text fill="#1f2124" font-family="JetBrains Mono" font-size="8" font-weight="bold" x="392" y="99">Without internet?</text>
+<text fill="#1f2124" font-family="JetBrains Mono" font-size="7" x="392" y="113">→ Must work 100%</text>
+</g>
+<!-- Notebook on desk -->
+<rect fill="#F7F3EA" height="35" rx="2" stroke="#1f2124" stroke-width="1.5" width="90" x="150" y="200"></rect>
+<!-- Coffee mug with subtle steam -->
+<rect fill="#2c4a7e" height="18" rx="2" stroke="#1f2124" stroke-width="1.2" width="16" x="250" y="205"></rect>
+<path class="animate-pulse" d="M255 198 Q258 193 256 188" fill="none" stroke="#747780" stroke-width="1"></path>
+<!-- Character Body Drafting -->
+<path d="M195 240 L195 270 L180 305" fill="none" stroke="#1f2124" stroke-linecap="round" stroke-width="3.5"></path>
+<path d="M195 240 L210 270 L215 305" fill="none" stroke="#1f2124" stroke-linecap="round" stroke-width="3.5"></path>
+<path d="M195 240 L185 180" stroke="#2c4a7e" stroke-linecap="round" stroke-width="14"></path>
+<g class="anim-draft">
+<path d="M185 190 L170 215 L180 220" stroke="#1f2124" stroke-linecap="round" stroke-width="3"></path>
+<circle cx="180" cy="220" fill="#1f2124" r="2"></circle>
+</g>
+<circle cx="178" cy="155" fill="#f7f3ea" r="15" stroke="#1f2124" stroke-width="2.2"></circle>
+<path d="M165 152 C165 138 182 134 192 144 C190 146 184 145 178 147 Z" fill="#1f2124"></path>
+<circle cx="171" cy="155" fill="none" r="4" stroke="#1f2124" stroke-width="1.5"></circle>
+</svg>
+<p class="text-xs text-[#43474f] pt-2 border-t border-outline-variant/30 leading-relaxed italic">
+            “Sitting late in the studio, the trap was obvious: slapping a generic wrapper on an OpenAI API call would feel magical for 30 seconds until the user loses signal in a basement aisle or the bot invents 0g sugar on a chocolate bar.”
+          </p>
+</div>
+<!-- Right: The Philosophy & Axiom -->
+<div class="lg:col-span-6 flex flex-col gap-5 reveal-item revealed">
+<span class="font-mono text-xs uppercase tracking-widest text-primary font-bold">THE PHILOSOPHY</span>
+<h2 class="font-serif text-3xl sm:text-4xl text-ink tracking-tight">
+            The obvious solution was an AI chatbot. I didn't want that.
+          </h2>
+<!-- Bold Editorial Banner -->
+<div class="p-5 bg-primary text-paper rounded-2xl border border-primary-dark shadow-sm">
+<span class="font-mono text-xs tracking-widest uppercase text-[#c7e8d1] block mb-1 font-semibold">EDITORIAL AXIOM</span>
+<div class="font-mono text-2xl font-bold tracking-tight">
+              AI ≠ THE WHOLE PRODUCT.
+            </div>
+<p class="text-xs sm:text-sm text-paper/90 mt-2 leading-relaxed">
+              The language model belongs strictly at the translation and explanation interface, not at the ground-truth calculation layer.
+            </p>
+</div>
+<div class="space-y-3 text-sm text-[#43474f] leading-relaxed">
+<p>
+              Health decisions should never depend on a generative model hallucinating micronutrient numbers, guessing allergic cross-reactivity, or improvising glycaemic index scores based on probabilistic text prediction.
+            </p>
+<p>
+              If a peanut allergy check is 99% confident, that means 1 in 100 times it will fail. In e-commerce, a 1% error is an apology email; in clinical allergen tracking, it is an anaphylactic reaction.
+            </p>
+<p class="font-semibold text-ink border-l-2 border-primary pl-3">
+              Therefore: Math and deterministic rules must run the verification. The AI's sole duty is to translate that verified verdict into concise, sympathetic, human language.
+            </p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 5. THE SOLUTION: 6-STAGE PIPELINE ARCHITECTURE -->
+<section class="w-full bg-surface-low py-16 border-b border-outline-variant/30" id="section-solution">
+<div class="max-w-[1280px] mx-auto px-6 flex flex-col gap-8 reveal-item revealed">
+<div class="flex flex-col gap-2 max-w-3xl">
+<div class="flex items-center gap-2">
+<span class="font-mono text-xs uppercase tracking-widest text-primary font-bold">PIPELINE ARCHITECTURE</span>
+<span class="text-outline-variant">•</span>
+<span class="font-mono text-xs text-[#43474f]">CLICK A STAGE TO INSPECT RUNTIME TELEMETRY</span>
+</div>
+<h2 class="font-serif text-3xl sm:text-4xl text-ink tracking-tight">
+          So I built the system around the AI.
+        </h2>
+<p class="text-base text-[#43474f] leading-relaxed">
+          A sequential, deterministic pipeline where raw computer vision translates into mathematical constraints before any generative model is ever invoked.
+        </p>
+</div>
+<!-- 6-Stage Interactive Visual Pipeline -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-3">
+<!-- Stage 1 -->
+<div class="pipeline-card bg-surface-card rounded-xl p-4 border border-outline-variant/40 flex flex-col justify-between hover:border-primary hover:-translate-y-1 transition-all duration-200 cursor-pointer shadow-sm group" onclick="showTelemetry(1)">
+<div class="flex flex-col gap-2">
+<span class="font-mono text-xs font-bold text-primary">STAGE 01</span>
+<span class="font-mono text-sm font-bold text-ink uppercase group-hover:text-primary transition-colors">Food Scan</span>
+<p class="text-xs text-[#43474f]">CameraX MLKit OCR with sub-50ms lock on packaging text &amp; barcodes.</p>
+</div>
+<div class="mt-4 pt-2 border-t border-outline-variant/20 flex items-center justify-between font-mono text-[10px]">
+<span class="text-[#43474f]">CameraX/MLKit</span>
+<span class="text-primary font-bold">42ms</span>
+</div>
+</div>
+<!-- Stage 2 -->
+<div class="pipeline-card bg-surface-card rounded-xl p-4 border border-outline-variant/40 flex flex-col justify-between hover:border-sage hover:-translate-y-1 transition-all duration-200 cursor-pointer shadow-sm group" onclick="showTelemetry(2)">
+<div class="flex flex-col gap-2">
+<span class="font-mono text-xs font-bold text-sage">STAGE 02</span>
+<span class="font-mono text-sm font-bold text-ink uppercase group-hover:text-sage transition-colors">Structured Data</span>
+<p class="text-xs text-[#43474f]">Match against 500k-item local SQLite DB; instant fall-back to parser.</p>
+</div>
+<div class="mt-4 pt-2 border-t border-outline-variant/20 flex items-center justify-between font-mono text-[10px]">
+<span class="text-[#43474f]">Room SQLite</span>
+<span class="text-sage font-bold">7.8ms</span>
+</div>
+</div>
+<!-- Stage 3 -->
+<div class="pipeline-card bg-surface-card rounded-xl p-4 border border-outline-variant/40 flex flex-col justify-between hover:border-terracotta hover:-translate-y-1 transition-all duration-200 cursor-pointer shadow-sm group" onclick="showTelemetry(3)">
+<div class="flex flex-col gap-2">
+<span class="font-mono text-xs font-bold text-terracotta">STAGE 03</span>
+<span class="font-mono text-sm font-bold text-ink uppercase group-hover:text-terracotta transition-colors">Deterministic</span>
+<p class="text-xs text-[#43474f]">Allergen &amp; glycaemic score calculations via pure Kotlin math.</p>
+</div>
+<div class="mt-4 pt-2 border-t border-outline-variant/20 flex items-center justify-between font-mono text-[10px]">
+<span class="text-[#43474f]">Kotlin Math</span>
+<span class="text-terracotta font-bold">1.2ms</span>
+</div>
+</div>
+<!-- Stage 4 -->
+<div class="pipeline-card bg-surface-card rounded-xl p-4 border border-outline-variant/40 flex flex-col justify-between hover:border-primary hover:-translate-y-1 transition-all duration-200 cursor-pointer shadow-sm group" onclick="showTelemetry(4)">
+<div class="flex flex-col gap-2">
+<span class="font-mono text-xs font-bold text-primary">STAGE 04</span>
+<span class="font-mono text-sm font-bold text-ink uppercase group-hover:text-primary transition-colors">Personalization</span>
+<p class="text-xs text-[#43474f]">Cross-reference with stored user health logs, medical flags &amp; intake.</p>
+</div>
+<div class="mt-4 pt-2 border-t border-outline-variant/20 flex items-center justify-between font-mono text-[10px]">
+<span class="text-[#43474f]">DataStore</span>
+<span class="text-primary font-bold">0.8ms</span>
+</div>
+</div>
+<!-- Stage 5 -->
+<div class="pipeline-card bg-surface-card rounded-xl p-4 border border-outline-variant/40 flex flex-col justify-between hover:border-terracotta hover:-translate-y-1 transition-all duration-200 cursor-pointer shadow-sm group" onclick="showTelemetry(5)">
+<div class="flex flex-col gap-2">
+<span class="font-mono text-xs font-bold text-terracotta">STAGE 05</span>
+<span class="font-mono text-sm font-bold text-ink uppercase group-hover:text-terracotta transition-colors">On-Device AI</span>
+<p class="text-xs text-[#43474f]">Gemma-2B INT4 quantized via MediaPipe running locally on mobile NPU.</p>
+</div>
+<div class="mt-4 pt-2 border-t border-outline-variant/20 flex items-center justify-between font-mono text-[10px]">
+<span class="text-[#43474f]">Gemma 2B</span>
+<span class="text-terracotta font-bold">120ms</span>
+</div>
+</div>
+<!-- Stage 6 -->
+<div class="pipeline-card bg-surface-card rounded-xl p-4 border border-outline-variant/40 flex flex-col justify-between hover:border-sage hover:-translate-y-1 transition-all duration-200 cursor-pointer shadow-sm group" onclick="showTelemetry(6)">
+<div class="flex flex-col gap-2">
+<span class="font-mono text-xs font-bold text-sage">STAGE 06</span>
+<span class="font-mono text-sm font-bold text-ink uppercase group-hover:text-sage transition-colors">Human Verdict</span>
+<p class="text-xs text-[#43474f]">Actionable verdict in Jetpack Compose UI with verified alternative swaps.</p>
+</div>
+<div class="mt-4 pt-2 border-t border-outline-variant/20 flex items-center justify-between font-mono text-[10px]">
+<span class="text-[#43474f]">Compose UI</span>
+<span class="text-sage font-bold">StateFlow</span>
+</div>
+</div>
+</div>
+<!-- Pipeline Telemetry Monitor -->
+<div class="p-4 bg-surface-card rounded-xl border border-outline-variant/40 flex items-center justify-between flex-wrap gap-2 text-xs font-mono" id="telemetry-bar">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-sage animate-ping"></span>
+<span class="text-ink font-bold" id="telemetry-title">PIPELINE MONITOR: ACTIVE REALTIME STREAM</span>
+</div>
+<span class="text-[#43474f]" id="telemetry-desc">Click any stage above to inspect runtime dispatchers &amp; execution budgets.</span>
+</div>
+</div>
+</section>
+<!-- 6. WHAT I ACTUALLY BUILT: FOUR ARCHITECTURAL PILLARS -->
+<section class="w-full bg-paper py-16 border-b border-outline-variant/30" id="section-pillars">
+<div class="max-w-[1280px] mx-auto px-6 flex flex-col gap-10">
+<div class="flex flex-col gap-2 max-w-2xl reveal-item revealed">
+<span class="font-mono text-xs uppercase tracking-widest text-primary font-bold">THE ARTIFACT</span>
+<h2 class="font-serif text-3xl sm:text-4xl text-ink tracking-tight">
+          Four Architectural Pillars
+        </h2>
+<p class="text-base text-[#43474f]">
+          Engineering foundations designed for resilience, verifiable accuracy, and zero cloud dependency.
+        </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Pillar 01 -->
+<div class="bg-surface-low rounded-2xl p-6 border border-outline-variant/50 flex flex-col gap-4 hover:border-primary/50 transition-all duration-300 hover:shadow-md reveal-item revealed">
+<div class="flex items-center justify-between font-mono text-xs">
+<span class="text-primary font-bold uppercase">PILLAR 01 // DATA LAYER</span>
+<span class="px-2 py-0.5 rounded bg-surface-card text-ink border border-outline-variant/40">ROOM · SQLITE FTS5</span>
+</div>
+<h3 class="font-mono text-lg font-bold text-ink uppercase tracking-tight">
+            FOOD DATA ENGINE &amp; OFFLINE CACHE
+          </h3>
+<p class="text-sm text-[#43474f] leading-relaxed">
+            Built an optimized local SQLite schema holding 500,000 top Indian and European packaged food items derived from OpenFoodFacts, compressed into a 62MB custom FTS5 virtual table with &lt;9ms query latency.
+          </p>
+<div class="bg-paper rounded-lg p-3.5 font-mono text-xs text-ink border border-outline-variant/40 space-y-1 overflow-x-auto">
+<div class="text-[#747780]">// Room SQLite Entity Schema</div>
+<div><span class="text-primary font-semibold">@Entity</span>(tableName = <span class="text-sage">"food_artifacts"</span>)</div>
+<div><span class="text-primary font-semibold">data class</span> FoodArtifact(</div>
+<div class="pl-4"><span class="text-terracotta">@PrimaryKey val</span> barcode: <span class="text-primary">String</span>,</div>
+<div class="pl-4"><span class="text-terracotta">val</span> nutrientsJson: <span class="text-primary">String</span>,</div>
+<div class="pl-4"><span class="text-terracotta">val</span> verifiedAllergens: <span class="text-primary">List&lt;Int&gt;</span>,</div>
+<div class="pl-4"><span class="text-terracotta">val</span> ftsTokens: <span class="text-primary">String</span></div>
+<div>)</div>
+</div>
+<p class="text-xs text-[#43474f]">
+            Result: Query response is under 8ms on physical devices, even deep in a basement hypermarket.
+          </p>
+</div>
+<!-- Pillar 02 -->
+<div class="bg-surface-low rounded-2xl p-6 border border-outline-variant/50 flex flex-col gap-4 hover:border-terracotta/50 transition-all duration-300 hover:shadow-md reveal-item revealed">
+<div class="flex items-center justify-between font-mono text-xs">
+<span class="text-terracotta font-bold uppercase">PILLAR 02 // LOGIC CORE</span>
+<span class="px-2 py-0.5 rounded bg-surface-card text-ink border border-outline-variant/40">DETERMINISTIC SOLVER</span>
+</div>
+<h3 class="font-mono text-lg font-bold text-ink uppercase tracking-tight">
+            DETERMINISTIC HEALTH LOGIC
+          </h3>
+<p class="text-sm text-[#43474f] leading-relaxed">
+            Rule-based nutrition scoring, personalized allergen taxonomy matching, and 100% deterministic glycaemic load calculators. The model does not decide safety—pure arithmetic does.
+          </p>
+<div class="space-y-2 font-mono text-xs">
+<div class="flex items-center justify-between p-2.5 bg-surface-card rounded border border-outline-variant/30">
+<span class="text-ink">Nutrient Profile Scoring (WHO-NPS)</span>
+<span class="text-sage font-bold">100% Deterministic</span>
+</div>
+<div class="flex items-center justify-between p-2.5 bg-surface-card rounded border border-outline-variant/30">
+<span class="text-ink">Allergen Exact + Stemming Match</span>
+<span class="text-sage font-bold">Zero Generative Guess</span>
+</div>
+<div class="flex items-center justify-between p-2.5 bg-surface-card rounded border border-outline-variant/30">
+<span class="text-ink">Daily Sodium &amp; Macro Budget Deduction</span>
+<span class="text-sage font-bold">StateFlow Aggregation</span>
+</div>
+</div>
+<p class="text-xs text-[#43474f]">
+            Guarantees zero medical hallucinations while maintaining strict, verifiable audit trails for every flagged risk.
+          </p>
+</div>
+<!-- Pillar 03 -->
+<div class="bg-surface-low rounded-2xl p-6 border border-outline-variant/50 flex flex-col gap-4 hover:border-primary/50 transition-all duration-300 hover:shadow-md reveal-item revealed">
+<div class="flex items-center justify-between font-mono text-xs">
+<span class="text-primary font-bold uppercase">PILLAR 03 // SLM RUNTIME</span>
+<span class="px-2 py-0.5 rounded bg-surface-card text-ink border border-outline-variant/40">MEDIAPIPE · GEMMA 2B</span>
+</div>
+<h3 class="font-mono text-lg font-bold text-ink uppercase tracking-tight">
+            ON-DEVICE AI (GEMMA / MEDIAPIPE)
+          </h3>
+<p class="text-sm text-[#43474f] leading-relaxed">
+            Integrated Google's Gemma 2B model quantized to INT4 via MediaPipe LLM Inference API. Prompt-constrained so the model is physically prevented from fabricating facts.
+          </p>
+<div class="bg-paper rounded-lg p-3.5 font-mono text-xs text-ink border border-outline-variant/40 space-y-1 overflow-x-auto">
+<div class="text-[#747780]">// Strict prompt injection format</div>
+<div>PROMPT: <span class="text-terracotta">&lt;start_of_turn&gt;</span>user</div>
+<div>[VERIFIED_FACTS: Sodium=680mg, Maltodextrin=True, User=PreDiabetic]</div>
+<div>TASK: Explain the verdict in 2 short sentences. Do not add numbers.</div>
+<div><span class="text-terracotta">&lt;end_of_turn&gt;</span><span class="text-sage">&lt;start_of_turn&gt;</span>model</div>
+</div>
+<p class="text-xs text-[#43474f]">
+            By passing pre-calculated deterministic facts into the prompt, the model cannot invent ingredients.
+          </p>
+</div>
+<!-- Pillar 04 -->
+<div class="bg-surface-low rounded-2xl p-6 border border-outline-variant/50 flex flex-col gap-4 hover:border-sage/50 transition-all duration-300 hover:shadow-md reveal-item revealed">
+<div class="flex items-center justify-between font-mono text-xs">
+<span class="text-sage font-bold uppercase">PILLAR 04 // PRIVACY PROMISE</span>
+<span class="px-2 py-0.5 rounded bg-surface-card text-ink border border-outline-variant/40">ZERO-CLOUD ARCHITECTURE</span>
+</div>
+<h3 class="font-mono text-lg font-bold text-ink uppercase tracking-tight">
+            LOCAL-FIRST &amp; TOTAL PRIVACY
+          </h3>
+<p class="text-sm text-[#43474f] leading-relaxed">
+            Your dietary habits, medical conditions, and food logs never leave the device silicon. No remote telemetry, no profile sharing, and full airplane mode capability.
+          </p>
+<div class="bg-sage/10 rounded-xl p-4 border border-sage/30 flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-sage/20 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-ink text-[24px]">airplanemode_active</span>
+</div>
+<div>
+<span class="font-mono text-xs font-bold text-ink block uppercase">Airplane Mode Tested</span>
+<span class="text-xs text-[#43474f]">
+                Full camera barcode scan → database lookup → LLM inference verified with cellular &amp; Wi-Fi toggled off.
+              </span>
+</div>
+</div>
+<p class="text-xs text-[#43474f]">
+            Personal health data is inherently sensitive; keeping it on silicon guarantees peace of mind by design.
+          </p>
+</div>
+</div>
+</div>
+</section>
+<!-- 7. ARCHITECTURE: UNDER THE HOOD -->
+<section class="w-full bg-surface-low py-16 border-b border-outline-variant/30">
+<div class="max-w-[1280px] mx-auto px-6 flex flex-col gap-8 reveal-item revealed">
+<div class="flex flex-col gap-2 max-w-2xl">
+<span class="font-mono text-xs uppercase tracking-widest text-primary font-bold">SYSTEM TOPOLOGY</span>
+<h2 class="font-serif text-3xl sm:text-4xl text-ink tracking-tight">
+          Architecture: Under The Hood
+        </h2>
+<p class="text-base text-[#43474f]">
+          Hardware-to-UI flow illustrating deterministic gates prior to any generative token generation.
+        </p>
+</div>
+<!-- Architectural Block Diagram -->
+<div class="bg-surface-card rounded-2xl p-6 sm:p-8 border border-outline-variant/40 shadow-sm overflow-x-auto">
+<div class="min-w-[760px] flex items-center justify-between gap-3 text-center font-mono text-xs">
+<!-- Step 1 -->
+<div class="flex-1 bg-surface-low p-4 rounded-xl border border-outline-variant/50 flex flex-col gap-1.5">
+<span class="text-primary font-bold">01. INGESTION</span>
+<span class="text-xs font-semibold text-ink">Camera / Barcode</span>
+<span class="text-[10px] text-[#747780]">CameraX 60fps frame analyzer</span>
+</div>
+<span class="material-symbols-outlined text-primary text-[20px]">arrow_forward</span>
+<!-- Step 2 -->
+<div class="flex-1 bg-surface-low p-4 rounded-xl border border-outline-variant/50 flex flex-col gap-1.5">
+<span class="text-sage font-bold">02. QUERY</span>
+<span class="text-xs font-semibold text-ink">SQLite Engine</span>
+<span class="text-[10px] text-[#747780]">FTS5 500k Offline Table</span>
+</div>
+<span class="material-symbols-outlined text-sage text-[20px]">arrow_forward</span>
+<!-- Step 3 -->
+<div class="flex-1 bg-surface-low p-4 rounded-xl border border-outline-variant/50 flex flex-col gap-1.5">
+<span class="text-terracotta font-bold">03. AUDIT</span>
+<span class="text-xs font-semibold text-ink">Deterministic Rules</span>
+<span class="text-[10px] text-[#747780]">Allergen &amp; Sodium Math</span>
+</div>
+<span class="material-symbols-outlined text-terracotta text-[20px]">arrow_forward</span>
+<!-- Step 4 -->
+<div class="flex-1 bg-surface-low p-4 rounded-xl border border-outline-variant/50 flex flex-col gap-1.5">
+<span class="text-primary font-bold">04. CONTEXT</span>
+<span class="text-xs font-semibold text-ink">Context Injection</span>
+<span class="text-[10px] text-[#747780]">Bounded prompt formatting</span>
+</div>
+<span class="material-symbols-outlined text-primary text-[20px]">arrow_forward</span>
+<!-- Step 5 -->
+<div class="flex-1 bg-surface-low p-4 rounded-xl border border-outline-variant/50 flex flex-col gap-1.5">
+<span class="text-terracotta font-bold">05. SYNTHESIS</span>
+<span class="text-xs font-semibold text-ink">Local Gemma 2B</span>
+<span class="text-[10px] text-[#747780]">NPU MediaPipe INT4</span>
+</div>
+<span class="material-symbols-outlined text-sage text-[20px]">arrow_forward</span>
+<!-- Step 6 -->
+<div class="flex-1 bg-sage/10 p-4 rounded-xl border border-sage/40 flex flex-col gap-1.5">
+<span class="text-sage font-bold">06. SURFACE</span>
+<span class="text-xs font-semibold text-ink">Compose UI</span>
+<span class="text-[10px] text-[#747780]">StateFlow Reactive UI</span>
+</div>
+</div>
+<!-- Technology Stack Tags -->
+<div class="mt-8 pt-6 border-t border-outline-variant/30 flex flex-wrap items-center gap-2">
+<span class="font-mono text-xs text-[#747780] mr-2">TECH STACK:</span>
+<span class="px-2.5 py-1 rounded bg-surface-low font-mono text-xs font-semibold border border-outline-variant/40">Kotlin</span>
+<span class="px-2.5 py-1 rounded bg-surface-low font-mono text-xs font-semibold border border-outline-variant/40">Jetpack Compose</span>
+<span class="px-2.5 py-1 rounded bg-surface-low font-mono text-xs font-semibold border border-outline-variant/40">Room SQLite</span>
+<span class="px-2.5 py-1 rounded bg-surface-low font-mono text-xs font-semibold border border-outline-variant/40">MediaPipe GenAI</span>
+<span class="px-2.5 py-1 rounded bg-surface-low font-mono text-xs font-semibold border border-outline-variant/40">Gemma 2B</span>
+<span class="px-2.5 py-1 rounded bg-surface-low font-mono text-xs font-semibold border border-outline-variant/40">FastAPI</span>
+<span class="px-2.5 py-1 rounded bg-surface-low font-mono text-xs font-semibold border border-outline-variant/40">OpenFoodFacts</span>
+</div>
+</div>
+</div>
+</section>
+<!-- 8. THE HARD PART: ENGINEERING MATURITY -->
+<section class="w-full bg-paper py-16 border-b border-outline-variant/30" id="section-hard-part">
+<div class="max-w-[1280px] mx-auto px-6 flex flex-col gap-8 reveal-item revealed">
+<div class="max-w-3xl flex flex-col gap-2">
+<span class="font-mono text-xs uppercase tracking-widest text-terracotta font-bold">ENGINEERING MATURITY</span>
+<h2 class="font-serif text-3xl sm:text-4xl text-ink tracking-tight">
+          The hard part wasn't the model. It was deciding where the model should not be used.
+        </h2>
+<p class="text-base text-[#43474f] leading-relaxed">
+          Three non-negotiable engineering trade-offs made to ensure clinical reliability on resource-constrained consumer hardware.
+        </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Trade-off 1 -->
+<div class="bg-surface-low rounded-2xl p-6 border border-outline-variant/50 flex flex-col gap-3 shadow-sm hover:border-primary transition-all">
+<div class="w-8 h-8 rounded bg-primary/10 text-primary font-mono font-bold flex items-center justify-center text-xs">
+            01
+          </div>
+<h3 class="font-mono text-base font-bold text-ink uppercase">TRUST &amp; DETERMINISM</h3>
+<p class="text-xs sm:text-sm text-[#43474f] leading-relaxed">
+            Critical calculations require mathematical certainty. Generative models fluctuate on identical seeds; pure functional Kotlin routines never fail to compute exact milligram limits.
+          </p>
+<div class="mt-auto pt-3 border-t border-outline-variant/30 font-mono text-[11px] text-primary font-semibold">
+            Rule: Zero probabilistic logic on safety.
+          </div>
+</div>
+<!-- Trade-off 2 -->
+<div class="bg-surface-low rounded-2xl p-6 border border-outline-variant/50 flex flex-col gap-3 shadow-sm hover:border-terracotta transition-all">
+<div class="w-8 h-8 rounded bg-terracotta/10 text-terracotta font-mono font-bold flex items-center justify-center text-xs">
+            02
+          </div>
+<h3 class="font-mono text-base font-bold text-ink uppercase">OFFLINE &amp; MEMORY BUDGET</h3>
+<p class="text-xs sm:text-sm text-[#43474f] leading-relaxed">
+            Running a 2B parameter model within a 1.5GB mobile RAM envelope alongside active CameraX buffers required aggressive memory mapping and lazy tensor instantiation.
+          </p>
+<div class="mt-auto pt-3 border-t border-outline-variant/30 font-mono text-[11px] text-terracotta font-semibold">
+            Envelope: &lt; 1.5GB mobile memory cap.
+          </div>
+</div>
+<!-- Trade-off 3 -->
+<div class="bg-surface-low rounded-2xl p-6 border border-outline-variant/50 flex flex-col gap-3 shadow-sm hover:border-sage transition-all">
+<div class="w-8 h-8 rounded bg-sage/20 text-sage font-mono font-bold flex items-center justify-center text-xs">
+            03
+          </div>
+<h3 class="font-mono text-base font-bold text-ink uppercase">PERSONALIZATION OVER GENERALITY</h3>
+<p class="text-xs sm:text-sm text-[#43474f] leading-relaxed">
+            Contextualizing thresholds without relying on generic cloud heuristics. A food item isn't universally "good" or "bad"—it is purely an evaluation against the user's metabolic reality.
+          </p>
+<div class="mt-auto pt-3 border-t border-outline-variant/30 font-mono text-[11px] text-sage font-semibold">
+            Constraint: Individualized metabolic lens.
+          </div>
+</div>
+</div>
+</div>
+</section>
+<!-- 9. CHARACTER FAILURE MOMENT: POST-MORTEM #02 -->
+<section class="w-full bg-surface-low py-16 border-b border-outline-variant/30">
+<div class="max-w-[1280px] mx-auto px-6">
+<div class="bg-surface-card rounded-2xl p-6 sm:p-8 border border-outline-variant/50 shadow-sm relative overflow-hidden reveal-item revealed">
+<div class="flex flex-wrap items-center justify-between gap-2 border-b border-outline-variant/30 pb-3">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-error animate-ping"></span>
+<span class="font-mono text-xs uppercase tracking-wider text-error font-bold">FAILURE LOG // ROOT CAUSE ANALYSIS</span>
+</div>
+<span class="font-mono text-xs text-[#43474f]">POST-MORTEM #02 · CLICK ACCORDIONS TO EXPAND</span>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center pt-6">
+<!-- Illustration: Slumped Character at Cracked Test Bench -->
+<div class="lg:col-span-5 relative">
+<svg class="w-full h-auto select-none" fill="none" viewbox="0 0 420 300" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#F7F3EA" height="130" rx="3" stroke="#747780" stroke-dasharray="3 3" stroke-width="1" width="110" x="30" y="40"></rect>
+<line stroke="#ba1a1a" stroke-width="1.5" x1="40" x2="120" y1="60" y2="60"></line>
+<text fill="#ba1a1a" font-family="JetBrains Mono" font-size="9" x="45" y="110">FATAL: OOM_CRASH</text>
+<!-- Phone with cracked screen -->
+<rect fill="#1f2124" height="190" rx="10" stroke="#747780" stroke-width="2" width="100" x="280" y="50"></rect>
+<rect fill="#F7F3EA" height="155" rx="4" width="84" x="288" y="65"></rect>
+<path d="M300 70 L340 140 L310 180 L350 210" fill="none" stroke="#ba1a1a" stroke-width="2"></path>
+<!-- Slumped Stickman with foot tapping -->
+<g class="anim-foottap">
+<line stroke="#1f2124" stroke-linecap="round" stroke-width="3.5" x1="190" x2="180" y1="210" y2="280"></line>
+</g>
+<line stroke="#1f2124" stroke-linecap="round" stroke-width="3.5" x1="190" x2="205" y1="210" y2="280"></line>
+<path d="M190 210 L195 155" stroke="#2c4a7e" stroke-linecap="round" stroke-width="13"></path>
+<circle cx="195" cy="130" fill="#f7f3ea" r="15" stroke="#1f2124" stroke-width="2.2"></circle>
+<path d="M185 130 C182 115 198 110 208 120 C204 122 198 121 194 125 Z" fill="#1f2124"></path>
+<circle cx="190" cy="132" fill="none" r="4" stroke="#1f2124" stroke-width="1.5"></circle>
+<!-- Sticky Note: Yeah... that didn't work -->
+<g class="cursor-pointer transition-transform hover:scale-105" transform="translate(130, 20) rotate(-6)">
+<rect fill="#ffdad6" height="42" rx="3" stroke="#ba1a1a" stroke-width="1.5" width="165" x="0" y="0"></rect>
+<text fill="#ba1a1a" font-family="DM Serif Display" font-size="13" x="10" y="20">"Yeah... that didn't work."</text>
+<text fill="#93000a" font-family="JetBrains Mono" font-size="8.5" x="10" y="34">Camera frame drop + 2GB OOM</text>
+</g>
+</svg>
+</div>
+<!-- 3 Real Engineering Post-Mortems -->
+<div class="lg:col-span-7 flex flex-col gap-4">
+<div class="inline-flex items-center gap-2 px-2.5 py-1 bg-error-container/40 rounded text-error font-mono text-xs w-fit font-semibold">
+              BUILD → BREAK → LEARN → REBUILD
+            </div>
+<h3 class="font-serif text-2xl font-bold text-ink tracking-tight">
+              Crumpled packaging, memory panics &amp; cold truths
+            </h3>
+<div class="space-y-3 text-xs leading-relaxed">
+<details class="group bg-surface-low rounded-xl border border-outline-variant/30 p-3.5 transition-all open:bg-surface-card open:border-error" open="">
+<summary class="font-mono text-xs font-bold text-error uppercase cursor-pointer list-none flex items-center justify-between">
+<span>01. Foil Wrapper OCR Failures</span>
+<span class="material-symbols-outlined text-[18px] transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<p class="mt-2 text-[#43474f]">
+                  Crumpled and reflective packaging distorted bounding boxes. Incomplete token fragments caused Gemma to hallucinate ingredients.
+                  <strong class="text-ink block mt-1">→ Fixed with strict confidence gating: if OCR confidence &lt; 85%, prompt user to scan barcode instead.</strong>
+</p>
+</details>
+<details class="group bg-surface-low rounded-xl border border-outline-variant/30 p-3.5 transition-all open:bg-surface-card open:border-error">
+<summary class="font-mono text-xs font-bold text-error uppercase cursor-pointer list-none flex items-center justify-between">
+<span>02. Android Low-Memory Killer (LMK) Terminations</span>
+<span class="material-symbols-outlined text-[18px] transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<p class="mt-2 text-[#43474f]">
+                  Model loading spike collided with active camera buffer (exceeding 2.2GB RAM). Mid-range test devices terminated the background app instantly.
+                  <strong class="text-ink block mt-1">→ Fixed with quantized memory-mapped tensors and downscaling preview buffer to 720p.</strong>
+</p>
+</details>
+<details class="group bg-surface-low rounded-xl border border-outline-variant/30 p-3.5 transition-all open:bg-surface-card open:border-error">
+<summary class="font-mono text-xs font-bold text-error uppercase cursor-pointer list-none flex items-center justify-between">
+<span>03. 500k Row SQLite Query Spikes</span>
+<span class="material-symbols-outlined text-[18px] transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<p class="mt-2 text-[#43474f]">
+                  Initial unindexed FTS queries caused 200ms frame drops on cold starts.
+                  <strong class="text-ink block mt-1">→ Fixed via compound prefix indexing and pre-compiled FTS5 tables, bringing query time to 7.8ms.</strong>
+</p>
+</details>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 10. PRODUCT IN HAND: JETPACK COMPOSE INTERFACE SPECIFICATION -->
+<section class="w-full bg-paper py-16 border-b border-outline-variant/30" id="section-screens">
+<div class="max-w-[1280px] mx-auto px-6 flex flex-col gap-10">
+<div class="flex flex-col gap-2 max-w-2xl reveal-item revealed">
+<span class="font-mono text-xs uppercase tracking-widest text-primary font-bold">INTERFACE SPECIFICATION</span>
+<h2 class="font-serif text-3xl sm:text-4xl text-ink tracking-tight">
+          The Product In Hand
+        </h2>
+<p class="text-base text-[#43474f] leading-relaxed">
+          Four production Jetpack Compose screens engineered for immediate legibility in bright grocery lighting.
+        </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Screen 01: Food Scan Viewfinder -->
+<div class="bg-surface-low rounded-2xl p-4 border border-outline-variant/50 flex flex-col gap-3 shadow-sm hover:border-primary transition-all duration-300 reveal-item revealed">
+<div class="flex items-center justify-between pb-1 border-b border-outline-variant/30 font-mono text-xs">
+<span class="font-bold text-primary">SCREEN 01</span>
+<span class="text-[#43474f]">CAMERAX VIEW</span>
+</div>
+<div class="bg-ink text-paper rounded-xl p-3 aspect-[9/16] flex flex-col justify-between relative overflow-hidden border-2 border-ink">
+<!-- Animated moving scanning beam -->
+<div class="absolute left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-sage to-transparent laser-beam z-20 shadow-[0_0_8px_#85a392]"></div>
+<div class="w-full flex items-center justify-between font-mono text-[9px] text-[#747780] relative z-10">
+<span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-error animate-pulse"></span> REC 60FPS</span>
+<span class="text-sage font-bold">LOCK: 8901030</span>
+</div>
+<div class="my-auto mx-auto w-44 h-28 border-2 border-dashed border-sage rounded-lg flex flex-col items-center justify-center p-2 relative bg-sage/10 z-10">
+<span class="material-symbols-outlined text-sage text-[28px] animate-pulse">qr_code_scanner</span>
+<span class="font-mono text-[8px] text-paper font-semibold mt-1 bg-sage px-1.5 py-0.5 rounded shadow-sm">
+                BARCODE DETECTED (98ms)
+              </span>
+</div>
+<div class="bg-paper text-ink p-2 rounded-lg flex items-center justify-between shadow-md relative z-10">
+<div>
+<span class="font-mono text-xs font-bold block">Almond Crunch Granola</span>
+<span class="font-mono text-[9px] text-[#43474f]">Kellogg's · 400g</span>
+</div>
+<span class="material-symbols-outlined text-primary text-[18px]">arrow_forward</span>
+</div>
+</div>
+<span class="text-xs text-[#43474f]">
+<strong>Food Scan Viewfinder:</strong> CameraX live viewfinder, bounding box lock, sub-50ms barcode detection.
+          </span>
+</div>
+<!-- Screen 02: Macro Breakdown -->
+<div class="bg-surface-low rounded-2xl p-4 border border-outline-variant/50 flex flex-col gap-3 shadow-sm hover:border-sage transition-all duration-300 reveal-item revealed">
+<div class="flex items-center justify-between pb-1 border-b border-outline-variant/30 font-mono text-xs">
+<span class="font-bold text-sage">SCREEN 02</span>
+<span class="text-[#43474f]">MACRO BREAKDOWN</span>
+</div>
+<div class="bg-surface-card text-ink rounded-xl p-3 aspect-[9/16] flex flex-col justify-between border-2 border-outline-variant/50 relative overflow-hidden group">
+<div class="flex items-center justify-between border-b border-outline-variant/20 pb-1.5 font-mono text-xs">
+<span class="material-symbols-outlined text-[16px]">arrow_back</span>
+<span class="font-bold">NUTRITION METRICS</span>
+<span class="material-symbols-outlined text-[16px]">bookmark_border</span>
+</div>
+<div class="flex flex-col gap-2 my-auto text-xs">
+<div class="p-2 bg-surface-low rounded-lg flex items-center justify-between font-mono">
+<span>Energy per 100g</span>
+<span class="font-bold">428 kcal</span>
+</div>
+<div class="p-2 bg-surface-low rounded-lg space-y-1">
+<div class="flex justify-between font-mono text-[9px]">
+<span>Sugars (High)</span>
+<span class="text-error font-bold">22.4g / 50g</span>
+</div>
+<div class="w-full h-1.5 bg-outline-variant/40 rounded-full overflow-hidden">
+<div class="w-3/4 h-full bg-error transition-all group-hover:w-[82%]"></div>
+</div>
+</div>
+<div class="p-2 bg-surface-low rounded-lg space-y-1">
+<div class="flex justify-between font-mono text-[9px]">
+<span>Dietary Fiber</span>
+<span class="text-sage font-bold">7.2g (Optimal)</span>
+</div>
+<div class="w-full h-1.5 bg-outline-variant/40 rounded-full overflow-hidden">
+<div class="w-4/5 h-full bg-sage transition-all group-hover:w-[90%]"></div>
+</div>
+</div>
+</div>
+<div class="p-1.5 bg-primary/10 rounded-lg text-center font-mono text-[10px] text-primary font-bold">
+              WHO-NPS GRADE: B
+            </div>
+</div>
+<span class="text-xs text-[#43474f]">
+<strong>Macro Breakdown:</strong> Deterministic nutrient meters, verified glycemic index score without generative variance.
+          </span>
+</div>
+<!-- Screen 03: Health Match & Verdict -->
+<div class="bg-surface-low rounded-2xl p-4 border border-outline-variant/50 flex flex-col gap-3 shadow-sm hover:border-error transition-all duration-300 reveal-item revealed">
+<div class="flex items-center justify-between pb-1 border-b border-outline-variant/30 font-mono text-xs">
+<span class="font-bold text-error">SCREEN 03</span>
+<span class="text-[#43474f]">HEALTH MATCH</span>
+</div>
+<div class="bg-surface-card text-ink rounded-xl p-3 aspect-[9/16] flex flex-col justify-between border-2 border-outline-variant/50 relative overflow-hidden">
+<div class="flex items-center justify-between border-b border-outline-variant/20 pb-1.5 font-mono text-xs">
+<span class="material-symbols-outlined text-[16px]">arrow_back</span>
+<span class="font-bold">HEALTH LENS</span>
+<span class="material-symbols-outlined text-[16px]">tune</span>
+</div>
+<div class="p-3 bg-error-container text-ink rounded-xl flex flex-col gap-1 my-auto shadow-sm">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px] text-error animate-pulse">warning</span>
+<span class="font-mono text-xs font-bold uppercase text-error">CONFLICT DETECTED</span>
+</div>
+<p class="text-[11px] leading-snug text-[#43474f]">
+                Contains <strong>Soy Lecithin</strong>. Matches your registered allergen profile.
+              </p>
+<div class="mt-2 pt-2 border-t border-error/20 flex justify-between items-center font-mono text-[9px]">
+<span>GLUCOSE IMPACT</span>
+<span class="font-bold text-error">HIGH SPIKE</span>
+</div>
+</div>
+<div class="p-2 bg-surface-low rounded-lg flex items-center justify-between hover:bg-surface-dim cursor-pointer transition-colors font-mono text-xs">
+<span class="font-semibold text-ink">SEE CLEAN SWAP</span>
+<span class="text-primary font-bold">→</span>
+</div>
+</div>
+<span class="text-xs text-[#43474f]">
+<strong>Health Match &amp; Verdict:</strong> Warning conflict detected, Maltodextrin spike potential, clear allergen flag.
+          </span>
+</div>
+<!-- Screen 04: On-Device Socratic Explanation -->
+<div class="bg-surface-low rounded-2xl p-4 border border-outline-variant/50 flex flex-col gap-3 shadow-sm hover:border-terracotta transition-all duration-300 reveal-item revealed">
+<div class="flex items-center justify-between pb-1 border-b border-outline-variant/30 font-mono text-xs">
+<span class="font-bold text-terracotta">SCREEN 04</span>
+<span class="text-[#43474f]">ON-DEVICE AI</span>
+</div>
+<div class="bg-surface-card text-ink rounded-xl p-3 aspect-[9/16] flex flex-col justify-between border-2 border-outline-variant/50 relative overflow-hidden">
+<div class="flex items-center justify-between border-b border-outline-variant/20 pb-1.5 font-mono text-xs">
+<div class="flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-sage animate-pulse"></span>
+<span class="font-bold">GEMMA 2B NPU</span>
+</div>
+<span class="text-[#43474f]">14 tps</span>
+</div>
+<div class="flex flex-col gap-2 my-auto text-[11px]">
+<div class="p-2 bg-surface-low rounded-lg text-[#43474f] self-end max-w-[85%]">
+                "Why shouldn't I eat this right before a run?"
+              </div>
+<div class="p-2 bg-primary/10 rounded-lg text-ink self-start max-w-[95%] border border-primary/20 space-y-1">
+<span class="font-mono text-[9px] text-primary font-bold block">LOCAL EXPLANATION</span>
+<p class="leading-relaxed text-xs">
+                  The high refined sugar triggers an insulin surge followed by an energy crash during aerobic exertion.
+                </p>
+</div>
+</div>
+<div class="flex flex-wrap gap-1 font-mono text-[9px]">
+<span class="px-2 py-0.5 rounded bg-surface-low hover:bg-surface-dim cursor-pointer transition-colors">Show clean swaps</span>
+<span class="px-2 py-0.5 rounded bg-surface-low hover:bg-surface-dim cursor-pointer transition-colors">Daily sodium left?</span>
+</div>
+</div>
+<span class="text-xs text-[#43474f]">
+<strong>On-Device Socratic Explanation:</strong> Gemma-2B conversational explanation explaining why to avoid and clean swaps.
+          </span>
+</div>
+</div>
+</div>
+</section>
+<!-- 11. RETROSPECTIVE: WHAT I LEARNED -->
+<section class="w-full bg-surface-low py-16 border-b border-outline-variant/30">
+<div class="max-w-[1280px] mx-auto px-6 flex flex-col gap-8 reveal-item revealed">
+<div class="flex flex-col gap-2 max-w-2xl">
+<span class="font-mono text-xs uppercase tracking-widest text-sage font-bold">RETROSPECTIVE</span>
+<h2 class="font-serif text-3xl sm:text-4xl text-ink tracking-tight">
+          Building it changed how I think about AI.
+        </h2>
+<p class="text-base text-[#43474f] leading-relaxed">
+          Three foundational engineering principles solidified through months of physical device testing.
+        </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="bg-surface-card rounded-2xl p-6 border border-outline-variant/40 flex flex-col gap-3 shadow-sm hover:-translate-y-1 transition-transform">
+<div class="w-10 h-10 rounded-lg bg-surface-low flex items-center justify-center font-mono text-lg font-bold text-primary">
+            01
+          </div>
+<h3 class="font-mono text-base font-bold text-ink uppercase">NOT EVERYTHING NEEDS A MODEL.</h3>
+<p class="text-sm text-[#43474f] leading-relaxed">
+            If a problem can be solved with arithmetic, hash-maps, or finite state automata, never deploy a probabilistic neural network. Reserve LLMs solely for ambiguous linguistic synthesis.
+          </p>
+</div>
+<div class="bg-surface-card rounded-2xl p-6 border border-outline-variant/40 flex flex-col gap-3 shadow-sm hover:-translate-y-1 transition-transform">
+<div class="w-10 h-10 rounded-lg bg-surface-low flex items-center justify-center font-mono text-lg font-bold text-sage">
+            02
+          </div>
+<h3 class="font-mono text-base font-bold text-ink uppercase">RIGOROUS SYSTEMS EMBRACE AI.</h3>
+<p class="text-sm text-[#43474f] leading-relaxed">
+            The model is an ergonomic interface, not the entire stack. Real-world machine learning success lives in the caching schemas, data cleaning pipelines, and fail-safe deterministic guards around it.
+          </p>
+</div>
+<div class="bg-surface-card rounded-2xl p-6 border border-outline-variant/40 flex flex-col gap-3 shadow-sm hover:-translate-y-1 transition-transform">
+<div class="w-10 h-10 rounded-lg bg-surface-low flex items-center justify-center font-mono text-lg font-bold text-terracotta">
+            03
+          </div>
+<h3 class="font-mono text-base font-bold text-ink uppercase">“WORKS ON MY MACHINE” IS MEANINGLESS.</h3>
+<p class="text-sm text-[#43474f] leading-relaxed">
+            An AI model that takes 8 seconds over a cellular cloud connection is useless to a mother balancing groceries with a toddler in an aisle. Local-first, fast, and tactile utility is what transforms software into a trusted tool.
+          </p>
+</div>
+</div>
+</div>
+</section>
+<!-- 12. CURRENT STATUS & 13. THE CROSSROADS: WHAT'S NEXT -->
+<section class="w-full bg-paper py-16 border-b border-outline-variant/30">
+<div class="max-w-[1280px] mx-auto px-6 flex flex-col gap-8">
+<!-- 12. WHERE IT IS NOW -->
+<div class="p-6 bg-surface-low rounded-2xl border border-outline-variant/50 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 reveal-item revealed">
+<div class="flex items-center gap-3">
+<span class="w-3 h-3 rounded-full bg-sage inline-block animate-pulse"></span>
+<div>
+<span class="font-mono text-xs uppercase tracking-widest text-[#43474f] font-bold block">WHERE IT IS NOW</span>
+<span class="font-mono text-sm sm:text-base font-bold text-ink">BUILT · TESTED ON HARDWARE · ACTIVE V2 PIPELINE</span>
+<span class="text-xs text-[#747780] block mt-0.5">Room database live, Gemma 2B benchmarking underway.</span>
+</div>
+</div>
+<a class="px-4 py-2 bg-ink text-paper rounded-lg font-mono text-xs uppercase tracking-wider hover:bg-primary transition-all flex items-center gap-1.5 shadow-sm" href="https://github.com/SetterUk" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[16px]">code</span>
+          VIEW CODEBASE
+        </a>
+</div>
+<!-- 13. WHAT'S NEXT: IRIS & WALKING STICKMAN -->
+<div class="bg-primary/5 rounded-2xl p-8 border border-primary/20 relative overflow-hidden reveal-item group revealed">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+<div class="lg:col-span-8 flex flex-col gap-3">
+<span class="font-mono text-xs uppercase tracking-widest text-primary font-bold">WHAT'S NEXT? →</span>
+<h3 class="font-serif text-3xl font-bold text-ink tracking-tight group-hover:text-primary transition-colors">
+              IRIS: What if your medical history actually followed you?
+            </h3>
+<p class="text-sm text-[#43474f] max-w-xl leading-relaxed">
+              From food intelligence to clinical sovereignty: an offline, self-sovereign medical records protocol powered by zero-knowledge cryptographic proofs and local-first AI synthesis.
+            </p>
+<div class="pt-2">
+<a class="font-mono text-xs uppercase tracking-wider text-primary hover:text-ink font-bold inline-flex items-center gap-1 transition-colors" href="../iris_medical_intelligence_research_platform/code.html">
+<span>EXPLORE NEXT CASE STUDY ↗</span>
+<span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Vignette of the stickman walking forward with satchel and flag -->
+<div class="lg:col-span-4 flex justify-center">
+<svg class="w-48 h-auto select-none" fill="none" viewbox="0 0 240 220" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#E4DDCF" height="130" width="8" x="180" y="70"></rect>
+<polygon fill="#2c4a7e" points="150,55 210,55 220,68 210,80 150,80"></polygon>
+<text fill="#F7F3EA" font-family="JetBrains Mono" font-size="8.5" font-weight="bold" x="156" y="70">IRIS →</text>
+<g class="anim-walk">
+<line stroke="#1f2124" stroke-linecap="round" stroke-width="3.5" x1="80" x2="60" y1="130" y2="185"></line>
+<line stroke="#1f2124" stroke-linecap="round" stroke-width="3.5" x1="80" x2="105" y1="130" y2="180"></line>
+<ellipse cx="55" cy="187" fill="#1f2124" rx="7" ry="3"></ellipse>
+<ellipse cx="110" cy="182" fill="#1f2124" rx="7" ry="3"></ellipse>
+<path d="M72 75 L95 125" stroke="#e27d60" stroke-linecap="round" stroke-width="3"></path>
+<rect fill="#e27d60" height="24" rx="2" width="20" x="90" y="115"></rect>
+<path d="M80 85 L80 135" stroke="#2c4a7e" stroke-linecap="round" stroke-width="13"></path>
+<path d="M75 90 L60 115 L50 120" stroke="#1f2124" stroke-linecap="round" stroke-width="3"></path>
+<circle cx="80" cy="55" fill="#f7f3ea" r="14" stroke="#1f2124" stroke-width="2.2"></circle>
+<path d="M68 53 C68 40 85 36 94 45 C92 47 86 46 81 48 Z" fill="#1f2124"></path>
+<circle cx="85" cy="55" fill="none" r="4" stroke="#1f2124" stroke-width="1.4"></circle>
+</g>
+</svg>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- 14. MINIMAL EDITORIAL FOOTER -->
+<footer class="w-full bg-surface-low border-t border-outline-variant/30 py-10" id="section-footer">
+<div class="max-w-[1280px] mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6 font-mono text-xs text-[#43474f]">
+<!-- Left -->
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-primary text-paper flex items-center justify-center font-bold text-xs">
+        K/
+      </div>
+<div>
+<span class="font-bold text-ink block">KOUSHIK UPADHYAY</span>
+<span class="text-[11px] text-[#747780]">AI &amp; SYSTEMS BUILDER</span>
+</div>
+</div>
+<!-- Center: Specifications & Archival Research -->
+<div class="text-center">
+<span class="font-semibold text-ink uppercase tracking-wider block">SPECIFICATIONS &amp; ARCHIVAL RESEARCH</span>
+<span class="text-[11px] text-[#747780]">LOCAL-FIRST COMPUTING · NPU INFERENCE · DETERMINISTIC SOLVERS</span>
+</div>
+<!-- Right: Links & Stickman Doodle -->
+<div class="flex flex-col sm:flex-row items-center gap-6">
+<div class="flex items-center gap-4">
+<a class="hover:text-ink transition-colors font-semibold" href="https://github.com/SetterUk" rel="noopener noreferrer" target="_blank">GITHUB ↗</a>
+<a class="hover:text-ink transition-colors font-semibold" href="https://www.linkedin.com/in/koushik-upadhyay-95565932b/" rel="noopener noreferrer" target="_blank">LINKEDIN ↗</a>
+<span class="text-ink font-semibold">Koushik4067@gmail.com</span>
+</div>
+<!-- Small Stickman Doodle with Note: still building. -->
+<div class="flex items-center gap-2 pl-2 sm:border-l border-outline-variant/40">
+<svg class="w-6 h-8 select-none" fill="none" viewbox="0 0 30 40">
+<circle cx="15" cy="8" r="5" stroke="#1f2124" stroke-width="1.5"></circle>
+<line stroke="#2c4a7e" stroke-width="2.5" x1="15" x2="15" y1="13" y2="28"></line>
+<line stroke="#1f2124" stroke-width="1.5" x1="15" x2="8" y1="18" y2="24"></line>
+<line stroke="#1f2124" stroke-width="1.5" x1="15" x2="22" y1="18" y2="22"></line>
+<line stroke="#1f2124" stroke-width="1.5" x1="15" x2="10" y1="28" y2="38"></line>
+<line stroke="#1f2124" stroke-width="1.5" x1="15" x2="20" y1="28" y2="38"></line>
+</svg>
+<span class="italic text-[11px] text-[#747780]">still building.</span>
+</div>
+</div>
+</div>
+</footer>
+<!-- Interactive Scripts -->
+<script>
+// 1. Top Scroll Progress Indicator
+window.addEventListener('scroll', () => {
+  const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+  const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const progress = (scrollTop / scrollHeight) * 100;
+  const bar = document.getElementById('scroll-progress-bar');
+  if (bar) bar.style.width = progress + '%';
+});
+
+// 2. Interactive Cursor Follower
+const cursorFollower = document.getElementById('cursor-follower');
+window.addEventListener('mousemove', (e) => {
+  if (cursorFollower) {
+    cursorFollower.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
+  }
+});
+document.querySelectorAll('a, button, [onclick], .pipeline-card').forEach(el => {
+  el.addEventListener('mouseenter', () => {
+    if (cursorFollower) {
+      cursorFollower.style.width = '42px';
+      cursorFollower.style.height = '42px';
+      cursorFollower.style.borderColor = '#2c4a7e';
+      cursorFollower.style.backgroundColor = 'rgba(44, 74, 126, 0.08)';
+    }
+  });
+  el.addEventListener('mouseleave', () => {
+    if (cursorFollower) {
+      cursorFollower.style.width = '28px';
+      cursorFollower.style.height = '28px';
+      cursorFollower.style.borderColor = 'rgba(44, 74, 126, 0.4)';
+      cursorFollower.style.backgroundColor = 'transparent';
+    }
+  });
+});
+
+// 3. Scroll Reveal Observer
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('revealed');
+    }
+  });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal-item').forEach(el => revealObserver.observe(el));
+
+// 4. Interactive Metabolic Lens Simulator
+const personas = {
+  diabetic: {
+    lens: [
+      '• CLINICAL: Pre-diabetic (Hba1c 5.9)',
+      '• GOAL: Keep sodium < 1500mg/day',
+      '• ALLERGY: Mild soy intolerance',
+      '• INTAKE: Already had 920mg Na today'
+    ],
+    verdict: {
+      title: 'Caution: High Spike Potential',
+      body: 'Maltodextrin spikes your glucose index faster than table sugar. Consuming the whole pack also puts you at 106% of your daily sodium ceiling.',
+      action: 'SWAP RECOMMENDED',
+      swapId: 'ID: #4091 OATS',
+      isSafe: false
+    }
+  },
+  allergy: {
+    lens: [
+      '• CLINICAL: Type-1 Anaphylactic Soy Profile',
+      '• GOAL: 100% Zero-cross reactivity verification',
+      '• ALLERGY: Soy Lecithin (E322) STRICT HARD GATE',
+      '• INTAKE: Normal macro budget'
+    ],
+    verdict: {
+      title: 'CRITICAL: Severe Allergen Trigger',
+      body: 'Contains Soy Lecithin (E322). Deterministic solver vetoed item before LLM invocation. Do not consume under any circumstances.',
+      action: 'SAFETY HARD LOCKOUT',
+      swapId: 'ID: #1024 SUNFLOWER GRANOLA',
+      isSafe: false
+    }
+  },
+  athlete: {
+    lens: [
+      '• CLINICAL: Baseline metabolic profile normal',
+      '• GOAL: High glycogen replenishment post-interval',
+      '• ALLERGY: None recorded',
+      '• INTAKE: 2,400 kcal burned today'
+    ],
+    verdict: {
+      title: 'Approved: Fast Glycogen Reload',
+      body: 'Maltodextrin and simple carbohydrates align with your 60-minute post-aerobic recovery window without sodium ceiling risks.',
+      action: 'OPTIMAL POST-RUN RECOVERY',
+      swapId: 'MATCH APPROVED',
+      isSafe: true
+    }
+  }
+};
+
+function switchPersona(type) {
+  const data = personas[type];
+  if (!data) return;
+  
+  // Button active styles
+  ['diabetic', 'allergy', 'athlete'].forEach(p => {
+    const btn = document.getElementById('btn-persona-' + p);
+    if (btn) {
+      if (p === type) {
+        btn.className = 'px-3 py-1 rounded bg-surface-card font-semibold text-primary shadow-sm transition-all';
+      } else {
+        btn.className = 'px-3 py-1 rounded hover:bg-surface-card/60 text-[#43474f] transition-all';
+      }
+    }
+  });
+
+  // Update lens display
+  const lensContainer = document.getElementById('persona-lens-content');
+  if (lensContainer) {
+    lensContainer.innerHTML = data.lens.map(item => {
+      let colorClass = item.includes('CRITICAL') || item.includes('STRICT') || item.includes('intolerance') ? 'text-error font-semibold border-error/30' : 'text-primary font-semibold border-primary/20';
+      return `<span class="bg-surface-card px-2 py-1 rounded ${colorClass} border">${item}</span>`;
+    }).join('');
+  }
+
+  // Update verdict card
+  const titleEl = document.getElementById('verdict-title');
+  const bodyEl = document.getElementById('verdict-body');
+  const actionEl = document.getElementById('verdict-action');
+  const swapEl = document.getElementById('verdict-swap-id');
+  const cardEl = document.getElementById('actionable-verdict-card');
+  const iconEl = document.getElementById('verdict-icon');
+
+  if (titleEl) titleEl.innerText = data.verdict.title;
+  if (bodyEl) bodyEl.innerText = data.verdict.body;
+  if (actionEl) actionEl.innerText = data.verdict.action;
+  if (swapEl) swapEl.innerText = data.verdict.swapId;
+
+  if (cardEl && iconEl) {
+    if (data.verdict.isSafe) {
+      cardEl.className = 'md:col-span-3 bg-sage/20 rounded-xl p-4 border border-sage/50 flex flex-col gap-2 transition-all shadow-sm';
+      titleEl.className = 'font-bold text-sage mb-1';
+      iconEl.innerText = 'check_circle';
+      iconEl.className = 'material-symbols-outlined text-[18px] text-sage';
+    } else {
+      cardEl.className = 'md:col-span-3 bg-error-container/40 rounded-xl p-4 border border-error/40 flex flex-col gap-2 transition-all shadow-sm';
+      titleEl.className = 'font-bold text-error mb-1';
+      iconEl.innerText = 'warning';
+      iconEl.className = 'material-symbols-outlined text-[18px] text-error';
+    }
+  }
+}
+
+// 5. Interactive Pipeline Telemetry
+const telemetryDetails = {
+  1: { title: "STAGE 01: CAMERAX & ML KIT SCANNER", desc: "CameraX frame analyzer dispatching at 60fps, ML Kit bounding box inference lock achieved in 42ms." },
+  2: { title: "STAGE 02: ROOM SQLITE FTS5 LOOKUP", desc: "Pre-indexed FTS5 token query against 500k packaged items completed in 7.8ms without touching the network." },
+  3: { title: "STAGE 03: DETERMINISTIC ARITHMETIC KERNEL", desc: "Pure Kotlin calculation of glycaemic load and allergen set intersections evaluated in 1.2ms. Zero probabilistic deviation." },
+  4: { title: "STAGE 04: USER PROFILE CONSTRAINT MATCH", desc: "Encrypted Proto DataStore matching active daily sodium intake and clinical pre-diabetic flags in 0.8ms." },
+  5: { title: "STAGE 05: MEDIAPIPE ON-DEVICE GEMMA 2B", desc: "Quantized INT4 weights executing on mobile NPU at 14 tokens/sec, capped at 80 tokens for a strict 120ms latency envelope." },
+  6: { title: "STAGE 06: JETPACK COMPOSE STATEFLOW DISPATCH", desc: "Unidirectional StateFlow stream emitting verdict card state directly to the hardware-accelerated Compose surface." }
+};
+
+function showTelemetry(stage) {
+  const info = telemetryDetails[stage];
+  if (!info) return;
+  const title = document.getElementById('telemetry-title');
+  const desc = document.getElementById('telemetry-desc');
+  if (title) title.innerText = info.title;
+  if (desc) desc.innerText = info.desc;
+}
+
+// 6. Interactive Pinboard Sticky Note
+function highlightSticky(id) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.style.transform = 'scale(1.08) rotate(1deg)';
+  setTimeout(() => {
+    el.style.transform = '';
+  }, 400);
+}
+</script>
+</body></html>

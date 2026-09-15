@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..700&amp;family=Hanken+Grotesk:ital,wght@0,300..700;1,300..700&amp;family=JetBrains+Mono:wght@400..600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"primary":"#103366","on-primary-fixed":"#001a40","surface-dim":"#dbd9dd","primary-container":"#2c4a7e","on-tertiary":"#ffffff","surface-container-high":"#e9e7eb","tertiary-container":"#7f3318","background":"#F7F3EA","surface-variant":"#e3e2e6","on-tertiary-fixed-variant":"#7a2f15","surface-bright":"#F7F3EA","secondary-fixed-dim":"#aeceb8","on-surface-variant":"#43474f","on-error-container":"#93000a","primary-fixed-dim":"#acc7ff","tertiary-fixed-dim":"#ffb59e","primary-fixed":"#d7e2ff","tertiary":"#611d04","on-primary-fixed-variant":"#28467a","tertiary-fixed":"#ffdbd0","on-surface":"#1a1b1e","inverse-surface":"#2f3033","surface-container-lowest":"#ffffff","on-tertiary-container":"#ffa486","error-container":"#ffdad6","on-primary":"#ffffff","surface-tint":"#415e93","surface-container-highest":"#e3e2e6","on-primary-container":"#9ebbf6","on-background":"#1a1b1e","on-secondary-container":"#4c6957","error":"#ba1a1a","surface":"#F7F3EA","surface-container-low":"#f4f3f7","on-error":"#ffffff","on-secondary-fixed-variant":"#304d3c","secondary":"#476553","on-tertiary-fixed":"#390b00","secondary-container":"#c7e8d1","outline":"#747780","on-secondary-fixed":"#032012","secondary-fixed":"#c9ead3","on-secondary":"#ffffff","outline-variant":"#c4c6d1","inverse-primary":"#acc7ff","inverse-on-surface":"#f1f0f4","surface-container":"#efedf1"},borderRadius:{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},spacing:{"space-sm":"0.5rem","gutter":"1.5rem","space-xl":"2.5rem","space-lg":"1.5rem","space-md":"1rem","margin":"2rem","space-xs":"0.25rem"},fontFamily:{"body-md":["Hanken Grotesk"],"display-sm":["Bricolage Grotesque"],"label-sm":["JetBrains Mono"],"headline-lg":["Bricolage Grotesque"],"body-lg":["Hanken Grotesk"],"display-lg":["Bricolage Grotesque"],"headline-md":["Bricolage Grotesque"],"display-lg-mobile":["Bricolage Grotesque"],"label-md":["JetBrains Mono"],"display-sm-mobile":["Bricolage Grotesque"],"headline-sm":["Hanken Grotesk"],"body-sm":["Hanken Grotesk"]},fontSize:{"body-md":["16px",{"lineHeight":"26px","fontWeight":"400"}],"display-sm":["44px",{"lineHeight":"52px","letterSpacing":"-0.02em","fontWeight":"600"}],"label-sm":["11px",{"lineHeight":"16px","letterSpacing":"0.04em","fontWeight":"500"}],"headline-lg":["32px",{"lineHeight":"40px","letterSpacing":"-0.015em","fontWeight":"600"}],"body-lg":["18px",{"lineHeight":"28px","fontWeight":"400"}],"display-lg":["64px",{"lineHeight":"72px","letterSpacing":"-0.03em","fontWeight":"700"}],"headline-md":["24px",{"lineHeight":"32px","letterSpacing":"-0.01em","fontWeight":"600"}],"display-lg-mobile":["40px",{"lineHeight":"48px","letterSpacing":"-0.02em","fontWeight":"700"}],"label-md":["13px",{"lineHeight":"18px","letterSpacing":"0.02em","fontWeight":"500"}],"display-sm-mobile":["32px",{"lineHeight":"40px","letterSpacing":"-0.015em","fontWeight":"600"}],"headline-sm":["20px",{"lineHeight":"28px","letterSpacing":"-0.005em","fontWeight":"600"}],"body-sm":["14px",{"lineHeight":"22px","fontWeight":"400"}]}}}}</script>
+<!-- UNIFIED BACKGROUND -->
+<style>
+    body, main, html {
+        background-color: #F7F3EA !important;
+    }
+</style>
+</head><body class="bg-background font-body-md text-body-md text-on-surface antialiased"><!-- UNIFIED NAVBAR -->
+<header class="fixed top-0 left-0 right-0 h-20 px-6 md:px-12 flex items-center justify-between z-50 bg-[#F7F3EA]/90 backdrop-blur-md border-b border-[#DCD4C4]/70" style="font-family: 'JetBrains Mono', monospace;">
+<a class="flex items-center gap-3 group" href="../koushik_upadhyay_ai_ml_engineer_builder/code.html#top">
+<div class="w-9 h-9 rounded-xl bg-[#202124] text-[#F7F3EA] flex items-center justify-center font-extrabold text-sm group-hover:bg-[#5577A8] transition-colors shadow-sm">
+      K/
+    </div>
+<span class="font-bold text-sm tracking-tight text-[#202124] group-hover:text-[#5577A8] transition-colors hidden sm:inline" style="font-family: 'Bricolage Grotesque', sans-serif;">KOUSHIK UPADHYAY</span>
+</a>
+<nav class="hidden md:flex items-center gap-8 text-xs font-semibold tracking-wider text-[#5A5852]">
+<a class="hover:text-[#202124] transition-colors hover:underline underline-offset-8" href="../koushik_upadhyay_ai_ml_engineer_builder/code.html#work">WORK</a>
+<a class="hover:text-[#202124] transition-colors hover:underline underline-offset-8" href="../koushik_upadhyay_ai_ml_engineer_builder/code.html#about">ABOUT</a>
+<a class="hover:text-[#202124] transition-colors hover:underline underline-offset-8" href="../career_journey_koushik_upadhyay/code.html">CAREER</a>
+<a class="hover:text-[#202124] transition-colors hover:underline underline-offset-8" href="../how_i_build_engineering_philosophy_methodology/code.html">HOW I BUILD</a>
+<a class="hover:text-[#202124] transition-colors hover:underline underline-offset-8" href="../koushik_upadhyay_ai_ml_engineer_builder/code.html#research">RESEARCH</a>
+<a class="hover:text-[#202124] transition-colors hover:underline underline-offset-8" href="../let_s_talk_koushik_upadhyay_contact/code.html">CONTACT</a>
+</nav>
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#DCD4C4] bg-[#eae8ee] text-xs font-medium shadow-sm">
+<span class="w-2 h-2 rounded-full bg-[#10B981] animate-pulse"></span>
+<span class="text-[#202124]">AI / ML ENGINEER</span>
+</div>
+<a class="md:hidden w-8 h-8 rounded-full bg-[#202124] text-[#F7F3EA] flex items-center justify-center text-xs" href="../let_s_talk_koushik_upadhyay_contact/code.html">?</a>
+</div>
+</header><main class="w-full pt-16 bg-background"><div class="flex flex-col w-full">
+<!-- Top Real-time Reading & Progress Strip -->
+<div class="sticky top-16 z-40 w-full bg-surface/95 backdrop-blur-md shadow-sm">
+<div class="max-w-[1280px] mx-auto px-margin py-space-xs flex flex-wrap items-center justify-between gap-space-sm text-on-surface-variant font-label-sm text-label-sm">
+<div class="flex items-center gap-space-md">
+<span class="text-primary font-semibold tracking-wider">RUN-ID: NEST-PROD-V2.1</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="hidden sm:inline">CLIENT: ABHIKALPAN CONSTRUCTION PVT. LTD.</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant hidden sm:inline"></span>
+<span class="inline-flex items-center gap-1.5 text-secondary font-medium">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+          STATUS: PRODUCTION DEPLOYED
+        </span>
+</div>
+<div class="flex items-center gap-space-md">
+<span class="hidden md:inline font-label-sm text-label-sm opacity-80">LATENCY: 1.74s · ON-PREM NODE</span>
+<div class="w-24 bg-surface-container-high h-1.5 rounded-full overflow-hidden">
+<div class="h-full bg-primary transition-all duration-75 w-0" id="scroll-progress-bar"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Hero Section -->
+<section class="w-full relative px-margin py-space-xl overflow-hidden">
+<div class="max-w-[1280px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center">
+<!-- Left Editorial Column -->
+<div class="lg:col-span-7 flex flex-col gap-space-md">
+<div class="inline-flex items-center gap-space-xs font-label-md text-label-md uppercase tracking-wider text-primary">
+<span class="px-space-xs py-0.5 rounded bg-primary-fixed text-on-primary-fixed font-semibold">04</span>
+<span>SELECTED WORK · OPTIMIZATION / PRODUCTION SOFTWARE</span>
+</div>
+<h1 class="font-display-lg text-display-lg text-on-surface tracking-tight leading-none mt-space-xs">
+          FIND THE<br/><span class="text-primary">BEST FIT.</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl leading-relaxed">
+          A production nesting and computational spatial packing system built to solve a severe, everyday fabrication problem: squeezing maximum structural yield out of heavy gauge steel and architectural slabs while satisfying uncompromising CNC constraints.
+        </p>
+<!-- Production Operational Badge -->
+<div class="p-space-md rounded-xl bg-surface-container-low shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-md my-space-xs">
+<div class="flex items-center gap-space-sm">
+<div class="relative flex h-3.5 w-3.5 flex-shrink-0">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-3.5 w-3.5 bg-secondary"></span>
+</div>
+<div>
+<div class="font-label-md text-label-md text-on-surface font-semibold tracking-wide">
+                OPERATIONAL VERIFIED · DEPLOYED AT ABHIKALPAN
+              </div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">
+                Live on client's local server · Air-gapped CNC cutting bay integration
+              </div>
+</div>
+</div>
+<span class="font-label-sm text-label-sm px-space-sm py-1 rounded bg-secondary-container text-on-secondary-container whitespace-nowrap self-start sm:self-center font-medium">
+            NODE // IN-USE
+          </span>
+</div>
+<!-- Telemetry Stats Strip -->
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-space-sm pt-space-xs">
+<div class="p-space-sm rounded-lg bg-surface-container">
+<span class="block font-label-sm text-label-sm text-on-surface-variant">MATERIAL YIELD</span>
+<span class="font-headline-md text-headline-md text-primary font-bold">+18.4%</span>
+<span class="block font-label-sm text-label-sm text-secondary font-medium">avg. improvement</span>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container">
+<span class="block font-label-sm text-label-sm text-on-surface-variant">SOLVE TIME</span>
+<span class="font-headline-md text-headline-md text-on-surface font-bold">&lt;1.8s</span>
+<span class="block font-label-sm text-label-sm text-on-surface-variant">heuristic cycle</span>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container">
+<span class="block font-label-sm text-label-sm text-on-surface-variant">ROTATION GRAIN</span>
+<span class="font-headline-md text-headline-md text-on-surface font-bold">0° / 90° / NFP</span>
+<span class="block font-label-sm text-label-sm text-on-surface-variant">discrete steps</span>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container">
+<span class="block font-label-sm text-label-sm text-on-surface-variant">RUNTIME</span>
+<span class="font-headline-md text-headline-md text-tertiary-container text-on-tertiary-container px-1 rounded inline-block font-bold">ON-PREM</span>
+<span class="block font-label-sm text-label-sm text-on-surface-variant">local hardware</span>
+</div>
+</div>
+</div>
+<!-- Right Column: Visual Stickman Vignette & Blueprints -->
+<div class="lg:col-span-5 flex flex-col items-center">
+<div class="relative w-full aspect-square max-w-md bg-surface-container-lowest rounded-2xl p-space-md shadow-md overflow-hidden flex flex-col justify-between">
+<!-- Blueprint Grids & Polygons SVG Canvas -->
+<svg class="absolute inset-0 w-full h-full text-on-surface-variant/10" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<pattern height="24" id="arch-grid" patternunits="userSpaceOnUse" width="24">
+<path d="M 24 0 L 0 0 0 24" fill="none" stroke="currentColor" stroke-width="0.8"></path>
+</pattern>
+</defs>
+<rect fill="url(#arch-grid)" height="100%" width="100%"></rect>
+<!-- Irregular Material Polygons -->
+<polygon fill="#2c4a7e" fill-opacity="0.08" points="40,60 140,40 180,110 90,140 30,100" stroke="#2c4a7e" stroke-dasharray="4 2" stroke-width="1.5"></polygon>
+<polygon fill="#7f3318" fill-opacity="0.07" points="210,50 320,60 300,160 220,130" stroke="#7f3318" stroke-width="1.5"></polygon>
+<polygon fill="#476553" fill-opacity="0.1" points="120,170 260,180 240,290 140,310 90,240" stroke="#476553" stroke-width="1.5"></polygon>
+<path d="M40,240 Q90,210 130,260 T220,320" fill="none" stroke="#747780" stroke-dasharray="2 2" stroke-width="1"></path>
+</svg>
+<!-- Floating Note Strip -->
+<div class="relative z-10 flex items-center justify-between bg-surface/90 backdrop-blur-sm px-space-sm py-1 rounded-lg">
+<span class="font-label-sm text-label-sm text-primary">DXF_SPEC_SHEET_3000x1500MM</span>
+<span class="font-label-sm text-label-sm text-tertiary-container font-mono">WASTE: HIGH (MANUAL)</span>
+</div>
+<!-- Stickman Builder Vignette SVG -->
+<div class="relative z-10 my-auto flex items-center justify-center">
+<svg class="w-full max-w-[260px] h-auto drop-shadow-sm" fill="none" viewbox="0 0 280 220" xmlns="http://www.w3.org/2000/svg">
+<!-- Raw Sheet Backdrop -->
+<rect fill="#F7F3EA" height="150" rx="4" stroke="#43474f" stroke-width="2" width="240" x="20" y="30"></rect>
+<!-- Trapped Scraps -->
+<rect fill="#e9e7eb" height="70" rx="2" stroke="#103366" stroke-width="1.5" width="60" x="35" y="45"></rect>
+<text fill="#103366" font-family="JetBrains Mono" font-size="9" x="42" y="82">PART-01</text>
+<polygon fill="#e9e7eb" points="110,45 170,45 150,115 110,95" stroke="#103366" stroke-width="1.5"></polygon>
+<rect fill="#ffdad6" height="40" rx="2" stroke="#ba1a1a" stroke-dasharray="3 2" stroke-width="1" width="65" x="180" y="45"></rect>
+<text fill="#ba1a1a" font-family="JetBrains Mono" font-size="8" x="188" y="68">LOST SCRAP</text>
+<!-- Offcut lines -->
+<line stroke="#ba1a1a" stroke-dasharray="4 3" stroke-width="1.5" x1="35" x2="230" y1="130" y2="130"></line>
+<text fill="#43474f" font-family="JetBrains Mono" font-size="8" x="130" y="145">KERF SPACING &gt; 8MM</text>
+<!-- Hand-drawn style stickman engineer -->
+<g stroke="#1a1b1e" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5">
+<!-- Head -->
+<circle cx="80" cy="155" fill="#F7F3EA" r="9"></circle>
+<!-- Hardhat / Cap -->
+<path d="M70 151 C72 143, 88 143, 90 151 Z" fill="#2c4a7e" stroke="#103366" stroke-width="1.5"></path>
+<!-- Torso -->
+<line x1="80" x2="80" y1="164" y2="195"></line>
+<!-- Left Arm pointing at scrap gap -->
+<path d="M80 172 L100 162 L122 152"></path>
+<!-- Right Arm holding clipboard -->
+<path d="M80 172 L65 180 L70 190"></path>
+<!-- Legs -->
+<line x1="80" x2="68" y1="195" y2="218"></line>
+<line x1="80" x2="94" y1="195" y2="218"></line>
+</g>
+<!-- Clipboard -->
+<rect fill="#c7e8d1" height="18" rx="1" stroke="#476553" stroke-width="1.5" width="14" x="62" y="182"></rect>
+<!-- Dimension Callout Arc -->
+<path d="M125 148 Q150 140 178 148" fill="none" marker-end="url(#arrow)" stroke="#611d04" stroke-width="1.5"></path>
+</svg>
+</div>
+<!-- Handwritten Quote Marginalia -->
+<div class="relative z-10 self-end font-label-md text-label-md italic text-tertiary-container bg-surface-container-high/80 px-space-sm py-1 rounded-md">
+            “How much can we actually fit into this sheet?”
+          </div>
+</div>
+<a class="mt-space-md inline-flex items-center gap-2 font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors" href="#section-01">
+<span>SCROLL TO SEE IT WORK</span>
+<span class="material-symbols-outlined text-[16px] animate-bounce">arrow_downward</span>
+</a>
+</div>
+</div>
+</section>
+<!-- SECTION 01 — THE REAL PROBLEM -->
+<section class="w-full px-margin py-space-xl bg-surface-container-low" id="section-01">
+<div class="max-w-[1280px] mx-auto flex flex-col gap-space-lg">
+<div>
+<span class="font-label-md text-label-md text-secondary uppercase tracking-widest font-semibold">01 // OPERATIONAL GROUND TRUTH</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface tracking-tight mt-space-xs">
+          THIS WASN'T A TOY PROBLEM.
+        </h2>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<div class="lg:col-span-5 flex flex-col justify-between gap-space-md">
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+            The system was built around an actual operational reality at <strong>Abhikalpan Construction Pvt. Ltd.</strong> Not an idealized 2D bin-packing textbook challenge, but real-world structural fabrication with costly raw structural steel and architectural slabs where offcuts directly burn cash.
+          </p>
+<p class="font-body-md text-body-md text-on-surface-variant">
+            In physical cutting, every millimetre counts. If parts collide, the plasma torch ruins the entire sheet. If parts are arranged too loosely, 30% of a 3000×1500mm plate ends up in scrap bins.
+          </p>
+<!-- Visual Operational Chain -->
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col gap-space-xs">
+<span class="font-label-sm text-label-sm text-primary tracking-widest uppercase">The Operational Vulnerability Chain</span>
+<div class="flex items-center justify-between text-center font-label-sm text-label-sm font-semibold pt-space-xs">
+<div class="px-2 py-1 bg-surface-container rounded">MATERIAL</div>
+<span class="text-outline">→</span>
+<div class="px-2 py-1 bg-surface-container rounded">SPACE</div>
+<span class="text-outline">→</span>
+<div class="px-2 py-1 bg-surface-container rounded">CONSTRAINTS</div>
+<span class="text-outline">→</span>
+<div class="px-2 py-1 bg-tertiary-container text-on-tertiary-container rounded">HIGH SCRAP COST</div>
+</div>
+</div>
+</div>
+<!-- Interactive Visual: Manual vs Engine Layout -->
+<div class="lg:col-span-7 bg-surface-container-lowest p-space-lg rounded-2xl shadow-sm flex flex-col gap-space-md">
+<div class="flex flex-wrap items-center justify-between gap-space-sm pb-space-xs">
+<div>
+<span class="font-label-md text-label-md text-on-surface font-semibold">HEURISTIC DIAGNOSTIC: 3000 × 1500MM STEEL PLATE</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Compare legacy CAD tessellation vs. computational dense nesting</p>
+</div>
+<div class="inline-flex rounded-lg bg-surface-container-high p-1 text-label-sm font-label-sm">
+<button class="px-space-sm py-1 rounded bg-surface-container-lowest text-on-surface font-medium transition-all" id="btn-show-legacy">Manual CAD (68.2%)</button>
+<button class="px-space-sm py-1 rounded text-on-surface-variant hover:text-on-surface transition-all" id="btn-show-optimized">Nesting Engine (88.6%)</button>
+</div>
+</div>
+<!-- Simulation Visual Area -->
+<div class="relative w-full aspect-[2/1] bg-surface-container rounded-xl overflow-hidden p-space-sm flex items-center justify-center">
+<!-- Legacy CAD Plate View -->
+<svg class="w-full h-full transition-opacity duration-300" id="view-legacy" viewbox="0 0 600 300">
+<rect fill="#f4f3f7" height="300" rx="4" stroke="#c4c6d1" stroke-width="2" width="600"></rect>
+<!-- Loose aligned boxes with large wasted gaps -->
+<rect fill="#2c4a7e" height="90" opacity="0.8" rx="2" width="130" x="20" y="20"></rect>
+<rect fill="#2c4a7e" height="90" opacity="0.8" rx="2" width="130" x="170" y="20"></rect>
+<rect fill="#2c4a7e" height="90" opacity="0.8" rx="2" width="110" x="320" y="20"></rect>
+<polygon fill="#476553" opacity="0.8" points="450,20 560,20 540,110 470,110"></polygon>
+<rect fill="#2c4a7e" height="120" opacity="0.8" rx="2" width="160" x="20" y="130"></rect>
+<rect fill="#2c4a7e" height="120" opacity="0.8" rx="2" width="90" x="200" y="130"></rect>
+<!-- Red Wasted Strip highlight -->
+<rect fill="#ffdad6" height="150" opacity="0.85" rx="3" stroke="#ba1a1a" stroke-dasharray="4 3" width="270" x="310" y="130"></rect>
+<text fill="#93000a" font-family="JetBrains Mono" font-size="14" font-weight="600" x="360" y="210">31.8% UNUSABLE SCRAP</text>
+<text fill="#43474f" font-family="JetBrains Mono" font-size="10" x="365" y="230">Agonizing manual mouse dragging</text>
+</svg>
+<!-- Optimized Engine Plate View (Hidden by default or toggled) -->
+<svg class="w-full h-full hidden transition-opacity duration-300" id="view-optimized" viewbox="0 0 600 300">
+<rect fill="#F7F3EA" height="300" rx="4" stroke="#476553" stroke-width="2" width="600"></rect>
+<!-- Tightly interlocked geometric polygons -->
+<rect fill="#103366" height="90" rx="2" width="130" x="15" y="15"></rect>
+<polygon fill="#476553" points="155,15 265,15 245,105 175,105"></polygon>
+<polygon fill="#2c4a7e" points="275,15 365,15 365,125 295,105"></polygon>
+<rect fill="#103366" height="90" rx="2" width="110" x="375" y="15"></rect>
+<polygon fill="#476553" points="495,15 585,15 585,145 520,110"></polygon>
+<!-- Rotated nested shapes filling voids -->
+<rect fill="#103366" height="120" rx="2" width="160" x="15" y="115"></rect>
+<polygon fill="#476553" points="185,115 285,115 260,235 200,235"></polygon>
+<rect fill="#2c4a7e" height="90" rx="2" width="130" x="295" y="135"></rect>
+<rect fill="#103366" height="90" rx="2" width="150" x="435" y="115"></rect>
+<!-- Bottom remnants -->
+<rect fill="#2c4a7e" height="42" rx="2" width="220" x="15" y="245"></rect>
+<rect fill="#476553" height="52" rx="2" width="180" x="245" y="235"></rect>
+<rect fill="#2c4a7e" height="72" rx="2" width="150" x="435" y="215"></rect>
+<!-- Clean offcut remainder rectangle -->
+<rect fill="#c7e8d1" height="62" opacity="0.6" stroke="#476553" stroke-dasharray="2 2" width="25" x="560" y="225"></rect>
+<text fill="#ffffff" font-family="JetBrains Mono" font-size="12" font-weight="600" x="35" y="280">88.6% REVENUE RETENTION</text>
+</svg>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
+<span>METRIC: 18.4% LESS RESIDUAL STEEL DUMPED TO DROSS HEAP</span>
+<span class="text-primary font-mono font-semibold">TOLERANCE: 4.0MM KERF CLEARANCE</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 02 — THE QUESTION -->
+<section class="w-full px-margin py-space-xl">
+<div class="max-w-[1280px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center">
+<div class="lg:col-span-5 flex flex-col gap-space-sm">
+<span class="font-label-md text-label-md text-tertiary-container uppercase tracking-widest font-semibold">02 // THE ECONOMIC THESIS</span>
+<h2 class="font-display-sm text-display-sm text-on-surface tracking-tight leading-tight">
+          CAN WE<br/>WASTE LESS?
+        </h2>
+<div class="w-12 h-1 bg-tertiary-container my-space-xs rounded-full"></div>
+</div>
+<div class="lg:col-span-7 flex flex-col gap-space-md font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+<p>
+          Before this software was running on their floor, nested layouts were assembled manually by draftspersons in AutoCAD. It was painstaking geometry tetris: moving a gusset plate here, rotating a bracket by 90 degrees there, trying to visualize whether a flange would overlap another component.
+        </p>
+<p class="font-body-md text-body-md">
+          Because human patience has limits, people stop optimizing as soon as an arrangement is "good enough"—typically around 65% to 72% density. Nesting Engine asked a simple economic question: <em>What if we explore 4,000 spatial permutations per second, respect all torch clearance constraints, and hand the shop floor an 88%+ layout automatically?</em>
+</p>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-space-sm pt-space-xs text-on-surface">
+<div class="p-space-md rounded-xl bg-surface-container">
+<span class="material-symbols-outlined text-primary text-[28px]">speed</span>
+<h4 class="font-headline-sm text-headline-sm mt-space-xs">Hours to Seconds</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">From 45 minutes of manual layout nudging down to 1.8 seconds algorithmic compilation.</p>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container">
+<span class="material-symbols-outlined text-secondary text-[28px]">inventory_2</span>
+<h4 class="font-headline-sm text-headline-sm mt-space-xs">Remnant Value</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Converts tiny trapped dross pockets into large, reusable rectangular drop sheets.</p>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container">
+<span class="material-symbols-outlined text-tertiary-container text-[28px]">verified</span>
+<h4 class="font-headline-sm text-headline-sm mt-space-xs">Torch Safety</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Zero operator guesswork on plasma tip clearances and piercing heat cones.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 03 — TURNING THE PROBLEM INTO COMPUTATION -->
+<section class="w-full px-margin py-space-xl bg-surface-container-low">
+<div class="max-w-[1280px] mx-auto flex flex-col gap-space-lg">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md">
+<div>
+<span class="font-label-md text-label-md text-primary uppercase tracking-widest font-semibold">03 // MATHEMATICAL FORMULATION</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface tracking-tight mt-space-xs">
+            TURNING RAW MATERIAL INTO COMPUTATION.
+          </h2>
+</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant max-w-xs text-right hidden md:block">
+          POLYGON PACKING · MINKOWSKI SUMS · NO-FIT POLYGONS (NFP)
+        </div>
+</div>
+<!-- Progressive Pipeline Visualization -->
+<div class="grid grid-cols-1 md:grid-cols-6 gap-space-sm">
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-mono">01 // RAW INPUT</span>
+<div class="py-space-md flex justify-center">
+<span class="material-symbols-outlined text-primary text-[36px]">crop_free</span>
+</div>
+<div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface">Physical Sheet</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Width, height, thickness, structural grain angle.</p>
+</div>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-mono">02 // VECTORIZATION</span>
+<div class="py-space-md flex justify-center">
+<span class="material-symbols-outlined text-secondary text-[36px]">polyline</span>
+</div>
+<div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface">Polygon Loop</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">DXF parser converts arcs/splines to discrete closed polylines.</p>
+</div>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-mono">03 // NFP CALCULATION</span>
+<div class="py-space-md flex justify-center">
+<span class="material-symbols-outlined text-tertiary-container text-[36px]">difference</span>
+</div>
+<div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface">No-Fit Boundary</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Minkowski sum $A \oplus (-B)$ tracks valid contact points.</p>
+</div>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-mono">04 // HEURISTIC DOCK</span>
+<div class="py-space-md flex justify-center">
+<span class="material-symbols-outlined text-primary text-[36px]">tune</span>
+</div>
+<div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface">Candidate Trees</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Guided simulated annealing tests millions of rotational states.</p>
+</div>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-mono">05 // PENALTY AUDIT</span>
+<div class="py-space-md flex justify-center">
+<span class="material-symbols-outlined text-secondary text-[36px]">checklist_rtl</span>
+</div>
+<div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface">Scoring Matrix</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Yield %, center of gravity, kerf margin, and remnant continuity.</p>
+</div>
+</div>
+<div class="p-space-md rounded-xl bg-primary text-on-primary shadow-sm flex flex-col justify-between">
+<span class="font-label-sm text-label-sm text-on-primary-container font-mono">06 // FABRICATION</span>
+<div class="py-space-md flex justify-center">
+<span class="material-symbols-outlined text-on-primary text-[36px]">memory</span>
+</div>
+<div>
+<h4 class="font-headline-sm text-headline-sm text-on-primary">Optimum Fit</h4>
+<p class="font-body-sm text-body-sm text-on-primary-container mt-1">Clean G-Code and DXF production export directly to cutting table.</p>
+</div>
+</div>
+</div>
+<!-- Vignette: Hand-drawn stickman turning physical cutouts into mathematical rules -->
+<div class="p-space-lg rounded-2xl bg-surface-container-lowest shadow-sm flex flex-col lg:flex-row items-center justify-between gap-space-lg">
+<div class="flex-1 flex flex-col gap-space-xs">
+<span class="font-label-sm text-label-sm text-primary font-semibold">FROM PHYSICAL CUTOUTS TO MINKOWSKI EXPANSION</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">The No-Fit Polygon (NFP) Breakthrough</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+            Standard collision detection evaluates overlaps <em>after</em> placing a polygon. For 200 parts, this causes an $O(N^2)$ explosion. The Nesting Engine instead generates the orbiting boundary—the <strong>No-Fit Polygon</strong>—once per geometry pair. Placing Part B along Part A's NFP perimeter guarantees 100% boundary contact with exactly 0.0mm of illegal overlap.
+          </p>
+</div>
+<div class="w-full lg:w-96 flex flex-col items-center">
+<svg class="w-full h-auto" fill="none" viewbox="0 0 340 160" xmlns="http://www.w3.org/2000/svg">
+<!-- Polygon A Fixed -->
+<polygon fill="#2c4a7e" fill-opacity="0.15" points="40,50 110,40 100,120 30,110" stroke="#103366" stroke-width="2"></polygon>
+<text fill="#103366" font-family="JetBrains Mono" font-size="10" font-weight="bold" x="60" y="85">POLYGON A</text>
+<!-- Minkowski offset perimeter (NFP) -->
+<polygon fill="none" points="20,30 130,20 120,140 10,130" stroke="#7f3318" stroke-dasharray="4 3" stroke-width="1.5"></polygon>
+<text fill="#7f3318" font-family="JetBrains Mono" font-size="8" x="135" y="32">NFP BOUNDARY (A ⊕ -B)</text>
+<!-- Orbiting Polygon B sliding into contact -->
+<polygon fill="#476553" fill-opacity="0.25" points="120,40 170,40 160,85 110,85" stroke="#476553" stroke-width="2"></polygon>
+<text fill="#476553" font-family="JetBrains Mono" font-size="9" font-weight="bold" x="125" y="65">PART B</text>
+<circle cx="120" cy="40" fill="#611d04" r="3"></circle>
+<!-- Stickman builder at desk with laptop -->
+<g stroke="#1a1b1e" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+<circle cx="270" cy="90" fill="#F7F3EA" r="8"></circle>
+<line x1="270" x2="270" y1="98" y2="128"></line>
+<!-- Arms on desk/laptop -->
+<line x1="270" x2="248" y1="106" y2="116"></line>
+<!-- Desk -->
+<line stroke="#43474f" stroke-width="3" x1="210" x2="310" y1="128" y2="128"></line>
+<!-- Laptop -->
+<path d="M235 128 L255 128 L250 112" stroke="#103366" stroke-width="2"></path>
+<!-- Legs -->
+<line x1="270" x2="255" y1="128" y2="155"></line>
+<line x1="270" x2="285" y1="128" y2="155"></line>
+</g>
+</svg>
+<span class="font-label-sm text-label-sm italic text-tertiary-container mt-2">
+            “Now let the computer run the geometric search.”
+          </span>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 04 — THE SEARCH -->
+<section class="w-full px-margin py-space-xl">
+<div class="max-w-[1280px] mx-auto flex flex-col gap-space-lg">
+<div>
+<span class="font-label-md text-label-md text-secondary uppercase tracking-widest font-semibold">04 // HEURISTICS &amp; SEARCH SPACE</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface tracking-tight mt-space-xs">
+          ONE ARRANGEMENT ISN'T ENOUGH.
+        </h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mt-space-xs">
+          Combinatorial spatial packing is NP-hard. We evaluate hundreds of arrangement generations per cycle using a closed loop: <strong>GENERATE → TEST → SCORE → ITERATE</strong>.
+        </p>
+</div>
+<!-- 3 Side-by-Side Candidates Comparison -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Candidate A -->
+<div class="rounded-2xl bg-surface-container p-space-md flex flex-col justify-between shadow-sm">
+<div>
+<div class="flex items-center justify-between pb-space-xs">
+<span class="font-label-md text-label-md font-bold text-on-surface">CANDIDATE A</span>
+<span class="px-space-xs py-0.5 rounded bg-error-container text-on-error-container font-label-sm text-label-sm font-semibold">REJECTED</span>
+</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant font-mono">Greedy Bottom-Left (BLF)</div>
+<!-- SVG Mini Sheet View -->
+<div class="w-full aspect-[4/3] bg-surface-container-lowest rounded-lg my-space-sm p-2 flex items-center justify-center">
+<svg class="w-full h-full" viewbox="0 0 200 150">
+<rect fill="#f4f3f7" height="150" rx="2" stroke="#c4c6d1" width="200"></rect>
+<rect fill="#747780" height="50" opacity="0.6" width="70" x="10" y="10"></rect>
+<rect fill="#747780" height="50" opacity="0.6" width="50" x="90" y="10"></rect>
+<rect fill="#747780" height="60" opacity="0.6" width="60" x="10" y="70"></rect>
+<!-- Trapped pockets -->
+<rect fill="#ffdad6" height="60" stroke="#ba1a1a" stroke-dasharray="2 2" width="50" x="80" y="70"></rect>
+<rect fill="#ffdad6" height="120" stroke="#ba1a1a" stroke-dasharray="2 2" width="40" x="150" y="10"></rect>
+</svg>
+</div>
+<div class="space-y-1">
+<div class="flex justify-between font-label-sm text-label-sm">
+<span class="text-on-surface-variant">Utilization:</span>
+<span class="font-bold text-error">71.2%</span>
+</div>
+<div class="flex justify-between font-label-sm text-label-sm">
+<span class="text-on-surface-variant">Trapped Negative Void:</span>
+<span class="text-error font-medium">High</span>
+</div>
+<div class="flex justify-between font-label-sm text-label-sm">
+<span class="text-on-surface-variant">Kerf Integrity:</span>
+<span class="text-secondary font-medium">Passed</span>
+</div>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant pt-space-sm">
+            Tends to isolate dead offcuts in the center of the sheet, preventing reusable rectangular drops.
+          </p>
+</div>
+<!-- Candidate B -->
+<div class="rounded-2xl bg-surface-container p-space-md flex flex-col justify-between shadow-sm">
+<div>
+<div class="flex items-center justify-between pb-space-xs">
+<span class="font-label-md text-label-md font-bold text-on-surface">CANDIDATE B</span>
+<span class="px-space-xs py-0.5 rounded bg-error-container text-on-error-container font-label-sm text-label-sm font-semibold">REJECTED</span>
+</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant font-mono">Genetic Packing w/o Grain Lock</div>
+<!-- SVG Mini Sheet View -->
+<div class="w-full aspect-[4/3] bg-surface-container-lowest rounded-lg my-space-sm p-2 flex items-center justify-center">
+<svg class="w-full h-full" viewbox="0 0 200 150">
+<rect fill="#f4f3f7" height="150" rx="2" stroke="#c4c6d1" width="200"></rect>
+<rect fill="#747780" height="45" opacity="0.6" width="85" x="10" y="10"></rect>
+<!-- Violating rotation cross-grain -->
+<rect fill="#ba1a1a" height="85" opacity="0.7" width="40" x="105" y="10"></rect>
+<polygon fill="#747780" opacity="0.6" points="10,65 95,65 80,135 10,135"></polygon>
+<rect fill="#ffdad6" height="130" stroke="#ba1a1a" stroke-dasharray="2 2" width="35" x="155" y="10"></rect>
+</svg>
+</div>
+<div class="space-y-1">
+<div class="flex justify-between font-label-sm text-label-sm">
+<span class="text-on-surface-variant">Utilization:</span>
+<span class="font-bold text-on-surface">78.4%</span>
+</div>
+<div class="flex justify-between font-label-sm text-label-sm">
+<span class="text-on-surface-variant">Grain Alignment:</span>
+<span class="text-error font-medium">Failed (-45° Shear)</span>
+</div>
+<div class="flex justify-between font-label-sm text-label-sm">
+<span class="text-on-surface-variant">Lead-in Clearances:</span>
+<span class="text-error font-medium">Collision Risk</span>
+</div>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant pt-space-sm">
+            Ignored anisotropic rolling grain of structural steel beam plates. Rejected by the structural safety gate.
+          </p>
+</div>
+<!-- Candidate C (Selected) -->
+<div class="rounded-2xl bg-surface-container-lowest p-space-md flex flex-col justify-between shadow-md">
+<div>
+<div class="flex items-center justify-between pb-space-xs">
+<span class="font-label-md text-label-md font-bold text-primary">CANDIDATE C (ENGINE V2)</span>
+<span class="px-space-xs py-0.5 rounded bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-semibold">SELECTED</span>
+</div>
+<div class="font-label-sm text-label-sm text-secondary font-mono">Guided Annealing + Clean Remnant Gate</div>
+<!-- SVG Mini Sheet View -->
+<div class="w-full aspect-[4/3] bg-surface-container-low rounded-lg my-space-sm p-2 flex items-center justify-center">
+<svg class="w-full h-full" viewbox="0 0 200 150">
+<rect fill="#F7F3EA" height="150" rx="2" stroke="#476553" stroke-width="1.5" width="200"></rect>
+<rect fill="#103366" height="50" rx="1" width="85" x="8" y="8"></rect>
+<polygon fill="#476553" points="100,8 150,8 140,60 100,60"></polygon>
+<polygon fill="#2c4a7e" points="8,64 85,64 70,140 8,140"></polygon>
+<rect fill="#103366" height="74" rx="1" width="55" x="94" y="66"></rect>
+<!-- Preserved single big offcut block -->
+<rect fill="#c7e8d1" height="132" stroke="#476553" stroke-dasharray="2 2" width="36" x="156" y="8"></rect>
+<text fill="#032012" font-family="JetBrains Mono" font-size="7" transform="rotate(90 160 75)" x="160" y="75">PRIME REUSABLE DROP</text>
+</svg>
+</div>
+<div class="space-y-1">
+<div class="flex justify-between font-label-sm text-label-sm">
+<span class="text-on-surface-variant">Utilization:</span>
+<span class="font-bold text-secondary">89.6%</span>
+</div>
+<div class="flex justify-between font-label-sm text-label-sm">
+<span class="text-on-surface-variant">Offcut Integrity:</span>
+<span class="text-secondary font-medium">Continuous Slab</span>
+</div>
+<div class="flex justify-between font-label-sm text-label-sm">
+<span class="text-on-surface-variant">Torch Traverse:</span>
+<span class="text-secondary font-medium">Minimized (-32%)</span>
+</div>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface pt-space-sm font-medium">
+            Tight interlocking, correct steel tensile grain, and leaves one monolithic remnant rectangle for future jobs.
+          </p>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 05 — CONSTRAINTS -->
+<section class="w-full px-margin py-space-xl bg-surface-container-low">
+<div class="max-w-[1280px] mx-auto flex flex-col gap-space-lg">
+<div>
+<span class="font-label-md text-label-md text-tertiary-container uppercase tracking-widest font-semibold">05 // GEOMETRIC RULES</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface tracking-tight mt-space-xs">
+          A GOOD FIT STILL HAS TO FOLLOW THE RULES.
+        </h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-3xl mt-space-xs">
+          Pure mathematics will casually place two parts 0.1mm apart or overhang the boundary by a hair. In industrial production, that damages the equipment.
+        </p>
+</div>
+<!-- Constraint Matrix Cards -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<div class="md:col-span-4 p-space-md rounded-2xl bg-surface-container-lowest shadow-sm flex flex-col gap-space-xs">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center font-label-sm text-label-sm font-bold text-primary">01</div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface mt-space-xs">Hard Plate Boundaries</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Zero tolerance for border overflow. Margins account for clamp zones and raw sheet edge warping from the rolling mill.</p>
+<div class="mt-auto pt-space-sm font-label-sm text-label-sm text-primary font-mono">RULE: Δx_margin ≥ 12.0mm</div>
+</div>
+<div class="md:col-span-4 p-space-md rounded-2xl bg-surface-container-lowest shadow-sm flex flex-col gap-space-xs">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center font-label-sm text-label-sm font-bold text-primary">02</div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface mt-space-xs">Kerf &amp; Plasma Heat Clearance</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">The plasma beam vaporizes steel at width $K$. If paths run too close, thermal distortion bends adjacent edges out of structural tolerance.</p>
+<div class="mt-auto pt-space-sm font-label-sm text-label-sm text-secondary font-mono">RULE: Kerf Offset = 3.8mm ± 0.2</div>
+</div>
+<div class="md:col-span-4 p-space-md rounded-2xl bg-surface-container-lowest shadow-sm flex flex-col gap-space-xs">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center font-label-sm text-label-sm font-bold text-primary">03</div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface mt-space-xs">Structural Grain Direction</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Certain high-tensile cantilever brackets cannot be rotated arbitrarily. Their load path must align with the primary rolling grain of the plate.</p>
+<div class="mt-auto pt-space-sm font-label-sm text-label-sm text-tertiary-container font-mono">RULE: Orientation Lock ∈ {0°, 180°}</div>
+</div>
+<div class="md:col-span-6 p-space-md rounded-2xl bg-surface-container-lowest shadow-sm flex flex-col gap-space-xs">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center font-label-sm text-label-sm font-bold text-primary">04</div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface mt-space-xs">Piercing Points &amp; Lead-In Clearances</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">When the cutter initiates, molten blowback occurs. The lead-in piercing crater must occur inside the scrap negative space, never directly on a finished geometry edge.</p>
+<div class="mt-auto pt-space-sm font-label-sm text-label-sm text-primary font-mono">RULE: Lead-in radius ≥ 6.5mm in dross pocket</div>
+</div>
+<div class="md:col-span-6 p-space-md rounded-2xl bg-surface-container-lowest shadow-sm flex flex-col gap-space-xs">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center font-label-sm text-label-sm font-bold text-primary">05</div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface mt-space-xs">Remnant Geometry Preservation</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">A 90% nesting that leaves a useless spiderweb of 20mm ribbons is worse than an 85% nesting that leaves a solid 600×1200mm pristine slab that can be inventoried for tomorrow's job.</p>
+<div class="mt-auto pt-space-sm font-label-sm text-label-sm text-secondary font-mono">RULE: Minimum Remnant Bounding Box ≥ 400x400mm</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 06 — FROM ALGORITHM TO OPERATION (THE PRODUCTION MILESTONE) -->
+<section class="w-full px-margin py-space-xl">
+<div class="max-w-[1280px] mx-auto flex flex-col gap-space-lg">
+<div class="flex flex-col gap-space-xs">
+<span class="font-label-md text-label-md text-secondary uppercase tracking-widest font-semibold">06 // ENTERPRISE DEPLOYMENT</span>
+<h2 class="font-display-sm text-display-sm text-on-surface tracking-tight leading-tight">
+          FROM ALGORITHM<br/>TO OPERATION.
+        </h2>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center">
+<div class="lg:col-span-7 flex flex-col gap-space-md font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+<p>
+            Nesting Engine isn't a thesis paper and it isn't sitting dormant in a private GitHub repo waiting to be evaluated. It is <strong>deployed and actively running on-premise at Abhikalpan Construction Pvt. Ltd.</strong>, driving their factory cutting schedule every single morning.
+          </p>
+<p class="font-body-md text-body-md">
+            Their shop floor runs heavy fabrication equipment in industrial conditions. The software is air-gapped on their local server, communicating directly over their internal LAN with factory terminal stations so CNC machine operators never have to worry about cloud outages or CAD licensing crashes.
+          </p>
+<!-- Deployment Flow Bar -->
+<div class="p-space-md rounded-xl bg-surface-container flex flex-wrap items-center justify-between gap-space-xs text-center font-label-sm text-label-sm font-semibold">
+<span class="text-on-surface-variant">DEVELOPMENT</span>
+<span class="text-outline">→</span>
+<span class="text-on-surface-variant">TEST HARNESS</span>
+<span class="text-outline">→</span>
+<span class="text-primary font-bold">ABHIKALPAN SERVER</span>
+<span class="text-outline">→</span>
+<span class="text-secondary font-bold">CUTTING TABLE</span>
+</div>
+</div>
+<!-- Abhikalpan Enterprise Telemetry Card -->
+<div class="lg:col-span-5 bg-surface-container-lowest p-space-lg rounded-2xl shadow-md flex flex-col gap-space-sm">
+<div class="flex items-center justify-between pb-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary animate-pulse"></span>
+<span class="font-label-sm text-label-sm text-on-surface font-bold">ABHIKALPAN PRODUCTION NODE</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-mono">192.168.1.14:8080</span>
+</div>
+<div class="space-y-space-xs font-label-sm text-label-sm pt-space-xs">
+<div class="flex justify-between py-1 bg-surface-container-low px-2 rounded">
+<span class="text-on-surface-variant">System Daemon:</span>
+<span class="text-on-surface font-mono font-medium">systemd / nesting-engine.service (ACTIVE)</span>
+</div>
+<div class="flex justify-between py-1 bg-surface-container-low px-2 rounded">
+<span class="text-on-surface-variant">Deployment Mode:</span>
+<span class="text-on-surface font-mono font-medium">Air-gapped on-premise bare metal</span>
+</div>
+<div class="flex justify-between py-1 bg-surface-container-low px-2 rounded">
+<span class="text-on-surface-variant">CNC Integration:</span>
+<span class="text-on-surface font-mono font-medium">FastCAM &amp; G-Code Pre-processor</span>
+</div>
+<div class="flex justify-between py-1 bg-surface-container-low px-2 rounded">
+<span class="text-on-surface-variant">Average Daily Jobs:</span>
+<span class="text-on-surface font-mono font-medium">18–26 plate batches</span>
+</div>
+<div class="flex justify-between py-1 bg-surface-container-low px-2 rounded">
+<span class="text-on-surface-variant">Material Saved:</span>
+<span class="text-secondary font-mono font-bold">Estimated 14.2 Metric Tons / Qtr</span>
+</div>
+</div>
+<div class="mt-space-xs p-space-sm bg-surface-container rounded-lg flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-secondary text-[24px]">verified_user</span>
+<div class="font-label-sm text-label-sm text-on-surface-variant leading-tight">
+              Verified operational release. Tested against 1,200+ proprietary CAD architectural profiles.
+            </div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 07 — THE ENGINEERING REALITY -->
+<section class="w-full px-margin py-space-xl bg-surface-container-low">
+<div class="max-w-[1280px] mx-auto flex flex-col gap-space-lg">
+<div>
+<span class="font-label-md text-label-md text-primary uppercase tracking-widest font-semibold">07 // ARCHITECTURAL MATURITY</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface tracking-tight mt-space-xs">
+          PRODUCTION CHANGES THE QUESTION.
+        </h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-3xl mt-space-xs">
+          It's no longer just: <em>“Does the algorithm work?”</em> Now it's: <em>“Does the software work reliably enough for someone else to depend on it every single day without calling you?”</em>
+</p>
+</div>
+<!-- 5 Engineering Pillars Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-space-sm">
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col">
+<span class="font-label-sm text-label-sm text-tertiary-container font-mono">PILLAR // 01</span>
+<h4 class="font-headline-sm text-headline-sm text-on-surface mt-space-xs">Messy CAD Inputs</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-space-xs">
+            Real DXF files exported from drafting suites contain duplicated vertices, open polylines, unclosed loops, and rogue zero-length line segments.
+          </p>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col">
+<span class="font-label-sm text-label-sm text-primary font-mono">PILLAR // 02</span>
+<h4 class="font-headline-sm text-headline-sm text-on-surface mt-space-xs">Automated Healing</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-space-xs">
+            The preprocessing layer snaps loose endpoints within an 0.05mm epsilon, purges self-intersecting loops, and verifies winding direction automatically.
+          </p>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col">
+<span class="font-label-sm text-label-sm text-secondary font-mono">PILLAR // 03</span>
+<h4 class="font-headline-sm text-headline-sm text-on-surface mt-space-xs">Sub-2s Response</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-space-xs">
+            Operators will not tolerate a desktop application that hangs for two minutes. Heuristic search threads stream progressive candidate layouts in real-time.
+          </p>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col">
+<span class="font-label-sm text-label-sm text-primary font-mono">PILLAR // 04</span>
+<h4 class="font-headline-sm text-headline-sm text-on-surface mt-space-xs">Deterministic Runs</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-space-xs">
+            The same list of parts on the same sheet size must produce identical nesting results. Pseudo-random annealing seeds are pegged to the batch checksum.
+          </p>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col">
+<span class="font-label-sm text-label-sm text-tertiary-container font-mono">PILLAR // 05</span>
+<h4 class="font-headline-sm text-headline-sm text-on-surface mt-space-xs">Air-Gapped Node</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-space-xs">
+            No cloud APIs, no external auth telemetry, no remote outage points. Runs natively on Abhikalpan's internal infrastructure inside the factory.
+          </p>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 08 — THE ACTUAL SYSTEM TOPOLOGY -->
+<section class="w-full px-margin py-space-xl">
+<div class="max-w-[1280px] mx-auto flex flex-col gap-space-lg">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md">
+<div>
+<span class="font-label-md text-label-md text-secondary uppercase tracking-widest font-semibold">08 // ARCHITECTURE UNDER THE HOOD</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface tracking-tight mt-space-xs">
+            THE SYSTEM TOPOLOGY.
+          </h2>
+</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">MODULAR PIPELINE // NO EXTERNAL DEPENDENCY</div>
+</div>
+<!-- Architectural DAG Pipeline Graph -->
+<div class="p-space-lg rounded-2xl bg-surface-container-lowest shadow-md flex flex-col gap-space-md">
+<!-- Graph Modules -->
+<div class="grid grid-cols-1 md:grid-cols-5 gap-space-sm items-center">
+<div class="p-space-sm bg-surface-container rounded-lg text-center">
+<span class="block font-label-sm text-label-sm text-on-surface-variant">STAGE 01</span>
+<span class="font-label-md text-label-md text-on-surface font-bold">CAD DXF / SVG</span>
+<span class="block font-label-sm text-label-sm text-outline mt-1">Raw drafting input</span>
+</div>
+<div class="flex items-center justify-center text-outline">
+<span class="material-symbols-outlined rotate-90 md:rotate-0 text-[20px]">arrow_forward</span>
+</div>
+<div class="p-space-sm bg-surface-container rounded-lg text-center">
+<span class="block font-label-sm text-label-sm text-on-surface-variant">STAGE 02</span>
+<span class="font-label-md text-label-md text-primary font-bold">Geometry Healer</span>
+<span class="block font-label-sm text-label-sm text-outline mt-1">Epsilon loop closure</span>
+</div>
+<div class="flex items-center justify-center text-outline">
+<span class="material-symbols-outlined rotate-90 md:rotate-0 text-[20px]">arrow_forward</span>
+</div>
+<div class="p-space-sm bg-surface-container-high rounded-lg text-center">
+<span class="block font-label-sm text-label-sm text-primary font-semibold">STAGE 03</span>
+<span class="font-label-md text-label-md text-primary font-bold">Nesting Solver</span>
+<span class="block font-label-sm text-label-sm text-outline mt-1">NFP &amp; Annealing Search</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-5 gap-space-sm items-center">
+<div class="p-space-sm bg-primary text-on-primary rounded-lg text-center">
+<span class="block font-label-sm text-label-sm text-on-primary-container">FINAL EXECUTION</span>
+<span class="font-label-md text-label-md text-on-primary font-bold">CNC Table</span>
+<span class="block font-label-sm text-label-sm text-on-primary-container mt-1">Live physical cutting</span>
+</div>
+<div class="flex items-center justify-center text-outline">
+<span class="material-symbols-outlined rotate-90 md:rotate-180 text-[20px]">arrow_forward</span>
+</div>
+<div class="p-space-sm bg-surface-container rounded-lg text-center">
+<span class="block font-label-sm text-label-sm text-on-surface-variant">STAGE 05</span>
+<span class="font-label-md text-label-md text-secondary font-bold">G-Code Generator</span>
+<span class="block font-label-sm text-label-sm text-outline mt-1">Toolpath &amp; Lead-in</span>
+</div>
+<div class="flex items-center justify-center text-outline">
+<span class="material-symbols-outlined rotate-90 md:rotate-180 text-[20px]">arrow_forward</span>
+</div>
+<div class="p-space-sm bg-surface-container rounded-lg text-center">
+<span class="block font-label-sm text-label-sm text-on-surface-variant">STAGE 04</span>
+<span class="font-label-md text-label-md text-tertiary-container font-bold">Constraint Gate</span>
+<span class="block font-label-sm text-label-sm text-outline mt-1">Kerf, Grain, Remnants</span>
+</div>
+</div>
+<!-- Technical Parameters Footnote -->
+<div class="pt-space-xs font-label-sm text-label-sm text-on-surface-variant flex flex-wrap items-center justify-between gap-space-sm">
+<span>COMPILED WITH C++ HEURISTIC CORE + PYTHON / FASTAPI REST ORCHESTRATION</span>
+<span class="font-mono">BENCHMARK: 128 CONCAVE POLYGONS NESTED IN 1.74s</span>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 09 — THE MOMENT: AND SOMEONE ACTUALLY USES IT -->
+<section class="w-full px-margin py-space-xl bg-surface-container-low">
+<div class="max-w-[1280px] mx-auto flex flex-col gap-space-lg">
+<div>
+<span class="font-label-md text-label-md text-primary uppercase tracking-widest font-semibold">09 // OPERATIONAL VALIDATION</span>
+<h2 class="font-display-sm text-display-sm text-on-surface tracking-tight mt-space-xs">
+          AND SOMEONE ACTUALLY USES IT.
+        </h2>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center">
+<!-- Atmospheric Factory Vignette -->
+<div class="lg:col-span-7 bg-surface-container-lowest p-space-lg rounded-2xl shadow-md flex flex-col gap-space-md">
+<p class="font-body-lg text-body-lg text-on-surface leading-relaxed">
+            There is a quiet, specific satisfaction in visiting the fabrication shop floor and seeing an operator load a 25mm thick structural steel sheet onto the cutting bed, press <em>Execute</em>, and watch the torch precisely track paths that your algorithm computed two minutes prior.
+          </p>
+<!-- SVG Factory Floor Stickman Scene -->
+<div class="relative w-full aspect-[2/1] bg-surface-container rounded-xl overflow-hidden p-space-sm flex items-center justify-center">
+<svg class="w-full h-full" fill="none" viewbox="0 0 500 240" xmlns="http://www.w3.org/2000/svg">
+<!-- Overhead crane beam -->
+<line stroke="#747780" stroke-width="4" x1="20" x2="480" y1="20" y2="20"></line>
+<line stroke="#43474f" stroke-width="2" x1="160" x2="160" y1="20" y2="40"></line>
+<rect fill="#2c4a7e" height="15" rx="2" width="30" x="145" y="40"></rect>
+<!-- Heavy CNC Cutting Table -->
+<rect fill="#e9e7eb" height="85" rx="4" stroke="#43474f" stroke-width="2" width="350" x="50" y="110"></rect>
+<line stroke="#1a1b1e" stroke-width="6" x1="70" x2="70" y1="195" y2="230"></line>
+<line stroke="#1a1b1e" stroke-width="6" x1="380" x2="380" y1="195" y2="230"></line>
+<!-- Nested Metal Plate on Table -->
+<rect fill="#F7F3EA" height="65" stroke="#103366" stroke-width="1.5" width="320" x="65" y="120"></rect>
+<!-- Tightly packed parts with minimal scrap -->
+<polygon fill="#2c4a7e" opacity="0.3" points="75,125 145,125 130,175 75,175" stroke="#2c4a7e" stroke-width="1"></polygon>
+<polygon fill="#476553" opacity="0.3" points="150,125 210,125 200,175 135,175" stroke="#476553" stroke-width="1"></polygon>
+<polygon fill="#2c4a7e" opacity="0.3" points="215,125 285,125 270,175 205,175" stroke="#2c4a7e" stroke-width="1"></polygon>
+<rect fill="#c7e8d1" height="60" stroke="#476553" stroke-dasharray="2 2" width="90" x="290" y="125"></rect>
+<text fill="#476553" font-family="JetBrains Mono" font-size="8" x="300" y="160">SAVED REMNANT</text>
+<!-- Plasma Torch Sparking on Cut -->
+<circle cx="215" cy="125" fill="#ba1a1a" r="3"></circle>
+<line stroke="#611d04" stroke-width="2" x1="215" x2="215" y1="80" y2="122"></line>
+<!-- Sparks -->
+<circle cx="218" cy="123" fill="#ffa486" r="1"></circle>
+<circle cx="212" cy="127" fill="#ffa486" r="1.5"></circle>
+<circle cx="221" cy="126" fill="#ffa486" r="1"></circle>
+<!-- Factory Operator Stickman with hard hat & goggles -->
+<g stroke="#1a1b1e" stroke-linecap="round" stroke-width="2.2">
+<circle cx="430" cy="140" fill="#F7F3EA" r="8"></circle>
+<path d="M422 136 C424 130, 436 130, 438 136 Z" fill="#611d04" stroke="#611d04"></path>
+<line x1="430" x2="430" y1="148" y2="185"></line>
+<!-- Crossed arms leaning back approving -->
+<path d="M430 156 L418 168 L430 172"></path>
+<path d="M430 156 L442 168 L430 172"></path>
+<line x1="430" x2="420" y1="185" y2="225"></line>
+<line x1="430" x2="442" y1="185" y2="225"></line>
+</g>
+<!-- Speech bubble -->
+<path d="M410 120 Q395 105 380 110" fill="none" stroke="#43474f" stroke-width="1.5"></path>
+<text fill="#103366" font-family="JetBrains Mono" font-size="10" font-style="italic" x="310" y="105">“Okay. That works.”</text>
+</svg>
+</div>
+<div class="font-body-md text-body-md text-on-surface-variant">
+            No academic paper, no theoretical praise. Just thousands of dollars in raw steel saved every single month across hundreds of structural fabrication cycles.
+          </div>
+</div>
+<!-- Verified Operational Ribbon Card -->
+<div class="lg:col-span-5 flex flex-col gap-space-md">
+<div class="p-space-lg rounded-2xl bg-surface-container flex flex-col gap-space-sm shadow-sm">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary font-bold">CLIENT VERIFICATION</span>
+<div class="font-headline-md text-headline-md text-on-surface font-semibold">
+              Abhikalpan Construction Pvt. Ltd.
+            </div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              “Before Koushik deployed Nesting Engine to our local server, nesting was our primary bottleneck. Now our drafting team runs the job through the engine in seconds and sends clean G-Code straight to the torch.”
+            </p>
+<div class="pt-space-xs flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center font-bold text-primary font-label-md text-label-md">
+                AC
+              </div>
+<div>
+<div class="font-label-md text-label-md font-semibold text-on-surface">Factory Operations Directorate</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">Abhikalpan Fabrication Unit</div>
+</div>
+</div>
+</div>
+<div class="p-space-md rounded-xl bg-secondary-container text-on-secondary-container flex items-center gap-space-md">
+<span class="material-symbols-outlined text-[32px]">offline_pin</span>
+<div>
+<div class="font-label-md text-label-md font-bold tracking-wide">STATUS: LIVE IN PRODUCTION</div>
+<div class="font-body-sm text-body-sm">Zero critical defects logged over 6+ months continuous plant duty.</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- EPILOGUE & NEXT PROJECT TEASER -->
+<section class="w-full px-margin py-space-xl">
+<div class="max-w-[1280px] mx-auto flex flex-col gap-space-lg">
+<!-- Summary Editorial Block -->
+<div class="p-space-lg rounded-2xl bg-surface-container flex flex-col gap-space-sm">
+<h3 class="font-headline-lg text-headline-lg text-on-surface">
+          THE BEST SOLUTION ISN'T ALWAYS THE OBVIOUS ONE.
+        </h3>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-3xl leading-relaxed">
+          Sometimes it's simply the one that survives contact with the real world: the noisy DXF files, the hard constraints of a laser cutter head, the physical direction of rolled steel, and the requirement to run on an air-gapped server without a single cloud dependency.
+        </p>
+</div>
+<!-- Next Project Teaser Bridge -->
+<div class="p-space-lg rounded-2xl bg-surface-container-lowest shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-space-md">
+<div class="flex flex-col gap-1">
+<span class="font-label-md text-label-md text-primary font-mono uppercase tracking-wider font-semibold">
+            NEXT SELECTED WORK // 05
+          </span>
+<h4 class="font-headline-md text-headline-md text-on-surface font-semibold">
+            Asset Management — “Where did it go?”
+          </h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Full-lifecycle industrial asset tracking, automated depreciation math, and field equipment auditing.
+          </p>
+</div>
+<a class="px-space-md py-space-sm rounded-lg bg-primary text-on-primary font-label-md text-label-md hover:bg-primary-container transition-colors inline-flex items-center gap-2 whitespace-nowrap uppercase tracking-wider" data-path="work" href="../asset_management_production_component_lifecycle_for_abhikalpan_construction/code.html">
+<span>EXPLORE PROJECT 05</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</section>
+<!-- Micro-interaction Script for scroll progress & interactive toggles -->
+<script>
+    (function() {
+      // Real-time scroll indicator
+      window.addEventListener('scroll', function() {
+        const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+        const bar = document.getElementById('scroll-progress-bar');
+        if (bar) {
+          bar.style.width = scrolled + '%';
+        }
+      });
+
+      // Interactive simulation toggle in Section 01
+      const btnLegacy = document.getElementById('btn-show-legacy');
+      const btnOptimized = document.getElementById('btn-show-optimized');
+      const viewLegacy = document.getElementById('view-legacy');
+      const viewOptimized = document.getElementById('view-optimized');
+
+      if (btnLegacy && btnOptimized && viewLegacy && viewOptimized) {
+        btnLegacy.addEventListener('click', function() {
+          viewLegacy.classList.remove('hidden');
+          viewOptimized.classList.add('hidden');
+          btnLegacy.classList.add('bg-surface-container-lowest', 'text-on-surface', 'font-medium');
+          btnLegacy.classList.remove('text-on-surface-variant');
+          btnOptimized.classList.remove('bg-surface-container-lowest', 'text-on-surface', 'font-medium');
+          btnOptimized.classList.add('text-on-surface-variant');
+        });
+
+        btnOptimized.addEventListener('click', function() {
+          viewOptimized.classList.remove('hidden');
+          viewLegacy.classList.add('hidden');
+          btnOptimized.classList.add('bg-surface-container-lowest', 'text-on-surface', 'font-medium');
+          btnOptimized.classList.remove('text-on-surface-variant');
+          btnLegacy.classList.remove('bg-surface-container-lowest', 'text-on-surface', 'font-medium');
+          btnLegacy.classList.add('text-on-surface-variant');
+        });
+      }
+    })();
+  </script>
+</div></main><footer class="w-full bg-surface-container-low mt-space-xl"><div class="max-w-[1280px] mx-auto px-margin py-space-xl"><div class="grid grid-cols-1 md:grid-cols-12 gap-gutter mb-space-lg"><div class="md:col-span-5 flex flex-col justify-between gap-space-sm"><div class="flex items-center gap-space-xs font-headline-md text-headline-md tracking-tight text-on-surface">Koushik Upadhyay<span class="font-label-sm text-label-sm text-on-surface-variant ml-space-xs">[SYSTEMS &amp; ML]</span></div><p class="font-body-sm text-body-sm text-on-surface-variant max-w-md">Architecting resilient machine learning pipelines, LLM-based reasoning evaluation frameworks, and retrieval-augmented systems.</p></div><div class="md:col-span-4 flex flex-col gap-space-xs font-label-sm text-label-sm"><span class="uppercase text-on-surface-variant mb-space-xs tracking-widest font-label-md text-label-md">Index // Exploration</span><a class="text-on-surface hover:text-primary transition-colors" data-path="work" href="../koushik_upadhyay_ai_ml_engineer_builder/code.html#work">01 // SELECTED WORKS</a><a class="text-on-surface hover:text-primary transition-colors" data-path="research" href="../koushik_upadhyay_ai_ml_engineer_builder/code.html#research">02 // BENCHMARKS &amp; MONOGRAPHS</a><a class="text-on-surface hover:text-primary transition-colors" data-path="how-i-build" href="../how_i_build_engineering_philosophy_methodology/code.html">03 // SYSTEMS ARCHITECTURE</a></div><div class="md:col-span-3 flex flex-col gap-space-xs font-label-sm text-label-sm"><span class="uppercase text-on-surface-variant mb-space-xs tracking-widest font-label-md text-label-md">Network // Nodes</span><a class="text-on-surface hover:text-primary transition-colors flex items-center justify-between" href="https://github.com/SetterUk" rel="noreferrer" target="_blank">GITHUB <span class="text-on-surface-variant">↗</span></a><a class="text-on-surface hover:text-primary transition-colors flex items-center justify-between" href="https://www.linkedin.com/in/koushik-upadhyay-95565932b/" rel="noreferrer" target="_blank">LINKEDIN <span class="text-on-surface-variant">↗</span></a><span class="text-on-surface flex items-center justify-between">Koushik4067@gmail.com</span></div></div><div class="flex flex-col sm:flex-row items-center justify-between gap-space-md pt-space-md text-on-surface-variant font-label-sm text-label-sm"><div class="flex items-center gap-space-md"><span class="font-label-sm text-label-sm">REF: CASE-STUDY-03</span><span>LOC: 127.0.0.1 // PROD</span></div><div>© 2025 KOUSHIK UPADHYAY. ALL RIGHTS RESERVED.</div></div></div></footer></body></html>

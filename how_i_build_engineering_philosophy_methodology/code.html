@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;700&amp;family=Hanken+Grotesk:wght@400;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-primary-fixed-variant": "#28467a", "error-container": "#ffdad6", "primary-container": "#2c4a7e", "tertiary-fixed": "#ffdbd0", "tertiary-container": "#7f3318", "outline": "#747780", "tertiary": "#611d04", "on-primary-container": "#9ebbf6", "on-tertiary-container": "#ffa486", "primary": "#103366", "on-secondary-fixed": "#032012", "on-tertiary-fixed": "#390b00", "surface-variant": "#e3e2e6", "secondary-fixed-dim": "#aeceb8", "surface-container-lowest": "#ffffff", "secondary": "#476553", "surface": "#F7F3EA", "on-surface-variant": "#43474f", "background": "#F7F3EA", "on-secondary-fixed-variant": "#304d3c", "surface-container-high": "#e9e7eb", "inverse-primary": "#acc7ff", "on-tertiary": "#ffffff", "on-error": "#ffffff", "surface-container-low": "#f4f3f7", "inverse-surface": "#2f3033", "tertiary-fixed-dim": "#ffb59e", "on-background": "#1a1b1e", "on-surface": "#1a1b1e", "on-secondary-container": "#4c6957", "surface-bright": "#F7F3EA", "surface-tint": "#415e93", "surface-dim": "#dbd9dd", "on-error-container": "#93000a", "primary-fixed": "#d7e2ff", "secondary-fixed": "#c9ead3", "outline-variant": "#c4c6d1", "on-primary": "#ffffff", "surface-container-highest": "#e3e2e6", "on-tertiary-fixed-variant": "#7a2f15", "primary-fixed-dim": "#acc7ff", "on-primary-fixed": "#001a40", "secondary-container": "#c7e8d1", "on-secondary": "#ffffff", "error": "#ba1a1a", "inverse-on-surface": "#f1f0f4", "surface-container": "#efedf1" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": { "space-md": "1rem", "margin": "2rem", "space-sm": "0.5rem", "space-xs": "0.25rem", "space-lg": "1.5rem", "space-xl": "2.5rem", "gutter": "1.5rem" }, "fontFamily": { "body-md": [ "Hanken Grotesk" ], "label-sm": [ "JetBrains Mono" ], "headline-md": [ "Bricolage Grotesque" ], "body-lg": [ "Hanken Grotesk" ], "label-md": [ "JetBrains Mono" ], "headline-sm": [ "Hanken Grotesk" ], "display-sm-mobile": [ "Bricolage Grotesque" ], "display-lg": [ "Bricolage Grotesque" ], "display-sm": [ "Bricolage Grotesque" ], "headline-lg": [ "Bricolage Grotesque" ], "body-sm": [ "Hanken Grotesk" ], "display-lg-mobile": [ "Bricolage Grotesque" ] }, "fontSize": { "body-md": [ "16px", { "lineHeight": "26px", "fontWeight": "400" } ], "label-sm": [ "11px", { "lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500" } ], "headline-md": [ "24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" } ], "body-lg": [ "18px", { "lineHeight": "28px", "fontWeight": "400" } ], "label-md": [ "13px", { "lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "500" } ], "headline-sm": [ "20px", { "lineHeight": "28px", "letterSpacing": "-0.005em", "fontWeight": "600" } ], "display-sm-mobile": [ "32px", { "lineHeight": "40px", "letterSpacing": "-0.015em", "fontWeight": "600" } ], "display-lg": [ "64px", { "lineHeight": "72px", "letterSpacing": "-0.03em", "fontWeight": "700" } ], "display-sm": [ "44px", { "lineHeight": "52px", "letterSpacing": "-0.02em", "fontWeight": "600" } ], "headline-lg": [ "32px", { "lineHeight": "40px", "letterSpacing": "-0.015em", "fontWeight": "600" } ], "body-sm": [ "14px", { "lineHeight": "22px", "fontWeight": "400" } ], "display-lg-mobile": [ "40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700" } ] } } } };</script>
+<!-- UNIFIED BACKGROUND -->
+<style>
+    body, main, html {
+        background-color: #F7F3EA !important;
+    }
+</style>
+</head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased selection:bg-secondary-container selection:text-on-secondary-container"><!-- UNIFIED NAVBAR -->
+<header class="fixed top-0 left-0 right-0 h-20 px-6 md:px-12 flex items-center justify-between z-50 bg-[#F7F3EA]/90 backdrop-blur-md border-b border-[#DCD4C4]/70" style="font-family: 'JetBrains Mono', monospace;">
+<a class="flex items-center gap-3 group" href="../koushik_upadhyay_ai_ml_engineer_builder/code.html#top">
+<div class="w-9 h-9 rounded-xl bg-[#202124] text-[#F7F3EA] flex items-center justify-center font-extrabold text-sm group-hover:bg-[#5577A8] transition-colors shadow-sm">
+      K/
+    </div>
+<span class="font-bold text-sm tracking-tight text-[#202124] group-hover:text-[#5577A8] transition-colors hidden sm:inline" style="font-family: 'Bricolage Grotesque', sans-serif;">KOUSHIK UPADHYAY</span>
+</a>
+<nav class="hidden md:flex items-center gap-8 text-xs font-semibold tracking-wider text-[#5A5852]">
+<a class="hover:text-[#202124] transition-colors hover:underline underline-offset-8" href="../koushik_upadhyay_ai_ml_engineer_builder/code.html#work">WORK</a>
+<a class="hover:text-[#202124] transition-colors hover:underline underline-offset-8" href="../koushik_upadhyay_ai_ml_engineer_builder/code.html#about">ABOUT</a>
+<a class="hover:text-[#202124] transition-colors hover:underline underline-offset-8" href="../career_journey_koushik_upadhyay/code.html">CAREER</a>
+<a class="hover:text-[#202124] transition-colors hover:underline underline-offset-8" href="../how_i_build_engineering_philosophy_methodology/code.html">HOW I BUILD</a>
+<a class="hover:text-[#202124] transition-colors hover:underline underline-offset-8" href="../koushik_upadhyay_ai_ml_engineer_builder/code.html#research">RESEARCH</a>
+<a class="hover:text-[#202124] transition-colors hover:underline underline-offset-8" href="../let_s_talk_koushik_upadhyay_contact/code.html">CONTACT</a>
+</nav>
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#DCD4C4] bg-[#eae8ee] text-xs font-medium shadow-sm">
+<span class="w-2 h-2 rounded-full bg-[#10B981] animate-pulse"></span>
+<span class="text-[#202124]">AI / ML ENGINEER</span>
+</div>
+<a class="md:hidden w-8 h-8 rounded-full bg-[#202124] text-[#F7F3EA] flex items-center justify-center text-xs" href="../let_s_talk_koushik_upadhyay_contact/code.html">?</a>
+</div>
+</header><main class="w-full pt-16 bg-surface"><div class="flex flex-col w-full">
+
+<!-- HERO SECTION: THE RADICAL FIRST PRINCIPLE -->
+<section class="relative w-full overflow-hidden bg-surface py-space-xl md:py-24 border-b border-outline-variant/30">
+<!-- Subtle technical grid paper pattern overlay in inline SVG -->
+<div class="absolute inset-0 pointer-events-none opacity-[0.035]" style="background-image: radial-gradient(#1a1b1e 1px, transparent 1px); background-size: 24px 24px;"></div>
+<div class="max-w-7xl mx-auto px-margin relative z-10">
+<div class="flex flex-col gap-space-lg">
+<!-- Overhead Stamp -->
+<div class="flex items-center gap-space-sm">
+<span class="px-space-xs py-1 bg-surface-container-high rounded text-on-surface font-label-sm text-label-sm uppercase tracking-wider font-semibold">METHODOLOGY // PHILOSOPHY</span>
+<span class="text-outline font-label-sm text-label-sm">// SYSTEM DECONSTRUCTION</span>
+</div>
+<!-- Huge Editorial Title Split -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-end">
+<div class="lg:col-span-8 flex flex-col gap-space-sm">
+<h1 class="font-display-lg text-display-lg text-on-surface uppercase tracking-tight">
+              I Don’t Start With AI.<br/>
+<span class="text-primary italic">I Start With The Problem.</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl pt-space-xs">
+              Engineering is not about reaching for the latest model or wrapping an API in a clever prompt. It begins with isolating the underlying physical or mathematical constraint, stripping away premature abstractions, and choosing the exact tool the domain actually demands.
+            </p>
+</div>
+<!-- Desk Stickman Builder Vignette SVG Card -->
+<div class="lg:col-span-4 bg-surface-container-lowest p-space-md rounded-xl border border-outline-variant/50 shadow-sm relative">
+<div class="flex justify-between items-center pb-space-xs mb-space-xs border-b border-outline-variant/30 font-label-sm text-label-sm text-outline">
+<span>PLATE 00 // STAGE 0: PROMPT ZERO</span>
+<span class="text-tertiary font-semibold">T = 0s</span>
+</div>
+<div class="w-full h-44 bg-surface-container-low rounded-lg flex items-center justify-center relative overflow-hidden">
+<!-- Hand-drawn vector stickman sitting at desk with notebook -->
+<svg class="w-full h-full stroke-on-surface fill-none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 320 180">
+<!-- Floor baseline -->
+<line stroke="#c4c6d1" stroke-dasharray="4 4" x1="20" x2="300" y1="150" y2="150"></line>
+<!-- Desk -->
+<line stroke="#1a1b1e" stroke-width="3" x1="110" x2="260" y1="110" y2="110"></line>
+<line stroke="#43474f" stroke-width="2.5" x1="125" x2="125" y1="110" y2="150"></line>
+<line stroke="#43474f" stroke-width="2.5" x1="245" x2="245" y1="110" y2="150"></line>
+<!-- Desk Lamp -->
+<path d="M 235 110 L 235 85 L 215 70" stroke="#747780"></path>
+<polygon fill="#efedf1" points="210,65 220,60 216,76" stroke="#103366"></polygon>
+<path d="M 210 75 L 175 110" opacity="0.6" stroke="#ffd700" stroke-dasharray="2 4"></path>
+<!-- Open Blank Notebook -->
+<polygon fill="#ffffff" points="145,108 175,103 195,108 165,113" stroke="#1a1b1e" stroke-width="1.5"></polygon>
+<line stroke="#c4c6d1" x1="170" x2="170" y1="105" y2="111"></line>
+<!-- Chair -->
+<line stroke="#747780" stroke-width="3" x1="75" x2="105" y1="115" y2="115"></line>
+<line stroke="#747780" stroke-width="2.5" x1="90" x2="90" y1="115" y2="150"></line>
+<line stroke="#747780" stroke-width="2.5" x1="75" x2="75" y1="115" y2="80"></line>
+<!-- Stickman Engineer -->
+<!-- Head -->
+<circle cx="88" cy="62" fill="#F7F3EA" r="10" stroke="#1a1b1e" stroke-width="2.2"></circle>
+<!-- Torso leaning forward slightly in contemplation -->
+<path d="M 88 72 L 95 105" stroke="#1a1b1e" stroke-width="2.2"></path>
+<!-- Legs -->
+<path d="M 95 105 L 115 115 L 115 150" stroke="#1a1b1e" stroke-width="2.2"></path>
+<!-- Arm holding pencil over the blank notebook -->
+<path d="M 90 82 L 125 96 L 155 105" stroke="#1a1b1e" stroke-width="2.2"></path>
+<!-- Pencil in hand -->
+<line stroke="#611d04" stroke-width="2" x1="153" x2="160" y1="107" y2="101"></line>
+<!-- Thought bubble / raw question above notebook -->
+<path d="M 140 55 C 130 35, 170 30, 185 45 C 200 35, 225 45, 215 65 C 225 80, 195 90, 180 80 C 170 85, 145 80, 140 55 Z" fill="#ffffff" stroke="#2c4a7e" stroke-dasharray="3 2" stroke-width="1.5"></path>
+<text fill="#103366" font-family="JetBrains Mono" font-size="9" font-weight="600" x="155" y="60">WHAT IS</text>
+<text fill="#611d04" font-family="JetBrains Mono" font-size="8" x="150" y="72">BROKEN?</text>
+</svg>
+</div>
+<div class="mt-space-xs p-space-xs bg-tertiary-fixed/30 rounded border border-tertiary-fixed-dim/40 flex items-start gap-2">
+<span class="material-symbols-outlined text-tertiary text-base">edit_note</span>
+<p class="font-label-sm text-label-sm text-on-surface italic">
+                “What is actually broken here? Not the prompt. The real constraint.”
+              </p>
+</div>
+</div>
+</div>
+<!-- Bottom Scroll Telemetry Anchor -->
+<div class="pt-space-md border-t border-outline-variant/30 flex items-center justify-between font-label-sm text-label-sm text-outline">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm animate-bounce">south</span>
+<span class="uppercase tracking-wider">Scroll To Unpack The 7-Step Method</span>
+</div>
+<span class="hidden sm:inline font-mono">FLOW: [01_DECONSTRUCT ➔ 07_RETROSPECTIVE]</span>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 01 — THE PROBLEM: WHAT ARE WE ACTUALLY TRYING TO SOLVE? -->
+<section class="w-full py-space-xl bg-surface-container-lowest border-b border-outline-variant/30">
+<div class="max-w-7xl mx-auto px-margin flex flex-col gap-space-xl">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">
+<div class="lg:col-span-4 flex flex-col gap-space-xs">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary font-semibold">01 // DECONSTRUCTION</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface uppercase font-bold tracking-tight">
+            What Are We Actually Trying To Solve?
+          </h2>
+<p class="font-body-md text-body-md text-on-surface-variant pt-space-xs">
+            The first version of a problem is almost never the real problem. Stakeholders describe symptoms; users report friction; research papers highlight academic edge-cases. The engineer’s first responsibility is ruthless subtraction.
+          </p>
+<!-- Sticky Character Note Vignette -->
+<div class="mt-space-md p-space-md bg-surface-container-low rounded-xl border border-outline-variant/60">
+<div class="flex items-center gap-space-xs mb-space-xs">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+<span class="font-label-sm text-label-sm font-semibold text-tertiary">THE FIRST LAW OF SUBTRACTION</span>
+</div>
+<!-- Stickman striking through text SVG -->
+<svg class="w-full h-24 stroke-on-surface fill-none" stroke-width="1.8" viewbox="0 0 280 90">
+<!-- Stick figure with big marker -->
+<circle cx="35" cy="35" r="10"></circle>
+<line x1="35" x2="35" y1="45" y2="75"></line>
+<line x1="35" x2="20" y1="75" y2="88"></line>
+<line x1="35" x2="50" y1="75" y2="88"></line>
+<!-- Arm holding a huge red pencil -->
+<line x1="35" x2="65" y1="52" y2="48"></line>
+<!-- Pencil -->
+<line stroke="#ba1a1a" stroke-width="3" x1="60" x2="80" y1="50" y2="35"></line>
+<!-- Strike-through scribble over vague symptom -->
+<rect fill="#F7F3EA" height="50" rx="4" stroke="#c4c6d1" width="190" x="85" y="18"></rect>
+<text fill="#747780" font-family="JetBrains Mono" font-size="11" x="94" y="38">"Add an AI chatbot"</text>
+<line stroke="#ba1a1a" stroke-width="2.5" x1="90" x2="265" y1="35" y2="35"></line>
+<text fill="#ba1a1a" font-family="JetBrains Mono" font-size="10" font-weight="500" x="94" y="58">✕ PREMATURE ABSTRACTION</text>
+</svg>
+<p class="font-label-sm text-label-sm text-outline italic">
+              "When someone says 'we need an LLM here', ask what happens if you just use a B-Tree index or an offline cache."
+            </p>
+</div>
+</div>
+<!-- Concrete Deconstruction Matrices: Real Case Studies -->
+<div class="lg:col-span-8 flex flex-col gap-space-md">
+<!-- Card 1: IRIS Oncology Synthesis Case -->
+<div class="p-space-lg bg-surface rounded-xl border border-outline-variant/60 shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between pb-space-xs border-b border-outline-variant/30">
+<span class="font-label-sm text-label-sm font-semibold text-primary">CASE STUDY A // RESEARCH PLATFORM (IRIS)</span>
+<span class="font-label-sm text-label-sm px-2 py-0.5 bg-primary-fixed text-on-primary-fixed rounded">INFORMATION EXTRACTION</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md items-center">
+<!-- Stage 1 -->
+<div class="p-space-md bg-error-container/25 rounded-lg border border-error/20 flex flex-col gap-1">
+<span class="font-label-sm text-label-sm font-semibold text-error uppercase flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">close</span> 01. Vague Symptom
+                </span>
+<p class="font-body-sm text-body-sm text-on-surface line-through opacity-80">
+                  “We need an AI conversational agent to search 25 million PubMed clinical trials.”
+                </p>
+<span class="font-label-sm text-label-sm text-error mt-1 font-mono">Risk: High Hallucination Rate</span>
+</div>
+<!-- Connector Arrow -->
+<div class="hidden md:flex justify-center text-outline">
+<span class="material-symbols-outlined">arrow_forward</span>
+</div>
+<!-- Stage 2 -->
+<div class="p-space-md bg-surface-container-high rounded-lg flex flex-col gap-1">
+<span class="font-label-sm text-label-sm font-semibold text-on-surface uppercase flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">filter_alt</span> 02. Core Question
+                </span>
+<p class="font-body-sm text-body-sm text-on-surface">
+                  Why are oncological researchers missing critical drug interactions across heterogeneous paper corpora?
+                </p>
+<span class="font-label-sm text-label-sm text-primary mt-1 font-mono">Finding: Lexical mismatch</span>
+</div>
+</div>
+<!-- Resolution / Deterministic Constraint -->
+<div class="p-space-md bg-secondary-container/30 rounded-lg border border-secondary/30 flex flex-col md:flex-row items-start md:items-center justify-between gap-space-sm">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm font-semibold text-secondary uppercase tracking-wider flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">check_circle</span> 03. The Hardened Deterministic Constraint
+                </span>
+<p class="font-body-sm text-body-sm text-on-surface mt-1">
+                  Entity alias collision and semantic drift between chemical synonyms. Solved via <strong>Hybrid Lexical BM25 + Dense Pinecone Embeddings</strong> with Reciprocal Rank Fusion (<code class="font-mono text-label-sm bg-surface px-1 py-0.5 rounded">k=60</code>), not pure unconstrained generative prompting.
+                </p>
+</div>
+<span class="font-label-sm text-label-sm font-mono px-space-xs py-1 bg-surface rounded text-outline whitespace-nowrap">Δ Hallucination = -94%</span>
+</div>
+</div>
+<!-- Card 2: Nesting Engine Case -->
+<div class="p-space-lg bg-surface rounded-xl border border-outline-variant/60 shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between pb-space-xs border-b border-outline-variant/30">
+<span class="font-label-sm text-label-sm font-semibold text-primary">CASE STUDY B // INDUSTRIAL FABRICATION (NESTING ENGINE)</span>
+<span class="font-label-sm text-label-sm px-2 py-0.5 bg-secondary-container text-on-secondary-container rounded">GEOMETRIC OPTIMIZATION</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md items-center">
+<div class="p-space-md bg-error-container/25 rounded-lg border border-error/20 flex flex-col gap-1">
+<span class="font-label-sm text-label-sm font-semibold text-error uppercase flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">close</span> 01. Vague Symptom
+                </span>
+<p class="font-body-sm text-body-sm text-on-surface line-through opacity-80">
+                  “Deploy an AI computer vision agent to optimize plate steel laser cutting.”
+                </p>
+<span class="font-label-sm text-label-sm text-error mt-1 font-mono">Risk: Non-deterministic kerf overlap</span>
+</div>
+<div class="hidden md:flex justify-center text-outline">
+<span class="material-symbols-outlined">arrow_forward</span>
+</div>
+<div class="p-space-md bg-surface-container-high rounded-lg flex flex-col gap-1">
+<span class="font-label-sm text-label-sm font-semibold text-on-surface uppercase flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">filter_alt</span> 02. Core Question
+                </span>
+<p class="font-body-sm text-body-sm text-on-surface">
+                  Why do human laser operators waste 28% of a 6000x2000mm steel sheet when nesting complex irregular CAD brackets?
+                </p>
+<span class="font-label-sm text-label-sm text-primary mt-1 font-mono">Finding: Combinatorial exhaustion</span>
+</div>
+</div>
+<div class="p-space-md bg-secondary-container/30 rounded-lg border border-secondary/30 flex flex-col md:flex-row items-start md:items-center justify-between gap-space-sm">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm font-semibold text-secondary uppercase tracking-wider flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">check_circle</span> 03. The Hardened Deterministic Constraint
+                </span>
+<p class="font-body-sm text-body-sm text-on-surface mt-1">
+                  Pure 2D non-convex irregular geometry. Solved by <strong>Minkowski sum No-Fit Polygons (NFP) + Bottom-Left-Fill heuristics</strong> running deterministically in C++ / WebAssembly sub-2s, with zero cloud dependency and zero floating-point hallucination.
+                </p>
+</div>
+<span class="font-label-sm text-label-sm font-mono px-space-xs py-1 bg-surface rounded text-outline whitespace-nowrap">Yield +18.4%</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 02 — QUESTION THE OBVIOUS: I BUILD PAST THE OBVIOUS -->
+<section class="w-full py-space-xl bg-surface border-b border-outline-variant/30">
+<div class="max-w-7xl mx-auto px-margin flex flex-col gap-space-xl">
+<!-- Section Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary font-semibold">02 // PHILOSOPHY IN ACTION</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface uppercase font-bold tracking-tight">
+            Why Do It This Way? <span class="text-tertiary">I Build Past The Obvious.</span>
+</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+            The default industry path is crowded with boilerplate: another multi-tenant cloud subscription, another 70B parameter model doing simple regex extraction, another fragile API dependency on a dusty warehouse floor.
+          </p>
+</div>
+<!-- Character Walking Toward First Principles -->
+<div class="bg-surface-container-low p-space-xs px-space-md rounded-xl border border-outline-variant/50 flex items-center gap-space-md">
+<svg class="w-40 h-16 stroke-on-surface fill-none" stroke-width="1.8" viewbox="0 0 160 60">
+<!-- Road sign: DEFAULT -->
+<line stroke="#747780" x1="30" x2="30" y1="20" y2="55"></line>
+<rect fill="#e3e2e6" height="18" stroke="#ba1a1a" width="50" x="10" y="10"></rect>
+<text fill="#ba1a1a" font-family="JetBrains Mono" font-size="7" font-weight="bold" x="14" y="22">DEFAULT ➔</text>
+<!-- Stickman walking right away from sign -->
+<circle cx="85" cy="22" r="7"></circle>
+<line x1="85" x2="85" y1="29" y2="46"></line>
+<line x1="85" x2="75" y1="46" y2="58"></line>
+<line x1="85" x2="98" y1="46" y2="58"></line>
+<line x1="85" x2="100" y1="36" y2="34"></line>
+<!-- Goal flag: FIRST PRINCIPLES -->
+<line stroke="#103366" stroke-width="2" x1="135" x2="135" y1="15" y2="55"></line>
+<polygon fill="#2c4a7e" points="135,15 155,22 135,30" stroke="#103366"></polygon>
+</svg>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm font-semibold text-on-surface">FIRST PRINCIPLES ROUTE</span>
+<span class="font-label-sm text-label-sm text-outline italic">"Is there a simpler, more resilient way?"</span>
+</div>
+</div>
+</div>
+<!-- Contrast Grid: Obvious Default vs. Grounded Reality across 3 Systems -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- System 1: HealthHeat -->
+<div class="flex flex-col bg-surface-container-lowest rounded-xl border border-outline-variant/60 overflow-hidden">
+<div class="p-space-md bg-surface-container-low border-b border-outline-variant/40 flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm font-semibold text-on-surface">HealthHeat</span>
+<span class="font-label-sm text-label-sm px-2 py-0.5 bg-primary/10 text-primary rounded font-mono">EDGE ML</span>
+</div>
+<div class="p-space-md flex flex-col gap-space-md flex-1 justify-between">
+<div class="flex flex-col gap-space-xs">
+<span class="font-label-sm text-label-sm text-error uppercase font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">cloud_off</span> The Obvious Path
+              </span>
+<p class="font-body-sm text-body-sm text-on-surface-variant bg-error-container/15 p-space-xs rounded">
+                Stream raw user food photos to third-party GPT-4V or Gemini cloud APIs. Pay 3-5 seconds of network roundtrip and leak unencrypted personal metabolic telemetry to external servers.
+              </p>
+</div>
+<div class="pt-space-xs border-t border-outline-variant/30 flex flex-col gap-space-xs">
+<span class="font-label-sm text-label-sm text-secondary uppercase font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">memory</span> Grounded Reality (What I Built)
+              </span>
+<p class="font-body-sm text-body-sm text-on-surface font-medium bg-secondary-container/20 p-space-xs rounded">
+<strong>8.2MB INT8 quantized MobileNetV3 + CoreML engine</strong> executing entirely on Apple Neural Engine in 42ms with absolute zero cloud telemetry and zero operating API cost.
+              </p>
+</div>
+</div>
+</div>
+<!-- System 2: Asset Management PWA -->
+<div class="flex flex-col bg-surface-container-lowest rounded-xl border border-outline-variant/60 overflow-hidden">
+<div class="p-space-md bg-surface-container-low border-b border-outline-variant/40 flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm font-semibold text-on-surface">Asset Management</span>
+<span class="font-label-sm text-label-sm px-2 py-0.5 bg-secondary/15 text-secondary rounded font-mono">OFFLINE_FIRST</span>
+</div>
+<div class="p-space-md flex flex-col gap-space-md flex-1 justify-between">
+<div class="flex flex-col gap-space-xs">
+<span class="font-label-sm text-label-sm text-error uppercase font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">sync_problem</span> The Obvious Path
+              </span>
+<p class="font-body-sm text-body-sm text-on-surface-variant bg-error-container/15 p-space-xs rounded">
+                Buy a generic off-the-shelf enterprise cloud ERP subscription that locks up, loses form state, and throws 504 errors whenever a forklift moves behind concrete pillars away from Wi-Fi.
+              </p>
+</div>
+<div class="pt-space-xs border-t border-outline-variant/30 flex flex-col gap-space-xs">
+<span class="font-label-sm text-label-sm text-secondary uppercase font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">offline_bolt</span> Grounded Reality (What I Built)
+              </span>
+<p class="font-body-sm text-body-sm text-on-surface font-medium bg-secondary-container/20 p-space-xs rounded">
+<strong>Local-first PWA with IndexedDB optimistic mutations</strong> and PostgreSQL <code class="font-mono text-xs">SELECT FOR UPDATE</code> locks ensuring two yard foremen cannot double-allocate the same pallet.
+              </p>
+</div>
+</div>
+</div>
+<!-- System 3: ExamMind -->
+<div class="flex flex-col bg-surface-container-lowest rounded-xl border border-outline-variant/60 overflow-hidden">
+<div class="p-space-md bg-surface-container-low border-b border-outline-variant/40 flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm font-semibold text-on-surface">ExamMind</span>
+<span class="font-label-sm text-label-sm px-2 py-0.5 bg-tertiary/15 text-tertiary rounded font-mono">SOCRATIC RAG</span>
+</div>
+<div class="p-space-md flex flex-col gap-space-md flex-1 justify-between">
+<div class="flex flex-col gap-space-xs">
+<span class="font-label-sm text-label-sm text-error uppercase font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">sentiment_dissatisfied</span> The Obvious Path
+              </span>
+<p class="font-body-sm text-body-sm text-on-surface-variant bg-error-container/15 p-space-xs rounded">
+                Dump the whole syllabus into a basic naive vector DB with top-k cosine similarity, generating sycophantic praise regardless of whether student answers are actually logically sound.
+              </p>
+</div>
+<div class="pt-space-xs border-t border-outline-variant/30 flex flex-col gap-space-xs">
+<span class="font-label-sm text-label-sm text-secondary uppercase font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">fact_check</span> Grounded Reality (What I Built)
+              </span>
+<p class="font-body-sm text-body-sm text-on-surface font-medium bg-secondary-container/20 p-space-xs rounded">
+<strong>Multi-stage Socratic rubric parser with BERTScore semantic calibration</strong> and deterministic contradiction gates to isolate exact conceptual misconceptions.
+              </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 03 — CHOOSE THE TOOL: AI IS A TOOLBOX, NOT THE HERO -->
+<section class="w-full py-space-xl bg-surface-container-lowest border-b border-outline-variant/30">
+<div class="max-w-7xl mx-auto px-margin flex flex-col gap-space-xl">
+<!-- Section Header -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center">
+<div class="lg:col-span-8 flex flex-col gap-space-xs">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary font-semibold">03 // ORCHESTRATION</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface uppercase font-bold tracking-tight">
+            The Tool Depends On The Problem.
+          </h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+            AI is not the hero of the story; it is one instrument inside a heterogeneous engineering stack. Sometimes the correct answer is a fine-tuned transformer; sometimes an inverted index; sometimes computational geometry; sometimes an ACID transaction.
+          </p>
+</div>
+<!-- Mechanic Stickman Vignette -->
+<div class="lg:col-span-4 bg-surface-container-low p-space-md rounded-xl border border-outline-variant/50">
+<div class="flex items-center gap-3">
+<svg class="w-20 h-20 stroke-on-surface fill-none flex-shrink-0" stroke-width="2" viewbox="0 0 90 90">
+<!-- Open Toolbox -->
+<rect fill="#efedf1" height="28" rx="2" stroke="#103366" width="45" x="25" y="45"></rect>
+<line stroke="#103366" x1="25" x2="15" y1="45" y2="30"></line>
+<line stroke="#103366" x1="70" x2="80" y1="45" y2="30"></line>
+<line stroke="#747780" x1="40" x2="55" y1="40" y2="40"></line>
+<!-- Precision Caliper in Stickman's hand -->
+<circle cx="20" cy="20" r="8"></circle>
+<line x1="20" x2="20" y1="28" y2="60"></line>
+<line x1="20" x2="10" y1="60" y2="82"></line>
+<line x1="20" x2="30" y1="60" y2="82"></line>
+<line stroke="#1a1b1e" x1="20" x2="45" y1="36" y2="30"></line>
+<line stroke="#611d04" stroke-width="2.5" x1="45" x2="45" y1="26" y2="38"></line>
+</svg>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm font-semibold text-tertiary uppercase">TOOLBOX MAXIM</span>
+<span class="font-body-sm text-body-sm text-on-surface italic">
+                “When all you have is a hammer, everything looks like a prompt.”
+              </span>
+</div>
+</div>
+</div>
+</div>
+<!-- The 8 Specific Architectural Tools Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-md">
+<!-- 1. LLMs -->
+<div class="p-space-md bg-surface rounded-xl border border-outline-variant/50 flex flex-col justify-between gap-space-sm hover:border-primary transition-colors">
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm font-mono text-outline">TOOL_01</span>
+<span class="material-symbols-outlined text-primary text-base">psychology</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm font-semibold text-on-surface">LLMs &amp; GenAI</h3>
+<span class="font-label-sm text-label-sm text-secondary font-medium">Domain: Intent &amp; Synthesis</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+              Reserved strictly for natural language reasoning, schema extraction, and synthesis. Never used as a substitute for verifiable relational facts.
+            </p>
+</div>
+<span class="font-label-sm text-label-sm text-outline font-mono bg-surface-container-low p-1 rounded">ROLE: INTENT_PARSER</span>
+</div>
+<!-- 2. Hybrid RAG -->
+<div class="p-space-md bg-surface rounded-xl border border-outline-variant/50 flex flex-col justify-between gap-space-sm hover:border-primary transition-colors">
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm font-mono text-outline">TOOL_02</span>
+<span class="material-symbols-outlined text-primary text-base">manage_search</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm font-semibold text-on-surface">Hybrid RAG</h3>
+<span class="font-label-sm text-label-sm text-secondary font-medium">Domain: Grounded Retrieval</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+              BM25 lexical exact matching combined with dense vector embeddings via Reciprocal Rank Fusion (<code class="font-mono text-xs">k=60</code>) to eradicate hallucination.
+            </p>
+</div>
+<span class="font-label-sm text-label-sm text-outline font-mono bg-surface-container-low p-1 rounded">ROLE: FACT_ANCHOR</span>
+</div>
+<!-- 3. Multi-Agent Graphs -->
+<div class="p-space-md bg-surface rounded-xl border border-outline-variant/50 flex flex-col justify-between gap-space-sm hover:border-primary transition-colors">
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm font-mono text-outline">TOOL_03</span>
+<span class="material-symbols-outlined text-primary text-base">hub</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm font-semibold text-on-surface">Stateful Graphs</h3>
+<span class="font-label-sm text-label-sm text-secondary font-medium">Domain: Cyclic Workflows</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+              LangGraph directed acyclic and cyclic graphs with strict conditional edge-gates, schema checks, and state checkpoint persistence.
+            </p>
+</div>
+<span class="font-label-sm text-label-sm text-outline font-mono bg-surface-container-low p-1 rounded">ROLE: REASONING_LOOPS</span>
+</div>
+<!-- 4. Combinatorial Optimization -->
+<div class="p-space-md bg-surface rounded-xl border border-outline-variant/50 flex flex-col justify-between gap-space-sm hover:border-primary transition-colors">
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm font-mono text-outline">TOOL_04</span>
+<span class="material-symbols-outlined text-primary text-base">grid_4x4</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm font-semibold text-on-surface">Combinatorics</h3>
+<span class="font-label-sm text-label-sm text-secondary font-medium">Domain: Spatial Operations</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+              Minkowski sums, No-Fit Polygons, 2D packing heuristics. Pure deterministic math where probabilistic machine learning fails.
+            </p>
+</div>
+<span class="font-label-sm text-label-sm text-outline font-mono bg-surface-container-low p-1 rounded">ROLE: HARD_CONSTRAINTS</span>
+</div>
+<!-- 5. Edge ML & Quantization -->
+<div class="p-space-md bg-surface rounded-xl border border-outline-variant/50 flex flex-col justify-between gap-space-sm hover:border-primary transition-colors">
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm font-mono text-outline">TOOL_05</span>
+<span class="material-symbols-outlined text-primary text-base">developer_board</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm font-semibold text-on-surface">Edge Quantization</h3>
+<span class="font-label-sm text-label-sm text-secondary font-medium">Domain: Zero-Telemetry ML</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+              INT8 / FP16 CoreML and ONNX compilation targeting device silicon directly. 100% offline privacy and deterministic &lt;50ms response windows.
+            </p>
+</div>
+<span class="font-label-sm text-label-sm text-outline font-mono bg-surface-container-low p-1 rounded">ROLE: PRIVACY_LATENCY</span>
+</div>
+<!-- 6. Relational Persistence -->
+<div class="p-space-md bg-surface rounded-xl border border-outline-variant/50 flex flex-col justify-between gap-space-sm hover:border-primary transition-colors">
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm font-mono text-outline">TOOL_06</span>
+<span class="material-symbols-outlined text-primary text-base">database</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm font-semibold text-on-surface">ACID Persistence</h3>
+<span class="font-label-sm text-label-sm text-secondary font-medium">Domain: Relational Truth</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+              PostgreSQL, Async SQLAlchemy, row-level locks, composite B-Tree indexes. When multi-user state must never corrupt.
+            </p>
+</div>
+<span class="font-label-sm text-label-sm text-outline font-mono bg-surface-container-low p-1 rounded">ROLE: TRUTH_RECORD</span>
+</div>
+<!-- 7. Offline-First PWA -->
+<div class="p-space-md bg-surface rounded-xl border border-outline-variant/50 flex flex-col justify-between gap-space-sm hover:border-primary transition-colors">
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm font-mono text-outline">TOOL_07</span>
+<span class="material-symbols-outlined text-primary text-base">wifi_off</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm font-semibold text-on-surface">Offline-First</h3>
+<span class="font-label-sm text-label-sm text-secondary font-medium">Domain: Hostile Networks</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+              Service Worker caching, background synchronization queues, IndexedDB local persistence. The app cannot crash when Wi-Fi drops.
+            </p>
+</div>
+<span class="font-label-sm text-label-sm text-outline font-mono bg-surface-container-low p-1 rounded">ROLE: SURVIVABILITY</span>
+</div>
+<!-- 8. Deterministic Pipelines -->
+<div class="p-space-md bg-surface rounded-xl border border-outline-variant/50 flex flex-col justify-between gap-space-sm hover:border-primary transition-colors">
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm font-mono text-outline">TOOL_08</span>
+<span class="material-symbols-outlined text-primary text-base">alt_route</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm font-semibold text-on-surface">Step Pipelines</h3>
+<span class="font-label-sm text-label-sm text-secondary font-medium">Domain: Event Orchestration</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+              Inngest resilient step functions, Pydantic type invariants, automated exponential retries, and dead-letter queues.
+            </p>
+</div>
+<span class="font-label-sm text-label-sm text-outline font-mono bg-surface-container-low p-1 rounded">ROLE: FAULT_TOLERANCE</span>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 04 — BUILD: THEN I BUILD IT (PROOF IN 5 SHIPPED RIGS) -->
+<section class="w-full py-space-xl bg-surface border-b border-outline-variant/30">
+<div class="max-w-7xl mx-auto px-margin flex flex-col gap-space-xl">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary font-semibold">04 // IMPLEMENTATION</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface uppercase font-bold tracking-tight">
+            Then I Build It. <span class="text-secondary">Start Small, Make It Work, Make It Useful.</span>
+</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+            Validate the core mathematical or operational hypothesis in code before designing the abstraction layer. Below are the five production-grade systems engineered across these exact principles.
+          </p>
+</div>
+<!-- Stickman with rolled up sleeves at dual monitors -->
+<div class="bg-surface-container-lowest p-space-sm px-space-md rounded-xl border border-outline-variant/50 flex items-center gap-space-md">
+<svg class="w-36 h-16 stroke-on-surface fill-none" stroke-width="1.8" viewbox="0 0 140 60">
+<!-- Dual screens -->
+<rect fill="#e9e7eb" height="25" rx="2" stroke="#103366" width="35" x="55" y="10"></rect>
+<line stroke="#747780" x1="72" x2="72" y1="35" y2="45"></line>
+<rect fill="#e9e7eb" height="25" rx="2" stroke="#103366" width="35" x="95" y="10"></rect>
+<line stroke="#747780" x1="112" x2="112" y1="35" y2="45"></line>
+<!-- Stickman -->
+<circle cx="28" cy="22" r="7"></circle>
+<line x1="28" x2="28" y1="29" y2="52"></line>
+<line x1="28" x2="18" y1="52" y2="60"></line>
+<line x1="28" x2="38" y1="52" y2="60"></line>
+<!-- Hands on keyboard -->
+<line x1="28" x2="52" y1="36" y2="45"></line>
+<line x1="28" x2="62" y1="36" y2="44"></line>
+</svg>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm font-semibold text-primary">HARDWARE RIG</span>
+<span class="font-label-sm text-label-sm text-outline font-mono">CODE_EXEC: CLEAN</span>
+</div>
+</div>
+</div>
+<!-- Shipped Systems Architecture Plates -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-space-md">
+<!-- 01: Nesting Engine -->
+<div class="md:col-span-6 lg:col-span-7 bg-surface-container-lowest p-space-lg rounded-xl border border-outline-variant/50 flex flex-col justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm font-mono text-outline">PLATE 01 // PRODUCTION SYSTEM</span>
+<span class="font-label-sm text-label-sm px-2 py-0.5 bg-secondary-container text-on-secondary-container rounded font-mono font-semibold">● DEPLOYED IN FACTORY</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface font-bold">Nesting Engine // 2D Computational Minimizer</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              Engineered for Abhikalpan Construction Pvt. Ltd. Transforms irregular architectural steel CAD cuts into optimal cutting geometries on air-gapped on-premise industrial servers.
+            </p>
+</div>
+<div class="grid grid-cols-3 gap-2 py-space-xs border-y border-outline-variant/30 font-label-sm text-label-sm">
+<div>
+<span class="text-outline block">CORE METHOD</span>
+<span class="font-semibold text-on-surface">Minkowski NFP + BLF</span>
+</div>
+<div>
+<span class="text-outline block">RUNTIME</span>
+<span class="font-semibold text-secondary">&lt; 1.8s / plate</span>
+</div>
+<div>
+<span class="text-outline block">YIELD GAIN</span>
+<span class="font-semibold text-primary">+18.4% Raw Stock</span>
+</div>
+</div>
+<div class="flex items-center justify-between font-label-sm text-label-sm">
+<span class="text-outline">STACK: Python, Shapely, C++ WebAssembly, FastAPI</span>
+<span class="font-mono text-primary font-medium">REF: NEST-2024</span>
+</div>
+</div>
+<!-- 02: IRIS -->
+<div class="md:col-span-6 lg:col-span-5 bg-surface-container-lowest p-space-lg rounded-xl border border-outline-variant/50 flex flex-col justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm font-mono text-outline">PLATE 02 // RESEARCH SYSTEM</span>
+<span class="font-label-sm text-label-sm px-2 py-0.5 bg-primary-fixed text-on-primary-fixed rounded font-mono font-semibold">MULTI-AGENT RAG</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface font-bold">IRIS // Clinical Oncology Intelligence</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              Multi-agent LangGraph system orchestrating PubMed synthesis, clinical trial validation, and entity reconciliation without hallucination.
+            </p>
+</div>
+<div class="grid grid-cols-3 gap-2 py-space-xs border-y border-outline-variant/30 font-label-sm text-label-sm">
+<div>
+<span class="text-outline block">ORCHESTRATION</span>
+<span class="font-semibold text-on-surface">LangGraph State</span>
+</div>
+<div>
+<span class="text-outline block">RETRIEVAL</span>
+<span class="font-semibold text-secondary">Hybrid RRF (k=60)</span>
+</div>
+<div>
+<span class="text-outline block">VERIFICATION</span>
+<span class="font-semibold text-primary">Zero Uncited Claims</span>
+</div>
+</div>
+<div class="flex items-center justify-between font-label-sm text-label-sm">
+<span class="text-outline">STACK: Pinecone, LangGraph, FastAPI, Inngest</span>
+<span class="font-mono text-primary font-medium">REF: IRIS-ONC</span>
+</div>
+</div>
+<!-- 03: Asset Management -->
+<div class="md:col-span-4 bg-surface-container-lowest p-space-md rounded-xl border border-outline-variant/50 flex flex-col justify-between gap-space-sm">
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm font-mono text-outline">PLATE 03</span>
+<span class="font-label-sm text-label-sm px-2 py-0.5 bg-secondary-container text-on-secondary-container rounded font-mono">LIVE PROD</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm font-bold text-on-surface">Asset Tracking PWA</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              10,000+ architectural structural components tracked across fabrication, blast-cleaning, paint, and dispatch with offline ACID locking.
+            </p>
+</div>
+<div class="text-outline font-label-sm text-label-sm font-mono border-t border-outline-variant/30 pt-2 flex justify-between">
+<span>CLIENT: Abhikalpan</span>
+<span>STACK: React, PWA, Postgres</span>
+</div>
+</div>
+<!-- 04: HealthHeat -->
+<div class="md:col-span-4 bg-surface-container-lowest p-space-md rounded-xl border border-outline-variant/50 flex flex-col justify-between gap-space-sm">
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm font-mono text-outline">PLATE 04</span>
+<span class="font-label-sm text-label-sm px-2 py-0.5 bg-tertiary-fixed text-on-tertiary-fixed rounded font-mono">ON-DEVICE ML</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm font-bold text-on-surface">HealthHeat Neural Rig</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              8.2MB INT8 quantized MobileNetV3 CoreML model performing localized macronutrient inference directly on Apple Neural Engine.
+            </p>
+</div>
+<div class="text-outline font-label-sm text-label-sm font-mono border-t border-outline-variant/30 pt-2 flex justify-between">
+<span>PERF: 42ms ANE</span>
+<span>STACK: CoreML, Swift, PyTorch</span>
+</div>
+</div>
+<!-- 05: ExamMind -->
+<div class="md:col-span-4 bg-surface-container-lowest p-space-md rounded-xl border border-outline-variant/50 flex flex-col justify-between gap-space-sm">
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm font-mono text-outline">PLATE 05</span>
+<span class="font-label-sm text-label-sm px-2 py-0.5 bg-primary-fixed text-on-primary-fixed rounded font-mono">EVAL ENGINE</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm font-bold text-on-surface">ExamMind Socratic Eval</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Deterministic rubric grading paired with BERTScore semantic calibration to measure student conceptual reasoning without sycophancy.
+            </p>
+</div>
+<div class="text-outline font-label-sm text-label-sm font-mono border-t border-outline-variant/30 pt-2 flex justify-between">
+<span>ACCURACY: 92.4%</span>
+<span>STACK: BERTScore, FastAPI, Next.js</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 05 — BREAK IT: ADVERSARIAL EMPATHY & FAILURE AUDITS -->
+<section class="w-full py-space-xl bg-surface-container-lowest border-b border-outline-variant/30">
+<div class="max-w-7xl mx-auto px-margin flex flex-col gap-space-xl">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">
+<div class="lg:col-span-5 flex flex-col gap-space-xs">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-error font-semibold">05 // STRESS TESTING</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface uppercase font-bold tracking-tight">
+            If It Can Break, <span class="text-error">I Want To Know How.</span>
+</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">
+            Reliable engineering is not proving that your happy path works. It is aggressively hunting edge cases until the system survives contact with hostile operational realities: concurrent race conditions, token drift, dropped Wi-Fi packets, and corrupted CAD geometry.
+          </p>
+<!-- Stickman inspecting broken smoking circuit box -->
+<div class="mt-space-md p-space-md bg-surface-container-low rounded-xl border border-outline-variant/50 flex flex-col gap-2">
+<div class="flex items-center justify-between font-label-sm text-label-sm text-outline">
+<span>DEBUG RIG // SMOKE TEST</span>
+<span class="text-error font-mono font-bold">STATE: FAULT_FOUND</span>
+</div>
+<svg class="w-full h-28 stroke-on-surface fill-none" stroke-width="1.8" viewbox="0 0 280 100">
+<!-- Broken Circuit Box -->
+<rect fill="#ffffff" height="55" rx="3" stroke="#1a1b1e" stroke-width="2" width="70" x="160" y="30"></rect>
+<line stroke="#747780" x1="170" x2="200" y1="45" y2="45"></line>
+<line stroke="#747780" x1="170" x2="190" y1="55" y2="55"></line>
+<circle cx="215" cy="50" fill="#ba1a1a" r="4"></circle>
+<!-- Spark & Smoke -->
+<path d="M 210 30 Q 215 15, 230 10" stroke="#747780" stroke-dasharray="3 3"></path>
+<path d="M 195 25 L 205 15 L 200 10 L 215 5" stroke="#b45309" stroke-width="2"></path>
+<!-- Stickman with Magnifying Glass -->
+<circle cx="80" cy="38" r="9"></circle>
+<line x1="80" x2="80" y1="47" y2="78"></line>
+<line x1="80" x2="65" y1="78" y2="92"></line>
+<line x1="80" x2="95" y1="78" y2="92"></line>
+<!-- Extended arm with magnifying glass -->
+<line stroke="#1a1b1e" x1="80" x2="115" y1="56" y2="50"></line>
+<circle cx="125" cy="48" fill="#d7e2ff" fill-opacity="0.3" r="10" stroke="#103366" stroke-width="2"></circle>
+<line stroke="#103366" stroke-width="2.5" x1="132" x2="142" y1="55" y2="65"></line>
+</svg>
+<p class="font-label-sm text-label-sm text-on-surface italic bg-surface p-space-xs rounded border border-outline-variant/30">
+              “Good. The system broke in staging, not on the customer’s shop floor. Now figure out exactly why.”
+            </p>
+</div>
+</div>
+<!-- The 5-Step Failure Resolution Loop & 4 Real War Stories -->
+<div class="lg:col-span-7 flex flex-col gap-space-md">
+<!-- The Loop Process Bar -->
+<div class="p-space-sm bg-surface-container-low rounded-xl border border-outline-variant/40 flex flex-wrap items-center justify-between gap-1 font-label-sm text-label-sm">
+<span class="px-2 py-1 bg-error/15 text-error rounded font-semibold font-mono">01. EXPOSE</span>
+<span class="text-outline">➔</span>
+<span class="px-2 py-1 bg-surface-container-high rounded font-mono">02. TRACE BYTE</span>
+<span class="text-outline">➔</span>
+<span class="px-2 py-1 bg-surface-container-high rounded font-mono">03. ROOT CAUSE</span>
+<span class="text-outline">➔</span>
+<span class="px-2 py-1 bg-surface-container-high rounded font-mono">04. GUARD</span>
+<span class="text-outline">➔</span>
+<span class="px-2 py-1 bg-secondary-container text-on-secondary-container rounded font-semibold font-mono">05. BENCHMARK LOCK</span>
+</div>
+<!-- 4 Concrete War Stories from Real Builds -->
+<div class="flex flex-col gap-space-xs">
+<!-- War Story 1: Postgres Concurrency -->
+<div class="p-space-md bg-surface rounded-xl border border-outline-variant/50 flex flex-col gap-space-xs">
+<div class="flex items-center justify-between font-label-sm text-label-sm">
+<span class="font-semibold text-on-surface">WAR STORY #1 // ASSET TRACKING CONCURRENT COLLISION</span>
+<span class="font-mono text-outline">POSTGRESQL ACID</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+<strong>Failure:</strong> Two yard supervisors scanned the same physical bundle of galvanized I-beams simultaneously on spotty Wi-Fi, creating split-brain inventory records and double-billing.
+              </p>
+<div class="bg-surface-container-low p-space-xs rounded font-label-sm text-label-sm text-secondary font-mono">
+                RESOLUTION: Enforced row-level <code class="text-primary font-bold">SELECT ... FOR UPDATE</code> in Async SQLAlchemy transaction, rejecting duplicate pending mutations at the database kernel level.
+              </div>
+</div>
+<!-- War Story 2: Vector Confusion in ExamMind -->
+<div class="p-space-md bg-surface rounded-xl border border-outline-variant/50 flex flex-col gap-space-xs">
+<div class="flex items-center justify-between font-label-sm text-label-sm">
+<span class="font-semibold text-on-surface">WAR STORY #2 // EXAMMIND POLYSEMIC VECTOR DRIFT</span>
+<span class="font-mono text-outline">EMBEDDING SPACE</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+<strong>Failure:</strong> Cosine similarity in a pure dense retrieval setup confused mathematical "integration" with sociological "racial integration," giving high relevance to irrelevant syllabus chapters.
+              </p>
+<div class="bg-surface-container-low p-space-xs rounded font-label-sm text-label-sm text-secondary font-mono">
+                RESOLUTION: Swapped naive vector search for a <strong>Hybrid BM25 + Dense RRF Pipeline</strong>, weighting exact mathematical nomenclature before running cross-encoder re-ranking.
+              </div>
+</div>
+<!-- War Story 3: CAD Drift in Nesting -->
+<div class="p-space-md bg-surface rounded-xl border border-outline-variant/50 flex flex-col gap-space-xs">
+<div class="flex items-center justify-between font-label-sm text-label-sm">
+<span class="font-semibold text-on-surface">WAR STORY #3 // UNCLOSED POLYLINE CAD GEOMETRY</span>
+<span class="font-mono text-outline">COMPUTATIONAL GEOMETRY</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+<strong>Failure:</strong> Industrial DXF files from draftsmen contained 0.02mm microscopic open polygon gaps, causing standard Minkowski sum geometric routines to infinite-loop or throw topology exceptions.
+              </p>
+<div class="bg-surface-container-low p-space-xs rounded font-label-sm text-label-sm text-secondary font-mono">
+                RESOLUTION: Wrote an automated topological healer with a <strong>0.05mm spatial snapping epsilon</strong> that seals open contours before passing to the NFP C++ core.
+              </div>
+</div>
+<!-- War Story 4: Memory spikes in IRIS -->
+<div class="p-space-md bg-surface rounded-xl border border-outline-variant/50 flex flex-col gap-space-xs">
+<div class="flex items-center justify-between font-label-sm text-label-sm">
+<span class="font-semibold text-on-surface">WAR STORY #4 // SCHOLARLY INGESTION MEMORY EXHAUSTION</span>
+<span class="font-mono text-outline">DISTRIBUTED PIPELINE</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+<strong>Failure:</strong> Ingesting 5,000 PDF medical clinical trial attachments concurrently triggered worker OOM kills during heavy semantic chunking and dense tokenization.
+              </p>
+<div class="bg-surface-container-low p-space-xs rounded font-label-sm text-label-sm text-secondary font-mono">
+                RESOLUTION: Re-architected with <strong>Inngest cursor pagination &amp; backpressure throttling</strong>, constraining batch memory consumption to a deterministic &lt;512MB ceiling.
+              </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 06 — MAKE IT REAL: PRODUCTION IS THE ONLY METRIC -->
+<section class="w-full py-space-xl bg-surface border-b border-outline-variant/30">
+<div class="max-w-7xl mx-auto px-margin flex flex-col gap-space-xl">
+<div class="flex flex-col gap-space-xs">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary font-semibold">06 // REAL-WORLD RUNTIME</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface uppercase font-bold tracking-tight">
+          A Project Isn’t Finished When It Runs On My Laptop.
+        </h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-3xl">
+          The chasm between a toy notebook demo and software humming on actual industrial hardware is where true engineering takes place. The only metric that matters is reliable, long-term adoption in real environments.
+        </p>
+</div>
+<!-- Abhikalpan Live Production Proof Card -->
+<div class="p-space-lg md:p-space-xl bg-surface-container-lowest rounded-2xl border-2 border-outline-variant shadow-sm relative overflow-hidden">
+<div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-space-lg pb-space-lg border-b border-outline-variant/30">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-secondary animate-ping"></span>
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary font-bold">VERIFIED IN CONTINUOUS PRODUCTION</span>
+</div>
+<h3 class="font-display-sm text-display-sm text-on-surface uppercase font-bold tracking-tight">
+              Abhikalpan Construction Pvt. Ltd.
+            </h3>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">
+              Two core production infrastructure systems architected, deployed on-premise, and operated daily by heavy structural engineering teams.
+            </p>
+</div>
+<!-- The Official Milestone Stamp -->
+<div class="px-space-lg py-space-md bg-secondary-container/40 rounded-xl border border-secondary/40 text-center flex flex-col items-center">
+<span class="font-label-sm text-label-sm text-secondary font-mono tracking-widest uppercase">ENGINEERING MILESTONE</span>
+<span class="font-headline-md text-headline-md font-extrabold text-on-secondary-fixed tracking-tight">BUILT. SHIPPED. USED.</span>
+<span class="font-label-sm text-label-sm text-outline font-mono">UPTIME: 99.98%</span>
+</div>
+</div>
+<!-- Deployment Breakdown Metrics Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter pt-space-lg">
+<!-- System A Deployment Details -->
+<div class="p-space-md bg-surface-container-low rounded-xl flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm font-semibold text-on-surface">1. The Nesting Core</span>
+<span class="font-mono text-label-sm text-secondary font-semibold">ON-PREMISE SERVER</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Deployed directly to the cutting shop floor LAN. Operators import raw CAD cutlists and receive instant nesting plans. Zero cloud latency, zero external data leaks, and +18.4% material yield savings realized on structural plate tonnage.
+            </p>
+<div class="mt-2 flex items-center gap-2 font-label-sm text-label-sm text-outline font-mono">
+<span>METRIC: $32K+ SCRAP RECOVERY / ANNUM</span>
+</div>
+</div>
+<!-- System B Deployment Details -->
+<div class="p-space-md bg-surface-container-low rounded-xl flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm font-semibold text-on-surface">2. Asset Lifecycle Tracking</span>
+<span class="font-mono text-label-sm text-secondary font-semibold">SHOP FLOOR TABLETS</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              High-throughput offline-first Progressive Web App tracking 10,000+ custom fabricated trusses, purlins, and plates from steel beam reception to final on-site erection signoff.
+            </p>
+<div class="mt-2 flex items-center gap-2 font-label-sm text-label-sm text-outline font-mono">
+<span>METRIC: 100% AUDIT TRACEABILITY</span>
+</div>
+</div>
+</div>
+<!-- Stickman visiting the factory shop floor SVG -->
+<div class="mt-space-lg pt-space-md border-t border-outline-variant/30 flex flex-col sm:flex-row items-center justify-between gap-space-md">
+<div class="flex items-center gap-3">
+<svg class="w-40 h-12 stroke-on-surface fill-none" stroke-width="1.8" viewbox="0 0 160 50">
+<!-- Factory roof silhouette -->
+<polygon fill="#f4f3f7" points="10,40 30,20 30,40 50,20 50,40 70,20 70,40" stroke="#c4c6d1"></polygon>
+<!-- Stickman in hardhat -->
+<circle cx="100" cy="20" r="7"></circle>
+<!-- Hardhat -->
+<path d="M 92 18 C 92 11, 108 11, 108 18 Z" fill="#ffd700" stroke="#b45309"></path>
+<line x1="100" x2="100" y1="27" y2="45"></line>
+<line x1="100" x2="92" y1="45" y2="50"></line>
+<line x1="100" x2="108" y1="45" y2="50"></line>
+<!-- Clipboard -->
+<line x1="100" x2="115" y1="32" y2="35"></line>
+<rect fill="#ffffff" height="15" rx="1" stroke="#103366" width="10" x="115" y="28"></rect>
+</svg>
+<span class="font-label-sm text-label-sm text-outline italic">
+              "When you watch an actual technician use your software on a noisy floor, your ego leaves the room and real engineering begins."
+            </span>
+</div>
+<span class="font-mono text-label-sm text-primary font-semibold">VERIFICATION_HASH: 0x9AF42B</span>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 07 — LEARN: THE QUESTION REMAINS (RETROSPECTIVE) -->
+<section class="w-full py-space-xl bg-surface-container-lowest border-b border-outline-variant/30">
+<div class="max-w-7xl mx-auto px-margin flex flex-col gap-space-xl">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">
+<div class="lg:col-span-5 flex flex-col gap-space-xs">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary font-semibold">07 // RETROSPECTIVE</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface uppercase font-bold tracking-tight">
+            Every Build Leaves Me With A Better Question.
+          </h2>
+<p class="font-body-md text-body-md text-on-surface-variant">
+            Every system built is an experiment in understanding. When the code ships and the metrics stabilize, the inquiry does not close—it sharpens into deeper research directions.
+          </p>
+<!-- Stickman sitting under desk lamp at dusk -->
+<div class="mt-space-md p-space-md bg-surface-container-low rounded-xl border border-outline-variant/50">
+<svg class="w-full h-24 stroke-on-surface fill-none" stroke-width="1.8" viewbox="0 0 240 100">
+<!-- Desk & Lamp -->
+<line stroke="#1a1b1e" stroke-width="2.5" x1="40" x2="190" y1="80" y2="80"></line>
+<path d="M 60 80 L 60 40 L 80 25" stroke="#747780"></path>
+<polygon fill="#ffd700" points="76,22 88,18 84,32" stroke="#103366"></polygon>
+<path d="M 80 30 L 130 80" opacity="0.4" stroke="#ffd700" stroke-dasharray="2 3"></path>
+<!-- Stickman closing filled notebook -->
+<circle cx="120" cy="45" r="8"></circle>
+<line x1="120" x2="120" y1="53" y2="76"></line>
+<line x1="120" x2="135" y1="76" y2="80"></line>
+<line x1="120" x2="140" y1="62" y2="75"></line>
+<!-- Closed thick notebook on desk -->
+<rect fill="#ffffff" height="7" rx="1" stroke="#103366" width="30" x="135" y="73"></rect>
+<!-- Subtle smiling curve on character -->
+<path d="M 122 47 Q 124 49, 126 47" stroke="#103366" stroke-width="1.2"></path>
+</svg>
+<p class="font-label-sm text-label-sm text-outline italic text-center mt-1">
+              "The notebook closes for this release; the next hypotheses begin."
+            </p>
+</div>
+</div>
+<!-- The Notebook of Unresolved Questions -->
+<div class="lg:col-span-7 flex flex-col gap-space-xs">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider mb-1">THE RESEARCH MARGINALIA</span>
+<!-- Q1: HealthHeat -->
+<div class="p-space-md bg-surface rounded-xl border border-outline-variant/40 flex flex-col gap-1">
+<span class="font-label-sm text-label-sm font-semibold text-primary">FROM HEALTHHEAT // EDGE PRIVACY</span>
+<p class="font-body-md text-body-md text-on-surface font-medium">
+              “Can on-device quantization and local neural co-processors completely eliminate the cloud surveillance tax from personal healthcare?”
+            </p>
+</div>
+<!-- Q2: IRIS -->
+<div class="p-space-md bg-surface rounded-xl border border-outline-variant/40 flex flex-col gap-1">
+<span class="font-label-sm text-label-sm font-semibold text-primary">FROM IRIS // MEDICAL SYNTHESIS</span>
+<p class="font-body-md text-body-md text-on-surface font-medium">
+              “Can multi-agent architectures make millions of unstructured academic papers self-explaining, without sacrificing formal empirical citation validity?”
+            </p>
+</div>
+<!-- Q3: Nesting Engine -->
+<div class="p-space-md bg-surface rounded-xl border border-outline-variant/40 flex flex-col gap-1">
+<span class="font-label-sm text-label-sm font-semibold text-primary">FROM NESTING ENGINE // COMPUTATIONAL GEOMETRY</span>
+<p class="font-body-md text-body-md text-on-surface font-medium">
+              “How much pure mathematical elegance can survive when confronted with the noisy, imperfect dust of industrial factory machines?”
+            </p>
+</div>
+<!-- Q4: Asset Tracking -->
+<div class="p-space-md bg-surface rounded-xl border border-outline-variant/40 flex flex-col gap-1">
+<span class="font-label-sm text-label-sm font-semibold text-primary">FROM ASSET TRACKING // PHYSICAL STATE</span>
+<p class="font-body-md text-body-md text-on-surface font-medium">
+              “How do you preserve relational, deterministic truth when twenty different humans are moving heavy physical metal in areas with zero connectivity?”
+            </p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 08 — SYNTHESIS & CONTINUOUS THREAD: THAT'S HOW I BUILD -->
+<section class="w-full py-space-xl md:py-24 bg-surface">
+<div class="max-w-7xl mx-auto px-margin flex flex-col gap-space-xl">
+<!-- The Continuous Engineering Spine Flow Diagram -->
+<div class="p-space-lg bg-surface-container-low rounded-2xl border border-outline-variant/50 flex flex-col gap-space-md">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-outline-variant/30 pb-space-xs font-label-sm text-label-sm">
+<span class="font-bold text-primary tracking-widest uppercase">THE UNBROKEN ENGINEERING SPINE</span>
+<span class="text-outline font-mono">KOUSHIK_UPADHYAY_FRAMEWORK_VER_2.4</span>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-2 text-center font-label-sm text-label-sm">
+<div class="p-space-xs bg-surface rounded border border-outline-variant/40">
+<span class="text-outline block font-mono">01</span>
+<span class="font-bold text-on-surface">PROBLEM</span>
+</div>
+<div class="p-space-xs bg-surface rounded border border-outline-variant/40">
+<span class="text-outline block font-mono">02</span>
+<span class="font-bold text-on-surface">QUESTION</span>
+</div>
+<div class="p-space-xs bg-surface rounded border border-outline-variant/40">
+<span class="text-outline block font-mono">03</span>
+<span class="font-bold text-on-surface">SUBTRACT</span>
+</div>
+<div class="p-space-xs bg-surface rounded border border-outline-variant/40">
+<span class="text-outline block font-mono">04</span>
+<span class="font-bold text-on-surface">PICK TOOL</span>
+</div>
+<div class="p-space-xs bg-surface rounded border border-outline-variant/40">
+<span class="text-outline block font-mono">05</span>
+<span class="font-bold text-on-surface">BUILD RIG</span>
+</div>
+<div class="p-space-xs bg-surface rounded border border-outline-variant/40">
+<span class="text-outline block font-mono">06</span>
+<span class="font-bold text-error">BREAK IT</span>
+</div>
+<div class="p-space-xs bg-surface rounded border border-outline-variant/40">
+<span class="text-outline block font-mono">07</span>
+<span class="font-bold text-secondary">SHIP REAL</span>
+</div>
+<div class="p-space-xs bg-surface rounded border border-outline-variant/40">
+<span class="text-outline block font-mono">08</span>
+<span class="font-bold text-primary">QUESTION+</span>
+</div>
+</div>
+</div>
+<!-- Grand Typographic Closer -->
+<div class="flex flex-col gap-space-md text-left py-space-md">
+<h2 class="font-display-lg text-display-lg text-on-surface uppercase tracking-tight leading-none">
+          That’s How I Build<br/>
+<span class="text-primary italic">Past The Obvious.</span>
+</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+          Whether you are wrestling with high-throughput inference bottlenecks, unstructured medical corpora, or industrial hardware integration—I bring mathematical rigor, subtraction, and deterministic execution to every layer.
+        </p>
+<!-- CTAs -->
+<div class="flex flex-wrap items-center gap-space-md pt-space-xs">
+<a class="px-space-lg py-space-sm bg-primary text-on-primary font-label-sm text-label-sm font-semibold tracking-wider uppercase rounded-lg hover:bg-primary-container transition-colors inline-flex items-center gap-2" data-path="work" href="../koushik_upadhyay_ai_ml_engineer_builder/code.html#work">
+<span>Explore Selected Systems</span>
+<span class="material-symbols-outlined text-sm">arrow_outward</span>
+</a>
+<a class="px-space-lg py-space-sm bg-surface-container-high text-on-surface font-label-sm text-label-sm font-semibold tracking-wider uppercase rounded-lg hover:bg-surface-variant transition-colors inline-flex items-center gap-2" data-path="research" href="../koushik_upadhyay_ai_ml_engineer_builder/code.html#research">
+<span>Research &amp; Technical Notes</span>
+<span class="material-symbols-outlined text-sm">menu_book</span>
+</a>
+<a class="px-space-lg py-space-sm border border-outline text-on-surface font-label-sm text-label-sm font-semibold tracking-wider uppercase rounded-lg hover:bg-surface-container transition-colors inline-flex items-center gap-2" data-path="contact" href="../let_s_talk_koushik_upadhyay_contact/code.html">
+<span>Initiate Discussion</span>
+<span class="material-symbols-outlined text-sm">chat</span>
+</a>
+</div>
+</div>
+
+</div>
+</section>
+</div></main></body></html>

@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..700&amp;family=Hanken+Grotesk:ital,wght@0,300..700;1,300..700&amp;family=JetBrains+Mono:ital,wght@0,300..700;1,300..700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-primary": "#ffffff", "surface-container": "#efedf1", "on-error": "#ffffff", "on-tertiary-fixed-variant": "#7a2f15", "surface": "#F7F3EA", "on-surface-variant": "#43474f", "on-error-container": "#93000a", "on-secondary-fixed": "#032012", "primary-fixed-dim": "#acc7ff", "inverse-on-surface": "#f1f0f4", "on-tertiary": "#ffffff", "tertiary-container": "#7f3318", "inverse-primary": "#acc7ff", "surface-tint": "#415e93", "primary-container": "#2c4a7e", "outline-variant": "#c4c6d1", "on-primary-container": "#9ebbf6", "surface-bright": "#F7F3EA", "tertiary": "#611d04", "on-surface": "#1a1b1e", "surface-container-low": "#f4f3f7", "on-secondary-fixed-variant": "#304d3c", "secondary-container": "#c7e8d1", "primary-fixed": "#d7e2ff", "tertiary-fixed-dim": "#ffb59e", "inverse-surface": "#2f3033", "on-tertiary-container": "#ffa486", "on-secondary": "#ffffff", "secondary-fixed": "#c9ead3", "on-primary-fixed-variant": "#28467a", "surface-container-highest": "#e3e2e6", "surface-container-lowest": "#ffffff", "secondary": "#476553", "surface-dim": "#dbd9dd", "on-tertiary-fixed": "#390b00", "surface-variant": "#e3e2e6", "error-container": "#ffdad6", "error": "#ba1a1a", "on-background": "#1a1b1e", "on-secondary-container": "#4c6957", "surface-container-high": "#e9e7eb", "primary": "#103366", "background": "#F7F3EA", "on-primary-fixed": "#001a40", "outline": "#747780", "tertiary-fixed": "#ffdbd0", "secondary-fixed-dim": "#aeceb8" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": { "space-md": "1rem", "space-lg": "1.5rem", "space-xl": "2.5rem", "margin": "2rem", "space-sm": "0.5rem", "gutter": "1.5rem", "space-xs": "0.25rem" }, "fontFamily": { "body-lg": [ "Hanken Grotesk" ], "body-md": [ "Hanken Grotesk" ], "display-sm": [ "Bricolage Grotesque" ], "headline-sm": [ "Hanken Grotesk" ], "body-sm": [ "Hanken Grotesk" ], "label-sm": [ "JetBrains Mono" ], "label-md": [ "JetBrains Mono" ], "display-lg-mobile": [ "Bricolage Grotesque" ], "headline-md": [ "Bricolage Grotesque" ], "display-lg": [ "Bricolage Grotesque" ], "headline-lg": [ "Bricolage Grotesque" ], "display-sm-mobile": [ "Bricolage Grotesque" ] }, "fontSize": { "body-lg": [ "18px", { "lineHeight": "28px", "fontWeight": "400" } ], "body-md": [ "16px", { "lineHeight": "26px", "fontWeight": "400" } ], "display-sm": [ "44px", { "lineHeight": "52px", "letterSpacing": "-0.02em", "fontWeight": "600" } ], "headline-sm": [ "20px", { "lineHeight": "28px", "letterSpacing": "-0.005em", "fontWeight": "600" } ], "body-sm": [ "14px", { "lineHeight": "22px", "fontWeight": "400" } ], "label-sm": [ "11px", { "lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500" } ], "label-md": [ "13px", { "lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "500" } ], "display-lg-mobile": [ "40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700" } ], "headline-md": [ "24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" } ], "display-lg": [ "64px", { "lineHeight": "72px", "letterSpacing": "-0.03em", "fontWeight": "700" } ], "headline-lg": [ "32px", { "lineHeight": "40px", "letterSpacing": "-0.015em", "fontWeight": "600" } ], "display-sm-mobile": [ "32px", { "lineHeight": "40px", "letterSpacing": "-0.015em", "fontWeight": "600" } ] } } } };</script>
+<!-- UNIFIED BACKGROUND -->
+<style>
+    body, main, html {
+        background-color: #F7F3EA !important;
+    }
+</style>
+</head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased"><!-- UNIFIED NAVBAR -->
+<header class="fixed top-0 left-0 right-0 h-20 px-6 md:px-12 flex items-center justify-between z-50 bg-[#F7F3EA]/90 backdrop-blur-md border-b border-[#DCD4C4]/70" style="font-family: 'JetBrains Mono', monospace;">
+<a class="flex items-center gap-3 group" href="../koushik_upadhyay_ai_ml_engineer_builder/code.html#top">
+<div class="w-9 h-9 rounded-xl bg-[#202124] text-[#F7F3EA] flex items-center justify-center font-extrabold text-sm group-hover:bg-[#5577A8] transition-colors shadow-sm">
+      K/
+    </div>
+<span class="font-bold text-sm tracking-tight text-[#202124] group-hover:text-[#5577A8] transition-colors hidden sm:inline" style="font-family: 'Bricolage Grotesque', sans-serif;">KOUSHIK UPADHYAY</span>
+</a>
+<nav class="hidden md:flex items-center gap-8 text-xs font-semibold tracking-wider text-[#5A5852]">
+<a class="hover:text-[#202124] transition-colors hover:underline underline-offset-8" href="../koushik_upadhyay_ai_ml_engineer_builder/code.html#work">WORK</a>
+<a class="hover:text-[#202124] transition-colors hover:underline underline-offset-8" href="../koushik_upadhyay_ai_ml_engineer_builder/code.html#about">ABOUT</a>
+<a class="hover:text-[#202124] transition-colors hover:underline underline-offset-8" href="../career_journey_koushik_upadhyay/code.html">CAREER</a>
+<a class="hover:text-[#202124] transition-colors hover:underline underline-offset-8" href="../how_i_build_engineering_philosophy_methodology/code.html">HOW I BUILD</a>
+<a class="hover:text-[#202124] transition-colors hover:underline underline-offset-8" href="../koushik_upadhyay_ai_ml_engineer_builder/code.html#research">RESEARCH</a>
+<a class="hover:text-[#202124] transition-colors hover:underline underline-offset-8" href="../let_s_talk_koushik_upadhyay_contact/code.html">CONTACT</a>
+</nav>
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#DCD4C4] bg-[#eae8ee] text-xs font-medium shadow-sm">
+<span class="w-2 h-2 rounded-full bg-[#10B981] animate-pulse"></span>
+<span class="text-[#202124]">AI / ML ENGINEER</span>
+</div>
+<a class="md:hidden w-8 h-8 rounded-full bg-[#202124] text-[#F7F3EA] flex items-center justify-center text-xs" href="../let_s_talk_koushik_upadhyay_contact/code.html">?</a>
+</div>
+</header><main class="w-full pt-20 bg-surface min-h-screen"><div class="flex flex-col w-full text-on-surface">
+<!-- =========================================================================
+       SECTION 01: HERO & INVESTIGATOR VIGNETTE
+       ========================================================================= -->
+<section class="relative w-full max-w-7xl mx-auto px-margin pt-space-xl pb-space-xl">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">
+<!-- Left Column: Narrative Lead & Metadata -->
+<div class="lg:col-span-7 flex flex-col gap-space-md">
+<div class="flex items-center gap-space-xs font-label-sm text-label-sm uppercase tracking-widest text-secondary">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span>02 / SELECTED WORK · MEDICAL INTELLIGENCE / MULTI-AGENT AI</span>
+</div>
+<h1 class="font-display-lg text-display-lg text-on-surface tracking-tight leading-none mt-space-xs">
+          FIND THE SIGNAL IN MEDICAL RESEARCH.
+        </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mt-space-sm">
+          Medical research is enormous. Finding the right researchers, evidence, and emerging signals shouldn't require manually stitching together fragmented databases across disconnected silos.
+        </p>
+<!-- Category Tags -->
+<div class="flex flex-wrap gap-space-xs mt-space-sm">
+<span class="px-space-sm py-space-xs bg-surface-container text-on-surface font-label-sm text-label-sm uppercase tracking-wider rounded-lg">KOL DISCOVERY</span>
+<span class="px-space-sm py-space-xs bg-surface-container text-on-surface font-label-sm text-label-sm uppercase tracking-wider rounded-lg">EVIDENCE SYNTHESIS</span>
+<span class="px-space-sm py-space-xs bg-primary-container text-on-primary-container font-label-sm text-label-sm uppercase tracking-wider rounded-lg">MULTI-AGENT AI</span>
+<span class="px-space-sm py-space-xs bg-secondary-container text-on-secondary-container font-label-sm text-label-sm uppercase tracking-wider rounded-lg">SCHOLARLY GRAPH</span>
+</div>
+<!-- Archival Monograph Header Plate -->
+<div class="mt-space-lg p-space-md bg-surface-container-low rounded-xl flex flex-wrap items-center justify-between gap-space-md text-on-surface-variant font-label-sm text-label-sm">
+<div><span class="text-on-surface font-semibold">SUBJECT:</span> IRIS (INTELLIGENCE FOR RESEARCH &amp; INSIGHT SYNTHESIS)</div>
+<div><span class="text-on-surface font-semibold">ROLE:</span> LEAD ML &amp; FULL-STACK ARCHITECT</div>
+<div><span class="text-on-surface font-semibold">CORE CORPUS:</span> OPENALEX · PUBMED · NCI GRAPH</div>
+</div>
+</div>
+<!-- Right Column: Stickman Character Landscape Illustration -->
+<div class="lg:col-span-5 relative bg-surface-container-lowest p-space-md rounded-xl shadow-sm">
+<div class="flex items-center justify-between font-label-sm text-label-sm text-on-surface-variant mb-space-xs pb-space-xs">
+<span>PLATE 01.1 // NOTEBOOK VIGNETTE</span>
+<span class="text-primary font-bold">FIG 1.0</span>
+</div>
+<svg class="w-full h-auto text-on-surface fill-none stroke-current" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" viewbox="0 0 500 380">
+<!-- Swirling background paper cyclone -->
+<path d="M 300,40 Q 420,60 440,140 T 360,240 T 260,200 T 340,110 T 430,90" stroke="#c4c6d1" stroke-dasharray="4 4"></path>
+<path d="M 280,70 Q 460,90 420,200 T 280,260" stroke="#c4c6d1" stroke-dasharray="3 3"></path>
+<!-- Floating Paper / Card Entities -->
+<g transform="translate(360, 45) rotate(12)">
+<rect fill="#F7F3EA" height="42" rx="3" stroke="#43474f" width="60"></rect>
+<line stroke="#415e93" stroke-width="2.5" x1="8" x2="52" y1="12" y2="12"></line>
+<line stroke="#747780" x1="8" x2="44" y1="20" y2="20"></line>
+<line stroke="#747780" x1="8" x2="36" y1="28" y2="28"></line>
+</g>
+<g transform="translate(240, 60) rotate(-15)">
+<rect fill="#F7F3EA" height="48" rx="3" stroke="#43474f" width="70"></rect>
+<line stroke="#611d04" stroke-width="2" x1="8" x2="62" y1="12" y2="12"></line>
+<line stroke="#747780" x1="8" x2="50" y1="22" y2="22"></line>
+<line stroke="#747780" x1="8" x2="40" y1="30" y2="30"></line>
+<circle cx="56" cy="32" fill="#c7e8d1" r="4" stroke="#476553"></circle>
+</g>
+<g transform="translate(330, 160) rotate(-8)">
+<rect fill="#F7F3EA" height="55" rx="4" stroke="#103366" stroke-width="2" width="85"></rect>
+<circle cx="20" cy="22" fill="#acc7ff" r="9" stroke="#103366"></circle>
+<line stroke="#1a1b1e" stroke-width="2" x1="36" x2="75" y1="18" y2="18"></line>
+<line stroke="#747780" x1="36" x2="68" y1="26" y2="26"></line>
+<rect fill="#efedf1" height="8" rx="2" stroke="none" width="60" x="12" y="38"></rect>
+</g>
+<g transform="translate(210, 170) rotate(18)">
+<rect fill="#F7F3EA" height="44" rx="3" stroke="#43474f" width="65"></rect>
+<line stroke="#476553" stroke-width="2" x1="8" x2="50" y1="14" y2="14"></line>
+<line stroke="#747780" x1="8" x2="42" y1="24" y2="24"></line>
+</g>
+<!-- Graph nodes and citation rays -->
+<circle cx="440" cy="190" fill="#476553" r="5" stroke="#1a1b1e"></circle>
+<circle cx="410" cy="270" fill="#103366" r="6" stroke="#1a1b1e"></circle>
+<circle cx="290" cy="290" fill="#7f3318" r="4" stroke="#1a1b1e"></circle>
+<line stroke="#c4c6d1" x1="440" x2="410" y1="190" y2="270"></line>
+<line stroke="#c4c6d1" x1="410" x2="290" y1="270" y2="290"></line>
+<!-- Ground Baseline -->
+<line stroke="#1a1b1e" stroke-width="2" x1="30" x2="470" y1="340" y2="340"></line>
+<line stroke="#c4c6d1" x1="50" x2="450" y1="346" y2="346"></line>
+<!-- The Stickman Character (Investigator) -->
+<!-- Head with inquisitive tilt -->
+<circle cx="110" cy="250" fill="#F7F3EA" r="16" stroke="#1a1b1e" stroke-width="2.5"></circle>
+<!-- Eyeglasses / loupe detail -->
+<circle cx="116" cy="248" fill="none" r="4" stroke="#103366" stroke-width="2"></circle>
+<line stroke="#103366" x1="110" x2="114" y1="248" y2="248"></line>
+<!-- Torso -->
+<line stroke="#1a1b1e" stroke-width="2.5" x1="110" x2="110" y1="266" y2="305"></line>
+<!-- Left Arm holding open clinical chart -->
+<line stroke="#1a1b1e" stroke-width="2" x1="110" x2="90" y1="275" y2="290"></line>
+<line stroke="#1a1b1e" stroke-width="2" x1="90" x2="80" y1="290" y2="278"></line>
+<rect fill="#ffffff" height="24" rx="2" stroke="#1a1b1e" transform="rotate(-15 68 265)" width="18" x="68" y="265"></rect>
+<!-- Right Arm pointing upward at swirling metadata -->
+<line stroke="#1a1b1e" stroke-width="2" x1="110" x2="135" y1="275" y2="258"></line>
+<line stroke="#1a1b1e" stroke-width="2.2" x1="135" x2="162" y1="258" y2="235"></line>
+<!-- Legs poised in contemplation -->
+<line stroke="#1a1b1e" stroke-width="2.5" x1="110" x2="95" y1="305" y2="340"></line>
+<line stroke="#1a1b1e" stroke-width="2.5" x1="110" x2="128" y1="305" y2="340"></line>
+<!-- Shoes -->
+<line stroke="#1a1b1e" stroke-width="3" x1="90" x2="98" y1="340" y2="340"></line>
+<line stroke="#1a1b1e" stroke-width="3" x1="125" x2="136" y1="340" y2="340"></line>
+<!-- Handwritten style marginalia annotation -->
+<path d="M 125,230 Q 155,200 175,208" fill="none" stroke="#611d04" stroke-dasharray="2 2" stroke-width="1.5"></path>
+<polygon fill="#611d04" points="175,208 168,204 170,212"></polygon>
+<text fill="#611d04" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="600" x="140" y="195">"Where do I even start?"</text>
+</svg>
+<div class="mt-space-xs text-center font-label-sm text-label-sm text-on-surface-variant italic">
+          Figure 1.0 — Researcher confronting 24M+ unlinked clinical preprints, grant trails, and investigator identities.
+        </div>
+</div>
+</div>
+</section>
+<!-- =========================================================================
+       SECTION 02: THE PROBLEM (DISCONNECTED SILOS)
+       ========================================================================= -->
+<section class="w-full max-w-7xl mx-auto px-margin py-space-xl">
+<div class="p-space-lg bg-surface-container-low rounded-xl">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md mb-space-lg">
+<div>
+<span class="font-label-sm text-label-sm tracking-widest uppercase text-tertiary font-bold">02 // THE BOTTLENECK</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mt-space-xs">
+            MORE DATA DOESN'T MEAN MORE INTELLIGENCE.
+          </h2>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xl">
+          Medical research generates an overwhelming volume of information. But useful intelligence remains heavily fragmented across publications, citations, institutions, and clinical networks.
+        </p>
+</div>
+<!-- Disconnected Silos Diagram -->
+<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-space-sm relative">
+<!-- Silo 1 -->
+<div class="p-space-md bg-surface-container-lowest rounded-lg flex flex-col justify-between h-36">
+<div class="font-label-sm text-label-sm text-on-surface-variant">SOURCE 01</div>
+<div class="font-headline-sm text-headline-sm text-primary font-bold">PAPERS</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">PubMed, bioRxiv, ClinicalTrials.gov</div>
+</div>
+<!-- Silo 2 -->
+<div class="p-space-md bg-surface-container-lowest rounded-lg flex flex-col justify-between h-36">
+<div class="font-label-sm text-label-sm text-on-surface-variant">SOURCE 02</div>
+<div class="font-headline-sm text-headline-sm text-on-surface font-bold">AUTHORS</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">Unresolved name collisions</div>
+</div>
+<!-- Silo 3 -->
+<div class="p-space-md bg-surface-container-lowest rounded-lg flex flex-col justify-between h-36">
+<div class="font-label-sm text-label-sm text-on-surface-variant">SOURCE 03</div>
+<div class="font-headline-sm text-headline-sm text-on-surface font-bold">CITATIONS</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">Flat raw counts lacking context</div>
+</div>
+<!-- Silo 4 -->
+<div class="p-space-md bg-surface-container-lowest rounded-lg flex flex-col justify-between h-36">
+<div class="font-label-sm text-label-sm text-on-surface-variant">SOURCE 04</div>
+<div class="font-headline-sm text-headline-sm text-on-surface font-bold">FACILITIES</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">Conflicting hospital/university nodes</div>
+</div>
+<!-- Silo 5 -->
+<div class="p-space-md bg-surface-container-lowest rounded-lg flex flex-col justify-between h-36">
+<div class="font-label-sm text-label-sm text-on-surface-variant">SOURCE 05</div>
+<div class="font-headline-sm text-headline-sm text-on-surface font-bold">TOPICS</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">MeSH keywords with zero ontology</div>
+</div>
+<!-- Silo 6 -->
+<div class="p-space-md bg-surface-container-lowest rounded-lg flex flex-col justify-between h-36">
+<div class="font-label-sm text-label-sm text-on-surface-variant">SOURCE 06</div>
+<div class="font-headline-sm text-headline-sm text-tertiary font-bold">CO-AUTHORS</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">Dark clinical ties and hidden labs</div>
+</div>
+</div>
+<!-- Character frustration banner -->
+<div class="mt-space-md p-space-sm bg-surface-container-highest rounded-lg flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-tertiary text-headline-sm">broken_image</span>
+<span class="font-label-sm text-label-sm text-on-surface">BROKEN TOPOLOGY: Querying across these requires 6 browser tabs, manual cross-referencing, and 40 minutes per clinical question.</span>
+</div>
+<span class="font-label-sm text-label-sm text-tertiary font-bold">SEVERITY: CRITICAL INEFFICIENCY</span>
+</div>
+</div>
+</section>
+<!-- =========================================================================
+       SECTION 03: THE QUESTION (STUDY DESK MOMENT)
+       ========================================================================= -->
+<section class="w-full max-w-7xl mx-auto px-margin py-space-xl">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center">
+<!-- Vignette: Character at Wooden Desk with Lamp -->
+<div class="lg:col-span-5 bg-surface-container-lowest p-space-lg rounded-xl shadow-sm">
+<svg class="w-full h-auto text-on-surface fill-none stroke-current" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 400 300">
+<!-- Desk -->
+<line stroke="#1a1b1e" stroke-width="2.5" x1="40" x2="360" y1="220" y2="220"></line>
+<line stroke="#1a1b1e" stroke-width="3" x1="60" x2="60" y1="220" y2="280"></line>
+<line stroke="#1a1b1e" stroke-width="3" x1="340" x2="340" y1="220" y2="280"></line>
+<!-- Desk Lamp with warm glow cone -->
+<path d="M 80,220 L 95,140 L 130,130" stroke="#1a1b1e" stroke-width="2.5"></path>
+<path d="M 125,120 L 145,140 L 115,145 Z" fill="#2c4a7e" stroke="#103366"></path>
+<polygon fill="#F7F3EA" opacity="0.6" points="120,145 70,220 220,220" stroke="none"></polygon>
+<!-- Open Notebook -->
+<polygon fill="#efedf1" points="150,215 185,200 220,215 185,223" stroke="#1a1b1e"></polygon>
+<line stroke="#747780" x1="185" x2="185" y1="200" y2="223"></line>
+<!-- Stack of Medical Journals -->
+<rect fill="#c7e8d1" height="8" rx="1" stroke="#476553" width="60" x="250" y="200"></rect>
+<rect fill="#ffdbd0" height="9" rx="1" stroke="#7f3318" width="55" x="255" y="190"></rect>
+<rect fill="#d7e2ff" height="8" rx="1" stroke="#103366" width="58" x="252" y="181"></rect>
+<!-- Character Seated Thinking -->
+<!-- Head -->
+<circle cx="170" cy="140" fill="#F7F3EA" r="14" stroke="#1a1b1e" stroke-width="2"></circle>
+<!-- Hand to chin in contemplation -->
+<line stroke="#1a1b1e" stroke-width="2.2" x1="170" x2="170" y1="154" y2="190"></line>
+<line stroke="#1a1b1e" stroke-width="2" x1="170" x2="155" y1="165" y2="180"></line>
+<line stroke="#1a1b1e" stroke-width="2" x1="155" x2="162" y1="180" y2="150"></line>
+<!-- Chair back and legs -->
+<line stroke="#747780" stroke-width="2.5" x1="200" x2="200" y1="160" y2="260"></line>
+<line stroke="#1a1b1e" stroke-width="2.2" x1="170" x2="195" y1="190" y2="220"></line>
+<line stroke="#1a1b1e" stroke-width="2.2" x1="195" x2="175" y1="220" y2="270"></line>
+<!-- Thought spark over head -->
+<circle cx="205" cy="115" fill="#611d04" r="3" stroke="none"></circle>
+<circle cx="218" cy="100" fill="#611d04" r="5" stroke="none"></circle>
+<path d="M 230,95 Q 260,75 285,85" fill="none" stroke="#611d04" stroke-dasharray="3 3" stroke-width="1.5"></path>
+<text fill="#611d04" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="600" x="288" y="90">The shift.</text>
+</svg>
+</div>
+<!-- Narrative Text -->
+<div class="lg:col-span-7 flex flex-col gap-space-md pl-0 lg:pl-space-lg">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary font-semibold">03 // THE THESIS</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">
+          WHAT IF THE RESEARCH COULD ANSWER BACK?
+        </h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+          Instead of forcing oncology directors and translational researchers to manually scrape through fragmented tables, I envisioned a platform capable of unifying raw scholarly data, building living investigator graphs, and answering natural-language queries with traceable bibliographic proof.
+        </p>
+<blockquote class="p-space-md bg-surface-container rounded-lg text-on-surface font-headline-sm text-headline-sm italic">
+          "Don't build another chat interface over hallucinations. Build an agentic synthesis engine grounded directly in primary scientific literature."
+        </blockquote>
+</div>
+</div>
+</section>
+<!-- =========================================================================
+       SECTION 04: THE FIRST LAYER: DATA PIPELINE (OPENALEX)
+       ========================================================================= -->
+<section class="w-full max-w-7xl mx-auto px-margin py-space-xl">
+<div class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary font-bold">04 // INGESTION ENGINE</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">START WITH THE EVIDENCE.</h2>
+</div>
+<div class="hidden sm:flex items-center gap-space-xs font-label-sm text-label-sm text-on-surface-variant bg-surface-container px-space-sm py-space-xs rounded-lg">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span>PIPELINE: OPENALEX V3 STREAM</span>
+</div>
+</div>
+<!-- Step by step visual processing pipeline -->
+<div class="grid grid-cols-1 md:grid-cols-6 gap-space-sm mt-space-sm">
+<div class="p-space-md bg-surface-container-lowest rounded-lg flex flex-col justify-between">
+<span class="font-label-sm text-label-sm text-primary font-bold">STAGE 01</span>
+<div class="my-space-sm font-headline-sm text-headline-sm text-on-surface">OPENALEX</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Direct stream ingestion from OpenAlex global scholarly graph (works, authors, concepts).</p>
+</div>
+<div class="p-space-md bg-surface-container-lowest rounded-lg flex flex-col justify-between">
+<span class="font-label-sm text-label-sm text-primary font-bold">STAGE 02</span>
+<div class="my-space-sm font-headline-sm text-headline-sm text-on-surface">INGEST</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Chunked streaming payloads via Inngest serverless event workers with rate-limit dampening.</p>
+</div>
+<div class="p-space-md bg-surface-container-lowest rounded-lg flex flex-col justify-between">
+<span class="font-label-sm text-label-sm text-primary font-bold">STAGE 03</span>
+<div class="my-space-sm font-headline-sm text-headline-sm text-on-surface">NORMALIZE</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Standardizing institutional hierarchies (ROR IDs), MeSH biological trees, and journal tiers.</p>
+</div>
+<div class="p-space-md bg-surface-container-lowest rounded-lg flex flex-col justify-between">
+<span class="font-label-sm text-label-sm text-primary font-bold">STAGE 04</span>
+<div class="my-space-sm font-headline-sm text-headline-sm text-on-surface">DEDUP</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Fuzzy Jaro-Winkler string clustering combined with ORCID identifiers to collapse split author identities.</p>
+</div>
+<div class="p-space-md bg-surface-container-lowest rounded-lg flex flex-col justify-between">
+<span class="font-label-sm text-label-sm text-primary font-bold">STAGE 05</span>
+<div class="my-space-sm font-headline-sm text-headline-sm text-on-surface">ENRICH</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Compute citation velocity, h-index delta, clinical trial tags, and geographic cluster centroids.</p>
+</div>
+<div class="p-space-md bg-surface-container-lowest rounded-lg flex flex-col justify-between">
+<span class="font-label-sm text-label-sm text-primary font-bold">STAGE 06</span>
+<div class="my-space-sm font-headline-sm text-headline-sm text-on-surface">INDEX</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Relational loading into Supabase PostgreSQL tables alongside pgvector semantic embeddings.</p>
+</div>
+</div>
+<div class="p-space-md bg-surface-container-low rounded-xl flex items-center justify-between text-on-surface font-label-sm text-label-sm">
+<span>RAW RECORDS PROCESSED: 24,800,000+</span>
+<span>INDEXED MEDICAL ENTITIES: 1,420,000</span>
+<span class="text-secondary font-bold">DISAMBIGUATION CONFIDENCE: 98.4%</span>
+</div>
+</div>
+</section>
+<!-- =========================================================================
+       SECTION 05: THE KOL PROBLEM & 5-TIER SCORING ENGINE
+       ========================================================================= -->
+<section class="w-full max-w-7xl mx-auto px-margin py-space-xl">
+<div class="flex flex-col gap-space-lg">
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-tertiary font-bold">05 // QUANTITATIVE TAXONOMY</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mt-space-xs">WHO ACTUALLY MATTERS?</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-3xl mt-space-xs">
+          Finding a researcher is easy. Determining who commands meaningful influence within a specific disease landscape is much harder. Raw citation counts favor legacy department chairs who haven't published primary lab work in twelve years.
+        </p>
+</div>
+<!-- Formulation Card -->
+<div class="p-space-lg bg-surface-container rounded-xl">
+<div class="font-label-sm text-label-sm uppercase tracking-widest text-primary font-bold mb-space-xs">
+          FORMULA: MULTI-FACTOR INFLUENCE WEIGHTING (MFIW)
+        </div>
+<div class="font-label-md text-label-md bg-surface-container-lowest p-space-md rounded-lg text-on-surface overflow-x-auto">
+          KOL_SCORE = (0.25 × Citations) + (0.30 × Citation_Velocity_3Y) + (0.15 × H_Index) + (0.10 × i10_Index) + (0.10 × Degree_Centrality) + (0.10 × Trial_PI_Count)
+        </div>
+</div>
+<!-- 5-Tier Classification Matrix -->
+<div class="grid grid-cols-1 md:grid-cols-5 gap-space-sm">
+<!-- Tier 1 -->
+<div class="p-space-md bg-surface-container-lowest rounded-lg flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between">
+<span class="px-space-xs py-0.5 bg-primary-container text-on-primary-container font-label-sm text-label-sm rounded">TIER 1</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">&gt; 90.0</span>
+</div>
+<div class="font-headline-sm text-headline-sm text-on-surface mt-space-sm">GLOBAL KOL</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-space-xs">Shapes international clinical guidelines, leads Phase III multi-center trials, keynote at ASCO/ESMO.</p>
+</div>
+<div class="mt-space-md pt-space-xs font-label-sm text-label-sm text-secondary">
+            SAMPLE: Dr. Gordon Mills (OHSU)
+          </div>
+</div>
+<!-- Tier 2 -->
+<div class="p-space-md bg-surface-container-lowest rounded-lg flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between">
+<span class="px-space-xs py-0.5 bg-secondary-container text-on-secondary-container font-label-sm text-label-sm rounded">TIER 2</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">75.0 – 89.9</span>
+</div>
+<div class="font-headline-sm text-headline-sm text-on-surface mt-space-sm">NATIONAL LEADER</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-space-xs">Directs national oncology task forces, high co-authorship density, consistent NIH R01 principal investigator.</p>
+</div>
+<div class="mt-space-md pt-space-xs font-label-sm text-label-sm text-secondary">
+            SAMPLE: Dr. Arlene Chan (Perth)
+          </div>
+</div>
+<!-- Tier 3 -->
+<div class="p-space-md bg-surface-container-lowest rounded-lg flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between">
+<span class="px-space-xs py-0.5 bg-surface-container-high text-on-surface font-label-sm text-label-sm rounded">TIER 3</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">60.0 – 74.9</span>
+</div>
+<div class="font-headline-sm text-headline-sm text-on-surface mt-space-sm">REGIONAL ANCHOR</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-space-xs">Primary referral hospital director, frequent Phase II trial investigator, regional trial enroller.</p>
+</div>
+<div class="mt-space-md pt-space-xs font-label-sm text-label-sm text-secondary">
+            SAMPLE: Dr. Marcus Vance (Memorial)
+          </div>
+</div>
+<!-- Tier 4 -->
+<div class="p-space-md bg-surface-container-lowest rounded-lg flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between">
+<span class="px-space-xs py-0.5 bg-surface-container-high text-on-surface font-label-sm text-label-sm rounded">TIER 4</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">45.0 – 59.9</span>
+</div>
+<div class="font-headline-sm text-headline-sm text-on-surface mt-space-sm">LOCAL SPECIALIST</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-space-xs">Sub-specialty community clinic leader, co-author on specialized cohort papers, strong clinical volume.</p>
+</div>
+<div class="mt-space-md pt-space-xs font-label-sm text-label-sm text-secondary">
+            SAMPLE: Dr. Sarah Lin (Scripps)
+          </div>
+</div>
+<!-- Tier 5 -->
+<div class="p-space-md bg-surface-container-lowest rounded-lg flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between">
+<span class="px-space-xs py-0.5 bg-tertiary-container text-on-tertiary-container font-label-sm text-label-sm rounded">TIER 5</span>
+<span class="font-label-sm text-label-sm text-tertiary-container font-bold">VELOCITY ALERT</span>
+</div>
+<div class="font-headline-sm text-headline-sm text-on-surface mt-space-sm">RISING STAR</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-space-xs">Under 35yo, exponential 24-month citation spike, breakthrough first-author Nature/Cell publications.</p>
+</div>
+<div class="mt-space-md pt-space-xs font-label-sm text-label-sm text-secondary">
+            SAMPLE: Dr. Kevin Thorne (Broad)
+          </div>
+</div>
+</div>
+</div>
+</section>
+<!-- =========================================================================
+       SECTION 06: CHARACTER MOMENT (MAGNIFYING LOUPE & RESEARCH WALL)
+       ========================================================================= -->
+<section class="w-full max-w-7xl mx-auto px-margin py-space-xl">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center">
+<div class="lg:col-span-6 bg-surface-container-lowest p-space-md rounded-xl shadow-sm">
+<div class="font-label-sm text-label-sm text-on-surface-variant mb-space-xs">FIG 2.0 // DEEP ENTITY INSPECTION</div>
+<svg class="w-full h-auto text-on-surface fill-none stroke-current" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 460 300">
+<!-- Wall of pinned profile index cards -->
+<rect fill="#efedf1" height="70" rx="3" stroke="#c4c6d1" width="100" x="40" y="30"></rect>
+<line stroke="#1a1b1e" stroke-width="2" x1="50" x2="110" y1="45" y2="45"></line>
+<line stroke="#747780" x1="50" x2="130" y1="60" y2="60"></line>
+<line stroke="#747780" x1="50" x2="100" y1="72" y2="72"></line>
+<rect fill="#ffffff" height="85" rx="3" stroke="#103366" stroke-width="2" width="110" x="160" y="20"></rect>
+<circle cx="185" cy="45" fill="#acc7ff" r="12" stroke="#103366"></circle>
+<line stroke="#103366" stroke-width="2.5" x1="205" x2="255" y1="40" y2="40"></line>
+<line stroke="#43474f" x1="205" x2="245" y1="52" y2="52"></line>
+<line stroke="#476553" stroke-width="2" x1="170" x2="255" y1="75" y2="75"></line>
+<line stroke="#747780" x1="170" x2="230" y1="88" y2="88"></line>
+<rect fill="#efedf1" height="70" rx="3" stroke="#c4c6d1" width="105" x="290" y="35"></rect>
+<line stroke="#1a1b1e" stroke-width="2" x1="300" x2="370" y1="50" y2="50"></line>
+<line stroke="#747780" x1="300" x2="350" y1="65" y2="65"></line>
+<!-- Pinned threads connecting entities -->
+<path d="M 90,100 Q 140,160 215,105" stroke="#e27d60" stroke-dasharray="3 3" stroke-width="1.8"></path>
+<path d="M 270,105 Q 310,140 340,105" stroke="#476553" stroke-width="1.8"></path>
+<!-- Investigator stickman with Loupe -->
+<!-- Body standing on a small wooden step stool -->
+<rect fill="#efedf1" height="15" stroke="#1a1b1e" width="40" x="70" y="250"></rect>
+<!-- Head tilted in scrutiny -->
+<circle cx="90" cy="165" fill="#F7F3EA" r="14" stroke="#1a1b1e" stroke-width="2"></circle>
+<line stroke="#1a1b1e" stroke-width="2.2" x1="90" x2="90" y1="179" y2="225"></line>
+<!-- Left Arm holding giant magnifying loupe -->
+<line stroke="#1a1b1e" stroke-width="2" x1="90" x2="120" y1="190" y2="175"></line>
+<line stroke="#1a1b1e" stroke-width="2" x1="120" x2="140" y1="175" y2="140"></line>
+<!-- Loupe lens hovering right over the center card -->
+<circle cx="155" cy="125" fill="#F7F3EA" r="22" stroke="#611d04" stroke-width="2.5"></circle>
+<line stroke="#611d04" stroke-width="4" x1="140" x2="147" y1="140" y2="133"></line>
+<circle cx="155" cy="125" r="16" stroke="#c4c6d1" stroke-dasharray="2 2"></circle>
+<!-- Legs standing on stool -->
+<line stroke="#1a1b1e" stroke-width="2.2" x1="90" x2="80" y1="225" y2="250"></line>
+<line stroke="#1a1b1e" stroke-width="2.2" x1="90" x2="100" y1="225" y2="250"></line>
+<!-- Handwritten annotation -->
+<path d="M 180,135 Q 240,180 270,165" fill="none" stroke="#611d04" stroke-dasharray="2 2" stroke-width="1.5"></path>
+<text fill="#611d04" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="600" x="240" y="195">"Citation count isn't</text>
+<text fill="#611d04" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="600" x="240" y="210">the whole story."</text>
+</svg>
+</div>
+<div class="lg:col-span-6 flex flex-col gap-space-md">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary font-bold">06 // INVESTIGATIVE RESOLUTION</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">
+          CONNECTING PERSON → PAPER → TRIAL → REAL CLINICAL IMPACT.
+        </h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+          This is deep systems engineering, not basic CRUD. A researcher who published 300 papers as a 4th co-author has far less clinical steering power than a clinician who ran the specific Phase II trial that redefined second-line therapy for non-small cell lung cancer.
+        </p>
+<div class="grid grid-cols-2 gap-space-sm pt-space-xs font-label-sm text-label-sm">
+<div class="p-space-sm bg-surface-container rounded-lg">
+<span class="text-on-surface font-bold block mb-1">TRADITIONAL METRIC</span>
+<span class="text-on-surface-variant">H-Index: 42 (Raw, unweighted, includes 15-year-old reviews)</span>
+</div>
+<div class="p-space-sm bg-primary-container text-on-primary-container rounded-lg">
+<span class="font-bold block mb-1">IRIS RESOLUTION</span>
+<span>Current Trial Velocity: 94.2 (Leading 3 active Phase II trials right now)</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- =========================================================================
+       SECTION 07: THE CO-AUTHOR NETWORK
+       ========================================================================= -->
+<section class="w-full max-w-7xl mx-auto px-margin py-space-xl">
+<div class="p-space-lg bg-surface-container-low rounded-xl flex flex-col gap-space-md">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md">
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary font-bold">07 // GRAPH TOPOLOGY</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mt-space-xs">PEOPLE ARE PART OF THE EVIDENCE.</h2>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-lg">
+          Research doesn't happen in isolation. Relationships between researchers reveal influence, mentorship trees, and lab clusters that isolated publications hide.
+        </p>
+</div>
+<!-- Force-Directed Interactive SVG Network Graph -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-md mt-space-sm">
+<div class="lg:col-span-8 bg-surface-container-lowest p-space-md rounded-xl shadow-sm relative overflow-hidden">
+<div class="flex items-center justify-between font-label-sm text-label-sm text-on-surface-variant mb-space-xs">
+<span>INTERACTIVE FORCE-DIRECTED CLUSTER: NEOADJUVANT IMMUNOTHERAPY</span>
+<span class="text-secondary font-bold">EDGES: 128 · DENSITY: 0.68</span>
+</div>
+<svg class="w-full h-auto text-on-surface fill-none stroke-current" stroke-width="1.5" viewbox="0 0 600 340">
+<!-- Background Web Edges -->
+<line stroke="#c4c6d1" stroke-width="2" x1="180" x2="300" y1="140" y2="170"></line>
+<line stroke="#415e93" stroke-width="3" x1="300" x2="420" y1="170" y2="120"></line>
+<line stroke="#c4c6d1" stroke-width="2" x1="300" x2="370" y1="170" y2="260"></line>
+<line stroke="#c4c6d1" stroke-width="1.5" x1="180" x2="140" y1="140" y2="240"></line>
+<line stroke="#476553" stroke-width="2.5" x1="300" x2="220" y1="170" y2="270"></line>
+<line stroke="#c4c6d1" stroke-width="1.5" x1="420" x2="490" y1="120" y2="200"></line>
+<line stroke="#c4c6d1" stroke-width="1.5" x1="420" x2="330" y1="120" y2="70"></line>
+<line stroke="#c4c6d1" stroke-width="1.5" x1="180" x2="210" y1="140" y2="60"></line>
+<!-- Subordinate Nodes -->
+<circle cx="210" cy="60" fill="#efedf1" r="10" stroke="#747780"></circle>
+<text fill="#1a1b1e" font-family="'JetBrains Mono', monospace" font-size="9" stroke="none" text-anchor="middle" x="210" y="64">CL1</text>
+<circle cx="330" cy="70" fill="#efedf1" r="12" stroke="#747780"></circle>
+<text fill="#1a1b1e" font-family="'JetBrains Mono', monospace" font-size="9" stroke="none" text-anchor="middle" x="330" y="74">CL2</text>
+<circle cx="140" cy="240" fill="#c7e8d1" r="14" stroke="#476553"></circle>
+<text fill="#032012" font-family="'JetBrains Mono', monospace" font-size="9" stroke="none" text-anchor="middle" x="140" y="244">UCSF</text>
+<circle cx="220" cy="270" fill="#ffdbd0" r="16" stroke="#7f3318"></circle>
+<text fill="#390b00" font-family="'JetBrains Mono', monospace" font-size="10" stroke="none" text-anchor="middle" x="220" y="274">MDACC</text>
+<circle cx="370" cy="260" fill="#efedf1" r="14" stroke="#747780"></circle>
+<text fill="#1a1b1e" font-family="'JetBrains Mono', monospace" font-size="9" stroke="none" text-anchor="middle" x="370" y="264">JHU</text>
+<circle cx="490" cy="200" fill="#efedf1" r="12" stroke="#747780"></circle>
+<text fill="#1a1b1e" font-family="'JetBrains Mono', monospace" font-size="9" stroke="none" text-anchor="middle" x="490" y="204">MSKCC</text>
+<!-- Major Anchor Node (Elena Rostova - Selected) -->
+<circle cx="300" cy="170" fill="#acc7ff" r="32" stroke="#103366" stroke-width="3"></circle>
+<!-- Concentric Selection Ripple -->
+<circle cx="300" cy="170" fill="none" r="42" stroke="#2c4a7e" stroke-dasharray="4 3" stroke-width="1.5"></circle>
+<text fill="#001a40" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700" stroke="none" text-anchor="middle" x="300" y="174">ROSTOVA</text>
+<!-- Co-Principal Node -->
+<circle cx="420" cy="120" fill="#d7e2ff" r="22" stroke="#103366" stroke-width="2"></circle>
+<text fill="#001a40" font-family="'JetBrains Mono', monospace" font-size="10" stroke="none" text-anchor="middle" x="420" y="124">CHEN</text>
+<circle cx="180" cy="140" fill="#c9ead3" r="20" stroke="#304d3c" stroke-width="2"></circle>
+<text fill="#032012" font-family="'JetBrains Mono', monospace" font-size="10" stroke="none" text-anchor="middle" x="180" y="144">GARCIA</text>
+</svg>
+</div>
+<!-- Node Inspector Card -->
+<div class="lg:col-span-4 bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="px-space-xs py-0.5 bg-primary-container text-on-primary-container font-label-sm text-label-sm rounded font-bold">SELECTED NODE</span>
+<span class="font-label-sm text-label-sm text-secondary font-bold">GLOBAL TIER 1</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mt-space-xs">Dr. Elena Rostova, MD, PhD</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Dana-Farber Cancer Institute · Harvard Medical School</p>
+<div class="mt-space-sm space-y-space-xs font-label-sm text-label-sm">
+<div class="flex justify-between py-1 bg-surface-container px-2 rounded">
+<span class="text-on-surface-variant">TOTAL PAPERS</span>
+<span class="text-on-surface font-bold">142</span>
+</div>
+<div class="flex justify-between py-1 bg-surface-container px-2 rounded">
+<span class="text-on-surface-variant">AGGREGATE CITATIONS</span>
+<span class="text-on-surface font-bold">18,410</span>
+</div>
+<div class="flex justify-between py-1 bg-surface-container px-2 rounded">
+<span class="text-on-surface-variant">ACTIVE COLLABORATIONS</span>
+<span class="text-on-surface font-bold">34 Laboratories</span>
+</div>
+<div class="flex justify-between py-1 bg-surface-container px-2 rounded">
+<span class="text-on-surface-variant">PRIMARY FOCUS</span>
+<span class="text-primary font-bold">Neoadjuvant Immunotherapy</span>
+</div>
+</div>
+</div>
+<div class="mt-space-md pt-space-sm">
+<button class="w-full py-space-xs px-space-sm bg-primary text-on-primary font-label-sm text-label-sm uppercase tracking-wider rounded hover:bg-primary-container transition-colors">
+              QUERY AUTHOR TRIAL PORTFOLIO →
+            </button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- =========================================================================
+       SECTION 08: THEN COMES THE AI (NATURAL QUERYING)
+       ========================================================================= -->
+<section class="w-full max-w-7xl mx-auto px-margin py-space-xl">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center">
+<div class="lg:col-span-6 flex flex-col gap-space-md">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary font-bold">08 // THE BRIDGE</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">SO I GAVE THE DATA A WAY TO BE QUERIED.</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+          Having 25 million clinical entities in Postgres isn't enough if users still need to write complex SQL joins to ask questions. I built an autonomous multi-agent routing loop that translates clinical curiosity into verifiable data operations.
+        </p>
+<!-- Dynamic Agent Step Loop -->
+<div class="flex flex-col gap-space-xs font-label-sm text-label-sm mt-space-xs">
+<div class="p-space-xs bg-surface-container rounded flex items-center gap-space-sm">
+<span class="w-6 h-6 rounded-full bg-primary text-on-primary flex items-center justify-center font-bold">1</span>
+<span>USER ASKS NATURAL QUESTION IN CLINICAL DIALECT</span>
+</div>
+<div class="p-space-xs bg-surface-container rounded flex items-center gap-space-sm">
+<span class="w-6 h-6 rounded-full bg-primary text-on-primary flex items-center justify-center font-bold">2</span>
+<span>INTENT AGENT RESOLVES MOLECULAR TARGETS &amp; DATE LIMITS</span>
+</div>
+<div class="p-space-xs bg-surface-container rounded flex items-center gap-space-sm">
+<span class="w-6 h-6 rounded-full bg-primary text-on-primary flex items-center justify-center font-bold">3</span>
+<span>RETRIEVAL AGENT PULLS DETERMINISTIC TABULAR RECORDS</span>
+</div>
+<div class="p-space-xs bg-surface-container rounded flex items-center gap-space-sm">
+<span class="w-6 h-6 rounded-full bg-secondary text-on-secondary flex items-center justify-center font-bold">4</span>
+<span>SYNTHESIS AGENT EMITS VERIFIED EVIDENCE BRIEF + DOIs</span>
+</div>
+</div>
+</div>
+<!-- Terminal Mockup with Character Interaction -->
+<div class="lg:col-span-6 bg-surface-container-lowest p-space-md rounded-xl shadow-sm">
+<div class="flex items-center justify-between pb-space-xs border-b border-outline-variant text-on-surface-variant font-label-sm text-label-sm mb-space-sm">
+<span>IRIS INTERACTIVE AGENT SHELL // SESSION #409</span>
+<span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-secondary"></span> ONLINE</span>
+</div>
+<div class="space-y-space-sm">
+<!-- User Prompt -->
+<div class="bg-surface-container p-space-sm rounded-lg">
+<div class="font-label-sm text-label-sm text-on-surface-variant mb-1">CLINICIAN QUERY:</div>
+<p class="font-body-md text-body-md text-on-surface font-semibold">
+              "Who are the leading researchers in KRAS G12D inhibitor trials across the US, and which institutions hold the highest Phase I enrollment velocity?"
+            </p>
+</div>
+<!-- Agent Response Stream -->
+<div class="bg-surface-container-low p-space-sm rounded-lg space-y-space-xs">
+<div class="flex items-center justify-between font-label-sm text-label-sm text-primary font-bold">
+<span>IRIS SYNTHESIS REPORT [GENERATED IN 240ms]</span>
+<span>CONFIDENCE: 99.1%</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface">
+              Retrieved <strong>14 active Phase I/II trials</strong> and identified <strong>3 primary national anchors</strong>. The dominant investigator is <strong>Dr. David Hong (MD Anderson)</strong> with 4 active G12D cohort protocols, followed by <strong>Dr. Bob T. Li (MSKCC)</strong>.
+            </p>
+<div class="flex flex-wrap gap-space-xs pt-1">
+<span class="px-2 py-0.5 bg-surface-container-high rounded font-label-sm text-label-sm text-on-surface">doi:10.1056/NEJMoa2204619</span>
+<span class="px-2 py-0.5 bg-surface-container-high rounded font-label-sm text-label-sm text-on-surface">NCT04449874</span>
+<span class="px-2 py-0.5 bg-secondary-container text-on-secondary-container rounded font-label-sm text-label-sm">34 Citations/Mo</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- =========================================================================
+       SECTION 09: MULTI-AGENT ARCHITECTURE (LANGGRAPH)
+       ========================================================================= -->
+<section class="w-full max-w-7xl mx-auto px-margin py-space-xl">
+<div class="p-space-lg bg-surface-container rounded-xl flex flex-col gap-space-md">
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary font-bold">09 // ORCHESTRATION</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mt-space-xs">ONE QUESTION. MULTIPLE SPECIALISTS.</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">
+          Rather than relying on an all-in-one generalist prompt, IRIS separates concerns into dedicated LangGraph nodes with strict state transfers.
+        </p>
+</div>
+<!-- Agent Trio Cards -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
+<!-- Agent 1 -->
+<div class="p-space-md bg-surface-container-lowest rounded-xl shadow-sm flex flex-col justify-between">
+<div>
+<div class="w-10 h-10 rounded-lg bg-primary-container text-on-primary-container flex items-center justify-center font-bold mb-space-sm">
+<span class="material-symbols-outlined">psychology</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">01. INTENT AGENT</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-space-xs">
+              Parses the free-form query. Extracts clinical targets, Phase boundaries, target geographical bounds, and temporal recency filters. Emits a deterministic JSON state object.
+            </p>
+</div>
+<div class="mt-space-md pt-space-xs font-label-sm text-label-sm text-on-surface-variant">
+            RUNTIME: Edge Function (18ms)
+          </div>
+</div>
+<!-- Agent 2 -->
+<div class="p-space-md bg-surface-container-lowest rounded-xl shadow-sm flex flex-col justify-between">
+<div>
+<div class="w-10 h-10 rounded-lg bg-secondary-container text-on-secondary-container flex items-center justify-center font-bold mb-space-sm">
+<span class="material-symbols-outlined">database</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">02. RETRIEVAL AGENT</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-space-xs">
+              Compiles the state object into strict PostgreSQL queries against indexed tables, alongside dense vector similarity searches for MeSH biological ontologies. No hallucinations permitted.
+            </p>
+</div>
+<div class="mt-space-md pt-space-xs font-label-sm text-label-sm text-on-surface-variant">
+            EXECUTION: Supabase pgvector + B-tree
+          </div>
+</div>
+<!-- Agent 3 -->
+<div class="p-space-md bg-surface-container-lowest rounded-xl shadow-sm flex flex-col justify-between">
+<div>
+<div class="w-10 h-10 rounded-lg bg-tertiary-container text-on-tertiary-container flex items-center justify-center font-bold mb-space-sm">
+<span class="material-symbols-outlined">fact_check</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">03. SYNTHESIS AGENT</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-space-xs">
+              Consumes only the returned tabular records and primary abstracts. Formulates the answer with strict requirement: every factual assertion must bind to an exact DOI from the retrieval payload.
+            </p>
+</div>
+<div class="mt-space-md pt-space-xs font-label-sm text-label-sm text-on-surface-variant">
+            VALIDATION: AST Citation Verifier
+          </div>
+</div>
+</div>
+<!-- Axiom Callout -->
+<div class="p-space-md bg-surface-container-lowest rounded-xl flex items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-headline-md">verified_user</span>
+<div>
+<span class="font-label-md text-label-md uppercase tracking-wider text-on-surface font-bold block">SYSTEM AXIOM #1</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">"THE LLM DOES NOT GET TO MAKE UP THE DATABASE." If a paper is not in the ingested table, it cannot exist in the output.</span>
+</div>
+</div>
+<span class="hidden md:inline font-label-sm text-label-sm text-secondary font-bold">ZERO HALLUCINATION TOLERANCE</span>
+</div>
+</div>
+</section>
+<!-- =========================================================================
+       SECTION 10: PROVENANCE & FACT VERIFICATION
+       ========================================================================= -->
+<section class="w-full max-w-7xl mx-auto px-margin py-space-xl">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center">
+<div class="lg:col-span-5 flex flex-col gap-space-md">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-tertiary font-bold">10 // GROUND TRUTH</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">AN ANSWER IS ONLY AS USEFUL AS ITS SOURCE.</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">
+          In clinical medicine, an unsourced AI hallucination isn't just annoying—it's dangerous. IRIS enforces continuous end-to-end citation provenance. Every statement connects directly back to PubMed IDs and open publication records.
+        </p>
+<div class="p-space-sm bg-surface-container rounded-lg font-label-sm text-label-sm text-on-surface">
+<span class="font-bold text-tertiary">RESEARCHER VERDICT:</span> "Show me where that came from, or I can't present it to my medical advisory board."
+        </div>
+</div>
+<!-- Verified Citation Card with Interactive Provenance Trace -->
+<div class="lg:col-span-7 bg-surface-container-lowest p-space-lg rounded-xl shadow-sm space-y-space-md">
+<div class="flex items-center justify-between pb-space-xs border-b border-outline-variant font-label-sm text-label-sm text-on-surface-variant">
+<span>PROVENANCE TRACER ENGINE</span>
+<span class="text-secondary font-bold">AST STATUS: PARSED &amp; BOUND</span>
+</div>
+<div class="p-space-md bg-surface-container rounded-lg">
+<div class="font-label-sm text-label-sm text-on-surface-variant mb-1">GENERATED STATEMENT:</div>
+<p class="font-body-md text-body-md text-on-surface">
+            "Sotorasib combined with panitumumab demonstrated an objective response rate of 26.4% in chemorefractory KRAS G12C-mutated colorectal cancer
+            <span class="inline-block px-1.5 py-0.5 bg-primary-container text-on-primary-container font-label-sm text-label-sm rounded ml-1 cursor-pointer">[1]</span>."
+          </p>
+</div>
+<div class="p-space-md bg-surface-container-low rounded-lg space-y-space-xs font-label-sm text-label-sm">
+<div class="flex items-center justify-between text-secondary font-bold">
+<span>[1] VERIFIED SOURCE RECORD</span>
+<span>PUBMED ID: 36542152</span>
+</div>
+<div class="font-headline-sm text-headline-sm text-on-surface font-semibold">
+            The New England Journal of Medicine (NEJM)
+          </div>
+<p class="text-on-surface-variant">
+            Fakih MG, et al. "Overall Survival with Sotorasib in KRAS G12C-Mutated Colorectal Cancer." Vol 388: 120-131, DOI: 10.1056/NEJMoa2212419.
+          </p>
+<div class="flex items-center justify-between pt-2 text-primary font-bold">
+<span>PRIMARY COHORT: n=160</span>
+<span>MATCH CONFIDENCE: 100% (EXACT DOI RECORD)</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- =========================================================================
+       SECTION 11: THE DASHBOARD (CONTROL ROOM)
+       ========================================================================= -->
+<section class="w-full max-w-7xl mx-auto px-margin py-space-xl">
+<div class="flex flex-col gap-space-md">
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary font-bold">11 // THE CONTROL ROOM</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mt-space-xs">ENTERING THE IRIS WORKSPACE.</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">
+          The SaaS application synthesizes multiple data layers into an editorial workstation designed for high-velocity clinical intelligence.
+        </p>
+</div>
+<!-- Dashboard Mockup Frame -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-md space-y-space-md">
+<!-- Top Toolbar Mockup -->
+<div class="flex flex-wrap items-center justify-between gap-space-sm p-space-sm bg-surface-container rounded-lg font-label-sm text-label-sm">
+<div class="flex items-center gap-space-md">
+<span class="font-bold text-primary">WORKSPACE: SOLID TUMOR ONCOLOGY</span>
+<span class="text-on-surface-variant">TARGET: KRAS / BRAF AXIS</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="px-2 py-1 bg-surface-container-lowest rounded text-on-surface">FILTER: PHASE I-III</span>
+<span class="px-2 py-1 bg-surface-container-lowest rounded text-on-surface">GEO: NORTH AMERICA</span>
+<span class="px-2 py-1 bg-primary text-on-primary rounded font-bold">EXPORT DOSSIER (PDF)</span>
+</div>
+</div>
+<!-- Dashboard Grid Modules -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-md">
+<!-- Left: KOL Ranked Leaderboard (4 cols) -->
+<div class="lg:col-span-5 bg-surface-container-low p-space-md rounded-xl space-y-space-sm">
+<div class="flex items-center justify-between font-label-sm text-label-sm text-on-surface-variant">
+<span>RANKED INVESTIGATORS</span>
+<span>SORT: VELOCITY DESC</span>
+</div>
+<!-- Leaderboard items -->
+<div class="space-y-space-xs font-label-sm text-label-sm">
+<div class="p-space-sm bg-surface-container-lowest rounded-lg flex items-center justify-between">
+<div>
+<div class="text-on-surface font-bold">1. Dr. David Hong, MD</div>
+<div class="text-on-surface-variant text-body-sm">MD Anderson · 48 Trials</div>
+</div>
+<span class="px-2 py-1 bg-primary-container text-on-primary-container rounded font-bold">96.4 KOL</span>
+</div>
+<div class="p-space-sm bg-surface-container-lowest rounded-lg flex items-center justify-between">
+<div>
+<div class="text-on-surface font-bold">2. Dr. Bob T. Li, MD, PhD</div>
+<div class="text-on-surface-variant text-body-sm">Memorial Sloan Kettering · 36 Trials</div>
+</div>
+<span class="px-2 py-1 bg-primary-container text-on-primary-container rounded font-bold">94.8 KOL</span>
+</div>
+<div class="p-space-sm bg-surface-container-lowest rounded-lg flex items-center justify-between">
+<div>
+<div class="text-on-surface font-bold">3. Dr. Pasi A. Jänne, MD, PhD</div>
+<div class="text-on-surface-variant text-body-sm">Dana-Farber · 42 Trials</div>
+</div>
+<span class="px-2 py-1 bg-secondary-container text-on-secondary-container rounded font-bold">91.2 KOL</span>
+</div>
+<div class="p-space-sm bg-surface-container-lowest rounded-lg flex items-center justify-between">
+<div>
+<div class="text-on-surface font-bold">4. Dr. Melissa Johnson, MD</div>
+<div class="text-on-surface-variant text-body-sm">Sarah Cannon · 29 Trials</div>
+</div>
+<span class="px-2 py-1 bg-secondary-container text-on-secondary-container rounded font-bold">88.5 KOL</span>
+</div>
+</div>
+</div>
+<!-- Right: Geographic Distribution + Timeline (7 cols) -->
+<div class="lg:col-span-7 flex flex-col gap-space-md">
+<!-- Map Placeholder Module -->
+<div class="w-full h-48 bg-cover bg-center rounded-xl relative flex items-end p-space-sm" data-location="United States" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA1Bf2e7UMfNFNP9c54n_vVHFYmHgwh_-Wpeo0IRLkmc7hyrGcHVIFKjc9XZ7ARrjGCd3TrU6oZBZ_2u6YSvZQQgOJH26vXTVEe3_7LGivqO0jTB8NlxPM4r5XUUHGFfjOHN8F_aLpfe0cJKvWMYS7R8wI1IttarT2qBS2oQLYe-X4YrX-Au3xx27ofWYAU3gYjKm1bo7GbkDMlTpX8hv1MbysI5eZ5RtFb64cLs8WZlpPXOaQKcjCa');">
+<div class="bg-surface/90 backdrop-blur-md p-space-xs rounded font-label-sm text-label-sm text-on-surface">
+                TRIAL CLUSTER HEATMAP: 142 TRIAL SITES INDEXED
+              </div>
+</div>
+<!-- Citation Velocity Timeline SVG -->
+<div class="bg-surface-container-low p-space-md rounded-xl">
+<div class="flex items-center justify-between font-label-sm text-label-sm text-on-surface-variant mb-space-xs">
+<span>CITATION VELOCITY TRAJECTORY (2020 - 2024)</span>
+<span class="text-primary font-bold">+312% YoY SPIKE</span>
+</div>
+<svg class="w-full h-auto text-on-surface fill-none stroke-current" stroke-width="2" viewbox="0 0 500 120">
+<!-- Grid hairlines -->
+<line stroke="#c4c6d1" stroke-width="1" x1="20" x2="480" y1="100" y2="100"></line>
+<line stroke="#c4c6d1" stroke-dasharray="2 2" stroke-width="1" x1="20" x2="480" y1="60" y2="60"></line>
+<line stroke="#c4c6d1" stroke-dasharray="2 2" stroke-width="1" x1="20" x2="480" y1="20" y2="20"></line>
+<!-- Trajectory Line 1 (Sotorasib / KRAS) -->
+<path d="M 30,95 Q 120,90 200,80 T 320,50 T 420,18 T 470,12" stroke="#103366" stroke-width="3"></path>
+<!-- Trajectory Line 2 (Comparative standard of care) -->
+<path d="M 30,85 Q 140,82 240,78 T 380,72 T 470,68" stroke="#747780" stroke-dasharray="4 4" stroke-width="1.5"></path>
+<!-- Area fill -->
+<polygon fill="#acc7ff" opacity="0.15" points="30,95 200,80 320,50 420,18 470,12 470,100 30,100" stroke="none"></polygon>
+</svg>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- =========================================================================
+       SECTION 12: DATA PIPELINE & BACKGROUND WORKERS (INNGEST)
+       ========================================================================= -->
+<section class="w-full max-w-7xl mx-auto px-margin py-space-xl">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center">
+<!-- Stickman Worker Vignette -->
+<div class="lg:col-span-5 bg-surface-container-lowest p-space-md rounded-xl shadow-sm">
+<div class="font-label-sm text-label-sm text-on-surface-variant mb-space-xs">CRON DISPATCHER TELEMETRY</div>
+<svg class="w-full h-auto text-on-surface fill-none stroke-current" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 420 280">
+<!-- Large Server Rack with Blinking LEDs -->
+<rect fill="#efedf1" height="200" rx="4" stroke="#103366" stroke-width="2" width="160" x="220" y="40"></rect>
+<!-- Server Trays -->
+<rect fill="#F7F3EA" height="24" rx="2" stroke="#43474f" width="130" x="235" y="60"></rect>
+<circle cx="250" cy="72" fill="#476553" r="3" stroke="none"></circle>
+<circle cx="260" cy="72" fill="#476553" r="3" stroke="none"></circle>
+<line stroke="#c4c6d1" x1="280" x2="350" y1="72" y2="72"></line>
+<rect fill="#F7F3EA" height="24" rx="2" stroke="#43474f" width="130" x="235" y="95"></rect>
+<circle cx="250" cy="107" fill="#476553" r="3" stroke="none"></circle>
+<circle cx="260" cy="107" fill="#ba1a1a" r="3" stroke="none"></circle>
+<line stroke="#c4c6d1" x1="280" x2="330" y1="107" y2="107"></line>
+<rect fill="#F7F3EA" height="24" rx="2" stroke="#43474f" width="130" x="235" y="130"></rect>
+<circle cx="250" cy="142" fill="#476553" r="3" stroke="none"></circle>
+<line stroke="#c4c6d1" x1="280" x2="350" y1="142" y2="142"></line>
+<rect fill="#F7F3EA" height="24" rx="2" stroke="#43474f" width="130" x="235" y="165"></rect>
+<circle cx="250" cy="177" fill="#476553" r="3" stroke="none"></circle>
+<line stroke="#c4c6d1" x1="280" x2="340" y1="177" y2="177"></line>
+<!-- Stickman Wearing Engineer Hard Hat -->
+<!-- Hard Hat -->
+<path d="M 95,125 Q 110,110 125,125 Z" fill="#ffa486" stroke="#7f3318" stroke-width="2"></path>
+<line stroke="#7f3318" stroke-width="2.5" x1="90" x2="130" y1="126" y2="126"></line>
+<!-- Head -->
+<circle cx="110" cy="140" fill="#F7F3EA" r="14" stroke="#1a1b1e" stroke-width="2"></circle>
+<!-- Body -->
+<line stroke="#1a1b1e" stroke-width="2.2" x1="110" x2="110" y1="154" y2="200"></line>
+<!-- Arm holding tiny wrench -->
+<line stroke="#1a1b1e" stroke-width="2" x1="110" x2="145" y1="165" y2="155"></line>
+<!-- Small Wrench -->
+<line stroke="#103366" stroke-width="3" x1="145" x2="160" y1="155" y2="150"></line>
+<circle cx="162" cy="149" fill="none" r="3" stroke="#103366" stroke-width="2"></circle>
+<!-- Left Arm at waist -->
+<line stroke="#1a1b1e" stroke-width="2" x1="110" x2="90" y1="165" y2="180"></line>
+<!-- Legs -->
+<line stroke="#1a1b1e" stroke-width="2.2" x1="110" x2="95" y1="200" y2="240"></line>
+<line stroke="#1a1b1e" stroke-width="2.2" x1="110" x2="125" y1="200" y2="240"></line>
+<!-- Cable linking worker tablet to server -->
+<path d="M 162,149 Q 190,140 220,142" fill="none" stroke="#476553" stroke-dasharray="3 3" stroke-width="1.5"></path>
+<text fill="#7f3318" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="600" x="70" y="265">"Keeping the ingestion alive."</text>
+</svg>
+</div>
+<div class="lg:col-span-7 flex flex-col gap-space-md">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary font-bold">12 // THE ENGINE ROOM</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">THE AI IS ONLY ONE PART OF THE SYSTEM.</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+          LLMs cannot answer questions about clinical research if your backend lacks an automated pipeline to ingest, sanitize, and score tens of thousands of incoming papers each night.
+        </p>
+<div class="p-space-md bg-surface-container-low rounded-xl space-y-space-xs font-label-sm text-label-sm">
+<div class="flex justify-between">
+<span class="text-on-surface font-bold">SERVERLESS QUEUE:</span>
+<span class="text-secondary font-bold">Inngest Step Functions</span>
+</div>
+<div class="flex justify-between">
+<span class="text-on-surface font-bold">BATCH STRATEGY:</span>
+<span class="text-on-surface-variant">Cursor-based pagination (5,000 DOIs / batch)</span>
+</div>
+<div class="flex justify-between">
+<span class="text-on-surface font-bold">FAILOVER:</span>
+<span class="text-on-surface-variant">Automatic exponential backoff on HTTP 429</span>
+</div>
+<div class="flex justify-between">
+<span class="text-on-surface font-bold">STORAGE TARGET:</span>
+<span class="text-primary font-bold">Supabase Dedicated PostgreSQL 15 Instance</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- =========================================================================
+       SECTION 13: THE HARD PART (ENGINEERING TRADE-OFFS)
+       ========================================================================= -->
+<section class="w-full max-w-7xl mx-auto px-margin py-space-xl">
+<div class="flex flex-col gap-space-md">
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-tertiary font-bold">13 // ARCHITECTURAL TRADE-OFFS</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mt-space-xs">THE HARD PART WASN'T MAKING A CHATBOT.</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-3xl">
+          Putting a system into production exposes the gulf between a slick demo and an enterprise tool that oncologists trust with clinical trial intelligence.
+        </p>
+</div>
+<!-- 5 Trade-Off Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-space-md mt-space-sm">
+<!-- 1 -->
+<div class="p-space-md bg-surface-container-lowest rounded-xl shadow-sm space-y-space-xs">
+<div class="font-label-sm text-label-sm text-primary font-bold">01 / SCALE &amp; CHUNKING</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Data Scale vs Memory</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Millions of OpenAlex records blow past edge memory quotas. Migrated from naive bulk ingestion to streamed Inngest step workers processing bounded cursors with zero RAM exhaustion.
+          </p>
+</div>
+<!-- 2 -->
+<div class="p-space-md bg-surface-container-lowest rounded-xl shadow-sm space-y-space-xs">
+<div class="font-label-sm text-label-sm text-primary font-bold">02 / IDENTITY</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Disambiguation Collisions</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            "Y. Zhang" matches over 2,400 clinical researchers. Implemented deterministic institution cross-matching (ROR) paired with ORCID and co-author overlap heuristics to prevent false profile mergers.
+          </p>
+</div>
+<!-- 3 -->
+<div class="p-space-md bg-surface-container-lowest rounded-xl shadow-sm space-y-space-xs">
+<div class="font-label-sm text-label-sm text-primary font-bold">03 / TRANSLATION</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Structured SQL vs Vector Drift</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Vector embeddings struggle with exact numerical ranges ("trials initiated after Q2 2023"). Combined hybrid pgvector embeddings with strict SQL WHERE parameters generated by the Intent Agent.
+          </p>
+</div>
+<!-- 4 -->
+<div class="p-space-md bg-surface-container-lowest rounded-xl shadow-sm space-y-space-xs">
+<div class="font-label-sm text-label-sm text-primary font-bold">04 / LATENCY</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Graph Traversal Under 100ms</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Computing co-author graphs dynamically across 50,000 publications crippled database pools. Pre-computed denormalized adjacency tables during nightly ingestion runs to deliver instant UI graphs.
+          </p>
+</div>
+<!-- 5 -->
+<div class="p-space-md bg-surface-container-lowest rounded-xl shadow-sm space-y-space-xs">
+<div class="font-label-sm text-label-sm text-primary font-bold">05 / PROVENANCE</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Zero Generative Fluff</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Enforced an abstract syntax tree citation validator on the LLM response output. If an asserted paper does not possess a verified DOI in the retrieval set, the pipeline rejects and recalculates.
+          </p>
+</div>
+<!-- Summary badge -->
+<div class="p-space-md bg-surface-container rounded-xl flex flex-col justify-center items-center text-center">
+<span class="material-symbols-outlined text-primary text-display-sm">rule_settings</span>
+<span class="font-headline-sm text-headline-sm text-on-surface mt-1 font-bold">Rigor Over Convenience</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-1">Every system decision privileged clinical truth over generative simplicity.</span>
+</div>
+</div>
+</div>
+</section>
+<!-- =========================================================================
+       SECTION 14: THE FAILURE LOG / POST-MORTEM
+       ========================================================================= -->
+<section class="w-full max-w-7xl mx-auto px-margin py-space-xl">
+<div class="p-space-lg bg-surface-container-low rounded-xl">
+<div class="flex items-center justify-between pb-space-sm border-b border-outline-variant">
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-tertiary font-bold">14 // POST-MORTEM LOGBOOK</span>
+<h2 class="font-headline-md text-headline-md text-on-surface mt-1">BUILD → BREAK → TRACE → FIX</h2>
+</div>
+<span class="font-label-sm text-label-sm text-tertiary font-bold bg-error-container text-on-error-container px-2 py-1 rounded">3 INCIDENTS RESOLVED</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md mt-space-md font-label-sm text-label-sm">
+<!-- Failure 1 -->
+<div class="p-space-md bg-surface-container-lowest rounded-lg space-y-space-xs">
+<span class="text-tertiary font-bold">[FAIL_01] INNGEST HTTP 504 TIMEOUT</span>
+<p class="text-on-surface">Unpaginated author extraction query attempted to aggregate 85,000 records in a single synchronous serverless invocation.</p>
+<div class="text-secondary font-bold">FIX: Decomposed payload into recursive 2,000-item micro-batches with automatic cursor advancement.</div>
+</div>
+<!-- Failure 2 -->
+<div class="p-space-md bg-surface-container-lowest rounded-lg space-y-space-xs">
+<span class="text-tertiary font-bold">[FAIL_02] EMBEDDING COSINE DRIFT</span>
+<p class="text-on-surface">Acronym collision between "APC" (Adenomatous Polyposis Coli tumor suppressor) and "APC" (Antigen Presenting Cell).</p>
+<div class="text-secondary font-bold">FIX: Injected biological ontology MeSH parent prefixes into vector chunk metadata prior to embedding.</div>
+</div>
+<!-- Failure 3 -->
+<div class="p-space-md bg-surface-container-lowest rounded-lg space-y-space-xs">
+<span class="text-tertiary font-bold">[FAIL_03] CASCADE DELETION RACE</span>
+<p class="text-on-surface">Author entity deduplication worker locked Postgres foreign key tables during simultaneous user queries.</p>
+<div class="text-secondary font-bold">FIX: Re-architected deduplication to soft-tombstoning using asynchronous merge views and non-blocking locks.</div>
+</div>
+</div>
+</div>
+</section>
+<!-- =========================================================================
+       SECTION 15: THE TOOLBOX (TECHNICAL STACK)
+       ========================================================================= -->
+<section class="w-full max-w-7xl mx-auto px-margin py-space-xl">
+<div class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary font-bold">15 // SPECIFICATION</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mt-space-xs">THE TOOLBOX.</h2>
+</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">REVISED FOR 2024 PRODUCTION</div>
+</div>
+<!-- Stack Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-sm">
+<!-- App Layer -->
+<div class="p-space-md bg-surface-container-lowest rounded-xl shadow-sm space-y-space-xs">
+<span class="font-label-sm text-label-sm text-primary font-bold">APPLICATION</span>
+<div class="font-headline-sm text-headline-sm text-on-surface">Next.js 14 &amp; React</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">App Router, React Server Components, TypeScript, and Tailwind CSS for typographic layout.</p>
+</div>
+<!-- Intelligence Layer -->
+<div class="p-space-md bg-surface-container-lowest rounded-xl shadow-sm space-y-space-xs">
+<span class="font-label-sm text-label-sm text-secondary font-bold">INTELLIGENCE</span>
+<div class="font-headline-sm text-headline-sm text-on-surface">LangGraph + GPT-4o</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Stateful agent routing graphs, semantic entity boundary definitions, deterministic citation linking.</p>
+</div>
+<!-- Data & Cache -->
+<div class="p-space-md bg-surface-container-lowest rounded-xl shadow-sm space-y-space-xs">
+<span class="font-label-sm text-label-sm text-tertiary font-bold">DATA &amp; CACHE</span>
+<div class="font-headline-sm text-headline-sm text-on-surface">PostgreSQL + Prisma</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Supabase relational engine, pgvector similarity indexes, Prisma schema migrations, Redis caching.</p>
+</div>
+<!-- Pipeline Orchestration -->
+<div class="p-space-md bg-surface-container-lowest rounded-xl shadow-sm space-y-space-xs">
+<span class="font-label-sm text-label-sm text-primary font-bold">PIPELINE &amp; INFRA</span>
+<div class="font-headline-sm text-headline-sm text-on-surface">Inngest + OpenAlex</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Serverless event workers, OpenAlex REST streaming, Vercel Edge runtime deployment.</p>
+</div>
+</div>
+<div class="text-center font-label-sm text-label-sm text-on-surface-variant italic mt-space-xs">
+        "The technology changes. The problem stays the same: structuring human clinical intelligence."
+      </div>
+</div>
+</section>
+<!-- =========================================================================
+       SECTION 16: PRODUCTION READINESS
+       ========================================================================= -->
+<section class="w-full max-w-7xl mx-auto px-margin py-space-xl">
+<div class="p-space-lg bg-surface-container rounded-xl flex flex-col gap-space-md">
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary font-bold">16 // PRODUCTION ENGINEERING</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mt-space-xs">FROM EXPERIMENT TO WORKING SYSTEM.</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-3xl">
+          IRIS wasn't built as a disposable hackathon demo. It became a full-stack system with authentication, persistent investigator sessions, asynchronous data ingestion, and enterprise deployment infrastructure.
+        </p>
+</div>
+<!-- Infrastructure Architecture Flow -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-space-sm font-label-sm text-label-sm">
+<div class="p-space-sm bg-surface-container-lowest rounded-lg">
+<div class="text-primary font-bold">AUTH &amp; SECURITY</div>
+<div class="text-on-surface mt-1">NextAuth / Supabase Row-Level Security (RLS) guaranteeing strict multi-tenant clinical privacy.</div>
+</div>
+<div class="p-space-sm bg-surface-container-lowest rounded-lg">
+<div class="text-primary font-bold">RATE DAMPENING</div>
+<div class="text-on-surface mt-1">Token-bucket algorithm shielding downstream OpenAlex and PubMed endpoints from threshold bans.</div>
+</div>
+<div class="p-space-sm bg-surface-container-lowest rounded-lg">
+<div class="text-primary font-bold">DATABASE INDEXING</div>
+<div class="text-on-surface mt-1">Trigram GIN indexing on author names &amp; B-Tree indexes on publication timestamp vectors.</div>
+</div>
+<div class="p-space-sm bg-surface-container-lowest rounded-lg">
+<div class="text-primary font-bold">GLOBAL EDGE CACHE</div>
+<div class="text-on-surface mt-1">Vercel Edge middleware caching pre-compiled KOL leaderboard summaries with sub-50ms TTFB.</div>
+</div>
+</div>
+</div>
+</section>
+<!-- =========================================================================
+       SECTION 17: WHAT I LEARNED
+       ========================================================================= -->
+<section class="w-full max-w-7xl mx-auto px-margin py-space-xl">
+<div class="flex flex-col gap-space-lg">
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary font-bold">17 // PERSPECTIVE</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mt-space-xs">WHAT I LEARNED.</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
+<div class="p-space-lg bg-surface-container-lowest rounded-xl shadow-sm flex flex-col justify-between">
+<div class="font-headline-md text-headline-md text-on-surface">
+            "AI is only as good as the information around it."
+          </div>
+<p class="font-body-md text-body-md text-on-surface-variant mt-space-md">
+            The fanciest LLM in the world outputs confident nonsense if your ingestion layer lacks author disambiguation and clean relational grounding.
+          </p>
+</div>
+<div class="p-space-lg bg-surface-container-lowest rounded-xl shadow-sm flex flex-col justify-between">
+<div class="font-headline-md text-headline-md text-on-surface">
+            "Retrieval is a system problem, not just a prompt."
+          </div>
+<p class="font-body-md text-body-md text-on-surface-variant mt-space-md">
+            Telling a model to "be accurate" achieves nothing. You must design deterministic retrieval boundaries, typed schema handoffs, and verification ASTs.
+          </p>
+</div>
+<div class="p-space-lg bg-surface-container-lowest rounded-xl shadow-sm flex flex-col justify-between">
+<div class="font-headline-md text-headline-md text-on-surface">
+            "Building the product is different from building the demo."
+          </div>
+<p class="font-body-md text-body-md text-on-surface-variant mt-space-md">
+            Handling background worker retries, database connection pooling, and sub-100ms graph queries represents 85% of real AI engineering.
+          </p>
+</div>
+</div>
+</div>
+</section>
+<!-- =========================================================================
+       SECTION 18: THE BIGGER IDEA
+       ========================================================================= -->
+<section class="w-full max-w-7xl mx-auto px-margin py-space-xl">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center">
+<div class="lg:col-span-6 flex flex-col gap-space-md">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary font-bold">18 // THE SYNTHESIS</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">THE REAL PRODUCT ISN'T THE CHAT.</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+          The chat interface is merely a temporary conversational surface. The real achievement is the unified underlying architecture: a living, self-healing topological graph linking clinical data, human researchers, trial evidence, and scientific questions.
+        </p>
+</div>
+<!-- Clean Architectural Graph Diagram -->
+<div class="lg:col-span-6 bg-surface-container-lowest p-space-lg rounded-xl shadow-sm">
+<svg class="w-full h-auto text-on-surface fill-none stroke-current" stroke-width="1.8" viewbox="0 0 440 280">
+<!-- Central IRIS Core Engine -->
+<rect fill="#103366" height="80" rx="8" stroke="#001a40" width="140" x="150" y="100"></rect>
+<text fill="#ffffff" font-family="'Bricolage Grotesque', sans-serif" font-size="16" font-weight="700" stroke="none" text-anchor="middle" x="220" y="135">IRIS ENGINE</text>
+<text fill="#9ebbf6" font-family="'JetBrains Mono', monospace" font-size="10" stroke="none" text-anchor="middle" x="220" y="155">TOPOLOGICAL CORE</text>
+<!-- Top Node: PEOPLE -->
+<rect fill="#F7F3EA" height="40" rx="4" stroke="#476553" stroke-width="2" width="120" x="160" y="15"></rect>
+<text fill="#032012" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700" stroke="none" text-anchor="middle" x="220" y="38">PEOPLE (KOLs)</text>
+<line stroke="#476553" stroke-width="2" x1="220" x2="220" y1="55" y2="100"></line>
+<!-- Bottom Node: EVIDENCE -->
+<rect fill="#F7F3EA" height="40" rx="4" stroke="#7f3318" stroke-width="2" width="140" x="150" y="225"></rect>
+<text fill="#390b00" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700" stroke="none" text-anchor="middle" x="220" y="248">EVIDENCE (PAPERS)</text>
+<line stroke="#7f3318" stroke-width="2" x1="220" x2="220" y1="225" y2="180"></line>
+<!-- Left Node: DATA -->
+<rect fill="#F7F3EA" height="40" rx="4" stroke="#103366" stroke-width="2" width="95" x="15" y="120"></rect>
+<text fill="#103366" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700" stroke="none" text-anchor="middle" x="62" y="144">DATA</text>
+<line stroke="#103366" stroke-width="2" x1="110" x2="150" y1="140" y2="140"></line>
+<!-- Right Node: QUESTIONS -->
+<rect fill="#F7F3EA" height="40" rx="4" stroke="#103366" stroke-width="2" width="95" x="330" y="120"></rect>
+<text fill="#103366" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700" stroke="none" text-anchor="middle" x="377" y="144">QUESTIONS</text>
+<line stroke="#103366" stroke-width="2" x1="330" x2="290" y1="140" y2="140"></line>
+</svg>
+</div>
+</div>
+</section>
+<!-- =========================================================================
+       SECTION 19: PROJECT STATUS & LIVE TELEMETRY
+       ========================================================================= -->
+<section class="w-full max-w-7xl mx-auto px-margin py-space-xl">
+<div class="p-space-lg bg-surface-container-low rounded-xl">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-md">
+<div class="space-y-space-xs">
+<div class="flex items-center gap-space-xs font-label-sm text-label-sm uppercase tracking-widest text-secondary font-bold">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span>CURRENT OPERATIONAL STATE</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">
+            IRIS PRODUCTION INSTANCE
+          </h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xl">
+            A production-deployed full-stack intelligence platform featuring asynchronous ingestion pipelines, LangGraph multi-agent querying, interactive graph visualizations, and authenticated enterprise access.
+          </p>
+<div class="font-label-sm text-label-sm text-primary font-bold pt-1">
+            DEPLOYED AT: <span class="underline">iris-two-roan.vercel.app</span>
+</div>
+</div>
+<!-- Call to Actions -->
+<div class="flex flex-col sm:flex-row items-center gap-space-sm">
+<a class="w-full sm:w-auto px-space-lg py-space-md bg-primary text-on-primary font-label-md text-label-md uppercase tracking-wider rounded-lg hover:bg-primary-container transition-colors text-center font-semibold" href="https://iris-two-roan.vercel.app" target="_blank">
+            LIVE PROJECT ↗
+          </a>
+<button class="w-full sm:w-auto px-space-lg py-space-md bg-surface-container-highest text-on-surface font-label-md text-label-md uppercase tracking-wider rounded-lg hover:bg-surface-container-high transition-colors">
+            REQUEST DEMO ACCESS
+          </button>
+</div>
+</div>
+</div>
+</section>
+<!-- =========================================================================
+       SECTION 20: WHAT'S NEXT? (BRIDGE TO EXAMMIND)
+       ========================================================================= -->
+<section class="w-full max-w-7xl mx-auto px-margin pt-space-xl pb-space-xl">
+<div class="p-space-lg bg-surface-container rounded-xl">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center">
+<!-- Notebook closing vignette -->
+<div class="lg:col-span-5 bg-surface-container-lowest p-space-md rounded-xl shadow-sm">
+<div class="font-label-sm text-label-sm text-on-surface-variant mb-space-xs">FIG 4.0 // MONOGRAPH CLOSING</div>
+<svg class="w-full h-auto text-on-surface fill-none stroke-current" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 380 240">
+<!-- Closed Notebook on desk -->
+<polygon fill="#103366" points="60,180 140,165 200,180 120,195" stroke="#001a40"></polygon>
+<text fill="#acc7ff" font-family="'JetBrains Mono', monospace" font-size="8" stroke="none" text-anchor="middle" x="130" y="182">VOL II: IRIS</text>
+<!-- Stickman closing the book and turning toward horizon -->
+<circle cx="170" cy="90" fill="#F7F3EA" r="14" stroke="#1a1b1e" stroke-width="2"></circle>
+<line stroke="#1a1b1e" stroke-width="2.2" x1="170" x2="170" y1="104" y2="150"></line>
+<!-- Arm resting over closed book -->
+<line stroke="#1a1b1e" stroke-width="2" x1="170" x2="140" y1="120" y2="145"></line>
+<line stroke="#1a1b1e" stroke-width="2" x1="140" x2="135" y1="145" y2="170"></line>
+<!-- Other arm pointing forward to next path -->
+<line stroke="#1a1b1e" stroke-width="2" x1="170" x2="210" y1="120" y2="105"></line>
+<line stroke="#1a1b1e" stroke-width="2" x1="210" x2="250" y1="105" y2="90"></line>
+<!-- Legs walking forward -->
+<line stroke="#1a1b1e" stroke-width="2.2" x1="170" x2="150" y1="150" y2="200"></line>
+<line stroke="#1a1b1e" stroke-width="2.2" x1="170" x2="190" y1="150" y2="195"></line>
+<!-- Path leading to student desk on right -->
+<path d="M 230,190 Q 290,185 340,170" stroke="#c4c6d1" stroke-dasharray="3 3"></path>
+<!-- Distant illustrated student study scene -->
+<circle cx="330" cy="120" fill="#F7F3EA" r="10" stroke="#7f3318"></circle>
+<line stroke="#7f3318" x1="330" x2="330" y1="130" y2="160"></line>
+<rect fill="#c7e8d1" height="5" stroke="#476553" width="40" x="310" y="160"></rect>
+<text fill="#611d04" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="600" x="260" y="70">Case Study 03</text>
+</svg>
+</div>
+<div class="lg:col-span-7 flex flex-col gap-space-sm pl-0 lg:pl-space-md">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary font-bold">NEXT PROBLEM // CASE STUDY 03</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">
+            WHAT IF GETTING AN ANSWER WASN'T ENOUGH?
+          </h2>
+<p class="font-body-md text-body-md text-on-surface-variant">
+            In IRIS, the goal was finding the right scientific answers. But in human cognition and medical education, merely receiving an answer doesn't create comprehension.
+          </p>
+<!-- ExamMind Bridge Card -->
+<div class="p-space-md bg-surface-container-lowest rounded-xl shadow-sm flex items-center justify-between mt-space-xs">
+<div>
+<div class="font-headline-sm text-headline-sm text-on-surface font-bold">EXAMMIND</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Active Recall, Socratic Diagnostics &amp; Student Mastery.</div>
+</div>
+<a class="px-space-md py-space-xs bg-primary text-on-primary font-label-sm text-label-sm uppercase tracking-wider rounded-lg hover:bg-primary-container transition-colors" data-path="work" href="../exammind_socratic_rag_evaluation_intelligence/code.html">
+              READ MONOGRAPH →
+            </a>
+</div>
+<div class="pt-space-md border-t border-outline-variant flex flex-wrap items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
+<span>KOUSHIK UPADHYAY · SYSTEMS NOTEBOOK</span>
+<span>END OF PLATE 02</span>
+<span class="text-secondary font-bold">ALL DATASETS GROUNDED</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div></main><footer class="w-full bg-surface-container-lowest py-space-xl"><div class="max-w-7xl mx-auto px-margin flex flex-col md:flex-row items-start md:items-center justify-between gap-space-lg"><div class="space-y-space-xs"><div class="font-label-md text-label-md uppercase tracking-widest text-on-surface font-semibold">KOUSHIK UPADHYAY</div><p class="font-body-sm text-body-sm text-on-surface-variant">AI/ML Engineer &amp; Systems Builder. Editorial monograph &amp; computational systems notebook.</p></div><div class="flex flex-wrap items-center gap-space-lg font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant"><span class="text-on-surface">SYSTEM: ARCHIVAL MONOGRAPH</span><span>INDEX: 2024.1</span><span class="text-secondary">STATUS: LATENT OPERATIONAL</span></div></div></footer></body></html>
